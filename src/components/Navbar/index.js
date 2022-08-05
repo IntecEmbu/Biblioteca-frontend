@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Container, NavDropdown, Figure } from 'react-bootstrap';
 import Logo from '../Imagem/branco.png';
 import Login from '../Imagem/login.png';
-import '../Navbar/style.css'
+import './style.css'
 
 function Main() {
     return (
