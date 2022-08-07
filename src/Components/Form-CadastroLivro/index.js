@@ -36,8 +36,10 @@ function Index() {
     }
 
   return (
-    <div id="mainCadastroLivro">
+    <div>
+
         <label id="Label-CadastroLivro">CADASTRO DE LIVRO</label>
+        
         <div id='AreaForm-CadastroLivro'>
             <Form>
                 <div>
