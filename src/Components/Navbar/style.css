@@ -17,7 +17,3 @@
     color: black !important;
     text-decoration: none !important;
 }
-
-#basic-nav-dropdown:hover>.dropdown-menu {
-    display: block;
-}
