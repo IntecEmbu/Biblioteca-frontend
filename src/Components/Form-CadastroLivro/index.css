@@ -16,12 +16,10 @@
     width: 90%;
     background-color: #ffff;
     padding: 30px;
-    border-radius: 10px;
 
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -65%);
+    margin: auto;
+    margin-top: 3%;
+    border-radius: 10px;
 }
 
 #AreaButton-CadastrarLivro{
