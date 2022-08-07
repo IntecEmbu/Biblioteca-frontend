@@ -11,41 +11,41 @@ function index() {
             <div>
                 <Form.Group className='Form-group'>
                     <Form.Label>TÍTULO</Form.Label>
-                    <Form.Control className='Form-control' type="text"/>
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>EDIÇÃO/VOLUME</Form.Label>
-                    <Form.Control className='Form-control' type="text"/>
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>CATEGORIA</Form.Label>
-                    <Form.Control className='Form-control' type="text"/>
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
             </div>
 
             <div>
                 <Form.Group className='Form-group'>
                     <Form.Label>IDIOMA</Form.Label>
-                    <Form.Control className='Form-control' type="text" />
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>ANO LANÇAMENTO</Form.Label>
-                    <Form.Control className='Form-control' type="text" maxLength={4}/>
+                    <Form.Control className='Form-control' type="text" maxLength={4} required/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>AUTOR</Form.Label>
-                    <Form.Control className='Form-control' type="text"/>
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
             </div>
 
             <div>
                 <Form.Group className='Form-group'>
                     <Form.Label>ISBN</Form.Label>
-                    <Form.Control className='Form-control' type="text" />
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>CDD</Form.Label>
-                    <Form.Control className='Form-control' type="text" />
+                    <Form.Control className='Form-control' type="text" required/>
                 </Form.Group>
             </div>
 
