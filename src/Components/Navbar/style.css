@@ -9,5 +9,10 @@
     color: white !important;
     font-size: 15px;
     margin: 5px;
-    margin-left: 30px;
+    margin-left: 40px;
+}
+
+.link-nav{
+    color: black !important;
+    text-decoration: none !important;
 }

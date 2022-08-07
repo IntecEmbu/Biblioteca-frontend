@@ -28,34 +28,34 @@ function index() {
               <Nav className="me-auto">
                 <NavDropdown title="CIRCULAÇÃO" id="basic-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link to="/emprestimos">EMPRÉSTIMOS</Link>
+                    <Link className='link-nav' to="/emprestimos">EMPRÉSTIMOS</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/devolucoes">DEVOLUÇÕES</Link>
+                    <Link className='link-nav' to="/devolucoes">DEVOLUÇÕES</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title="CATALOGAÇÃO" id="basic-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link to="/pesquisarlivro">PESQUISAR LIVRO</Link>
+                    <Link className='link-nav' to="/pesquisarlivro">PESQUISAR LIVRO</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/cadastrolivro">CADASTRAR LIVRO</Link>
+                    <Link className='link-nav' to="/cadastrolivro">CADASTRAR LIVRO</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title="ADMINISTRAÇÃO" id="basic-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link to="/relatorios">RELATÓRIOS</Link>
+                    <Link className='link-nav' to="/relatorios">RELATÓRIOS</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/graficos">GRÁFICOS</Link>
+                    <Link className='link-nav' to="/graficos">GRÁFICOS</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/voluntarios">VOLUNTÁRIOS</Link>
+                    <Link className='link-nav' to="/voluntarios">VOLUNTÁRIOS</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/alunos">ALUNOS</Link>
+                    <Link className='link-nav' to="/alunos">ALUNOS</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
