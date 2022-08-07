@@ -3,12 +3,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link } from 'react-router-dom';
+import './style.css';
 
 function index() {
   return (
     <div id="Area-NavBar">
       
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg" id="navBar">
           <Container>
 
             <Navbar.Brand>
@@ -63,7 +64,7 @@ function index() {
           {/* Mexer aqui depois para area do usuario */}
             <Navbar.Collapse className="justify-content-end">
                 <img
-                  src='https://img.icons8.com/small/480/000000/user-male-circle.png'
+                  src='https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png'
                   width="30"
                   height="30" 
                 />

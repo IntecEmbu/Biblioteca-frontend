@@ -1,3 +1,13 @@
-#Area-NavBar{
-    background-color: black !important;
+#navBar{
+    background-color: #192039 !important;
+    color: white !important;
+    margin-bottom: 20px;
+}
+
+#basic-nav-dropdown{
+    background-color: #192039 !important;
+    color: white !important;
+    font-size: 15px;
+    margin: 5px;
+    margin-left: 30px;
 }
