@@ -1,9 +1,14 @@
 .Form-control{
     width: 250px !important;
+    border: rgb(114, 114, 114) 0.05px solid !important;
 }
-.Form-control::placeholder{
-    color: #999 !important;
+.Form-control:focus{
+    box-shadow: #9c9c9c 2px 2px 2px !important;
+} /* depois tentar juntar os dois efeitos */
+.Form-control:hover{
+    box-shadow: #9c9c9c 2px 2px 2px !important;
 }
+
 
 .Form-group{
     margin-left: 50px;
@@ -18,7 +23,8 @@
     padding: 30px;
 
     margin: auto;
-    margin-top: 3%;
+    margin-top: 60px;
+    margin-bottom: 60px;
     border-radius: 10px;
 }
 
@@ -32,4 +38,8 @@
 #FormButton-CadastrarLivro{
     background-color: #192039 !important;
     color: #DFDEDE !important;
+}
+#FormButton-CadastrarLivro:hover{
+    background-color: #DFDEDE !important;
+    color: #192039 !important;
 }
