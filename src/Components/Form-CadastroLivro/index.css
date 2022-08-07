@@ -23,7 +23,6 @@
     padding: 30px;
 
     margin: auto;
-    margin-top: 60px;
     margin-bottom: 60px;
     border-radius: 10px;
 }
@@ -40,4 +39,11 @@
 #FormButton-CadastrarLivro:hover{
     background-color: #DFDEDE !important;
     color: #192039 !important;
+}
+
+#Label-CadastroLivro{
+    margin-left: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
