@@ -33,12 +33,16 @@ function index() {
                     <Form.Control className='Form-control' type="text" maxLength={4}/>
                 </Form.Group>
                 <Form.Group className='Form-group'>
-                    <Form.Label>ISBN</Form.Label>
+                    <Form.Label>AUTOR</Form.Label>
                     <Form.Control className='Form-control' type="text"/>
                 </Form.Group>
             </div>
 
             <div>
+                <Form.Group className='Form-group'>
+                    <Form.Label>ISBN</Form.Label>
+                    <Form.Control className='Form-control' type="text" />
+                </Form.Group>
                 <Form.Group className='Form-group'>
                     <Form.Label>CDD</Form.Label>
                     <Form.Control className='Form-control' type="text" />
