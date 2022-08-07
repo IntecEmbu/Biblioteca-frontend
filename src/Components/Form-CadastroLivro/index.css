@@ -1,0 +1,37 @@
+.Form-control{
+    width: 250px !important;
+}
+.Form-control::placeholder{
+    color: #999 !important;
+}
+
+.Form-group{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 40px; 
+    display: inline-block;
+}
+
+#AreaForm-CadastroLivro{
+    width: 90%;
+    background-color: #ffff;
+    padding: 30px;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+}
+
+#AreaButton-CadastrarLivro{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: inline-block;
+}
+
+#FormButton-CadastrarLivro{
+    background-color: #192039 !important;
+    color: #DFDEDE !important;
+}

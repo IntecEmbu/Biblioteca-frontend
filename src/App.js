@@ -1,10 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import index from './index';
-import Main from './pages/Main'
+import CadastroLivro from './Pages/CadastroLivro';
+import NavBar from './Components/Navbar';
+
+
 function App() {
   return (
-    
-    <Main></Main>
+    <div className='App'>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/cadastroLivro" element={<CadastroLivro />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
 
   );
 }

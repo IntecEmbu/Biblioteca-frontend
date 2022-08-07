@@ -36,8 +36,6 @@ function Main() {
        <NavDropdown style={{marginLeft:'0%', display: 'inline-block', backgroundColor: '#192039', color:'#D9D9D9'}}>
       </NavDropdown></div>
     </Navbar>
-    
-    
     );
   }
   
