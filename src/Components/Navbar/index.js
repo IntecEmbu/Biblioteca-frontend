@@ -9,7 +9,7 @@ function index() {
   return (
     <div id="Area-NavBar">
       
-        <Navbar expand="lg" id="navBar">
+        <Navbar expand="lg" id="navBar" variant="dark">
           <Container>
 
             <Navbar.Brand>
