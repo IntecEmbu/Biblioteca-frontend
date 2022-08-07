@@ -18,28 +18,28 @@ function Index() {
         [cdd, setCdd] = useState('')
 
     // Função para cadastrar o livro
-    async function sendBook(){
-        const data = {
-            title: title,
-            edition: edition,
-            isbn: isbn,
-            year: year,
-            category: category,
-            cdd: cdd,
-            idiom: idiom,
-        }
+    // async function sendBook(){
+    //     const data = {
+    //         title: title,
+    //         edition: edition,
+    //         isbn: isbn,
+    //         year: year,
+    //         category: category,
+    //         cdd: cdd,
+    //         idiom: idiom,
+    //     }
 
-        // Envia os dados para o backend
-        const res = await api.post('/cataloguin/insertbook', data)
-        console.log(res)
-        alert(res.data.message)
-    }
+    //     // Envia os dados para o backend
+    //     const res = await api.post('/cataloguin/insertbook', data)
+    //     console.log(res)
+    //     alert(res.data.message)
+    // }
 
   return (
     <div>
 
         <label id="Label-CadastroLivro">CADASTRO DE LIVRO</label>
-        
+
         <div id='AreaForm-CadastroLivro'>
             <Form>
                 <div>
@@ -92,7 +92,7 @@ function Index() {
                 </div>
 
                 <div id="AreaButton-CadastrarLivro">
-                <Button id="FormButton-CadastrarLivro" type="submit" onClick={sendBook}>ENVIAR</Button>
+                <Button id="FormButton-CadastrarLivro" type="submit">ENVIAR</Button>
                 </div>
             </Form>
         </div>
