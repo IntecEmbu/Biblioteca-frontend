@@ -1,7 +1,6 @@
 #navBar{
     background-color: #192039 !important;
     color: white !important;
-
     box-shadow: 2px 2px 2px 2px #9e9e9e;
 }
 
@@ -18,6 +17,11 @@
     text-decoration: none !important;
 }
 
+.AreaDropdownItem{
+    margin: auto !important;
+    border-radius: 0px !important;
+}
+
 /* Quando o mouse estiver sobre o item mudará de cor e fundo */
 .AreaDropdownItem:hover {
     background-color: #192039 !important;
@@ -25,3 +29,7 @@
 .AreaDropdownItem:hover .link-nav{
     color: #ffff !important;
 }
+
+#DropdownUser::after {
+    display: none;
+  }

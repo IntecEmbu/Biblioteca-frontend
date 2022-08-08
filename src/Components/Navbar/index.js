@@ -65,7 +65,7 @@ function index() {
               <NavDropdown title={
                 <img
                 src={require('../../Components/Imagem/user.png')} alt='user' width="30" height="30"/>}
-                >
+                id="DropdownUser">
                 <NavDropdown.Item className="AreaDropdownItem">
                   <Link className='link-nav' to="/perfil">PERFIL</Link>
                 </NavDropdown.Item>
