@@ -15,9 +15,9 @@ function index() {
             <Navbar.Brand>
               <Link to="/">
                 <img id='Logo'
-                  src='https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png'
-                  width="30"
-                  height="30"
+                  src={require('../../Components/Imagem/logo.png')} alt='logo'
+                  width="50"
+                  height="35"
                 />
               </Link>
             </Navbar.Brand>
@@ -61,13 +61,18 @@ function index() {
               </Nav>
             </Navbar.Collapse>
 
-          {/* Mexer aqui depois para area do usuario */}
             <Navbar.Collapse className="justify-content-end">
+              <NavDropdown title={
                 <img
-                  src='https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png'
-                  width="30"
-                  height="30" 
-                />
+                src={require('../../Components/Imagem/user.png')} alt='user' width="30" height="30"/>}
+                >
+                <NavDropdown.Item className="AreaDropdownItem">
+                  <Link className='link-nav' to="/perfil">PERFIL</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item className="AreaDropdownItem">
+                  <Link className='link-nav' to="/">SAIR</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
             </Navbar.Collapse>
 
           </Container>
