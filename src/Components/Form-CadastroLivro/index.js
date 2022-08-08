@@ -42,7 +42,7 @@ function Index() {
 
         <div id='AreaForm-CadastroLivro'>
             <Form>
-                <div>
+                <div id="AreaFormGroup">
                     <Form.Group className='Form-group'>
                         <Form.Label>TÍTULO</Form.Label>
                         <Form.Control className='Form-control' type="text" required 
@@ -58,9 +58,7 @@ function Index() {
                         <Form.Control className='Form-control' type="text" required
                         onChange={e => setCategory(e.target.value)}/>
                     </Form.Group>
-                </div>
 
-                <div>
                     <Form.Group className='Form-group'>
                         <Form.Label>IDIOMA</Form.Label>
                         <Form.Control className='Form-control' type="text" required
@@ -76,9 +74,7 @@ function Index() {
                         <Form.Control className='Form-control' type="text" required
                         onChange={e => setAuthor(e.target.value)}/>
                     </Form.Group>
-                </div>
 
-                <div>
                     <Form.Group className='Form-group'>
                         <Form.Label>ISBN</Form.Label>
                         <Form.Control className='Form-control' type="text" required
