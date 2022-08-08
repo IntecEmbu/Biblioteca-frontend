@@ -5,9 +5,9 @@ import './index.css'
 function index() {
   return (
     <div>
-        <Link to="/cadastrolivro" className='link' id='homeLink'>
+        <Link to="/" className='link' id='homeLink'>
             <div id='msgError'>
-                <h1>Página não feita<br />Clique aqui para ir cadastrar livro</h1>
+                <span>Página não feita<br />Clique aqui para ir à home</span>
             </div>
         </Link>
     </div>
