@@ -13,13 +13,14 @@
     margin-right: 50px;
     margin-left: 50px;
     margin-bottom: 50px;
+    margin-top: 15px;
     display: inline-block;
 }
 
 #AreaForm-CadastroLivro{
     width: 85vw;
     background-color: #ffff;
-    padding: 30px;
+    padding: 0;
 
     margin: auto;
     margin-bottom: 60px;
