@@ -17,3 +17,11 @@
     color: black !important;
     text-decoration: none !important;
 }
+
+/* Quando o mouse estiver sobre o item mudará de cor e fundo */
+.AreaDropdownItem:hover {
+    background-color: #192039 !important;
+}
+.AreaDropdownItem:hover .link-nav{
+    color: #ffff !important;
+}

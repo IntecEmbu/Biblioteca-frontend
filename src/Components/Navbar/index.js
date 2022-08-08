@@ -27,34 +27,34 @@ function index() {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <NavDropdown title="CIRCULAÇÃO" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/emprestimos">EMPRÉSTIMOS</Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/devolucoes">DEVOLUÇÕES</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title="CATALOGAÇÃO" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/pesquisarlivro">PESQUISAR LIVRO</Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/cadastrolivro">CADASTRAR LIVRO</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title="ADMINISTRAÇÃO" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/relatorios">RELATÓRIOS</Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/graficos">GRÁFICOS</Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/voluntarios">VOLUNTÁRIOS</Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="AreaDropdownItem">
                     <Link className='link-nav' to="/alunos">ALUNOS</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
