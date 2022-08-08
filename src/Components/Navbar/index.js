@@ -5,6 +5,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link } from 'react-router-dom';
 import './style.css';
 
+// Arrumar bug do dropdown pois o link somente pega onde está as letras e não a area
+
 function index() {
   return (
     <div id="Area-NavBar">
