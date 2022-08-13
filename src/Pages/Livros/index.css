@@ -13,19 +13,18 @@
 }
 
 #tipo-pesquisa{
-    width: 200px;
+    width: 150px;
     margin-left: 20px;
     display: inline-block;
 }
 
 #btn-pesquisa{
-    width: 100px;
     margin-left: 20px;
     display: inline-block;
     padding: 5px;
 }
 
 #input-pesquisa{
-    width: 200px;
+    width: 150px;
     display: inline-block;
 }
