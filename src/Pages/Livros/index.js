@@ -2,10 +2,24 @@ import React, { useEffect } from 'react'
 import CardBook from '../../Components/CardBook/index.js'
 import api from '../../Service/api.js'
 import './index.css'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
 
 function LivrosPage() {
 
     const [booksCard, setBooksCard] = React.useState([])
+    const [typeSearch, setTypeSearch] = React.useState('')
+    const [nameSearch, setNameSearch] = React.useState('')
+
+    async function search() {
+
+        if(nameSearch === ''){
+            alert('Preencha o campo de busca')
+            return
+        }
+
+        const response = await api.get(`/book/seach-${typeSearch}?${typeSearch}=${nameSearch}`)
+    }
 
     useEffect(() => {
         api.get('/book/all').then(response => {
@@ -29,8 +43,26 @@ function LivrosPage() {
     } , [])
 
     return (
-        <div id="area-card-books">
-            {booksCard}
+        <div className="livros-page">
+
+            <div id='area-pesquisa'>
+
+                <Form.Control id='input-pesquisa' type="text"
+                onChange={e => setNameSearch(e.target.value)}/>
+
+                <Form.Select id='tipo-pesquisa'>
+                    <option >CATEGORIA</option>
+                    <option >NOME</option>
+                </Form.Select>
+
+
+                <Button variant="secondary" id="btn-pesquisa" onClick={search}>PESQUISAR</Button>
+        
+            </div>
+
+            <div id="area-card-books">
+                {booksCard}
+            </div>
         </div>
     )
 }

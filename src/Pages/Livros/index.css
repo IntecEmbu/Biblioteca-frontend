@@ -3,3 +3,29 @@
     text-align: center;
     margin: 0 ;
 }
+
+#area-pesquisa{
+    width: 100%;
+    padding-top: 10px;
+    text-align: center;
+    margin: 0;
+    display: inline-block;
+}
+
+#tipo-pesquisa{
+    width: 200px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#btn-pesquisa{
+    width: 100px;
+    margin-left: 20px;
+    display: inline-block;
+    padding: 5px;
+}
+
+#input-pesquisa{
+    width: 200px;
+    display: inline-block;
+}
