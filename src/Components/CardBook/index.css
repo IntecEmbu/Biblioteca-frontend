@@ -1,0 +1,17 @@
+#card-book{
+    width: 30%;
+    display: inline-block;
+    margin: 20px;
+    background-color: white;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+#titulo-livro{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.p-card-book{
+    font-size: 0.8em;
+}

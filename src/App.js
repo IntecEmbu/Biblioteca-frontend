@@ -4,6 +4,7 @@ import CadastroLivro from './Pages/CadastroLivro'
 import NavBar from './Components/Navbar'
 import NotFound from './Pages/NotFound'
 import Home from './Pages/Home'
+import Livros from './Pages/Livros'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path="/cadastroLivro" element={<CadastroLivro />} />
-          <Route path="/*" element={<NotFound/>}/>
+          <Route path="/pesquisarlivro" element={<Livros />} />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
     </div>

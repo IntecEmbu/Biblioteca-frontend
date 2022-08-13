@@ -15,14 +15,14 @@ function Index() {
     */
 
     // Criação de estados para o formulário
-    // const [title, setTitle] = useState(''),
-    //     [edition, setEdition] = useState(''),
-    //     [category, setCategory] = useState(''),
-    //     [idiom, setIdiom] = useState(''),
-    //     [year, setYear] = useState(''),
-    //     [author, setAuthor] = useState(''),
-    //     [isbn, setIsbn] = useState(''),
-    //     [cdd, setCdd] = useState('')
+    const [title, setTitle] = useState(''),
+        [edition, setEdition] = useState(''),
+        [category, setCategory] = useState(''),
+        [idiom, setIdiom] = useState(''),
+        [year, setYear] = useState(''),
+        [author, setAuthor] = useState(''),
+        [isbn, setIsbn] = useState(''),
+        [cdd, setCdd] = useState('')
 
     // // Função para cadastrar o livro
     // async function sendBook(){
@@ -100,7 +100,7 @@ function Index() {
 
 
                     <div id="AreaButton-CadastrarLivro">
-                        <Button id="FormButton-CadastrarLivro" onClick={sendBook} type="submit">ENVIAR</Button>
+                        <Button id="FormButton-CadastrarLivro" type="submit">ENVIAR</Button>
                     </div>
                 </div>
             </Form>
