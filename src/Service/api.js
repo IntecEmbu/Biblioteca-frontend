@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL:'https://bibli-on.herokuapp.com'
+  baseURL:'https://jade-api.herokuapp.com'
 })
 
 export default api;
