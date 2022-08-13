@@ -1,14 +1,15 @@
 #card-book{
-    width: 30%;
+    width: 25%;
+    text-align: left !important;
     display: inline-block;
-    margin: 20px;
+    margin: 5px;
     background-color: white;
     padding: 8px;
     border-radius: 20px;
 }
 
 #titulo-livro{
-    font-size: 1em;
+    font-size: 15px;
     font-weight: bold;
 }
 

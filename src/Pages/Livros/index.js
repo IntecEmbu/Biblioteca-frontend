@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import CardBook from '../../Components/CardBook/index.js'
 import api from '../../Service/api.js'
+import './index.css'
 
 function LivrosPage() {
 
@@ -28,7 +29,7 @@ function LivrosPage() {
     } , [])
 
     return (
-        <div>
+        <div id="area-card-books">
             {booksCard}
         </div>
     )
