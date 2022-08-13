@@ -14,17 +14,18 @@
 
 #tipo-pesquisa{
     width: 150px;
-    margin-left: 20px;
+    margin: 15px;
     display: inline-block;
 }
 
 #btn-pesquisa{
-    margin-left: 20px;
+    margin: 15px;
     display: inline-block;
     padding: 5px;
 }
 
 #input-pesquisa{
     width: 150px;
+    margin: 15px;
     display: inline-block;
 }
