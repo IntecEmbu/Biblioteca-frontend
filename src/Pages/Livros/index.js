@@ -81,7 +81,7 @@ function LivrosPage() {
     return (
         <div className="livros-page">
 
-            <Form id='area-pesquisa'>
+            <Form id='area-pesquisa' autocomplete="off">
 
                 <Form.Control id='input-pesquisa' type="text"
                 onChange={e => setNameSearch(e.target.value)}/>
