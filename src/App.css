@@ -1,4 +1,4 @@
-.App{
+body{
     width: 100%;
-    background-color: #DFDEDE;
+    background-color: #DFDEDE !important;
 }
