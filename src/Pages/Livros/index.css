@@ -9,7 +9,6 @@
     width: 100%;
     padding-top: 10px;
     text-align: center;
-    margin: 0;
     display: inline-block;
 }
 
@@ -27,7 +26,6 @@
 
 #input-pesquisa{
     width: 150px;
-    margin: 15px;
     display: inline-block;
 }
 
