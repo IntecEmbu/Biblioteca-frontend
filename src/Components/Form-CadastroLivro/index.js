@@ -65,7 +65,7 @@ function Index() {
                         onChange={e => setTitle(e.target.value)} />
                     </Form.Group>
                     <Form.Group className='Form-group'>
-                        <Form.Label className='Form-Label'>EDIÇÃO/VOLUME</Form.Label>
+                        <Form.Label className='Form-Label'>EDIÇÃO</Form.Label>
                         <Form.Control className='Form-control' type="text" required
                         onChange={e => setEdition(e.target.value)} />
                     </Form.Group>
