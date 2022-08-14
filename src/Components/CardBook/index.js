@@ -10,6 +10,7 @@ function CardBook(props) {
         <p className='p-card-book'>ANO: {props.release_year}</p>
         <p className='p-card-book'>CATEGORIA: {props.category_name}</p>
         <p className='p-card-book'>LINGUA: {props.book_language}</p>
+        <p className='p-card-book'>AUTOR: {props.book_author}</p>
     </div>
   )
 }

@@ -50,7 +50,8 @@ function LivrosPage() {
                 book_cdd={book.book_cdd} 
                 release_year={book.release_year}
                 category_name={book.category_name}
-                book_language={book.book_language} />
+                book_language={book.book_language}
+                book_author={book.book_author} />
             )
         })
 
@@ -70,7 +71,8 @@ function LivrosPage() {
                     book_cdd={book.book_cdd} 
                     release_year={book.release_year}
                     category_name={book.category_name}
-                    book_language={book.book_language} />
+                    book_language={book.book_language} 
+                    book_author={book.book_author}/>
                 )
             })
 
