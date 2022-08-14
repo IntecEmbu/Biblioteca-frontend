@@ -29,3 +29,11 @@
     margin: 15px;
     display: inline-block;
 }
+
+#area-loading{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}

@@ -4,12 +4,22 @@ import api from '../../Service/api.js'
 import './index.css'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 
 function LivrosPage() {
 
-    const [booksCard, setBooksCard] = React.useState([])
-    const [typeSearch, setTypeSearch] = React.useState('')
+    const [booksCard, setBooksCard] = React.useState(
+        <div id='area-loading'>
+            <Spinner id="loading" animation='border'/>
+        </div>
+    )
     const [nameSearch, setNameSearch] = React.useState('')
+
+    const [selectValue, setSelectValue] = React.useState(1);  
+    const list = [
+        {id: 1, name: 'NOME'},
+        {id: 2, name: 'CATEGORIA'},
+    ];
 
     async function search() {
 
@@ -18,7 +28,32 @@ function LivrosPage() {
             return
         }
 
-        const response = await api.get(`/book/seach-${typeSearch}?${typeSearch}=${nameSearch}`)
+        if(selectValue == 1){
+            var response = await api.get(`/book/search-name?name=${nameSearch}`)
+        }
+        if(selectValue == 2){
+            var response = await api.get(`/book/search-category?category=${nameSearch}`)
+        }
+
+        // Caso não encontre nenhum livro, mostra uma mensagem
+        if(response.status === 204){
+            alert('Nenhum livro encontrado')
+            return
+        }
+
+        const dataCard = response.data.books.map(book => {
+            return (
+                <CardBook 
+                book_name={book.book_name} 
+                book_isbn={book.book_isbn}
+                book_cdd={book.book_cdd} 
+                release_year={book.release_year}
+                category_name={book.category_name}
+                book_language={book.book_language} />
+            )
+        })
+
+        setBooksCard(dataCard)
     }
 
     useEffect(() => {
@@ -50,9 +85,10 @@ function LivrosPage() {
                 <Form.Control id='input-pesquisa' type="text"
                 onChange={e => setNameSearch(e.target.value)}/>
 
-                <Form.Select id='tipo-pesquisa'>
-                    <option >CATEGORIA</option>
-                    <option >NOME</option>
+                <Form.Select id='tipo-pesquisa' value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+                    {list.map((item, index) => (
+                    <option value={item.id}>{item.name}</option>
+                    ))}        
                 </Form.Select>
 
 
