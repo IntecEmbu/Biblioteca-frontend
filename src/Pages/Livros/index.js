@@ -18,8 +18,9 @@ function LivrosPage() {
 
     const [selectValue, setSelectValue] = React.useState(1);  
     const list = [
-        {id: 1, name: 'NOME'},
+        {id: 1, name: 'TÍTULO'},
         {id: 2, name: 'CATEGORIA'},
+        {id: 3, name: 'AUTOR'}
     ];
 
     async function search() {
@@ -32,8 +33,11 @@ function LivrosPage() {
         if(selectValue == 1){
             var response = await api.get(`/book/search-name?name=${nameSearch}`)
         }
-        if(selectValue == 2){
+        else if(selectValue == 2){
             var response = await api.get(`/book/search-category?category=${nameSearch}`)
+        }
+        else if(selectValue == 3){
+            var response = await api.get(`/book/search-author?author=${nameSearch}`)
         }
 
         // Caso não encontre nenhum livro, mostra uma mensagem
