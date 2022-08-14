@@ -49,8 +49,8 @@ function LivrosPage() {
 
         // Caso não encontre nenhum livro, mostra uma mensagem e mostra todos os livros
         if(response.status === 204){
-            alert('Nenhum livro encontrado')
             loadBooks()
+            alert('Nenhum livro encontrado')
             return
         }
 
