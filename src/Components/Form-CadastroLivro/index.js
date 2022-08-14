@@ -7,13 +7,6 @@ import api from '../../Service/api'
 
 function Index() {
 
-    /*          OBSERVAÇÃO:
-    ARRUMAR HOOKS COM DADOS NESCESSARIOS
-    ARRUMAR BACKEND COM DADOS NESCESSARIOS
-    ARRUMAR O FORMULARIO COM DADOS NESCESSARIOS
-    ARRUMAR O BANCO DE DADOS COM DADOS NESCESSARIOS
-    */
-
     // Criação de estados para o formulário
     const [title, setTitle] = useState(''),
         [edition, setEdition] = useState(''),
@@ -25,24 +18,37 @@ function Index() {
         [cdd, setCdd] = useState('')
 
     // // Função para cadastrar o livro
-    // async function sendBook(){
-    //     const data = {
-    //         title: title,
-    //         edition: edition,
-    //         isbn: isbn,
-    //         year: year,
-    //         category: category,
-    //         cdd: cdd,
-    //         idiom: idiom
-    //     }
+    async function sendBook(){
+        const data = {
+            title, edition,
+            isbn, cdd,
+            year, category,
+            idiom, author
+        }
 
-    //     console.log(data)
+        // verifica se os campos estão preenchidos
+        if( title === '' || edition === '' || category === '' || idiom === '' 
+            || year === '' || author === '' || isbn === '' || cdd === ''){
+            return alert('Preencha todos os campos')
+        }
 
-    //     // Envia os dados para o backend
-    //     const res = await api.post('/book/insert', data)
-    //     console.log(res)
-    //     alert(res.data.message)
-    // }
+        // Cofirma os dados do livro
+        const confirm = window.confirm('Deseja cadastrar o livro?')
+        if(confirm){
+
+            try {
+                await api.post('/book/insert', data) // Envia os dados para o backend
+                alert('Livro cadastrado com sucesso!')
+
+            } catch(error){
+                alert('Erro ao cadastrar o livro!')
+                console.log(error)
+            }
+
+            // Limpa os campos do formulário
+            window.location.reload()
+        }
+    }
 
   return (
     <div>
@@ -100,7 +106,7 @@ function Index() {
 
 
                     <div id="AreaButton-CadastrarLivro">
-                        <Button id="FormButton" type="submit">ENVIAR</Button>
+                        <Button id="FormButton" onClick={sendBook}>ENVIAR</Button>
                     </div>
                 </div>
             </Form>
