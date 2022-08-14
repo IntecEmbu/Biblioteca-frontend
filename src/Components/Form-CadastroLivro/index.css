@@ -33,11 +33,11 @@
     text-align: end;
 }
 
-#FormButton-CadastrarLivro{
+#FormButton{
     background-color: #192039 !important;
     color: #DFDEDE !important;
 }
-#FormButton-CadastrarLivro:hover{
+#FormButton:hover{
     background-color: #DFDEDE !important;
     color: #192039 !important;
 }

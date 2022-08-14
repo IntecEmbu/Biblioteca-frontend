@@ -13,6 +13,7 @@ function LivrosPage() {
             <Spinner id="loading" animation='border'/>
         </div>
     )
+
     const [nameSearch, setNameSearch] = React.useState('')
 
     const [selectValue, setSelectValue] = React.useState(1);  
@@ -80,21 +81,20 @@ function LivrosPage() {
     return (
         <div className="livros-page">
 
-            <div id='area-pesquisa'>
+            <Form id='area-pesquisa'>
 
                 <Form.Control id='input-pesquisa' type="text"
                 onChange={e => setNameSearch(e.target.value)}/>
 
                 <Form.Select id='tipo-pesquisa' value={selectValue} onChange={e => setSelectValue(e.target.value)}>
-                    {list.map((item, index) => (
+                    {list.map((item) => (
                     <option value={item.id}>{item.name}</option>
                     ))}        
                 </Form.Select>
 
-
-                <Button variant="secondary" id="btn-pesquisa" onClick={search}>PESQUISAR</Button>
+                <Button variant="secondary" id="FormButton" onClick={search}>PESQUISAR</Button>
         
-            </div>
+            </Form>
 
             <div id="area-card-books">
                 {booksCard}

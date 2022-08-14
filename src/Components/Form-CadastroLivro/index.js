@@ -100,7 +100,7 @@ function Index() {
 
 
                     <div id="AreaButton-CadastrarLivro">
-                        <Button id="FormButton-CadastrarLivro" type="submit">ENVIAR</Button>
+                        <Button id="FormButton" type="submit">ENVIAR</Button>
                     </div>
                 </div>
             </Form>
