@@ -6,8 +6,6 @@ function CardBook(props) {
 
   function setItems(){
     localStorage.setItem('book_selected', JSON.stringify(props))
-
-    console.log(localStorage.getItem('book_selected'))
   }
 
   return (
