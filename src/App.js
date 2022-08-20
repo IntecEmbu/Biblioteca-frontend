@@ -5,6 +5,7 @@ import NavBar from './Components/Navbar'
 import NotFound from './Pages/NotFound'
 import Home from './Pages/Home'
 import Livros from './Pages/Livros'
+import DetalhesLivro from './Pages/DetalhesLivro'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path="/cadastroLivro" element={<CadastroLivro />} />
           <Route path="/pesquisarlivro" element={<Livros />} />
+          <Route path="/detalheslivro" element={<DetalhesLivro />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

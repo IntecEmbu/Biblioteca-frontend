@@ -57,7 +57,8 @@ function LivrosPage() {
         // Caso encontre livros, mostra os livros encontrados
         const dataCard = response.data.books.map(book => {
             return (
-                <CardBook 
+                <CardBook
+                book_code={book.book_code}
                 book_name={book.book_name} 
                 book_isbn={book.book_isbn}
                 book_cdd={book.book_cdd} 
@@ -82,7 +83,8 @@ function LivrosPage() {
             // Organiza os dados chamando os cards de livros
             var cards = data.map(book => {
                 return (
-                    <CardBook 
+                    <CardBook
+                    book_code={book.book_code}
                     book_name={book.book_name} 
                     book_isbn={book.book_isbn}
                     book_cdd={book.book_cdd} 
