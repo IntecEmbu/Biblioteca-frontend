@@ -8,6 +8,11 @@ import './style.css';
 // Arrumar bug do dropdown pois o link somente pega onde está as letras e não a area
 
 function index() {
+
+  function exit(){
+    localStorage.removeItem('user')
+  }
+
   return (
     <div id="Area-NavBar">
       
@@ -72,7 +77,7 @@ function index() {
                   <Link className='link-nav' to="/perfil">PERFIL</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item className="AreaDropdownItem">
-                  <Link className='link-nav' to="/">SAIR</Link>
+                  <Link className='link-nav' to="/" onClick={exit}>SAIR</Link>
                 </NavDropdown.Item>
               </NavDropdown>
             </Navbar.Collapse>
