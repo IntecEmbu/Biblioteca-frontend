@@ -1,0 +1,22 @@
+#card-book-container {
+    display: flex;
+    justify-content: center;
+}
+
+#card-book{
+    width: 80%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: .2rem;
+    box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+}
+
+#titulo-card{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.p-card-book{
+    font-size: .8rem;
+}

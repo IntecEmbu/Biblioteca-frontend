@@ -1,32 +1,32 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import CadastroLivro from './Pages/CadastroLivro'
-import NavBar from './Components/Navbar'
-import NotFound from './Pages/NotFound'
-import Home from './Pages/Home'
-import Livros from './Pages/Livros'
-import DetalhesLivro from './Pages/DetalhesLivro'
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home/Home.js'
+import Navbar from './components/Navbar/Navbar.js'
+import Login from './pages/Login/Login.js'
+import PesquisarLivro from './pages/PesquisarLivro/PesquisarLivro.js'
+import CadastrarLivro from './components/CadastrarLivro/CadastrarLivro.js'
+import NotFound from './pages/NotFound/NotFound.js'
+import ProtectedRouter from './protectedRouter'
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/cadastroLivro" element={<CadastroLivro />} />
-          <Route path="/pesquisarlivro" element={<Livros />} />
-          <Route path="/detalheslivro" element={<DetalhesLivro />} />
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
 
+  const [isSigned, setIsSigned] = useState(localStorage.getItem('isSigned'));
+
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route element={<ProtectedRouter isAuth={isSigned}/>}>
+          <Route path='/' element={<Home />} />
+          <Route path='/pesquisar-livro' element={<PesquisarLivro />} />
+          <Route path='/cadastrar-livro' element={<CadastrarLivro />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-
-  
-

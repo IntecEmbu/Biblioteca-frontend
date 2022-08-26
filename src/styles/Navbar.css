@@ -1,0 +1,43 @@
+:root {
+  --cinza: #dfdede;
+  --cinza-claro: #f5f5f5;
+  --cinza-escuro: #aaa;
+  --azul: #192039;
+  --verde: #9ff6b5;
+  --verde-escuro: #89d3b1;
+}
+
+#nav {
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+}
+
+#logo-nav {
+  margin-right: 40px;
+}
+
+.img-logo-nav {
+  width: 100%;
+}
+
+#basic-nav-dropdown {
+  color: var(--azul);
+  margin-right: 40px;
+}
+
+.item-dropdown {
+  text-align: center !important;
+}
+
+#link-navbar {
+  text-decoration: none;
+  color: var(--azul);
+}
+
+.item-dropdown:hover #link-navbar{
+  color: #fff !important;
+}
+
+.item-dropdown:hover {
+  background-color: var(--azul) !important;
+}
