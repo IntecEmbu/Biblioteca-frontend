@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 import api from '../../service/api.js'
+import Navbar from '../../components/Navbar/Navbar.js'
 import '../../styles/CadastrarLivro.css'
 
 function Index() {
@@ -50,6 +51,7 @@ function Index() {
     }
     return (
         <div>
+            <Navbar />
             <h1 className="titulo-pagina">Cadastrar Livro</h1>
 
             <div id="container">

@@ -48,9 +48,6 @@ function index() {
                 <Link to='/relatorios' id="link-navbar">Relatórios</Link>
               </NavDropdown.Item>
               <NavDropdown.Item className="item-dropdown">
-                <Link to='/graficos' id="link-navbar">Gráficos</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="item-dropdown">
                 <Link to='/voluntarios' id="link-navbar">Voluntários</Link>
               </NavDropdown.Item>
               <NavDropdown.Item className="item-dropdown">
@@ -60,11 +57,9 @@ function index() {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            <Link to='/login' id="link-navbar" onClick={logout}>
-              Sair
-            </Link>
-          </Navbar.Text>
+          <Nav.Link>
+            <Link to='/login' id="link-navbar" className="link-navbar-sair" onClick={logout}>Sair</Link>
+          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

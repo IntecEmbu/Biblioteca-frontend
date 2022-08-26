@@ -2,25 +2,31 @@ import React from 'react'
 import '../../styles/Login.css'
 import { Link } from 'react-router-dom'
 import login from '../../service/login.js'
+import { Spinner } from 'react-bootstrap'
 
 function Index() {
 
   const [user, setUser] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const [spinner, setSpinner] = React.useState('')
 
   async function tryLogin() {
 
-    try{
+    try {
+      setSpinner(<Spinner id="loading" animation='border' />)
+
       const response = await login(user, password)
       console.log(response.message)
 
       localStorage.setItem('isSigned', true)
       window.location.href = '/'
       localStorage.setItem('user', user)
+      setSpinner('')
 
-    } catch(err){
+    } catch (err) {
       console.log(err.message)
-      alert('Usuário ou senha inválidos')
+      alert('Usuário ou senha inválidos!')
+      setSpinner('')
     }
   }
 
@@ -33,12 +39,12 @@ function Index() {
               <img src={require('../Imagens/logo2.png')}></img>
             </div>
             <div className="user">
-              <input type="text" className="input-user"placeholder="Usuário" 
-              onChange={e => setUser(e.target.value)}/>
+              <input type="text" className="input-user" placeholder="Usuário"
+                onChange={e => setUser(e.target.value)} />
             </div>
             <div className="password">
-              <input type="password" className="input-password" placeholder="Senha" 
-              onChange={e => setPassword(e.target.value)}/>
+              <input type="password" className="input-password" placeholder="Senha"
+                onChange={e => setPassword(e.target.value)} />
             </div>
             <div className="btn-container">
               <button className="btn-entrar" onClick={tryLogin}>Entrar</button>
@@ -46,6 +52,9 @@ function Index() {
             <p className="forgot-password">
               <Link to={'/'} className="forgot-password">Esqueci minha senha</Link>
             </p>
+            <div className="spinner-login">
+              {spinner}
+            </div>
           </div>
         </div>
       </div>

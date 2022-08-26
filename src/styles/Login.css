@@ -25,7 +25,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -36,7 +35,6 @@
   width: 420px;
   box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
   padding-top: 30px;
-  padding-bottom: 20px;
   border-radius: .2rem;
   background-color: #fff;
 }
@@ -48,7 +46,7 @@
 
 .user,
 .password {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 .input-user,
@@ -59,11 +57,13 @@
   border-radius: .2rem;
   background-color: transparent;
   color: var(--azul);
+  transition: all .1s linear;
 }
 
 .input-user:hover,
 .input-password:hover {
   background-color: var(--cinza-claro);
+  transition: all .1s linear;
 }
 
 .input-user::placeholder,
@@ -80,22 +80,35 @@
   padding: 10px 0;
   font-weight: bold !important;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  transition: all .1s linear;
 }
 
 .btn-entrar:hover {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
+  transition: all .1s linear;
 }
 
 .forgot-password {
   text-align: center;
   color: var(--azul);
   text-decoration: none;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  transition: all .1s linear;
 }
 
 .forgot-password:hover {
   text-decoration: underline;
   color: var(--cinza-escuro);
+  transition: all .1s linear;
+}
+
+.spinner-login {
+  display: flex;
+  justify-content: center;
+}
+
+#loading {
+  margin-bottom: 2rem;
 }

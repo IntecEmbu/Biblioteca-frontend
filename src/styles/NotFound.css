@@ -5,11 +5,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 20px;
-    color: white;
+    color: #fff;
     background-color: #192039;
     width: fit-content;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: .2rem;
+    box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
 }
 
 #homeLink{

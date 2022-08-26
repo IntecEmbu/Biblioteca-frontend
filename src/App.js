@@ -15,9 +15,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
-        <Route element={<ProtectedRouter isAuth={isSigned}/>}>
+        <Route element={<ProtectedRouter isAuth={isSigned} />}>
           <Route path='/' element={<Home />} />
           <Route path='/pesquisar-livro' element={<PesquisarLivro />} />
           <Route path='/cadastrar-livro' element={<CadastrarLivro />} />

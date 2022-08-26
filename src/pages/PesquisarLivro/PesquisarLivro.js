@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import CardBook from '../../components/CardBook/CardBook.js'
 import api from '../../service/api.js'
-import '../../styles/PesquisarLivro.css'
 import Spinner from 'react-bootstrap/Spinner';
+import Navbar from '../../components/Navbar/Navbar.js'
+import '../../styles/PesquisarLivro.css'
 
 function LivrosPage() {
     // Efeito de carregamento da página.
@@ -101,8 +102,8 @@ function LivrosPage() {
 
     return (
         <div>
+            <Navbar />
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
-
             <form className="form-pesquisa" autoComplete="off">
                 <input id='input-pesquisa' type="text" onChange={e => setNameSearch(e.target.value)} />
                 <select id='tipo-pesquisa' value={selectValue} onChange={e => setSelectValue(e.target.value)}>
@@ -112,8 +113,6 @@ function LivrosPage() {
                 </select>
                 <button className="btn-pesquisar" onClick={search}>Pesquisar</button>
             </form>
-
-
             <div id="area-card-books">
                 {booksCard}
             </div>
