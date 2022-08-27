@@ -1,10 +1,11 @@
 .home-container{
-    top: 50%;
+    text-align: center;
+    position: absolute;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
 }
 
 #gif-home{
-    width: 100%;
+    width: 80%;
 }
