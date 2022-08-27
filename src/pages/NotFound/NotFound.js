@@ -7,7 +7,7 @@ function index() {
     <div>
         <Link to="/" className='link' id='homeLink'>
             <div id='msgError'>
-                <span>Página não feita<br />Clique aqui para ir à home</span>
+                <img id='img-error' src={require('../../components/Imagens/404Error.png')} />
             </div>
         </Link>
     </div>

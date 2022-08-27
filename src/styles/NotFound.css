@@ -6,7 +6,6 @@
     transform: translate(-50%, -50%);
     font-size: 20px;
     color: #fff;
-    background-color: #192039;
     width: fit-content;
     padding: 20px;
     border-radius: .2rem;
@@ -15,4 +14,8 @@
 
 #homeLink{
     text-decoration: none;
+}
+
+#img-error{
+    width: 90%;
 }
