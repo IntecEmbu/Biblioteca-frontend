@@ -2,6 +2,11 @@ import React from 'react'
 import '../../styles/CardBook.css'
 
 function CardBook(props) {
+
+  function setItems(){
+    localStorage.setItem('book_selected', JSON.stringify(props))
+  }
+
   return (
     <div id="card-book-container">
       <div id="card-book">
