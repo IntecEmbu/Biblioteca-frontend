@@ -4,6 +4,7 @@ import api from '../../service/api.js'
 import Spinner from 'react-bootstrap/Spinner';
 import Navbar from '../../components/Navbar/Navbar.js'
 import '../../styles/PesquisarLivro.css'
+import downloadBook from '../../service/seachBook.js';
 
 function LivrosPage() {
     // Efeito de carregamento da página.
@@ -28,71 +29,36 @@ function LivrosPage() {
 
     async function search() {
 
-        // Caso o usuário não digite nada, ele alerta que deve ser digitado algo.
-        if (nameSearch === '') {
-            alert('Preencha o campo de busca!')
-            return
-        }
-        setBooksCard(spinnner)
-
-        // Verifica qual o tipo de busca será feita.
-        if (selectValue == 1) {
-            var response = await api.get(`/book/search-name?name=${nameSearch}`)
-        }
-        else if (selectValue == 2) {
-            var response = await api.get(`/book/search-category?category=${nameSearch}`)
-        }
-        else if (selectValue == 3) {
-            var response = await api.get(`/book/search-author?author=${nameSearch}`)
-        }
-
-        // Caso não encontre nenhum livro, exibe uma mensagem e mostra todos os livros.
-        if (response.status === 204) {
-            loadBooks()
-            alert('Nenhum livro encontrado!')
-            return
-        }
-
-        // Caso encontre livros, mostra os livros encontrados.
-        const dataCard = response.data.books.map(book => {
-            return (
-                <CardBook
-                    book_name={book.book_name}
-                    book_isbn={book.book_isbn}
-                    book_cdd={book.book_cdd}
-                    release_year={book.release_year}
-                    category_name={book.category_name}
-                    book_language={book.book_language}
-                    book_author={book.book_author}
-                    book_edition={book.book_edition} />
-            )
-        })
+        
 
         // Atualiza o estado com os livros encontrados.
-        setBooksCard(dataCard)
+        // setBooksCard(dataCard)
     }
 
     // Função padrão de carregamento da página.
     async function loadBooks() {
-        const response = await api.get('/book/all')
+        
+        await downloadBook()
 
-        const data = response.data.books
+        const data = localStorage.getItem('books')
+
+        console.log(data)
 
         // Organiza os dados chamando os cards dos livros.
-        var cards = data.map(book => {
-            return (
-                <CardBook
-                    book_name={book.book_name}
-                    book_author={book.book_author}
-                    book_edition={book.book_edition}
-                    release_year={book.release_year}
-                    category_name={book.category_name}
-                    book_language={book.book_language}
-                    book_isbn={book.book_isbn}
-                    book_cdd={book.book_cdd} />
-            )
-        })
-        setBooksCard(cards)
+        // var cards = data.map(book => {
+        //     return (
+        //         <CardBook
+        //             book_name={book.book_name}
+        //             book_author={book.book_author}
+        //             book_edition={book.book_edition}
+        //             release_year={book.release_year}
+        //             category_name={book.category_name}
+        //             book_language={book.book_language}
+        //             book_isbn={book.book_isbn}
+        //             book_cdd={book.book_cdd} />
+        //     )
+        // })
+        // setBooksCard(cards)
     }
 
     // Carregamento padrão da página.
