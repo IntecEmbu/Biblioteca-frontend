@@ -27,38 +27,86 @@ function LivrosPage() {
         { id: 3, name: 'AUTOR' }
     ];
 
-    async function search() {
+    // Hooks que armazena os livros encontrados.
+    const [books, setBooks] = React.useState([])
 
-        
+    async function search() {
+        // Verifica se o nome foi preenchido.
+
+        if (nameSearch === '') {
+            alert('Preencha o campo de pesquisa')
+            return
+        }
+
+        setBooksCard(spinnner)
+
+        // Colocando delay para experiencia do usuário.
+        setTimeout(() => {
+
+            // Verifica se o usuário selecionou o tipo de pesquisa.
+            const typeSearch = selectValue == 1 ? 'title' : 
+            selectValue == 2 ? 'category' : 'author'
+
+            // Faz a pesquisa no Hook.
+            if (typeSearch === 'title') {
+                var booksFind = books.filter(book => book.book_name.includes(nameSearch))
+            } else if (typeSearch === 'category') {
+                var booksFind = books.filter(book => book.category_name.includes(nameSearch))
+            } else if (typeSearch === 'author') {
+                var booksFind = books.filter(book => book.author_name.includes(nameSearch))
+            }
+
+            // Caso não encontre nenhum livro, exibe uma mensagem.
+            if (booksFind.length === 0) {
+                setBooksCard(
+                    <img id="book-notFound" 
+                    src={require('../../components/Imagens/notFound-book.png')} 
+                    alt='Not Found' />
+                )
+
+                return
+            }
+
+            const dataCard = booksFind.map(book => {
+                return (
+                    <CardBook
+                        book_name={book.book_name}
+                        book_author={book.book_author}
+                        book_edition={book.book_edition}
+                        release_year={book.release_year}
+                        category_name={book.category_name}
+                        book_language={book.book_language}
+                        book_isbn={book.book_isbn}
+                        book_cdd={book.book_cdd} />
+                )
+        })
 
         // Atualiza o estado com os livros encontrados.
-        // setBooksCard(dataCard)
+        setBooksCard(dataCard)
+        }, 100)
     }
 
     // Função padrão de carregamento da página.
     async function loadBooks() {
         
-        await downloadBook()
-
-        const data = localStorage.getItem('books')
-
-        console.log(data)
+        const data = await downloadBook()
+        setBooks(data.books)
 
         // Organiza os dados chamando os cards dos livros.
-        // var cards = data.map(book => {
-        //     return (
-        //         <CardBook
-        //             book_name={book.book_name}
-        //             book_author={book.book_author}
-        //             book_edition={book.book_edition}
-        //             release_year={book.release_year}
-        //             category_name={book.category_name}
-        //             book_language={book.book_language}
-        //             book_isbn={book.book_isbn}
-        //             book_cdd={book.book_cdd} />
-        //     )
-        // })
-        // setBooksCard(cards)
+        var cards = data.books.map(book => {
+            return (
+                <CardBook
+                    book_name={book.book_name}
+                    book_author={book.book_author}
+                    book_edition={book.book_edition}
+                    release_year={book.release_year}
+                    category_name={book.category_name}
+                    book_language={book.book_language}
+                    book_isbn={book.book_isbn}
+                    book_cdd={book.book_cdd} />
+            )
+        })
+        setBooksCard(cards)
     }
 
     // Carregamento padrão da página.
@@ -71,7 +119,7 @@ function LivrosPage() {
             <Navbar />
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
             <div className="pesquisa-container">
-                <input className="input-pesquisa" type="text" onChange={e => setNameSearch(e.target.value)} />
+                <input className="input-pesquisa" type="text" onChange={e => setNameSearch(e.target.value.trim())} />
                 <select className="tipo-pesquisa" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
                     {list.map((item) => (
                         <option value={item.id}>{item.name}</option>

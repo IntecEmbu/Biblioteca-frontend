@@ -65,3 +65,9 @@
     background-color: var(--cinza) !important;
     color: var(--azul) !important;
 }
+
+#book-notFound{
+    width: 27vw;
+    margin: auto;
+  display: block;
+}
