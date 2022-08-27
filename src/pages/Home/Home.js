@@ -7,7 +7,7 @@ function index() {
     <div>
       <Navbar />
       <div className="home-container">
-        <img src={require('../../components/gif/Knowledge.gif')} alt="Knowledge" />
+        <img src={require('../../components/gif/Bibliophile.gif')} alt="Knowledge" />
       </div>
     </div>
   )
