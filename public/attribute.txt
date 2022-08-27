@@ -1,5 +1,10 @@
-<a href="https://storyset.com/people">People illustrations by Storyset</a>
 // Pesquisa de livros
+<a href="https://storyset.com/people">People illustrations by Storyset</a>
 
-<a href="https://storyset.com/imagination">Imagination illustrations by Storyset</a> 
+
 // Home
+<a href="https://storyset.com/imagination">Imagination illustrations by Storyset</a> 
+
+
+// 404 page
+<a href="https://storyset.com/web">Web illustrations by Storyset</a>
