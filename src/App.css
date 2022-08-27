@@ -16,5 +16,5 @@
 
 body {
   background-color: var(--cinza) !important;
-  width: 100% !important;
+  width: 100vw !important;
 }
