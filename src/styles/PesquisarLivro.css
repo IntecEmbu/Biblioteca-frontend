@@ -13,12 +13,6 @@
     font-weight: bold;
 }
 
-.form-pesquisa {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
 .area-loading {
     left: 50%;
     top: 50%;
@@ -26,6 +20,35 @@
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
+}
+
+.pesquisa-container {
+    margin: auto;
+    background-color: #fff;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: .2rem;
+    display: flex;
+    margin-bottom: 2rem;
+    box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+}
+
+.pesquisa-container input,
+.pesquisa-container select {
+    margin: .6rem 0;
+    padding: .3rem 1.2rem;
+    border: 1px solid var(--cinza);
+    margin-right: 1rem;
+}
+
+.pesquisa-container input:hover,
+.pesquisa-container select:hover {
+    background-color: var(--cinza-claro);
+}
+
+.container-btn-pesquisar {
+    display: flex;
+    align-items: center;
 }
 
 .btn-pesquisar {

@@ -17,12 +17,12 @@
     justify-content: center;
 }
 
-#container {
+#container-cadastrar-livro {
     display: flex;
     justify-content: center;
 }
 
-#form-container {
+#container-form-cadastrar-livro {
     background-color: #fff;
     width: 80%;
     height: fit-content;
@@ -56,6 +56,11 @@
 
 .input-box input:hover {
     background-color: var(--cinza-claro);
+}
+
+.container-btn-cadastrar {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .btn-cadastrar {

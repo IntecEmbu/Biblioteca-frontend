@@ -83,13 +83,13 @@ function LivrosPage() {
             return (
                 <CardBook
                     book_name={book.book_name}
-                    book_isbn={book.book_isbn}
-                    book_cdd={book.book_cdd}
+                    book_author={book.book_author}
+                    book_edition={book.book_edition}
                     release_year={book.release_year}
                     category_name={book.category_name}
                     book_language={book.book_language}
-                    book_author={book.book_author}
-                    book_edition={book.book_edition} />
+                    book_isbn={book.book_isbn}
+                    book_cdd={book.book_cdd} />
             )
         })
         setBooksCard(cards)
@@ -104,19 +104,21 @@ function LivrosPage() {
         <div>
             <Navbar />
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
-            <form className="form-pesquisa" autoComplete="off">
-                <input id='input-pesquisa' type="text" onChange={e => setNameSearch(e.target.value)} />
-                <select id='tipo-pesquisa' value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+            <div className="pesquisa-container">
+                <input className="input-pesquisa" type="text" onChange={e => setNameSearch(e.target.value)} />
+                <select className="tipo-pesquisa" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
                     {list.map((item) => (
                         <option value={item.id}>{item.name}</option>
                     ))}
                 </select>
-                <button className="btn-pesquisar" onClick={search}>Pesquisar</button>
-            </form>
+                <div className="container-btn-pesquisar">
+                    <button className="btn-pesquisar" onClick={search}>Pesquisar</button>
+                </div>
+            </div>
             <div id="area-card-books">
                 {booksCard}
             </div>
-        </div>
+        </div >
     )
 }
 
