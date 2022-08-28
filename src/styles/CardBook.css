@@ -1,6 +1,8 @@
 #card-book-container {
     display: flex;
     justify-content: center;
+    text-decoration: none !important;
+    color: #000 !important;
 }
 
 #card-book{

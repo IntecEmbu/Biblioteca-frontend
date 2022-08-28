@@ -12,8 +12,8 @@
     box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
 }
 
-#homeLink{
-    text-decoration: none;
+#msgError:hover {
+    cursor: pointer;
 }
 
 #img-error{

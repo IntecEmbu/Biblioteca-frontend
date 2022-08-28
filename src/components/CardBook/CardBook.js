@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/CardBook.css'
+import { Link } from 'react-router-dom'
 
 function CardBook(props) {
 
@@ -8,7 +9,8 @@ function CardBook(props) {
   }
 
   return (
-    <div id="card-book-container">
+    
+    <Link id="card-book-container" to='/detalheslivro' onClick={setItems}>
       <div id="card-book">
         <p id='titulo-card'>{props.book_name}</p>
         <p className='p-card-book'>AUTOR: {props.book_author}</p>
@@ -19,7 +21,7 @@ function CardBook(props) {
         <p className='p-card-book'>ISBN: {props.book_isbn}</p>
         <p className='p-card-book'>CDD: {props.book_cdd}</p>
       </div>
-    </div>
+    </Link>
 
   )
 }
