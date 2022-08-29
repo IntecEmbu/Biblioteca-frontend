@@ -4,7 +4,9 @@ import '../../styles/Home.css'
 
 function index() {
 
-  const name = JSON.parse(localStorage.getItem('user')).librarian_name.toUpperCase()
+  // Coleta o nome do usuário logado
+  const name = JSON.parse(localStorage.getItem('user')).librarian_name
+  .toUpperCase()
 
   return (
     <div>
