@@ -20,7 +20,7 @@ function Index() {
 
       localStorage.setItem('isSigned', true)
       window.location.href = '/'
-      localStorage.setItem('user', user)
+      localStorage.setItem('user', JSON.stringify(response.data[0]))
       setSpinner('')
 
     } catch (err) {
