@@ -67,6 +67,7 @@ function LivrosPage() {
                 return
             }
 
+            // Coloca os livros encontrados no Hook.
             const dataCard = booksFind.map(book => {
                 return (
                     <CardBook
