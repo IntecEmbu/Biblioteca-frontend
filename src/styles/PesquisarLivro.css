@@ -54,17 +54,27 @@
     padding: .3rem 1.2rem;
     font-weight: bold;
     font-size: 1rem;
+<<<<<<< HEAD
     transition: all .1s linear;
+=======
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }
 
 .btn-pesquisar:hover {
     background-color: var(--cinza) !important;
     color: var(--azul) !important;
+<<<<<<< HEAD
     transition: all .1s linear;
+=======
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }
 
 #book-notFound{
     width: 27vw;
     margin: auto;
+<<<<<<< HEAD
     display: block;
+=======
+  display: block;
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }

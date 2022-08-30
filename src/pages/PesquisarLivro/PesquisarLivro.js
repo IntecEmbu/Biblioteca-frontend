@@ -60,7 +60,11 @@ function LivrosPage() {
             if (booksFind.length === 0) {
                 setBooksCard(
                     <img id="book-notFound" 
+<<<<<<< HEAD
                     src={require('../../images/livro-nao-encontrado.png')} 
+=======
+                    src={require('../../components/Imagens/notFound-book.png')} 
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
                     alt='Not Found' />
                 )
 
@@ -120,7 +124,11 @@ function LivrosPage() {
             <Navbar />
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
             <div className="pesquisa-container">
+<<<<<<< HEAD
                 <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor" onChange={e => setNameSearch(e.target.value.trim())} />
+=======
+                <input className="input-pesquisa" type="text" onChange={e => setNameSearch(e.target.value.trim())} />
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
                 <select className="tipo-pesquisa" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
                     {list.map((item) => (
                         <option value={item.id}>{item.name}</option>

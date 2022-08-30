@@ -1,14 +1,35 @@
 .home-container{
+<<<<<<< HEAD
     display: flex;
     justify-content: center;
 }
 
 .home-text{
     margin-top: 10rem;
+=======
+    text-align: center;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home-text{
+    margin-top: 10px;
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }
 
 .home-title{
     font-size: 1.5rem;
     font-weight: bold;
+<<<<<<< HEAD
     color: var(--azul);
+=======
+    color: #192039;
+}
+
+#gif-home{
+    padding: 0px;
+    width: 60%;
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }

@@ -3,6 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+<<<<<<< HEAD
 }
 
 .img-error-container .img-error {
@@ -13,6 +14,12 @@
     background-color: var(--azul) !important;
     color: var(--cinza) !important;
     border: none;
+=======
+    font-size: 20px;
+    color: #fff;
+    width: fit-content;
+    padding: 20px;
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
     border-radius: .2rem;
     text-transform: uppercase;
     padding: .3rem 1.2rem;
@@ -21,8 +28,17 @@
     margin: 1rem;
 }
 
+<<<<<<< HEAD
 .btn-voltar-home:hover {
     background-color: var(--cinza) !important;
     color: var(--azul) !important;
     transition: all .1s linear;
+=======
+#msgError:hover {
+    cursor: pointer;
+}
+
+#img-error{
+    height: 30vw;
+>>>>>>> 3f516ee6b7b749279c999f9476d12c010121d949
 }
