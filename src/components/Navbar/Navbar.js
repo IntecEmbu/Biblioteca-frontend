@@ -16,7 +16,7 @@ function index() {
         <Navbar.Brand id="logo-nav">
           <Link to='/'>
             <img
-              src={require('../Imagens/logo2.png')}
+              src={require('../../images/logo2.png')}
               width="30"
               height="30"
               className="d-inline-block align-top img-logo-nav"

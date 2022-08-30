@@ -54,8 +54,8 @@ function Index() {
             <Navbar />
             <h1 className="titulo-pagina">Cadastrar Livro</h1>
 
-            <div id="container-cadastrar-livro">
-                <div id="container-form-cadastrar-livro">
+            <div id="cadastrar-livro-container">
+                <div id="form-cadastrar-livro-container">
                     <form>
                         <div className="input-group">
                             <div className="input-linha">
@@ -106,7 +106,7 @@ function Index() {
                         </div>
                     </form>
 
-                    <div className="container-btn-cadastrar">
+                    <div className="btn-cadastrar-container">
                         <button className="btn-cadastrar" onClick={sendBook}>
                             Cadastrar
                         </button>

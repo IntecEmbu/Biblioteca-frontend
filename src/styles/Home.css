@@ -1,0 +1,14 @@
+.home-container{
+    display: flex;
+    justify-content: center;
+}
+
+.home-text{
+    margin-top: 10rem;
+}
+
+.home-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--azul);
+}

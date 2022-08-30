@@ -15,15 +15,20 @@ function Index() {
     try {
       setSpinner(<Spinner id="loading" animation='border' />)
 
+      // Faz a requisição para o servidor
       const response = await login(user, password)
       console.log(response.message)
 
+      // Se a requisição for bem sucedida, redireciona para a página de Home
+      // Armazena o usuário logado no localStorage
       localStorage.setItem('isSigned', true)
       window.location.href = '/'
-      localStorage.setItem('user', user)
+      localStorage.setItem('user', JSON.stringify(response.data[0]))
       setSpinner('')
 
     } catch (err) {
+      // Se a requisição falhar, exibe o erro
+      // Mostra para o usuário que o login falhou
       console.log(err.message)
       alert('Usuário ou senha inválidos!')
       setSpinner('')
@@ -36,7 +41,7 @@ function Index() {
         <div className="form">
           <div className="form-content">
             <div className="logo">
-              <img src={require('../Imagens/logo2.png')}></img>
+              <img src={require('../../images/logo2.png')}></img>
             </div>
             <div className="user">
               <input type="text" className="input-user" placeholder="Usuário"
