@@ -19,20 +19,21 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: #fff;
+  background-color: #fff;
   padding: 1rem 1.5rem;
   border-radius: .2rem;
-  max-height: 468px;
-  margin-left: 32px;
+  margin-left: 2rem;
+  box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+  transition: all .1s linear;
+}
+
+.cards .card:hover {
+  transform: translateY(2rem);
+  transition: all .1s linear;
 }
 
 .cards .card:first-child {
   margin-left: 0;
-}
-
-.cards .card .icon {
-  width: 7rem;
-  height: 7rem;
 }
 
 .cards .card img {
@@ -40,15 +41,14 @@
 }
 
 .cards .card h1 {
-  font-size: 100%;
-  margin: 16px 0;
+  font-size: 1rem;
+  margin: 1rem 0;
 }
 
-.cards .card.primeiro,
-.cards .card.segundo,
-.cards .card.terceiro {
-  box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
-}
+/* .cards .card .icon {
+  width: 7rem;
+  height: 7rem;
+} */
 
 .btn-card-home {
   background-color: var(--azul) !important;

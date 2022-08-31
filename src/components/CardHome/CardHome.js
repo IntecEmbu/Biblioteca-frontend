@@ -5,28 +5,28 @@ import '../../styles/CardHome.css'
 function CardHome(props) {
   return (
     <div className="card-home-container">
-      <div class="cards">
-        <div class="card primeiro">
-          <div class="icon">
-            <img src={require('../../images/logo2.png')} alt="Contact us." />
+      <div className="cards">
+        <div className="card">
+          <div className="icon">
+            <img src={require('../../images/card-pesquisar-livro.png')} alt="Pesquisar Livro" />
           </div>
           <h1>Pesquisar Livro</h1>
           <Link to="/pesquisar-livro" className="link-card-home">
             <button className="btn-card-home">Visitar</button>
           </Link>
         </div>
-        <div class="card segundo">
-          <div class="icon">
-            <img src={require('../../images/logo2.png')} alt="Shop here." />
+        <div className="card">
+          <div className="icon">
+            <img src={require('../../images/card-cadastrar-livro.png')} alt="Cadastrar Livro" />
           </div>
           <h1>Cadastar Livro</h1>
           <Link to="/cadastrar-livro" className="link-card-home">
             <button className="btn-card-home">Visitar</button>
           </Link>
         </div>
-        <div class="card terceiro">
-          <div class="icon">
-            <img src={require('../../images/logo2.png')} alt="About us." />
+        <div className="card">
+          <div className="icon">
+            <img src={require('../../images/card-alunos.png')} alt="Alunos" />
           </div>
           <h1>Alunos</h1>
           <Link to="/alunos" className="link-card-home">

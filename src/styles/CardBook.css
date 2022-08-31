@@ -12,6 +12,7 @@
     padding: 1rem;
     border-radius: .2rem;
     box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+    transition: all .1s linear;
 }
 
 .titulo-card{
