@@ -1,0 +1,28 @@
+.img-error-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-error-container .img-error {
+    height: 60vh;
+}
+
+.btn-voltar-home {
+    background-color: var(--azul) !important;
+    color: var(--cinza) !important;
+    border: none;
+    border-radius: .2rem;
+    text-transform: uppercase;
+    padding: .3rem 1.2rem;
+    font-weight: bold;
+    transition: all .1s linear;
+    margin: 1rem;
+}
+
+.btn-voltar-home:hover {
+    background-color: var(--cinza) !important;
+    color: var(--azul) !important;
+    transition: all .1s linear;
+}
