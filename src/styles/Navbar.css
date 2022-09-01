@@ -1,6 +1,10 @@
 #nav {
   background-color: #fff;
   box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+<<<<<<< HEAD
+  padding: 0;
+=======
+>>>>>>> 42c89c3d4ab329e52b171be718096f97c5b9089c
 }
 
 #logo-nav {
@@ -15,6 +19,10 @@
   color: var(--azul);
   margin-right: 40px;
   transition: all .1s linear;
+<<<<<<< HEAD
+  padding: 1rem;
+=======
+>>>>>>> 42c89c3d4ab329e52b171be718096f97c5b9089c
 }
 
 #basic-nav-dropdown:hover {
@@ -27,6 +35,10 @@
 .item-dropdown {
   text-align: center !important;
   transition: all .1s linear;
+<<<<<<< HEAD
+  padding: 1rem;
+=======
+>>>>>>> 42c89c3d4ab329e52b171be718096f97c5b9089c
 }
 
 .item-dropdown:hover {
@@ -34,6 +46,13 @@
   transition: all .1s linear;
 }
 
+<<<<<<< HEAD
+.dropdown-item {
+  padding: 1rem;
+}
+
+=======
+>>>>>>> 42c89c3d4ab329e52b171be718096f97c5b9089c
 #link-navbar {
   text-decoration: none;
   color: var(--azul);

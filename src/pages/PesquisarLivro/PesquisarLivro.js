@@ -91,10 +91,25 @@ function LivrosPage() {
     async function loadBooks() {
         
         const data = await downloadBook()
+<<<<<<< HEAD
+        setBooks(data)
+
+        if(books.length < 1){
+            return setBooksCard(
+                    <img id="book-notFound" 
+                    src={require('../../images/livro-nao-encontrado.png')} 
+                    alt='Not Found' />
+                )
+        }
+
+        // Organiza os dados chamando os cards dos livros.
+        var cards = books.map(book => {
+=======
         setBooks(data.books)
 
         // Organiza os dados chamando os cards dos livros.
         var cards = data.books.map(book => {
+>>>>>>> 42c89c3d4ab329e52b171be718096f97c5b9089c
             return (
                 <CardBook
                     book_name={book.book_name}
