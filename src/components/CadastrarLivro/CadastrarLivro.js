@@ -88,14 +88,14 @@ function Index() {
 
                                 <div className="input-box">
                                     <label>Ano de Lançamento</label>
-                                    <input type="text" required onChange={e => setYear(e.target.value)} />
+                                    <input type="text" maxLength="4" required onChange={e => setYear(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="input-linha">
                                 <div className="input-box">
                                     <label>ISBN</label>
-                                    <input type="text" required onChange={e => setIsbn(e.target.value)} />
+                                    <input type="text" maxLength="17" required onChange={e => setIsbn(e.target.value)} />
                                 </div>
 
                                 <div className="input-box">

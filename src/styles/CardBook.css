@@ -23,3 +23,25 @@
 .p-card-book{
     font-size: .8rem;
 }
+
+.btn-card-book-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-card-book {
+    background-color: var(--azul) !important;
+    color: var(--cinza) !important;
+    border: none;
+    border-radius: .2rem;
+    text-transform: uppercase;
+    padding: .3rem 1.2rem;
+    font-weight: bold;
+    transition: all .1s linear;
+}
+
+.btn-card-book:hover {
+    background-color: var(--cinza) !important;
+    color: var(--azul) !important;
+    transition: all .1s linear;
+}

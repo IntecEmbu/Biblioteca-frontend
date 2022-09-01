@@ -3,8 +3,8 @@ import CardBook from '../../components/CardBook/CardBook.js'
 import api from '../../service/api.js'
 import Spinner from 'react-bootstrap/Spinner';
 import Navbar from '../../components/Navbar/Navbar.js'
-import '../../styles/PesquisarLivro.css'
 import downloadBook from '../../service/seachBook.js';
+import '../../styles/PesquisarLivro.css'
 
 function LivrosPage() {
     // Efeito de carregamento da página.
@@ -134,8 +134,8 @@ function LivrosPage() {
                         <option value={item.id}>{item.name}</option>
                     ))}
                 </select>
-                <div className="btn-pesquisar-container">
-                    <button className="btn-pesquisar" onClick={search}>Pesquisar</button>
+                <div className="btn-pesquisar-livro-container">
+                    <button className="btn-pesquisar-livro" onClick={search}>Pesquisar</button>
                 </div>
             </div>
             <div id="area-card-books">
