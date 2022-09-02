@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import '../../styles/ModalCadastrarAluno.css'
+import '../../styles/ModalCadastrarVoluntario.css'
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -11,12 +11,12 @@ function Example() {
   return (
     <>
       <button className="btn-cadastrar-aluno" onClick={handleShow}>
-        Cadastrar Aluno
+        Cadastrar Voluntário
       </button>
 
       <Modal show={show}>
         <Modal.Header>
-          <Modal.Title>Cadastrar Aluno</Modal.Title>
+          <Modal.Title>Cadastrar Voluntário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -27,26 +27,18 @@ function Example() {
               </div>
 
               <div className="input-box">
-                <label>Curso</label>
-                <input type="text" required />
-              </div>
-
-              <div className="input-box">
                 <label>Email</label>
                 <input type="text" required />
               </div>
 
               <div className="input-box">
-                <label>Celular</label>
+                <label>Usuário</label>
                 <input type="text" required />
               </div>
 
               <div className="input-box">
-                <label>Tipo</label>
-                <select className="tipo-pesquisa">
-                  <option>ALUNO</option>
-                  <option>FUNCIONÁRIO</option>
-                </select>
+                <label>Senha</label>
+                <input type="password" required />
               </div>
             </div>
           </form>

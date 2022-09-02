@@ -1,7 +1,7 @@
 import React from 'react'
-import CardAluno from '../../components/CardAluno/CardAluno.js'
+import CardVoluntario from '../../components/CardVoluntario/CardVoluntario.js'
 import Navbar from '../../components/Navbar/Navbar.js'
-import ModalCadastrarAluno from '../../components/ModalCadastrarAluno/ModalCadastrarAluno.js'
+import ModalCadastrarVoluntario from '../../components/ModalCadastrarVoluntario/ModalCadastrarVoluntario.js'
 import '../../styles/Alunos.css'
 
 export default function Alunos() {
@@ -9,19 +9,15 @@ export default function Alunos() {
     <>
       <Navbar />
       <div>
-        <h1 className="titulo-pagina">Alunos</h1>
+        <h1 className="titulo-pagina">Voluntários</h1>
         <div className="pesquisa-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome ou curso" />
-          <select className="tipo-pesquisa">
-              <option>NOME</option>
-              <option>CURSO</option>
-          </select>
+          <input className="input-pesquisa" type="text" placeholder="Nome" />
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
             <button className="btn-pesquisar-livro">Pesquisar</button>
           </div>
           <div className="btn-cadastrar-aluno-container">
-            <ModalCadastrarAluno />
+            <ModalCadastrarVoluntario />
           </div>
           </div>
           
@@ -30,7 +26,7 @@ export default function Alunos() {
           {/* {booksCard} */}
         </div>
       </div >
-      <CardAluno />
+      <CardVoluntario />
     </>
   )
 }
