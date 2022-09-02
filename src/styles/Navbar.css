@@ -29,7 +29,7 @@
 .item-dropdown {
   text-align: center !important;
   transition: all .1s linear;
-  padding: 1rem;
+  border-radius: .2rem;
 }
 
 .item-dropdown:hover {
@@ -37,8 +37,12 @@
   transition: all .1s linear;
 }
 
+.dropdown-menu.show {
+  padding: 0;
+}
+
 .dropdown-item {
-  padding: 1rem;
+  padding: .5rem !important;
 }
 
 #link-navbar {
