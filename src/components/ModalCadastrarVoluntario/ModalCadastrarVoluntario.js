@@ -10,7 +10,7 @@ function Example() {
 
   return (
     <>
-      <button className="btn-cadastrar-aluno" onClick={handleShow}>
+      <button className="btn-cadastrar-voluntario" onClick={handleShow}>
         Cadastrar Voluntário
       </button>
 
@@ -44,10 +44,10 @@ function Example() {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <button className="btn-cancelar-cadastrar-aluno" onClick={handleClose}>
+          <button className="btn-cancelar-cadastrar-voluntario" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-cadastrar-aluno" onClick={handleClose}>
+          <button className="btn-cadastrar-cadastrar-voluntario" onClick={handleClose}>
             Cadastrar
           </button>
         </Modal.Footer>

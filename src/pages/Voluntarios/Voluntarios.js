@@ -2,7 +2,7 @@ import React from 'react'
 import CardVoluntario from '../../components/CardVoluntario/CardVoluntario.js'
 import Navbar from '../../components/Navbar/Navbar.js'
 import ModalCadastrarVoluntario from '../../components/ModalCadastrarVoluntario/ModalCadastrarVoluntario.js'
-import '../../styles/Alunos.css'
+import '../../styles/Voluntarios.css'
 
 export default function Alunos() {
   return (
