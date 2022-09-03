@@ -71,6 +71,7 @@ function LivrosPage() {
             const dataCard = booksFind.map(book => {
                 return (
                     <CardBook
+                        id={book.book_code}
                         book_name={book.book_name}
                         book_author={book.book_author}
                         book_edition={book.book_edition}
@@ -105,6 +106,7 @@ function LivrosPage() {
         const cards = data.books.map(book => {
             return (
                 <CardBook
+                    key={book.book_code}
                     book_name={book.book_name}
                     book_author={book.book_author}
                     book_edition={book.book_edition}

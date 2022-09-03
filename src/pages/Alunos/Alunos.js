@@ -33,16 +33,17 @@ export default function Alunos() {
     const cards = data.map((user) => {
       return (
           <CardAluno
-              key={user.user_id}
+              id={user.user_code}
               name={user.user_name}
               email={user.user_email}
               phone={user.user_phone}
-              course={user.course_name}
-              period={user.user_period}
-              id={user.user_id}
+              course={user.user_course}
+              type={user.user_type}
           />
       )
     })
+
+    setUserCard(cards)
   }
 
   useEffect(() =>{

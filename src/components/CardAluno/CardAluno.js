@@ -12,11 +12,11 @@ function CardBook(props) {
   return (
     <div id="card-aluno-container">
       <div className="card-aluno">
-        <p className="titulo-card">{props.book_name}</p>
-        <p className="p-card-aluno">CURSO: {props.book_language}</p>
-        <p className="p-card-aluno">EMAIL: {props.book_edition}</p>
-        <p className="p-card-aluno">CELULAR: {props.category_name}</p>
-        <p className="p-card-aluno">TIPO: {props.release_year}</p>
+        <p className="titulo-card">{props.name}</p>
+        <p className="p-card-aluno">CURSO: {props.course}</p>
+        <p className="p-card-aluno">EMAIL: {props.email}</p>
+        <p className="p-card-aluno">CELULAR: {props.phone}</p>
+        <p className="p-card-aluno">TIPO: {props.type}</p>
         <div className="btn-card-aluno-container">
           <Link to="/modal">
             <button className="btn-editar-card-aluno">Editar</button>
