@@ -6,15 +6,15 @@ import '../../styles/CardVoluntario.css'
 function CardBook(props) {
 
   // function setItems(){
-  //   localStorage.setItem('book_selected', JSON.stringify(props))
+  //   localStorage.setItem('volunteer_selected', JSON.stringify(props))
   // }
 
   return (
     <div id="card-voluntario-container">
       <div className="card-voluntario">
-        <p className="titulo-card">{props.book_name}</p>
-        <p className="p-card-voluntario">EMAIL: {props.book_edition}</p>
-        <p className="p-card-voluntario">USUÁRIO: {props.category_name}</p>
+        <p className="titulo-card">{props.name}</p>
+        <p className="p-card-voluntario">EMAIL: {props.email}</p>
+        <p className="p-card-voluntario">USUÁRIO: {props.user}</p>
         <div className="btn-card-voluntario-container">
           <Link to="/modal">
             <button className="btn-editar-card-voluntario">Editar</button>

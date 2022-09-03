@@ -82,7 +82,7 @@ export default function Alunos() {
     const cards = data.map((user) => {
       return (
           <CardAluno
-              id={user.user_code}
+              key={user.user_code}
               name={user.user_name}
               email={user.user_email}
               phone={user.user_phone}
