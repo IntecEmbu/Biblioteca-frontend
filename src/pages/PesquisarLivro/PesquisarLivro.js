@@ -13,16 +13,9 @@ function LivrosPage() {
             <Spinner id="loading" animation='border' />
         </div>
 
-    // Hook para carregar os dados do livro.
     const [booksCard, setBooksCard] = React.useState(spinnner)
-
-    // Hook que armazena o nome a ser pesquisado.
     const [nameSearch, setNameSearch] = React.useState('')
-
-    // Hooks que guardam os tipos de pesquisa.
     const [selectValue, setSelectValue] = React.useState('title')
-
-    // Hooks que armazena os livros encontrados.
     const [books, setBooks] = React.useState([])
 
     async function search() {
@@ -40,11 +33,17 @@ function LivrosPage() {
 
             // Faz a pesquisa no Hook.
             if (selectValue === 'title') {
-                var booksFind = books.filter(book => book.book_name.includes(nameSearch))
+                var booksFind = books.filter(book => 
+                    book.book_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+                )
             } else if (selectValue === 'category') {
-                var booksFind = books.filter(book => book.category_name.includes(nameSearch))
+                var booksFind = books.filter(
+                    book => book.category_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+                )
             } else if (selectValue === 'author') {
-                var booksFind = books.filter(book => book.book_author.includes(nameSearch))
+                var booksFind = books.filter(book => 
+                    book.book_author.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+                )
             }
 
             // Caso não encontre nenhum livro, exibe uma mensagem.

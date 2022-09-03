@@ -17,9 +17,59 @@ export default function Alunos() {
 
   const [userCard, setUserCard] = React.useState(spinnner)
 
+  const [nameSearch, setNameSearch] = React.useState('')
+  const [selectValue, setSelectValue] = React.useState('name')
+  const [users, setUsers] = React.useState([])
+
+
+  async function search() {
+    
+    if (nameSearch == '') {
+      alert('Preencha o campo de pesquisa')
+      return
+    }
+
+    setUserCard(spinnner)
+
+    setTimeout(() => {
+      if (selectValue === 'name') {
+        var usersFind = users.filter(user => 
+          user.user_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+        )
+      } else if (selectValue === 'course') {
+        var usersFind = users.filter(user => 
+          user.user_course.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+        )
+      }
+
+      if (usersFind.length === 0) {
+        return setUserCard(
+          <img id="book-notFound"
+            src={require('../../images/livro-nao-encontrado.png')}
+            alt='Not Found' />
+        )
+      }
+
+      const dataCard = usersFind.map(user => {
+        return (
+          <CardAluno
+              id={user.user_code}
+              name={user.user_name}
+              email={user.user_email}
+              phone={user.user_phone}
+              course={user.user_course}
+              type={user.user_type}
+          />
+        )
+      })
+
+      setUserCard(dataCard)
+    }, 100)}
+
   async function loadUser(){
     const data = await downloadUser()
     
+    setUsers(data)
     console.log(data)
 
     if(data.length == 0){
@@ -56,14 +106,16 @@ export default function Alunos() {
       <div>
         <h1 className="titulo-pagina">Alunos</h1>
         <div className="pesquisa-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome ou curso" />
-          <select className="tipo-pesquisa">
-              <option>NOME</option>
-              <option>CURSO</option>
+          <input className="input-pesquisa" type="text" placeholder="Nome ou curso"
+          onChange={e => setNameSearch(e.target.value)}/>
+          <select className="tipo-pesquisa"
+          value={selectValue} onChange={e => setSelectValue(e.target.value)} >
+              <option value={'name'}>NOME</option>
+              <option value={'course'}>CURSO</option>
           </select>
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro"><FaSearch /></button>
+            <button className="btn-pesquisar-aluno" onClick={search}><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarAluno />
