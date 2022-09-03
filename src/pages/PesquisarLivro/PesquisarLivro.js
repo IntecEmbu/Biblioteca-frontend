@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import CardBook from '../../components/CardBook/CardBook.js'
-import api from '../../service/api.js'
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from 'react-bootstrap/Spinner'
 import Navbar from '../../components/Navbar/Navbar.js'
 import downloadBook from '../../service/seachBook.js'
 import { FaSearch } from "react-icons/fa"
@@ -95,7 +94,7 @@ function LivrosPage() {
         setBooks(data.books)
 
         if(data.length == 0){
-            return (
+            return setBooksCard(
                 <img id="book-notFound" 
                     src={require('../../images/livro-nao-encontrado.png')} 
                     alt='Not Found' />
@@ -103,7 +102,7 @@ function LivrosPage() {
         }
 
         // Organiza os dados chamando os cards dos livros.
-        var cards = data.books.map(book => {
+        const cards = data.books.map(book => {
             return (
                 <CardBook
                     book_name={book.book_name}

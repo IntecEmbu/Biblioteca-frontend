@@ -6,4 +6,4 @@ async function downloadBook(){
     return books.data
 }
 
-export default downloadBook;
+export default downloadBook
