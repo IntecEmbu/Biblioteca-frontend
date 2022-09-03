@@ -20,12 +20,7 @@ function LivrosPage() {
     const [nameSearch, setNameSearch] = React.useState('')
 
     // Hooks que guardam os tipos de pesquisa.
-    const [selectValue, setSelectValue] = React.useState(1);
-    const list = [
-        { id: 1, name: 'TÍTULO' },
-        { id: 2, name: 'CATEGORIA' },
-        { id: 3, name: 'AUTOR' }
-    ];
+    const [selectValue, setSelectValue] = React.useState('title')
 
     // Hooks que armazena os livros encontrados.
     const [books, setBooks] = React.useState([])
@@ -43,17 +38,13 @@ function LivrosPage() {
         // Colocando delay para experiencia do usuário.
         setTimeout(() => {
 
-            // Verifica se o usuário selecionou o tipo de pesquisa.
-            const typeSearch = selectValue == 1 ? 'title' : 
-            selectValue == 2 ? 'category' : 'author'
-
             // Faz a pesquisa no Hook.
-            if (typeSearch === 'title') {
+            if (selectValue === 'title') {
                 var booksFind = books.filter(book => book.book_name.includes(nameSearch))
-            } else if (typeSearch === 'category') {
+            } else if (selectValue === 'category') {
                 var booksFind = books.filter(book => book.category_name.includes(nameSearch))
-            } else if (typeSearch === 'author') {
-                var booksFind = books.filter(book => book.author_name.includes(nameSearch))
+            } else if (selectValue === 'author') {
+                var booksFind = books.filter(book => book.book_author.includes(nameSearch))
             }
 
             // Caso não encontre nenhum livro, exibe uma mensagem.
@@ -131,10 +122,11 @@ function LivrosPage() {
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
             <div className="pesquisa-container">
                 <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor" onChange={e => setNameSearch(e.target.value.trim())} />
-                <select className="tipo-pesquisa" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
-                    {list.map((item) => (
-                        <option value={item.id}>{item.name}</option>
-                    ))}
+                <select className="tipo-pesquisa" 
+                value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+                    <option value={'title'}>TÍTULO</option>
+                    <option value={'category'}>CATEGORIA</option>
+                    <option value={'author'}>AUTOR</option>
                 </select>
                 <div className="btn-pesquisar-livro-container">
                     <button className="btn-pesquisar-livro" onClick={search}><FaSearch /></button>
