@@ -16,8 +16,44 @@ export default function Voluntarios() {
 
 
   const [volunteers, setVolunteers] = React.useState([])
-  const [search, setSearch] = React.useState('')
+  const [nameSearch, setNameSearch] = React.useState('')
   const [volunteersCard, setVolunteersCard] = React.useState(spinnner)
+
+  async function search(){
+    if(nameSearch == ''){
+      alert('Preencha o campo de pesquisa')
+      return
+    }
+
+    setVolunteersCard(spinnner)
+    console.log(volunteers)
+    setTimeout(() => {
+      var volunteersFind = volunteers.filter(volunteer => 
+        volunteer.librarian_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
+      )
+
+      if(volunteersFind.length === 0){
+        return setVolunteersCard(
+          <img id="book-notFound"
+            src={require('../../images/livro-nao-encontrado.png')}
+            alt='Not Found' />
+        )
+      }
+
+      const dataCard = volunteersFind.map(volunteer => {
+        return (
+          <CardVoluntario
+            id={volunteer.librarian_code}
+            name={volunteer.librarian_name}
+            email={volunteer.librarian_email}
+            user={volunteer.librarian_user}
+            type={volunteer.librarian_type}
+          />
+        )
+      })
+      setVolunteersCard(dataCard)
+    }, 100)
+  }
 
   async function loadVolunteers() {
     const volunteers = await downloadLibrarian()
@@ -30,8 +66,6 @@ export default function Voluntarios() {
           alt='Not Found' />
       )
     }
-
-    console.log(volunteers)
 
     const dataCard = volunteers.map(volunteer => {
       return (
@@ -57,10 +91,11 @@ export default function Voluntarios() {
       <div>
         <h1 className="titulo-pagina">Voluntários</h1>
         <div className="pesquisa-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome" />
+          <input className="input-pesquisa" type="text" placeholder="Nome" 
+          onChange={e => setNameSearch(e.target.value)} />
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro"><FaSearch /></button>
+            <button className="btn-pesquisar-livro" onClick={search}><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarVoluntario />
