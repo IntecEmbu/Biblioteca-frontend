@@ -2,6 +2,7 @@ import React from 'react'
 import CardVoluntario from '../../components/CardVoluntario/CardVoluntario.js'
 import Navbar from '../../components/Navbar/Navbar.js'
 import ModalCadastrarVoluntario from '../../components/ModalCadastrarVoluntario/ModalCadastrarVoluntario.js'
+import { FaSearch } from "react-icons/fa"
 import '../../styles/Voluntarios.css'
 
 export default function Alunos() {
@@ -14,7 +15,7 @@ export default function Alunos() {
           <input className="input-pesquisa" type="text" placeholder="Nome" />
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro">Pesquisar</button>
+            <button className="btn-pesquisar-livro"><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarVoluntario />

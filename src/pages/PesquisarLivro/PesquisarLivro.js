@@ -3,7 +3,8 @@ import CardBook from '../../components/CardBook/CardBook.js'
 import api from '../../service/api.js'
 import Spinner from 'react-bootstrap/Spinner';
 import Navbar from '../../components/Navbar/Navbar.js'
-import downloadBook from '../../service/seachBook.js';
+import downloadBook from '../../service/seachBook.js'
+import { FaSearch } from "react-icons/fa"
 import '../../styles/PesquisarLivro.css'
 
 function LivrosPage() {
@@ -135,7 +136,7 @@ function LivrosPage() {
                     ))}
                 </select>
                 <div className="btn-pesquisar-livro-container">
-                    <button className="btn-pesquisar-livro" onClick={search}>Pesquisar</button>
+                    <button className="btn-pesquisar-livro" onClick={search}><FaSearch /></button>
                 </div>
             </div>
             <div id="area-card-books">

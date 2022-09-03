@@ -1,3 +1,33 @@
+.input-group-modal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-box-modal {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  width: 70%;
+}
+
+.input-box-modal input,
+.input-box-modal select {
+  margin: .6rem 0;
+  padding: .3rem 1.2rem;
+  border: 1px solid var(--cinza);
+  transition: all .1s linear;
+}
+
+.input-box-modal input:hover {
+  background-color: var(--cinza-claro);
+  transition: all .1s linear;
+}
+
+.input-box-modal:last-child {
+  margin: 0;
+}
+
 .btn-cancelar-cadastrar-voluntario {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
@@ -10,11 +40,11 @@
   transition: all .1s linear;
 }
 
-/* .btn-cancelar-cadastrar-voluntario:hover {
-  background-color: var(--azul) !important;
-  color: var(--cinza) !important;
+.btn-cancelar-cadastrar-voluntario:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
   transition: all .1s linear;
-} */
+}
 
 .btn-cadastrar-cadastrar-voluntario {
   background-color: var(--azul) !important;

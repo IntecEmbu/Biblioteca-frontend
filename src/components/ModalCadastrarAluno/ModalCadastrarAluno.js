@@ -11,7 +11,7 @@ function Example() {
   return (
     <>
       <button className="btn-cadastrar-aluno" onClick={handleShow}>
-        Cadastrar Aluno
+        Cadastrar
       </button>
 
       <Modal show={show}>
@@ -20,28 +20,28 @@ function Example() {
         </Modal.Header>
         <Modal.Body>
           <form>
-            <div className="input-group">
-              <div className="input-box">
+            <div className="input-group-modal">
+              <div className="input-box-modal">
                 <label>Nome</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Curso</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Email</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Celular</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Tipo</label>
                 <select className="tipo-pesquisa">
                   <option>ALUNO</option>

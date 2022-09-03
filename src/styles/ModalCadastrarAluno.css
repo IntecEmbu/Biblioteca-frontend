@@ -1,3 +1,8 @@
+.modal-header {
+  justify-content: center !important;
+  text-transform: uppercase;
+}
+
 .btn-cancelar-cadastrar-aluno {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
@@ -10,11 +15,11 @@
   transition: all .1s linear;
 }
 
-/* .btn-cancelar-cadastrar-aluno:hover {
-  background-color: var(--azul) !important;
-  color: var(--cinza) !important;
+.btn-cancelar-cadastrar-aluno:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
   transition: all .1s linear;
-} */
+}
 
 .btn-cadastrar-cadastrar-aluno {
   background-color: var(--azul) !important;

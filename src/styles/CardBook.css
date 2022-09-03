@@ -29,9 +29,27 @@
     justify-content: flex-end;
 }
 
-.btn-card-book {
-    background-color: var(--azul) !important;
-    color: var(--cinza) !important;
+.btn-editar-card-book {
+    background-color: var(--cinza) !important;
+    color: var(--azul) !important;
+    border: none;
+    border-radius: .2rem;
+    text-transform: uppercase;
+    padding: .3rem 1.2rem;
+    font-weight: bold;
+    transition: all .1s linear;
+    margin-right: 1rem;
+}
+
+.btn-editar-card-book:hover {
+    background-color: var(--cinza-escuro) !important;
+    color: var(--azul) !important;
+    transition: all .1s linear;
+}
+
+.btn-excluir-card-book {
+    background-color: var(--cinza) !important;
+    color: var(--azul) !important;
     border: none;
     border-radius: .2rem;
     text-transform: uppercase;
@@ -40,8 +58,8 @@
     transition: all .1s linear;
 }
 
-.btn-card-book:hover {
-    background-color: var(--cinza) !important;
-    color: var(--azul) !important;
+.btn-excluir-card-book:hover {
+    background-color: var(--vermelho) !important;
+    color: var(--cinza) !important;
     transition: all .1s linear;
 }

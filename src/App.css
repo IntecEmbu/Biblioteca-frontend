@@ -3,10 +3,9 @@
 :root {
   --cinza: #dfdede;
   --cinza-claro: #f5f5f5;
-  --cinza-escuro: #aaa;
+  --cinza-escuro: #d3d3d3;
   --azul: #192039;
-  --verde: #9ff6b5;
-  --verde-escuro: #89d3b1;
+  --vermelho: #c20000;
 }
 
 * {

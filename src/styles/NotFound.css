@@ -22,7 +22,7 @@
 }
 
 .btn-voltar-home:hover {
-    background-color: var(--cinza) !important;
+    background-color: var(--cinza-escuro) !important;
     color: var(--azul) !important;
     transition: all .1s linear;
 }

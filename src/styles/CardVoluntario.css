@@ -1,11 +1,11 @@
-#card-aluno-container {
+#card-voluntario-container {
   display: flex;
   justify-content: center;
   text-decoration: none !important;
   color: #000 !important;
 }
 
-.card-aluno{
+.card-voluntario{
   width: 80%;
   margin-bottom: 1rem;
   background-color: #fff;
@@ -20,16 +20,16 @@
   font-weight: bold;
 }
 
-.p-card-aluno{
+.p-card-voluntario{
   font-size: .8rem;
 }
 
-.btn-card-aluno-container {
+.btn-card-voluntario-container {
   display: flex;
   justify-content: flex-end;
 }
 
-.btn-editar-card-aluno {
+.btn-editar-card-voluntario {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
   border: none;
@@ -41,13 +41,13 @@
   margin-right: 1rem;
 }
 
-.btn-editar-card-aluno:hover {
+.btn-editar-card-voluntario:hover {
   background-color: var(--cinza-escuro) !important;
   color: var(--azul) !important;
   transition: all .1s linear;
 }
 
-.btn-excluir-card-aluno {
+.btn-excluir-card-voluntario {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
   border: none;
@@ -58,7 +58,7 @@
   transition: all .1s linear;
 }
 
-.btn-excluir-card-aluno:hover {
+.btn-excluir-card-voluntario:hover {
   background-color: var(--vermelho) !important;
   color: var(--cinza) !important;
   transition: all .1s linear;

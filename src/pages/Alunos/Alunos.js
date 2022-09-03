@@ -2,6 +2,7 @@ import React from 'react'
 import CardAluno from '../../components/CardAluno/CardAluno.js'
 import Navbar from '../../components/Navbar/Navbar.js'
 import ModalCadastrarAluno from '../../components/ModalCadastrarAluno/ModalCadastrarAluno.js'
+import { FaSearch } from "react-icons/fa"
 import '../../styles/Alunos.css'
 
 export default function Alunos() {
@@ -18,7 +19,7 @@ export default function Alunos() {
           </select>
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro">Pesquisar</button>
+            <button className="btn-pesquisar-livro"><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarAluno />

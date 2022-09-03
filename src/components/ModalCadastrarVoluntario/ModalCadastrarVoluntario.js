@@ -11,7 +11,7 @@ function Example() {
   return (
     <>
       <button className="btn-cadastrar-voluntario" onClick={handleShow}>
-        Cadastrar Voluntário
+        Cadastrar
       </button>
 
       <Modal show={show}>
@@ -20,23 +20,23 @@ function Example() {
         </Modal.Header>
         <Modal.Body>
           <form>
-            <div className="input-group">
-              <div className="input-box">
+            <div className="input-group-modal">
+              <div className="input-box-modal">
                 <label>Nome</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Email</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Usuário</label>
                 <input type="text" required />
               </div>
 
-              <div className="input-box">
+              <div className="input-box-modal">
                 <label>Senha</label>
                 <input type="password" required />
               </div>

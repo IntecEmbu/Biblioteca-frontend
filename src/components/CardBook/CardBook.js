@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaTrashAlt } from "react-icons/fa"
 import '../../styles/CardBook.css'
 
 function CardBook(props) {
@@ -7,7 +8,7 @@ function CardBook(props) {
   // function setItems(){
   //   localStorage.setItem('book_selected', JSON.stringify(props))
   // }
-  
+
   return (
     <div id="card-book-container">
       <div className="card-book">
@@ -21,7 +22,10 @@ function CardBook(props) {
         <p className="p-card-book">CDD: {props.book_cdd}</p>
         <div className="btn-card-book-container">
           <Link to="/modal">
-          <button className="btn-card-book">+</button>
+            <button className="btn-editar-card-book">Editar</button>
+          </Link>
+          <Link to="/modal">
+            <button className="btn-excluir-card-book"><FaTrashAlt /></button>
           </Link>
         </div>
       </div>
