@@ -17,7 +17,6 @@ function Index() {
 
       // Faz a requisição para o servidor
       const response = await login(user, password)
-      console.log(response.message)
 
       // Se a requisição for bem sucedida, redireciona para a página de Home
       // Armazena o usuário logado no localStorage
@@ -29,7 +28,7 @@ function Index() {
     } catch (err) {
       // Se a requisição falhar, exibe o erro
       // Mostra para o usuário que o login falhou
-      console.log(err.message)
+      console.log(err)
       alert('Usuário ou senha inválidos!')
       setSpinner('')
     }

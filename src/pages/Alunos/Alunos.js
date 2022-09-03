@@ -21,7 +21,6 @@ export default function Alunos() {
   const [selectValue, setSelectValue] = React.useState('name')
   const [users, setUsers] = React.useState([])
 
-
   async function search() {
     
     if (nameSearch == '') {
@@ -107,7 +106,7 @@ export default function Alunos() {
         <h1 className="titulo-pagina">Alunos</h1>
         <div className="pesquisa-container">
           <input className="input-pesquisa" type="text" placeholder="Nome ou curso"
-          onChange={e => setNameSearch(e.target.value)}/>
+          onChange={e => setNameSearch(e.target.value.trim())}/>
           <select className="tipo-pesquisa"
           value={selectValue} onChange={e => setSelectValue(e.target.value)} >
               <option value={'name'}>NOME</option>
@@ -121,7 +120,6 @@ export default function Alunos() {
             <ModalCadastrarAluno />
           </div>
           </div>
-          
         </div>
         <div id="area-card-books">
           {userCard}
