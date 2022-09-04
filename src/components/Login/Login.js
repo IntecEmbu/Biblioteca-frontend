@@ -10,11 +10,13 @@ function Index() {
   const [user, setUser] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [spinner, setSpinner] = React.useState('')
+  const [isDisabled, setIsDisabled] = React.useState(false)
 
   async function tryLogin() {
 
     try {
       setSpinner(<Spinner id="loading" animation='border' />)
+      setIsDisabled(true)
 
       // Faz a requisição para o servidor
       const response = await login(user, password)
@@ -31,6 +33,7 @@ function Index() {
       // Mostra para o usuário que o login falhou
       console.log(err)
       alert('Usuário ou senha inválidos!')
+      setIsDisabled(false)
       setSpinner('')
     }
   }
@@ -52,7 +55,7 @@ function Index() {
                 onChange={e => setPassword(e.target.value)} />
             </div>
             <div className="btn-container">
-              <button className="btn-entrar" onClick={tryLogin}>Entrar</button>
+              <button className="btn-entrar" onClick={tryLogin} disabled={isDisabled}>Entrar</button>
             </div>
             <p className="forgot-password">
               <Link to={'/'} className="forgot-password">Esqueci minha senha</Link>
