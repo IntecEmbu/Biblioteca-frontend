@@ -14,6 +14,8 @@ function Example() {
         [phone, setPhone] = useState(''),
         [course, setCourse] = useState(''),
         [type, setType] = useState('Aluno')
+
+  const [isDisabled, setIsDisabled] = useState(false)
   
   async function sendUser() {
     const data = {
@@ -28,11 +30,14 @@ function Example() {
       const confirm = window.confirm('Deseja cadastrar o aluno?')
       if (confirm) {
         try {
+          setIsDisabled(true)
           await api.post('/user/insert', data)
           alert('Aluno cadastrado com sucesso!')
+          setIsDisabled(false)
         } catch (error) {
           alert('Erro ao cadastrar o aluno!')
           console.log(error)
+          setIsDisabled(false)
         }
         window.location.reload()
       }
@@ -91,7 +96,7 @@ function Example() {
           <button className="btn-cancelar-cadastrar-aluno" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-cadastrar-aluno" onClick={sendUser}>
+          <button className="btn-cadastrar-cadastrar-aluno" onClick={sendUser} disabled={isDisabled}>
             Cadastrar
           </button>
         </Modal.Footer>

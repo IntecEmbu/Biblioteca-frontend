@@ -17,6 +17,8 @@ function Index() {
         [isbn, setIsbn] = useState(''),
         [cdd, setCdd] = useState('')
 
+    const [isDisabled, setIsDisabled] = useState(false)
+
     // Função para cadastrar o livro.
     async function sendBook() {
         const data = {
@@ -37,12 +39,16 @@ function Index() {
         if (confirm) {
 
             try {
+                setIsDisabled(true)
+
                 await api.post('/book/insert', data) // Envia os dados para o backend.
                 alert('Livro cadastrado com sucesso!')
 
+                setIsDisabled(false)
             } catch (error) {
                 alert('Erro ao cadastrar o livro!')
                 console.log(error)
+                setIsDisabled(false)
             }
 
             // Limpa os campos do formulário.
@@ -115,11 +121,10 @@ function Index() {
                     </form>
 
                     <div className="btn-cadastrar-container">
-                        <button className="btn-cadastrar" onClick={sendBook}>
+                        <button className="btn-cadastrar" onClick={sendBook} disabled={isDisabled}>
                             Cadastrar
                         </button>
                     </div>
-
 
                 </div>
             </div>

@@ -14,6 +14,8 @@ function Example() {
         [password, setPassword] = useState(''),
         [user, setUser] = useState('')
 
+  const [isDisabled, setIsDisabled] = useState(false)
+
   async function sendUser() {
     const data = {
       name, email,
@@ -26,11 +28,14 @@ function Example() {
       const confirm = window.confirm('Deseja cadastrar o voluntário?')
       if (confirm) {
         try {
+          setIsDisabled(true)
           await api.post('/librian/insert-collaborator', data)
           alert('Voluntário cadastrado com sucesso!')
+          setIsDisabled(false)
         } catch (error) {
           alert('Erro ao cadastrar o voluntário!')
           console.log(error)
+          setIsDisabled(false)
         }
         window.location.reload()
       }
@@ -80,7 +85,7 @@ function Example() {
           <button className="btn-cancelar-cadastrar-voluntario" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-cadastrar-voluntario" onClick={sendUser}>
+          <button className="btn-cadastrar-cadastrar-voluntario" onClick={sendUser} disabled={isDisabled}>
             Cadastrar
           </button>
         </Modal.Footer>
