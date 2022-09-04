@@ -5,11 +5,10 @@ function Footer() {
   return (
     <div class="footer">
       <p>
-        Copyright © 2022 Jade Biblioteca - Todos os direitos reservados
+        Copyright © 2022 BibliTec - Todos os direitos reservados
       </p>
     </div>
   )
 }
-
 
 export default Footer
