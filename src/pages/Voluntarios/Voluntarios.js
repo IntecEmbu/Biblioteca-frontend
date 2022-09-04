@@ -14,7 +14,7 @@ export default function Voluntarios() {
       <Spinner id="loading" animation='border' />
     </div>
 
-
+  const [isDisabled, setIsDisabled] = React.useState(true)
   const [volunteers, setVolunteers] = React.useState([])
   const [nameSearch, setNameSearch] = React.useState('')
   const [volunteersCard, setVolunteersCard] = React.useState(spinnner)
@@ -79,6 +79,7 @@ export default function Voluntarios() {
     })
 
     setVolunteersCard(dataCard)
+    setIsDisabled(false)
   }
 
   useEffect(() => {
@@ -95,7 +96,7 @@ export default function Voluntarios() {
           onChange={e => setNameSearch(e.target.value)} />
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro" onClick={search}><FaSearch /></button>
+            <button className="btn-pesquisar-livro" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarVoluntario />

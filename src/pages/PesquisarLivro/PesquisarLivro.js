@@ -13,6 +13,7 @@ function LivrosPage() {
             <Spinner id="loading" animation='border' />
         </div>
 
+    const [isDisabled, setIsDisabled] = React.useState(true)
     const [booksCard, setBooksCard] = React.useState(spinnner)
     const [nameSearch, setNameSearch] = React.useState('')
     const [selectValue, setSelectValue] = React.useState('title')
@@ -108,6 +109,7 @@ function LivrosPage() {
             )
         })
         setBooksCard(cards)
+        setIsDisabled(false)
     }
 
     // Carregamento padrão da página.
@@ -129,7 +131,7 @@ function LivrosPage() {
                     <option value={'author'}>AUTOR</option>
                 </select>
                 <div className="btn-pesquisar-livro-container">
-                    <button className="btn-pesquisar-livro" onClick={search}><FaSearch /></button>
+                    <button className="btn-pesquisar-livro" onClick={search} disabled={isDisabled}><FaSearch /></button>
                 </div>
             </div>
             <div id="area-card-books">

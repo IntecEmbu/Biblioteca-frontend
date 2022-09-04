@@ -16,7 +16,7 @@ export default function Alunos() {
 
 
   const [userCard, setUserCard] = React.useState(spinnner)
-
+  const [isDisabled, setIsDisabled] = React.useState(true)
   const [nameSearch, setNameSearch] = React.useState('')
   const [selectValue, setSelectValue] = React.useState('name')
   const [users, setUsers] = React.useState([])
@@ -93,6 +93,7 @@ export default function Alunos() {
     })
 
     setUserCard(cards)
+    setIsDisabled(false)
   }
 
   useEffect(() =>{
@@ -114,7 +115,7 @@ export default function Alunos() {
           </select>
           <div className="btn-alunos-container">
           <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-aluno" onClick={search}><FaSearch /></button>
+            <button className="btn-pesquisar-aluno" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
           <div className="btn-cadastrar-aluno-container">
             <ModalCadastrarAluno />
