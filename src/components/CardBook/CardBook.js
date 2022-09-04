@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTrashAlt } from "react-icons/fa"
 import '../../styles/CardBook.css'
@@ -27,20 +27,12 @@ function CardBook(props) {
     }
   }
 
-  function hideButtons(){
-    setButtons('')
-  }
-
-  function controlButtons(){
-    if(buttons == ''){
-      showButtons()
-    }else{
-      hideButtons()
-    }
-  }
+  useEffect(() => {
+    showButtons()
+  }, [])
 
   return (
-    <div id="card-book-container" onClick={controlButtons}>
+    <div id="card-book-container">
       <div className="card-book">
         <p className="titulo-card">{props.name}</p>
         <p className="p-card-book">AUTOR: {props.author}</p>
