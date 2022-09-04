@@ -103,3 +103,9 @@
 #loading {
   margin-bottom: 2rem;
 }
+
+.footer-container{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
