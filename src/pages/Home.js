@@ -7,7 +7,7 @@ import '../styles/Home.css'
 function index() {
 
   // Coleta o nome do usuário logado
-  const name = JSON.parse(localStorage.getItem('user')).librarian_name
+  const name = JSON.parse(localStorage.getItem('user')).librarian_name.split(" ")[0]
 
   return (
     <div>
