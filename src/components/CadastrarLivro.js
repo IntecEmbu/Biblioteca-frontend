@@ -2,9 +2,10 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
-import api from '../../service/api.js'
-import Navbar from '../../components/Navbar/Navbar.js'
-import '../../styles/CadastrarLivro.css'
+import api from '../service/api.js'
+import Navbar from './Navbar.js'
+import '../styles/CadastrarLivro.css'
+import '../styles/Botoes.css'
 
 function Index() {
     // Criação de estados para o formulário.
@@ -120,7 +121,7 @@ function Index() {
                         </div>
                     </form>
 
-                    <div className="btn-cadastrar-container">
+                    <div className="btn-cadastrar-livro-container">
                         <button className="btn-cadastrar" onClick={sendBook} disabled={isDisabled}>
                             Cadastrar
                         </button>

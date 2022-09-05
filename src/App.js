@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home/Home.js'
-import Login from './pages/Login/Login.js'
-import PesquisarLivro from './pages/PesquisarLivro/PesquisarLivro.js'
-import CadastrarLivro from './components/CadastrarLivro/CadastrarLivro.js'
-import Alunos from './pages/Alunos/Alunos';
-import Voluntarios from './pages/Voluntarios/Voluntarios';
-import NotFound from './pages/NotFound/NotFound.js'
+import Home from './pages/Home.js'
+import Login from './pages/Login.js'
+import PesquisarLivro from './pages/PesquisarLivro.js'
+import CadastrarLivro from './components/CadastrarLivro.js'
+import Alunos from './pages/Alunos';
+import Voluntarios from './pages/Voluntarios';
+import NotFound from './pages/NotFound.js'
 import ProtectedRouter from './protectedRouter'
 import { useState } from 'react';
 

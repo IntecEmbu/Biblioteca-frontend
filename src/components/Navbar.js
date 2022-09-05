@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import '../../styles/Navbar.css'
+import '../styles/Navbar.css'
 
 function index() {
 
@@ -16,7 +16,7 @@ function index() {
         <Navbar.Brand id="logo-nav">
           <Link to='/'>
             <img
-              src={require('../../images/logo2.png')}
+              src={require('../images/logo2.png')}
               width="30"
               height="30"
               className="d-inline-block align-top img-logo-nav"

@@ -1,9 +1,9 @@
 import React from 'react'
-import '../../styles/Login.css'
+import '../styles/Login.css'
 import { Link } from 'react-router-dom'
-import login from '../../service/login.js'
+import login from '../service/login.js'
 import { Spinner } from 'react-bootstrap'
-import Footer from '../../components/Footer/Footer.js'
+import Footer from '../components/Footer.js'
 
 function Index() {
 
@@ -44,7 +44,7 @@ function Index() {
         <div className="form">
           <div className="form-content">
             <div className="logo">
-              <img src={require('../../images/logo2.png')}></img>
+              <img src={require('../images/logo2.png')}></img>
             </div>
             <div className="user">
               <input type="text" className="input-user" placeholder="Usuário"

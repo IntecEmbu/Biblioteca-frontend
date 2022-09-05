@@ -1,6 +1,5 @@
 .modal-header {
   justify-content: center !important;
-  text-transform: uppercase;
 }
 
 .btn-cancelar-cadastrar-aluno {
@@ -8,7 +7,6 @@
   color: var(--azul) !important;
   border: none;
   border-radius: .2rem;
-  text-transform: uppercase;
   padding: .3rem 1.2rem;
   font-weight: bold;
   font-size: 1rem;
@@ -26,7 +24,6 @@
   color: var(--cinza) !important;
   border: none;
   border-radius: .2rem;
-  text-transform: uppercase;
   padding: .3rem 1.2rem;
   font-weight: bold;
   font-size: 1rem;

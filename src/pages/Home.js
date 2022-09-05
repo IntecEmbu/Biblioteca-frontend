@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../../components/Navbar/Navbar.js'
-import CardHome from '../../components/CardHome/CardHome.js' 
-import '../../styles/Home.css'
+import Navbar from '../components/Navbar.js'
+import CardHome from '../components/CardHome.js' 
+import '../styles/Home.css'
 
 function index() {
 

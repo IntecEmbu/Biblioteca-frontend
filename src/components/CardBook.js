@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FaTrashAlt } from "react-icons/fa"
-import '../../styles/CardBook.css'
+import { FaTrashAlt,FaPen } from "react-icons/fa"
+import '../styles/CardBook.css'
+import '../styles/Botoes.css'
 
 function CardBook(props) {
 
@@ -15,12 +16,12 @@ function CardBook(props) {
     if(JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
        JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario'){
         setButtons(
-          <div className="btn-card-book-container">
+          <div className="btn-card-container">
             <Link to="/modal">
-              <button className="btn-editar-card-book">Editar</button>
+              <button className="btn-editar-card"><FaPen className="fa-pen"/>Editar</button>
             </Link>
             <Link to="/modal">
-              <button className="btn-excluir-card-book"><FaTrashAlt /></button>
+              <button className="btn-excluir-card"><FaTrashAlt className="fa-trash"/>Excluir</button>
             </Link>
           </div>
         )

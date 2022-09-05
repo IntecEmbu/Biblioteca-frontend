@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
-import '../../styles/ModalCadastrarAluno.css'
-import api from '../../service/api.js'
+import '../styles/ModalCadastrarAluno.css'
+import '../styles/Botoes.css'
+import api from '../service/api.js'
 
 function Example() {
   const [show, setShow] = useState(false)
@@ -46,7 +47,7 @@ function Example() {
 
   return (
     <>
-      <button className="btn-cadastrar-aluno" onClick={handleShow}>
+      <button className="btn-cadastrar" onClick={handleShow}>
         Cadastrar
       </button>
 

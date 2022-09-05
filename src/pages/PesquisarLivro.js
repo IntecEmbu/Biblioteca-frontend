@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import CardBook from '../../components/CardBook/CardBook.js'
+import CardBook from '../components/CardBook.js'
 import Spinner from 'react-bootstrap/Spinner'
-import Navbar from '../../components/Navbar/Navbar.js'
-import downloadBook from '../../service/seachBook.js'
+import Navbar from '../components/Navbar.js'
+import downloadBook from '../service/seachBook.js'
 import { FaSearch } from "react-icons/fa"
-import '../../styles/PesquisarLivro.css'
+import '../styles/PesquisarLivro.css'
 
 function LivrosPage() {
     // Efeito de carregamento da página.
@@ -51,7 +51,7 @@ function LivrosPage() {
             if (booksFind.length === 0) {
                 setBooksCard(
                     <img id="book-notFound" 
-                    src={require('../../images/livro-nao-encontrado.png')} 
+                    src={require('../images/livro-nao-encontrado.png')} 
                     alt='Not Found' />
                 )
 
@@ -88,7 +88,7 @@ function LivrosPage() {
         if(data.length == 0){
             return setBooksCard(
                 <img id="book-notFound" 
-                    src={require('../../images/livro-nao-encontrado.png')} 
+                    src={require('../images/livro-nao-encontrado.png')} 
                     alt='Not Found' />
             )
         }
@@ -121,7 +121,7 @@ function LivrosPage() {
         <div>
             <Navbar />
             <h1 className="titulo-pagina">Pesquisar Livro</h1>
-            <div className="pesquisa-container">
+            <div className="pesquisar-container">
                 <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor" 
                 onChange={e => setNameSearch(e.target.value.trim())} />
                 <select className="tipo-pesquisa" 
@@ -130,8 +130,8 @@ function LivrosPage() {
                     <option value={'category'}>CATEGORIA</option>
                     <option value={'author'}>AUTOR</option>
                 </select>
-                <div className="btn-pesquisar-livro-container">
-                    <button className="btn-pesquisar-livro" onClick={search} disabled={isDisabled}><FaSearch /></button>
+                <div className="btn-pesquisar-container">
+                    <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
                 </div>
             </div>
             <div id="area-card-books">

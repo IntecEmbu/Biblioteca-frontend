@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
-import CardVoluntario from '../../components/CardVoluntario/CardVoluntario.js'
-import Navbar from '../../components/Navbar/Navbar.js'
-import ModalCadastrarVoluntario from '../../components/ModalCadastrarVoluntario/ModalCadastrarVoluntario.js'
+import CardVoluntario from '../components/CardVoluntario.js'
+import Navbar from '../components/Navbar.js'
+import ModalCadastrarVoluntario from '../components/ModalCadastrarVoluntario.js'
 import { FaSearch } from "react-icons/fa"
-import '../../styles/Voluntarios.css'
-import downloadLibrarian from '../../service/searchLibrarian.js'
+import downloadLibrarian from '../service/searchLibrarian.js'
 import Spinner from 'react-bootstrap/Spinner'
+import '../styles/Botoes.css'
 
 export default function Voluntarios() {
 
@@ -35,7 +35,7 @@ export default function Voluntarios() {
       if(volunteersFind.length === 0){
         return setVolunteersCard(
           <img id="book-notFound"
-            src={require('../../images/livro-nao-encontrado.png')}
+            src={require('../images/livro-nao-encontrado.png')}
             alt='Not Found' />
         )
       }
@@ -62,7 +62,7 @@ export default function Voluntarios() {
     if(volunteers.length === 0) {
       setVolunteersCard(
         <img id="book-notFound"
-          src={require('../../images/livro-nao-encontrado.png')}
+          src={require('../images/livro-nao-encontrado.png')}
           alt='Not Found' />
       )
     }
@@ -91,14 +91,14 @@ export default function Voluntarios() {
       <Navbar />
       <div>
         <h1 className="titulo-pagina">Voluntários</h1>
-        <div className="pesquisa-container">
+        <div className="pesquisar-container">
           <input className="input-pesquisa" type="text" placeholder="Nome" 
           onChange={e => setNameSearch(e.target.value)} />
-          <div className="btn-alunos-container">
-          <div className="btn-pesquisar-aluno-container">
-            <button className="btn-pesquisar-livro" onClick={search} disabled={isDisabled}><FaSearch /></button>
+          <div className="btn-container">
+          <div className="btn-pesquisar2-container">
+            <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
-          <div className="btn-cadastrar-aluno-container">
+          <div className="btn-cadastrar-container">
             <ModalCadastrarVoluntario />
           </div>
           </div>

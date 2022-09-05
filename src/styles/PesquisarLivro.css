@@ -13,54 +13,6 @@
     text-align: center;
 }
 
-.pesquisa-container {
-    margin: auto;
-    background-color: #fff;
-    width: fit-content;
-    padding: 1rem;
-    border-radius: .2rem;
-    display: flex;
-    margin-bottom: 2rem;
-    box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
-}
-
-.pesquisa-container input,
-.pesquisa-container select {
-    margin: .6rem 0;
-    padding: .3rem 1.2rem;
-    border: 1px solid var(--cinza);
-    margin-right: 1rem;
-    transition: all .1s linear;
-}
-
-.pesquisa-container input:hover, select:hover {
-    background-color: var(--cinza-claro);
-    transition: all .1s linear;
-}
-
-.btn-pesquisar-livro-container {
-    display: flex;
-    align-items: center;
-}
-
-.btn-pesquisar-livro {
-    background-color: var(--azul) !important;
-    color: var(--cinza) !important;
-    border: none;
-    border-radius: .2rem;
-    text-transform: uppercase;
-    padding: .3rem 1.2rem;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: all .1s linear;
-}
-
-.btn-pesquisar-livro:hover {
-    background-color: var(--cinza) !important;
-    color: var(--azul) !important;
-    transition: all .1s linear;
-}
-
 #book-notFound{
     width: 27vw;
     margin: auto;

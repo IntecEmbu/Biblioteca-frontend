@@ -1,0 +1,145 @@
+.pesquisar-container {
+  margin: auto;
+  background-color: #fff;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: .2rem;
+  display: flex;
+  margin-bottom: 2rem;
+  box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
+}
+
+.pesquisar-container input,
+.pesquisar-container select {
+  margin: .6rem 0;
+  padding: .3rem 1.2rem;
+  border: 1px solid var(--cinza);
+  margin-right: 1rem;
+  transition: all .1s linear;
+}
+
+.pesquisar-container input:hover, select:hover {
+  background-color: var(--cinza-claro);
+  transition: all .1s linear;
+}
+
+.btn-container {
+  display: flex;
+}
+
+.btn-pesquisar2-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.btn-pesquisar-container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-pesquisar {
+  background-color: var(--azul) !important;
+  color: var(--cinza) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all .1s linear;
+}
+
+.btn-pesquisar:hover {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-cadastrar-livro-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cadastrar-container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-cadastrar {
+  background-color: var(--azul) !important;
+  color: var(--cinza) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: none !important;
+  transition: all .1s linear;
+}
+
+.btn-cadastrar:hover {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-card-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-editar-card {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  transition: all .1s linear;
+  margin-right: 1rem;
+}
+
+.btn-editar-card:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-excluir-card {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  transition: all .1s linear;
+}
+
+.btn-excluir-card:hover {
+  background-color: var(--vermelho) !important;
+  color: var(--cinza) !important;
+  transition: all .1s linear;
+}
+
+.btn-voltar-home {
+  background-color: var(--azul) !important;
+  color: var(--cinza) !important;
+  border: none;
+  border-radius: .2rem;
+  text-transform: uppercase;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  transition: all .1s linear;
+  margin: 1rem;
+}
+
+.btn-voltar-home:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.fa-pen,
+.fa-trash {
+    margin-right: .5rem;
+}
