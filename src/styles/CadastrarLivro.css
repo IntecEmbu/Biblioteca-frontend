@@ -1,13 +1,3 @@
-.titulo-pagina {
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 2rem 0;
-    color: var(--azul);
-    display: flex;
-    justify-content: center;
-}
-
 #cadastrar-livro-container {
     display: flex;
     justify-content: center;

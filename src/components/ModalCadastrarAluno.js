@@ -60,32 +60,52 @@ function Example() {
             <div className="input-group-modal">
               <div className="input-box-modal">
                 <label>Nome</label>
-                <input type="text" required 
-                onChange={e => setName(e.target.value)} />
+                <input
+                type="text"
+                required 
+                onChange={e => setName(e.target.value)}
+                />
               </div>
 
               <div className="input-box-modal">
                 <label>Curso</label>
-                <input type="text" required 
-                onChange={e => setCourse(e.target.value)} />
+                <input
+                type="text"
+                required 
+                onChange={e => setCourse(e.target.value)}
+                />
               </div>
 
               <div className="input-box-modal">
-                <label>Email</label>
-                <input type="text" required 
-                onChange={e => setEmail(e.target.value)} />
+                <label>CPF</label>
+                <input
+                type="text"
+                required 
+                onChange={e => setCourse(e.target.value)}
+                />
+              </div>
+
+              <div className="input-box-modal">
+                <label>E-mail</label>
+                <input
+                type="text"
+                required 
+                onChange={e => setEmail(e.target.value)}
+                />
               </div>
 
               <div className="input-box-modal">
                 <label>Celular</label>
-                <input type="text" required 
-                onChange={e => setPhone(e.target.value)} />
+                <input
+                type="text"
+                required 
+                onChange={e => setPhone(e.target.value)}
+                />
               </div>
 
               <div className="input-box-modal">
                 <label>Tipo</label>
-                <select className="tipo-pesquisa" 
-                value={type} onChange={e => setType(e.target.value)}>
+                <select className="tipo-pesquisa" value={type} onChange={e => setType(e.target.value)}>
                   <option value={'Aluno'}>ALUNO</option>
                   <option value={'Funcionario'}>FUNCIONÁRIO</option>
                 </select>

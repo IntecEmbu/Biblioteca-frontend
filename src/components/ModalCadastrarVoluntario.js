@@ -63,7 +63,7 @@ function Example() {
               </div>
 
               <div className="input-box-modal">
-                <label>Email</label>
+                <label>E-mail</label>
                 <input type="text" required 
                 onChange={e => setEmail(e.target.value)}/>
               </div>

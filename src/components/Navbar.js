@@ -31,13 +31,10 @@ function index() {
               <NavDropdown.Item className="item-dropdown">
                 <Link to='/emprestimos' id="link-navbar">Empréstimos</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/devolucoes' id="link-navbar">Devoluções</Link>
-              </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Catalogação" id="basic-nav-dropdown">
               <NavDropdown.Item className="item-dropdown">
-                <Link to='/pesquisar-livro' id="link-navbar">Pesquisar Livro</Link>
+                <Link to='/pesquisar-livro' id="link-navbar">Livros</Link>
               </NavDropdown.Item>
               <NavDropdown.Item className="item-dropdown">
                 <Link to='/cadastrar-livro' id="link-navbar">Cadastrar Livro</Link>
@@ -45,13 +42,13 @@ function index() {
             </NavDropdown>
             <NavDropdown title="Administração" id="basic-nav-dropdown">
               <NavDropdown.Item className="item-dropdown">
-                <Link to='/relatorios' id="link-navbar">Relatórios</Link>
+                <Link to='/alunos' id="link-navbar">Alunos</Link>
               </NavDropdown.Item>
               <NavDropdown.Item className="item-dropdown">
                 <Link to='/voluntarios' id="link-navbar">Voluntários</Link>
               </NavDropdown.Item>
               <NavDropdown.Item className="item-dropdown">
-                <Link to='/alunos' id="link-navbar">Alunos</Link>
+                <Link to='/relatorios' id="link-navbar">Relatórios</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

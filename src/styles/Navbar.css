@@ -14,7 +14,7 @@
 
 #basic-nav-dropdown {
   color: var(--azul);
-  margin-right: 40px;
+  margin-right: 2rem;
   transition: all .1s linear;
   padding: 1rem;
 }

@@ -18,6 +18,9 @@ function CardBook(props) {
         setButtons(
           <div className="btn-card-container">
             <Link to="/modal">
+              <button className="btn-emprestar-card">Emprestar</button>
+            </Link>
+            <Link to="/modal">
               <button className="btn-editar-card"><FaPen className="fa-pen"/>Editar</button>
             </Link>
             <Link to="/modal">

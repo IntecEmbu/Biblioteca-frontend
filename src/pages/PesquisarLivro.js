@@ -120,7 +120,7 @@ function LivrosPage() {
     return (
         <div>
             <Navbar />
-            <h1 className="titulo-pagina">Pesquisar Livro</h1>
+            <h1 className="titulo-pagina">Livros</h1>
             <div className="pesquisar-container">
                 <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor" 
                 onChange={e => setNameSearch(e.target.value.trim())} />
