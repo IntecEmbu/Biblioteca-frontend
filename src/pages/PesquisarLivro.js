@@ -63,14 +63,14 @@ function LivrosPage() {
                 return (
                     <CardBook
                         key={book.book_code}
-                        book_name={book.book_name}
-                        book_author={book.book_author}
-                        book_edition={book.book_edition}
+                        name={book.book_name}
+                        author={book.book_author}
+                        edition={book.book_edition}
                         release_year={book.release_year}
-                        category_name={book.category_name}
-                        book_language={book.book_language}
-                        book_isbn={book.book_isbn}
-                        book_cdd={book.book_cdd} />
+                        category={book.category_name}
+                        language={book.book_language}
+                        isbn={book.book_isbn}
+                        cdd={book.book_cdd} />
                 )
         })
 
