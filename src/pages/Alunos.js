@@ -70,7 +70,6 @@ export default function Alunos() {
     const data = await downloadUser()
 
     setUsers(data)
-    console.log(data)
 
     if (data.length == 0) {
       setUserCard(

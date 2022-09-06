@@ -26,7 +26,7 @@ export default function Voluntarios() {
     }
 
     setVolunteersCard(spinnner)
-    console.log(volunteers)
+    
     setTimeout(() => {
       var volunteersFind = volunteers.filter(volunteer => 
         volunteer.librarian_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
