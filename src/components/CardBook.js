@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FaTrashAlt,FaPen } from "react-icons/fa"
-import '../styles/CardBook.css'
+import { FaPen } from "react-icons/fa"
+import ModalExcluir from '../components/ModalExcluir.js'
+import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
 function CardBook(props) {
@@ -23,9 +24,9 @@ function CardBook(props) {
             <Link to="/modal">
               <button className="btn-editar-card"><FaPen className="fa-pen"/>Editar</button>
             </Link>
-            <Link to="/modal">
-              <button className="btn-excluir-card"><FaTrashAlt className="fa-trash"/>Excluir</button>
-            </Link>
+            <div className="btn-excluir-container">
+              <ModalExcluir />
+            </div>
           </div>
         )
     }
@@ -36,16 +37,16 @@ function CardBook(props) {
   }, [])
 
   return (
-    <div id="card-book-container">
-      <div className="card-book">
-        <p className="titulo-card">{props.name}</p>
-        <p className="p-card-book">AUTOR: {props.author}</p>
-        <p className="p-card-book">EDIÇÃO: {props.edition}</p>
-        <p className="p-card-book">ANO: {props.release_year}</p>
-        <p className="p-card-book">CATEGORIA: {props.category}</p>
-        <p className="p-card-book">IDIOMA: {props.language}</p>
-        <p className="p-card-book">ISBN: {props.isbn}</p>
-        <p className="p-card-book">CDD: {props.cdd}</p>
+    <div id="card-main-container">
+      <div className="card-main">
+        <p className="titulo-card-main">{props.name}</p>
+        <p className="p-card-main">AUTOR: {props.author}</p>
+        <p className="p-card-main">EDIÇÃO: {props.edition}</p>
+        <p className="p-card-main">ANO: {props.release_year}</p>
+        <p className="p-card-main">CATEGORIA: {props.category}</p>
+        <p className="p-card-main">IDIOMA: {props.language}</p>
+        <p className="p-card-main">ISBN: {props.isbn}</p>
+        <p className="p-card-main">CDD: {props.cdd}</p>
         {buttons}
       </div>
     </div>

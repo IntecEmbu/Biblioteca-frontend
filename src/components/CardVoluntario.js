@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FaTrashAlt, FaPen } from "react-icons/fa"
-import '../styles/CardVoluntario.css'
+import { FaPen } from "react-icons/fa"
+import ModalExcluir from '../components/ModalExcluir.js'
+import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
 function CardBook(props) {
@@ -12,20 +13,20 @@ function CardBook(props) {
 
   const [buttons, setButtons] = React.useState('')
 
-  function showButtons(){
-    if(JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
-       JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario'){
-        setButtons(
-          <div className="btn-card-container">
-            <Link to="/modal">
-              <button className="btn-editar-card"><FaPen className="fa-pen"/>Editar</button>
-            </Link>
-            <Link to="/modal">
-              <button className="btn-excluir-card"><FaTrashAlt className="fa-trash"/>Excluir</button>
-            </Link>
+  function showButtons() {
+    if (JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
+      JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario') {
+      setButtons(
+        <div className="btn-card-container">
+          <Link to="/modal">
+            <button className="btn-editar-card"><FaPen className="fa-pen" />Editar</button>
+          </Link>
+          <div className="btn-excluir-container">
+            <ModalExcluir />
           </div>
-        )
-      }
+        </div>
+      )
+    }
   }
 
   useEffect(() => {
@@ -33,11 +34,11 @@ function CardBook(props) {
   }, [])
 
   return (
-    <div id="card-voluntario-container">
-      <div className="card-voluntario">
-        <p className="titulo-card">{props.name}</p>
-        <p className="p-card-voluntario">EMAIL: {props.email}</p>
-        <p className="p-card-voluntario">USUÁRIO: {props.user}</p>
+    <div id="card-main-container">
+      <div className="card-main">
+        <p className="titulo-card-main">{props.name}</p>
+        <p className="p-card-main">EMAIL: {props.email}</p>
+        <p className="p-card-main">USUÁRIO: {props.user}</p>
         {buttons}
       </div>
     </div>

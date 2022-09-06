@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
-import '../styles/ModalCadastrarAluno.css'
+import '../styles/Modal.css'
 import '../styles/Botoes.css'
 import api from '../service/api.js'
 
@@ -114,10 +114,10 @@ function Example() {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <button className="btn-cancelar-cadastrar-aluno" onClick={handleClose}>
+          <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-cadastrar-aluno" onClick={sendUser} disabled={isDisabled}>
+          <button className="btn-cadastrar-modal" onClick={sendUser} disabled={isDisabled}>
             Cadastrar
           </button>
         </Modal.Footer>

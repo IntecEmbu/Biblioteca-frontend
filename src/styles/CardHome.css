@@ -45,11 +45,6 @@
   margin: 1rem 0;
 }
 
-/* .cards .card .icon {
-  width: 7rem;
-  height: 7rem;
-} */
-
 .btn-card-home {
   background-color: var(--azul) !important;
   color: var(--cinza) !important;

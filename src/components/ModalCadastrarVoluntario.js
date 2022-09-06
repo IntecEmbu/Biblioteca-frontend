@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import api from '../service/api.js'
-import '../styles/ModalCadastrarVoluntario.css'
+import '../styles/Modal.css'
 import '../styles/Botoes.css'
 
 function Example() {
@@ -11,9 +11,9 @@ function Example() {
   const handleShow = () => setShow(true);
 
   const [name, setName] = useState(''),
-        [email, setEmail] = useState(''),
-        [password, setPassword] = useState(''),
-        [user, setUser] = useState('')
+    [email, setEmail] = useState(''),
+    [password, setPassword] = useState(''),
+    [user, setUser] = useState('')
 
   const [isDisabled, setIsDisabled] = useState(false)
 
@@ -58,35 +58,35 @@ function Example() {
             <div className="input-group-modal">
               <div className="input-box-modal">
                 <label>Nome</label>
-                <input type="text" required 
-                onChange={e => setName(e.target.value)} />
+                <input type="text" required
+                  onChange={e => setName(e.target.value)} />
               </div>
 
               <div className="input-box-modal">
                 <label>E-mail</label>
-                <input type="text" required 
-                onChange={e => setEmail(e.target.value)}/>
+                <input type="text" required
+                  onChange={e => setEmail(e.target.value)} />
               </div>
 
               <div className="input-box-modal">
                 <label>Usuário</label>
-                <input type="text" required 
-                onChange={e => setUser(e.target.value)} />
+                <input type="text" required
+                  onChange={e => setUser(e.target.value)} />
               </div>
 
               <div className="input-box-modal">
                 <label>Senha</label>
-                <input type="password" required 
-                onChange={e => setPassword(e.target.value)} />
+                <input type="password" required
+                  onChange={e => setPassword(e.target.value)} />
               </div>
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <button className="btn-cancelar-cadastrar-voluntario" onClick={handleClose}>
+          <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-cadastrar-voluntario" onClick={sendUser} disabled={isDisabled}>
+          <button className="btn-cadastrar-modal" onClick={sendUser} disabled={isDisabled}>
             Cadastrar
           </button>
         </Modal.Footer>
