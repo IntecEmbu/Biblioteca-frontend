@@ -14,7 +14,7 @@ function Example() {
     <>
       <button className="btn-excluir-card" onClick={handleShow}><FaTrashAlt className="fa-trash" />Excluir</button>
 
-      <Modal show={show}>
+      <Modal show={show} centered>
         <Modal.Header>
           <Modal.Title>Excluir</Modal.Title>
         </Modal.Header>

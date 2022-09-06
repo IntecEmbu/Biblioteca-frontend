@@ -49,7 +49,7 @@ function Example() {
         Cadastrar
       </button>
 
-      <Modal show={show}>
+      <Modal show={show} centered>
         <Modal.Header>
           <Modal.Title>Cadastrar Voluntário</Modal.Title>
         </Modal.Header>

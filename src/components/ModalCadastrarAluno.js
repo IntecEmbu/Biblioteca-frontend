@@ -51,7 +51,7 @@ function Example() {
         Cadastrar
       </button>
 
-      <Modal show={show}>
+      <Modal show={show} centered>
         <Modal.Header>
           <Modal.Title>Cadastrar Aluno</Modal.Title>
         </Modal.Header>

@@ -1,3 +1,8 @@
+.modal-content {
+  border: none !important;
+  border-radius: .2rem !important;
+}
+
 .input-group-modal {
   display: flex;
   flex-wrap: wrap;
