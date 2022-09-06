@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FaPen } from "react-icons/fa"
 import ModalExcluir from '../components/ModalExcluir.js'
+import ModalEditarLivro from '../components/ModalEditarLivro.js'
 import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
@@ -21,9 +21,9 @@ function CardBook(props) {
             <Link to="/modal">
               <button className="btn-emprestar-card">Emprestar</button>
             </Link>
-            <Link to="/modal">
-              <button className="btn-editar-card"><FaPen className="fa-pen"/>Editar</button>
-            </Link>
+            <div className="btn-editar-container">
+              <ModalEditarLivro />
+            </div>
             <div className="btn-excluir-container">
               <ModalExcluir />
             </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { FaPen } from "react-icons/fa"
 import ModalExcluir from '../components/ModalExcluir.js'
+import ModalEditarVoluntario from '../components/ModalEditarVoluntario.js'
 import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
@@ -18,9 +17,9 @@ function CardBook(props) {
       JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario') {
       setButtons(
         <div className="btn-card-container">
-          <Link to="/modal">
-            <button className="btn-editar-card"><FaPen className="fa-pen" />Editar</button>
-          </Link>
+          <div className="btn-editar-container">
+            <ModalEditarVoluntario />
+          </div>
           <div className="btn-excluir-container">
             <ModalExcluir />
           </div>

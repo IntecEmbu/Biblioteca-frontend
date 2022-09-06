@@ -12,23 +12,23 @@ function Example() {
 
   return (
     <>
-      <button className="btn-excluir-card" onClick={handleShow}>
-        <FaTrashAlt className="fa-trash" />
-        Excluir
+      <button className="btn-editar" onClick={handleShow}>
+        <FaPen className="fa-pen" />
+        Editar
       </button>
 
       <Modal show={show} centered>
         <Modal.Header>
-          <Modal.Title>Excluir</Modal.Title>
+          <Modal.Title>Editar</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Tem certeza que deseja excluir?</Modal.Body>
+        <Modal.Body>Tem certeza que deseja editar?</Modal.Body>
         <Modal.Footer>
           <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-excluir-modal">
-            <FaTrashAlt className="fa-trash" />
-            Excluir
+          <button className="btn-editar">
+            <FaPen className="fa-pen" />
+            Editar
           </button>
         </Modal.Footer>
       </Modal>
