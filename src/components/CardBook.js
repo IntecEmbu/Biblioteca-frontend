@@ -33,7 +33,7 @@ function CardBook(props) {
               <ModalEditarLivro data={dataBook}/>
             </div>
             <div className="btn-excluir-container">
-              <ModalExcluir way={`/book?id=${id}`}/>
+              <ModalExcluir path={'/book'} id={id}/>
             </div>
           </div>
         )
