@@ -13,6 +13,14 @@ function CardBook(props) {
 
   const [buttons, setButtons] = React.useState('')
 
+  const { id, title, author, edition, release_year, category, language, isbn, cdd} = props
+
+  const dataBook = {
+    id, title, author, 
+    edition, release_year, category, 
+    language, isbn, cdd
+  }
+
   function showButtons(){
     if(JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
        JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario'){
@@ -22,7 +30,7 @@ function CardBook(props) {
               <button className="btn-emprestar-card">Emprestar</button>
             </Link>
             <div className="btn-editar-container">
-              <ModalEditarLivro />
+              <ModalEditarLivro data={dataBook}/>
             </div>
             <div className="btn-excluir-container">
               <ModalExcluir />
@@ -39,7 +47,7 @@ function CardBook(props) {
   return (
     <div id="card-main-container">
       <div className="card-main">
-        <p className="titulo-card-main">{props.name}</p>
+        <p className="titulo-card-main">{props.title}</p>
         <p className="p-card-main">AUTOR: {props.author}</p>
         <p className="p-card-main">EDIÇÃO: {props.edition}</p>
         <p className="p-card-main">ANO: {props.release_year}</p>

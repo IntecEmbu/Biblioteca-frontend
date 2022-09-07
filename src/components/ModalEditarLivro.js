@@ -1,12 +1,50 @@
-import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import { FaPen } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react'
+import Modal from 'react-bootstrap/Modal'
+import { FaPen } from 'react-icons/fa'
+import api from '../service/api.js'
+import { Spinner } from 'react-bootstrap'
 
-function Example() {
-  const [show, setShow] = useState(false);
+function ModalEditarLivro(props) {
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const id = props.data.id
+  const [title, setTitle] = useState(props.data.title)
+  const [author, setAuthor] = useState(props.data.author)
+  const [edition, setEdition] = useState(props.data.edition)
+  const [release_year, setRelease_year] = useState(props.data.release_year)
+  const [category, setCategory] = useState(props.data.category)
+  const [language, setLanguage] = useState(props.data.language)
+  const [isbn, setIsbn] = useState(props.data.isbn)
+  const [cdd, setCdd] = useState(props.data.cdd)
+
+  const [spinner, setSpinner] = useState('')
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  async function updateBook(){
+    try{
+      setSpinner(<Spinner id="loading" animation='border' />)
+      setIsDisabled(true)
+
+      await api.put('/book/update-book', {
+        id, title, author, edition, 
+        release_year, category, language, isbn, cdd
+      })
+
+      alert('Livro atualizado com sucesso!')
+
+      setSpinner('')
+      setIsDisabled(false)
+      window.location.reload()
+    } catch(err){
+      alert('Erro ao atualizar livro!')
+      setSpinner('')
+      setIsDisabled(false)
+      console.log(err)
+    }
+  }
 
   return (
     <>
@@ -25,6 +63,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>Título</label>
                 <input
+                  onChange={e => setTitle(e.target.value)}
+                  value={title}
                   type="text"
                   required
                 />
@@ -33,6 +73,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>Autor</label>
                 <input
+                  onChange={e => setAuthor(e.target.value)}
+                  value={author}
                   type="text"
                   required
                 />
@@ -41,6 +83,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>Edição</label>
                 <input
+                  onChange={e => setEdition(e.target.value)}
+                  value={edition}
                   type="text"
                   required
                 />
@@ -49,6 +93,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
                 <input
+                  onChange={e => setRelease_year(e.target.value)}
+                  value={release_year}
                   type="number"
                   required
                 />
@@ -57,6 +103,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>Categoria</label>
                 <input
+                  onChange={e => setCategory(e.target.value)}
+                  value={category}
                   type="text"
                   required
                 />
@@ -65,6 +113,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
+                  onChange={e => setIsbn(e.target.value)}
+                  value={isbn}
                   type="text"
                   required
                 />
@@ -73,6 +123,8 @@ function Example() {
               <div className="input-box-modal">
                 <label>CDD</label>
                 <input
+                  onChange={e => setCdd(e.target.value)}
+                  value={cdd}
                   type="text"
                   required
                 />
@@ -80,11 +132,18 @@ function Example() {
             </div>
           </form>
         </Modal.Body>
+        <div className="spinner-login">
+            {spinner}
+        </div>
         <Modal.Footer>
-          <button className="btn-cancelar-modal" onClick={handleClose}>
+          <button className="btn-cancelar-modal" 
+          onClick={handleClose}
+          disabled={isDisabled}>
             Cancelar
           </button>
-          <button className="btn-editar-modal">
+          <button className="btn-editar-modal"
+          onClick={updateBook}
+          disabled={isDisabled}>
             <FaPen className="fa-pen" />
             Editar
           </button>
@@ -94,4 +153,4 @@ function Example() {
   );
 }
 
-export default Example
+export default ModalEditarLivro
