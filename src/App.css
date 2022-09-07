@@ -37,3 +37,7 @@ body {
   width: 100%;
   text-align: center;
 }
+
+button :disabled :hover{
+  cursor: wait !important;
+}
