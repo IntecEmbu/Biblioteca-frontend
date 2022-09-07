@@ -111,6 +111,16 @@ function ModalEditarLivro(props) {
               </div>
 
               <div className="input-box-modal">
+                <label>Idioma</label>
+                <input
+                  onChange={e => setLanguage(e.target.value)}
+                  value={language}
+                  type="text"
+                  required
+                />
+              </div>
+
+              <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
                   onChange={e => setIsbn(e.target.value)}
