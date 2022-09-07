@@ -4,21 +4,21 @@ import { FaPen } from 'react-icons/fa'
 import api from '../service/api.js'
 import { Spinner } from 'react-bootstrap'
 
-function ModalEditarLivro(props) {
+function ModalEditarLivro({data}) {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const id = props.data.id
-  const [title, setTitle] = useState(props.data.title)
-  const [author, setAuthor] = useState(props.data.author)
-  const [edition, setEdition] = useState(props.data.edition)
-  const [release_year, setRelease_year] = useState(props.data.release_year)
-  const [category, setCategory] = useState(props.data.category)
-  const [language, setLanguage] = useState(props.data.language)
-  const [isbn, setIsbn] = useState(props.data.isbn)
-  const [cdd, setCdd] = useState(props.data.cdd)
+  const id = data.id
+  const [title, setTitle] = useState(data.title)
+  const [author, setAuthor] = useState(data.author)
+  const [edition, setEdition] = useState(data.edition)
+  const [release_year, setRelease_year] = useState(data.release_year)
+  const [category, setCategory] = useState(data.category)
+  const [language, setLanguage] = useState(data.language)
+  const [isbn, setIsbn] = useState(data.isbn)
+  const [cdd, setCdd] = useState(data.cdd)
 
   const [spinner, setSpinner] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
