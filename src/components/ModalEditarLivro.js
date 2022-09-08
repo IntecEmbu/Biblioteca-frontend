@@ -34,16 +34,15 @@ function ModalEditarLivro({data}) {
       })
 
       alert('Livro atualizado com sucesso!')
-
-      setSpinner('')
-      setIsDisabled(false)
-      window.location.reload()
     } catch(err){
       alert('Erro ao atualizar livro!')
-      setSpinner('')
-      setIsDisabled(false)
       console.log(err)
     }
+
+    setSpinner('')
+    setIsDisabled(false)
+    handleClose()
+    window.location.reload()
   }
 
   return (

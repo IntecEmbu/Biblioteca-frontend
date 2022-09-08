@@ -5,12 +5,10 @@ import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
 function CardBook(props) {
-
-  // function setItems(){
-  //   localStorage.setItem('volunteer_selected', JSON.stringify(props))
-  // }
-
   const [buttons, setButtons] = React.useState('')
+
+  const { id, name, email, user } = props
+  const dataVolunter = { id, name, email, user }
 
   function showButtons() {
     if (JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
@@ -18,10 +16,10 @@ function CardBook(props) {
       setButtons(
         <div className="btn-card-container">
           <div className="btn-editar-container">
-            <ModalEditarVoluntario />
+            <ModalEditarVoluntario data={dataVolunter}/>
           </div>
           <div className="btn-excluir-container">
-            <ModalExcluir />
+            <ModalExcluir path={'/librian'} id={id}/>
           </div>
         </div>
       )

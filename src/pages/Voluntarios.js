@@ -43,6 +43,7 @@ export default function Voluntarios() {
       const dataCard = volunteersFind.map(volunteer => {
         return (
           <CardVoluntario
+            key={volunteer.librarian_code}
             id={volunteer.librarian_code}
             name={volunteer.librarian_name}
             email={volunteer.librarian_email}
@@ -71,6 +72,7 @@ export default function Voluntarios() {
       return (
         <CardVoluntario
           key={volunteer.librarian_code}
+          id={volunteer.librarian_code}
           name={volunteer.librarian_name}
           email={volunteer.librarian_email}
           user={volunteer.librarian_user}
