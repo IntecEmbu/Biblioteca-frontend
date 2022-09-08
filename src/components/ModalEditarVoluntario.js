@@ -4,7 +4,7 @@ import { FaPen } from 'react-icons/fa'
 import api from '../service/api'
 import Spinner from 'react-bootstrap/Spinner'
 
-function Example({data}) {
+function ModalEditarVoluntario({data}) {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -109,4 +109,4 @@ function Example({data}) {
   );
 }
 
-export default Example
+export default ModalEditarVoluntario

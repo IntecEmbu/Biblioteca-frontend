@@ -6,11 +6,10 @@ import '../styles/Botoes.css'
 
 function CardBook(props) {
 
-  // function setItems(){
-  //   localStorage.setItem('user_selected', JSON.stringify(props))
-  // }
-
   const [buttons, setButtons] = React.useState('')
+
+  const {id, name, email, phone, course, type} = props
+  const dataUser = {id, name, email, phone, course, type}
 
   function showButtons() {
     if (JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
@@ -18,7 +17,7 @@ function CardBook(props) {
       setButtons(
         <div className="btn-card-container">
           <div className="btn-editar-container">
-            <ModalEditarAluno />
+            <ModalEditarAluno data={dataUser}/>
           </div>
           <div className="btn-excluir-container">
             <ModalExcluir />

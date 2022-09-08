@@ -52,6 +52,7 @@ export default function Alunos() {
       const dataCard = usersFind.map(user => {
         return (
           <CardAluno
+            key={user.user_id}
             id={user.user_code}
             name={user.user_name}
             email={user.user_email}
@@ -83,6 +84,7 @@ export default function Alunos() {
       return (
         <CardAluno
           key={user.user_code}
+          id={user.user_code}
           name={user.user_name}
           email={user.user_email}
           phone={user.user_phone}
