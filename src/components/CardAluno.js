@@ -20,7 +20,7 @@ function CardBook(props) {
             <ModalEditarAluno data={dataUser}/>
           </div>
           <div className="btn-excluir-container">
-            <ModalExcluir />
+            <ModalExcluir path={'/user'} id={id}/>
           </div>
         </div>
       )
