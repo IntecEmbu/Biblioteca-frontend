@@ -1,25 +1,18 @@
-#card-main-container {
-  display: flex;
-  justify-content: center;
-  text-decoration: none !important;
-  color: #000 !important;
-}
-
-.card-main{
-  width: 80%;
-  margin-bottom: 1rem;
+.card-main {
   background-color: #fff;
+  width: 24%;
   padding: 1rem;
   border-radius: .2rem;
-  box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
-  transition: all .1s linear;
+  /* box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px; */
 }
 
-.titulo-card-main{
-  font-size: 1rem;
+.titulo-card-main {
+  font-size: 1.2rem;
   font-weight: bold;
+  color: var(--azul);
+  border-radius: .2rem;
 }
 
-.p-card-main{
-  font-size: .8rem;
+.info-card-main{
+  font-size: .9rem;
 }

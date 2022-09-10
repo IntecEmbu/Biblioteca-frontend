@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home.js'
 import Login from './pages/Login.js'
-import PesquisarLivro from './pages/PesquisarLivro.js'
+import Livros from './pages/Livros.js'
 import CadastrarLivro from './components/CadastrarLivro.js'
 import Alunos from './pages/Alunos';
 import Voluntarios from './pages/Voluntarios';
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route element={<ProtectedRouter isAuth={isSigned} />}>
           <Route path='/' element={<Home />} />
-          <Route path='/pesquisar-livro' element={<PesquisarLivro />} />
+          <Route path='/livros' element={<Livros />} />
           <Route path='/cadastrar-livro' element={<CadastrarLivro />} />
           <Route path='/alunos' element={<Alunos />} />
           <Route path='/voluntarios' element={<Voluntarios />} />

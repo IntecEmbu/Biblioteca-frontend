@@ -48,13 +48,13 @@ function CardBook(props) {
     <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.title}</p>
-        <p className="p-card-main">AUTOR: {props.author}</p>
-        <p className="p-card-main">EDIÇÃO: {props.edition}</p>
-        <p className="p-card-main">ANO: {props.release_year}</p>
-        <p className="p-card-main">CATEGORIA: {props.category}</p>
-        <p className="p-card-main">IDIOMA: {props.language}</p>
-        <p className="p-card-main">ISBN: {props.isbn}</p>
-        <p className="p-card-main">CDD: {props.cdd}</p>
+        <p className="info-card-main">Autor: {props.author}</p>
+        <p className="info-card-main">Edição: {props.edition}</p>
+        <p className="info-card-main">Ano: {props.release_year}</p>
+        <p className="info-card-main">Categoria: {props.category}</p>
+        <p className="info-card-main">Idioma: {props.language}</p>
+        <p className="info-card-main">ISBN: {props.isbn}</p>
+        <p className="info-card-main">CDD: {props.cdd}</p>
         {buttons}
       </div>
     </div>

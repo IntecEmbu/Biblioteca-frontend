@@ -11,7 +11,7 @@ function index() {
   }
 
   return (
-    <Navbar id="nav" expand='lg' variant='ligth'>
+    <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand id="logo-nav">
           <Link to='/'>
@@ -24,40 +24,26 @@ function index() {
             />
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavDropdown title="Circulação" id="basic-nav-dropdown">
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/emprestimos' id="link-navbar">Empréstimos</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Catalogação" id="basic-nav-dropdown">
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/pesquisar-livro' id="link-navbar">Livros</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/cadastrar-livro' id="link-navbar">Cadastrar Livro</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Administração" id="basic-nav-dropdown">
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/alunos' id="link-navbar">Alunos</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/voluntarios' id="link-navbar">Voluntários</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="item-dropdown">
-                <Link to='/relatorios' id="link-navbar">Relatórios</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-end">
-          <Nav.Link>
-            <Link to='/login' id="link-navbar" className="link-navbar-sair" onClick={logout}>Sair</Link>
+        <Nav className="me-auto">
+          <Nav.Link className="item-dropdown">
+            <Link to='/livros' id="link-navbar">Livros</Link>
           </Nav.Link>
-        </Navbar.Collapse>
+          <Nav.Link className="item-dropdown">
+            <Link to='/emprestimos' id="link-navbar">Empréstimos</Link>
+          </Nav.Link>
+          <Nav.Link className="item-dropdown">
+            <Link to='/alunos' id="link-navbar">Alunos</Link>
+          </Nav.Link>
+          <Nav.Link className="item-dropdown">
+            <Link to='/voluntarios' id="link-navbar">Voluntários</Link>
+          </Nav.Link>
+          <Nav.Link className="item-dropdown">
+            <Link to='/relatorios' id="link-navbar">Relatórios</Link>
+          </Nav.Link>
+        </Nav>
+        <Nav.Link>
+          <Link to='/login' id="link-navbar" className="link-navbar-sair" onClick={logout}>Sair</Link>
+        </Nav.Link>
       </Container>
     </Navbar>
   )

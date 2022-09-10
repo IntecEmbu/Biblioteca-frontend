@@ -8,12 +8,10 @@ import downloadUser from '../service/searchUser.js'
 import '../styles/Botoes.css'
 
 export default function Alunos() {
-
   const spinnner =
     <div className='area-loading'>
       <Spinner id="loading" animation='border' />
     </div>
-
 
   const [userCard, setUserCard] = React.useState(spinnner)
   const [isDisabled, setIsDisabled] = React.useState(true)
@@ -22,12 +20,10 @@ export default function Alunos() {
   const [users, setUsers] = React.useState([])
 
   async function search() {
-
     if (nameSearch == '') {
       alert('Preencha o campo de pesquisa')
       return
     }
-
     setUserCard(spinnner)
 
     setTimeout(() => {
@@ -40,7 +36,6 @@ export default function Alunos() {
           user.user_course.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
         )
       }
-
       if (usersFind.length === 0) {
         return setUserCard(
           <img id="book-notFound"
@@ -62,14 +57,12 @@ export default function Alunos() {
           />
         )
       })
-
       setUserCard(dataCard)
     }, 100)
   }
 
   async function loadUser() {
     const data = await downloadUser()
-
     setUsers(data)
 
     if (data.length == 0) {
@@ -93,7 +86,6 @@ export default function Alunos() {
         />
       )
     })
-
     setUserCard(cards)
     setIsDisabled(false)
   }
@@ -105,29 +97,30 @@ export default function Alunos() {
   return (
     <>
       <Navbar />
-      <div>
-        <h1 className="titulo-pagina">Alunos</h1>
+      <div className="pagina-container">
+        <div className="titulo-container">
+          <h1>Alunos</h1>
+          <div className="btn-cadastrar-container">
+            <ModalCadastrarAluno />
+          </div>
+        </div>
         <div className="pesquisar-container">
           <input className="input-pesquisa" type="text" placeholder="Nome ou curso"
             onChange={e => setNameSearch(e.target.value.trim())} />
           <select className="tipo-pesquisa"
             value={selectValue} onChange={e => setSelectValue(e.target.value)} >
             <option value={'name'}>NOME</option>
-            <option value={'course'}>CURSO</option>
           </select>
           <div className="btn-container">
             <div className="btn-pesquisar2-container">
               <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
             </div>
-            <div className="btn-cadastrar-container">
-              <ModalCadastrarAluno />
-            </div>
           </div>
         </div>
-        <div id="area-card-books">
+        <div>
           {userCard}
         </div>
-      </div >
+      </div>
     </>
   )
 }

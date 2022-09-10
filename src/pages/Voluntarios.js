@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import CardVoluntario from '../components/CardVoluntario.js'
 import Navbar from '../components/Navbar.js'
 import ModalCadastrarVoluntario from '../components/ModalCadastrarVoluntario.js'
@@ -9,7 +9,7 @@ import '../styles/Botoes.css'
 
 export default function Voluntarios() {
 
-  const spinnner = 
+  const spinnner =
     <div className='area-loading'>
       <Spinner id="loading" animation='border' />
     </div>
@@ -19,20 +19,20 @@ export default function Voluntarios() {
   const [nameSearch, setNameSearch] = React.useState('')
   const [volunteersCard, setVolunteersCard] = React.useState(spinnner)
 
-  async function search(){
-    if(nameSearch == ''){
+  async function search() {
+    if (nameSearch == '') {
       alert('Preencha o campo de pesquisa')
       return
     }
 
     setVolunteersCard(spinnner)
-    
+
     setTimeout(() => {
-      var volunteersFind = volunteers.filter(volunteer => 
+      var volunteersFind = volunteers.filter(volunteer =>
         volunteer.librarian_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
       )
 
-      if(volunteersFind.length === 0){
+      if (volunteersFind.length === 0) {
         return setVolunteersCard(
           <img id="book-notFound"
             src={require('../images/livro-nao-encontrado.png')}
@@ -59,8 +59,8 @@ export default function Voluntarios() {
   async function loadVolunteers() {
     const volunteers = await downloadLibrarian()
     setVolunteers(volunteers)
-    
-    if(volunteers.length === 0) {
+
+    if (volunteers.length === 0) {
       setVolunteersCard(
         <img id="book-notFound"
           src={require('../images/livro-nao-encontrado.png')}
@@ -91,24 +91,26 @@ export default function Voluntarios() {
   return (
     <>
       <Navbar />
-      <div>
-        <h1 className="titulo-pagina">Voluntários</h1>
-        <div className="pesquisar-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome" 
-          onChange={e => setNameSearch(e.target.value)} />
-          <div className="btn-container">
-          <div className="btn-pesquisar2-container">
-            <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
-          </div>
+      <div className="pagina-container">
+        <div className="titulo-container">
+          <h1>Voluntários</h1>
           <div className="btn-cadastrar-container">
             <ModalCadastrarVoluntario />
           </div>
+        </div>
+        <div className="pesquisar-container">
+          <input className="input-pesquisa" type="text" placeholder="Nome"
+            onChange={e => setNameSearch(e.target.value)} />
+          <div className="btn-container">
+            <div className="btn-pesquisar2-container">
+              <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
+            </div>
           </div>
         </div>
-          <div id="area-card-books">
-            {volunteersCard}
-          </div>
-      </div >
+        <div>
+          {volunteersCard}
+        </div>
+      </div>
     </>
   )
 }

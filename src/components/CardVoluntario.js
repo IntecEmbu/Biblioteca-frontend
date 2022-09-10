@@ -34,8 +34,8 @@ function CardBook(props) {
     <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.name}</p>
-        <p className="p-card-main">EMAIL: {props.email}</p>
-        <p className="p-card-main">USUÁRIO: {props.user}</p>
+        <p className="p-card-main">E-mail: {props.email}</p>
+        <p className="p-card-main">Usuário: {props.user}</p>
         {buttons}
       </div>
     </div>

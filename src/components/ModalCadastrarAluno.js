@@ -48,7 +48,7 @@ function Example() {
   return (
     <>
       <button className="btn-cadastrar" onClick={handleShow}>
-        Cadastrar
+        Cadastrar Aluno
       </button>
 
       <Modal show={show} centered>

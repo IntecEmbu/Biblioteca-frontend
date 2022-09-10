@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import CardBook from '../components/CardBook.js'
 import Spinner from 'react-bootstrap/Spinner'
 import Navbar from '../components/Navbar.js'
+import ModalCadastrarLivro from '../components/ModalCadastrarLivro.js'
 import downloadBook from '../service/seachBook.js'
 import { FaSearch } from "react-icons/fa"
-import '../styles/PesquisarLivro.css'
+import '../styles/Livros.css'
 
 function LivrosPage() {
     // Efeito de carregamento da página.
@@ -34,7 +35,7 @@ function LivrosPage() {
 
             // Faz a pesquisa no Hook.
             if (selectValue === 'title') {
-                var booksFind = books.filter(book => 
+                var booksFind = books.filter(book =>
                     book.book_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
                 )
             } else if (selectValue === 'category') {
@@ -42,7 +43,7 @@ function LivrosPage() {
                     book => book.category_name.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
                 )
             } else if (selectValue === 'author') {
-                var booksFind = books.filter(book => 
+                var booksFind = books.filter(book =>
                     book.book_author.toLocaleLowerCase().includes(nameSearch.toLocaleLowerCase())
                 )
             }
@@ -50,9 +51,9 @@ function LivrosPage() {
             // Caso não encontre nenhum livro, exibe uma mensagem.
             if (booksFind.length === 0) {
                 setBooksCard(
-                    <img id="book-notFound" 
-                    src={require('../images/livro-nao-encontrado.png')} 
-                    alt='Not Found' />
+                    <img id="book-notFound"
+                        src={require('../images/livro-nao-encontrado.png')}
+                        alt='Not Found' />
                 )
 
                 return
@@ -73,23 +74,23 @@ function LivrosPage() {
                         isbn={book.book_isbn}
                         cdd={book.book_cdd} />
                 )
-        })
+            })
 
-        // Atualiza o estado com os livros encontrados.
-        setBooksCard(dataCard)
+            // Atualiza o estado com os livros encontrados.
+            setBooksCard(dataCard)
         }, 100)
     }
 
     // Função padrão de carregamento da página.
     async function loadBooks() {
-        
+
         const data = await downloadBook()
         setBooks(data.books)
 
-        if(data.length == 0){
+        if (data.length == 0) {
             return setBooksCard(
-                <img id="book-notFound" 
-                    src={require('../images/livro-nao-encontrado.png')} 
+                <img id="book-notFound"
+                    src={require('../images/livro-nao-encontrado.png')}
                     alt='Not Found' />
             )
         }
@@ -120,26 +121,33 @@ function LivrosPage() {
     }, [])
 
     return (
-        <div>
+        <>
             <Navbar />
-            <h1 className="titulo-pagina">Livros</h1>
-            <div className="pesquisar-container">
-                <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor" 
-                onChange={e => setNameSearch(e.target.value.trim())} />
-                <select className="tipo-pesquisa" 
-                value={selectValue} onChange={e => setSelectValue(e.target.value)}>
-                    <option value={'title'}>TÍTULO</option>
-                    <option value={'category'}>CATEGORIA</option>
-                    <option value={'author'}>AUTOR</option>
-                </select>
-                <div className="btn-pesquisar-container">
-                    <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
+            <div className="pagina-container">
+                <div className="titulo-container">
+                    <h1>Livros</h1>
+                    <div className="btn-cadastrar-container">
+                        <ModalCadastrarLivro />
+                    </div>
+                </div>
+                <div className="pesquisar-container">
+                    <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor"
+                        onChange={e => setNameSearch(e.target.value.trim())} />
+                    <select className="tipo-pesquisa"
+                        value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+                        <option value={'title'}>TÍTULO</option>
+                        <option value={'category'}>CATEGORIA</option>
+                        <option value={'author'}>AUTOR</option>
+                    </select>
+                    <div className="btn-pesquisar-container">
+                        <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
+                    </div>
+                </div>
+                <div>
+                    {booksCard}
                 </div>
             </div>
-            <div id="area-card-books">
-                {booksCard}
-            </div>
-        </div >
+        </>
     )
 }
 
