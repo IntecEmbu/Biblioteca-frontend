@@ -1,9 +1,10 @@
 .card-main {
   background-color: #fff;
-  width: 24%;
+  width: 75vw;
   padding: 1rem;
   border-radius: .2rem;
   /* box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px; */
+  margin: 0 auto;
 }
 
 .titulo-card-main {
@@ -15,4 +16,8 @@
 
 .info-card-main{
   font-size: .9rem;
+}
+
+#card-main-container{
+  margin: 1rem;
 }
