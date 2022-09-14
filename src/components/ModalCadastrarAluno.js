@@ -76,7 +76,7 @@ function Example() {
                 />
               </div>
           
-              /*
+              {/*
               <div className="input-box-modal">
                 <label>CPF</label>
                 <input
@@ -85,7 +85,7 @@ function Example() {
                 onChange={e => setCourse(e.target.value)}
                 />
               </div>
-              */
+              */}
 
               <div className="input-box-modal">
                 <label>E-mail</label>
