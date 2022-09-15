@@ -12,7 +12,7 @@ function CardHome(props) {
           </div>
           <h1>Livros</h1>
           <Link to="/livros" className="link-card-home">
-            <button className="btn-card-home">Visitar</button>
+            <button className="btn-card-home">Acessar</button>
           </Link>
         </div>
         <div className="card">
@@ -21,7 +21,7 @@ function CardHome(props) {
           </div>
           <h1>Cadastar Livro</h1>
           <Link to="/cadastrar-livro" className="link-card-home">
-            <button className="btn-card-home">Visitar</button>
+            <button className="btn-card-home">Acessar</button>
           </Link>
         </div>
         <div className="card">
@@ -30,7 +30,7 @@ function CardHome(props) {
           </div>
           <h1>Alunos</h1>
           <Link to="/alunos" className="link-card-home">
-            <button className="btn-card-home">Visitar</button>
+            <button className="btn-card-home">Acessar</button>
           </Link>
         </div>
       </div>
