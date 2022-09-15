@@ -27,6 +27,7 @@
 }
 
 .item-dropdown {
+  padding: 1rem !important;
   text-align: center !important;
   transition: all .1s linear;
   border-radius: .2rem;

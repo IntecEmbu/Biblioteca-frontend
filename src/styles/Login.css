@@ -62,25 +62,6 @@
   color: var(--cinza-escuro);
 }
 
-.btn-entrar {
-  width: 100%;
-  color: var(--cinza) !important;
-  background-color: var(--azul) !important;
-  border: none;
-  border-radius: .2rem;
-  padding: 10px 0;
-  font-weight: bold !important;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  transition: all .1s linear;
-}
-
-.btn-entrar:hover {
-  background-color: var(--cinza) !important;
-  color: var(--azul) !important;
-  transition: all .1s linear;
-}
-
 .forgot-password {
   text-align: center;
   color: var(--azul);

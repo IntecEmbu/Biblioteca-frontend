@@ -1,9 +1,10 @@
 import React from 'react'
-import '../styles/Login.css'
 import { Link } from 'react-router-dom'
 import login from '../service/login.js'
 import { Spinner } from 'react-bootstrap'
 import Footer from '../components/Footer.js'
+import '../styles/Login.css'
+import '../styles/Botoes.css'
 
 function Index() {
 

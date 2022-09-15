@@ -30,6 +30,10 @@ body {
   border-radius: .2rem;
 }
 
+.navbar {
+  padding: 0 !important;
+}
+
 .area-loading {
   left: 50%;
   top: 50%;

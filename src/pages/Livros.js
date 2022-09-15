@@ -131,7 +131,7 @@ function LivrosPage() {
                     </div>
                 </div>
                 <div className="pesquisar-container">
-                    <input className="input-pesquisa" type="text" placeholder="Título, categoria ou autor"
+                    <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
                         onChange={e => setNameSearch(e.target.value.trim())} />
                     <select className="tipo-pesquisa"
                         value={selectValue} onChange={e => setSelectValue(e.target.value)}>

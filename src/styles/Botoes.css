@@ -22,11 +22,25 @@ select:hover {
   transition: all .1s linear;
 }
 
-.btn-container {
-  display: flex;
+.btn-entrar {
+  width: 100%;
+  color: var(--cinza) !important;
+  background-color: var(--azul) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: 10px 0;
+  font-weight: bold !important;
+  margin-bottom: 2rem;
+  transition: all .1s linear;
 }
 
-.btn-pesquisar2-container {
+.btn-entrar:hover {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-container {
   display: flex;
   align-items: center;
 }

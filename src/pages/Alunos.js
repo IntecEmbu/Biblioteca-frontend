@@ -105,16 +105,14 @@ export default function Alunos() {
           </div>
         </div>
         <div className="pesquisar-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome ou curso"
+          <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
             onChange={e => setNameSearch(e.target.value.trim())} />
           <select className="tipo-pesquisa"
             value={selectValue} onChange={e => setSelectValue(e.target.value)} >
             <option value={'name'}>NOME</option>
           </select>
           <div className="btn-container">
-            <div className="btn-pesquisar2-container">
-              <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
-            </div>
+            <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
         </div>
         <div>

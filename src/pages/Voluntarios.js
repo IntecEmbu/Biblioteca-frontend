@@ -99,12 +99,10 @@ export default function Voluntarios() {
           </div>
         </div>
         <div className="pesquisar-container">
-          <input className="input-pesquisa" type="text" placeholder="Nome"
+          <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
             onChange={e => setNameSearch(e.target.value)} />
           <div className="btn-container">
-            <div className="btn-pesquisar2-container">
-              <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
-            </div>
+            <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
         </div>
         <div>
