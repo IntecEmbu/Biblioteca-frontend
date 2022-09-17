@@ -48,11 +48,11 @@ function Index() {
               <img src={require('../images/logo2.png')}></img>
             </div>
             <div className="user">
-              <input type="text" className="input-user" placeholder="Usuário"
+              <input type="text" className="input-user" placeholder="Usuário" autoComplete='off'
                 onChange={e => setUser(e.target.value)} />
             </div>
             <div className="password">
-              <input type="password" className="input-password" placeholder="Senha"
+              <input type="password" className="input-password" placeholder="Senha" autoComplete="off"
                 onChange={e => setPassword(e.target.value)} />
             </div>
             <div className="btn-container">
