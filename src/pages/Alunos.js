@@ -115,7 +115,7 @@ export default function Alunos() {
             <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
         </div>
-        <div>
+        <div className="cards-container">
           {userCard}
         </div>
       </div>

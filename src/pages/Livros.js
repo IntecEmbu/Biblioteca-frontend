@@ -143,7 +143,7 @@ function LivrosPage() {
                         <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
                     </div>
                 </div>
-                <div>
+                <div className="cards-container">
                     {booksCard}
                 </div>
             </div>

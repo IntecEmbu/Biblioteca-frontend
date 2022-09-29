@@ -105,7 +105,7 @@ export default function Voluntarios() {
             <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>
           </div>
         </div>
-        <div>
+        <div className="cards-container">
           {volunteersCard}
         </div>
       </div>

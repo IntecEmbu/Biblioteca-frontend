@@ -1,10 +1,9 @@
 import React from 'react'
+import '../styles/Login.css'
 import { Link } from 'react-router-dom'
 import login from '../service/login.js'
 import { Spinner } from 'react-bootstrap'
 import Footer from '../components/Footer.js'
-import '../styles/Login.css'
-import '../styles/Botoes.css'
 
 function Index() {
 
@@ -48,11 +47,11 @@ function Index() {
               <img src={require('../images/logo2.png')}></img>
             </div>
             <div className="user">
-              <input type="text" className="input-user" placeholder="Usuário" autoComplete='off'
+              <input type="text" className="input-user" placeholder="Usuário"
                 onChange={e => setUser(e.target.value)} />
             </div>
             <div className="password">
-              <input type="password" className="input-password" placeholder="Senha" autoComplete="off"
+              <input type="password" className="input-password" placeholder="Senha"
                 onChange={e => setPassword(e.target.value)} />
             </div>
             <div className="btn-container">
