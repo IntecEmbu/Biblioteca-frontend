@@ -11,7 +11,7 @@ function index() {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand id="logo-nav">
           <Link to='/'>
