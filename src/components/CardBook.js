@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import ModalExcluir from '../components/ModalExcluir.js'
 import ModalEditarLivro from '../components/ModalEditarLivro.js'
+import ModalEmprestar from '../components/ModalEmprestar.js'
 import '../styles/Cards.css'
 import '../styles/Botoes.css'
 
@@ -26,9 +26,9 @@ function CardBook(props) {
        JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario'){
         setButtons(
           <div className="btn-card-container">
-            <Link to="/modal">
-              <button className="btn-emprestar-card">Emprestar</button>
-            </Link>
+            <div className="btn-editar-container">
+              <ModalEmprestar data={dataBook}/>
+            </div>
             <div className="btn-editar-container">
               <ModalEditarLivro data={dataBook}/>
             </div>

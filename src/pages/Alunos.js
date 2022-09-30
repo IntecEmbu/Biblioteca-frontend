@@ -21,7 +21,7 @@ export default function Alunos() {
 
   async function search() {
     if (nameSearch == '') {
-      alert('Preencha o campo de pesquisa')
+      alert('Preencha o campo de pesquisa!')
       return
     }
     setUserCard(spinnner)
@@ -110,6 +110,7 @@ export default function Alunos() {
           <select className="tipo-pesquisa"
             value={selectValue} onChange={e => setSelectValue(e.target.value)} >
             <option value={'name'}>NOME</option>
+            <option value={'course'}>CURSO</option>
           </select>
           <div className="btn-container">
             <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>

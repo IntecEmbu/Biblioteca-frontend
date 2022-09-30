@@ -23,8 +23,19 @@
 
 #card-main-container {
   margin-bottom: 1rem;
+  animation: surgir-baixo .5s;
 }
 
 #card-main-container:last-child {
   margin-bottom: 0;
+}
+
+@keyframes surgir-baixo {
+  from{
+    opacity: 0;
+    transform: translateY(50%);
+  } to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

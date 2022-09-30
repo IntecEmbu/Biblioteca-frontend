@@ -19,8 +19,8 @@ function CardHome(props) {
           <div className="icon">
             <img src={require('../images/card-cadastrar-livro.png')} alt="Cadastrar Livro" />
           </div>
-          <h1>Cadastar Livro</h1>
-          <Link to="/cadastrar-livro" className="link-card-home">
+          <h1>Empréstimos</h1>
+          <Link to="/emprestimos" className="link-card-home">
             <button className="btn-card-home">Acessar</button>
           </Link>
         </div>

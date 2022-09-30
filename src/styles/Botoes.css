@@ -45,6 +45,11 @@ select:hover {
   align-items: center;
 }
 
+.btn-esqueci-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn-pesquisar-container {
   display: flex;
   align-items: center;
@@ -118,6 +123,21 @@ select:hover {
   transition: all .1s linear;
 }
 
+.btn-devolver-card {
+  background-color: var(--cinza) !important;
+  color: var(--azul) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  transition: all .1s linear;
+}
+
+.btn-devolver-card:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
 .btn-voltar-home {
   background-color: var(--azul) !important;
   color: var(--cinza) !important;
@@ -131,6 +151,40 @@ select:hover {
 
 .btn-voltar-home:hover {
   background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-voltar-login {
+  background-color: var(--azul) !important;
+  color: var(--cinza) !important;
+  border: none;
+  border-radius: .2rem;
+  text-transform: uppercase;
+  padding: .3rem 1.2rem;
+  transition: all .1s linear;
+}
+
+.btn-voltar-login:hover {
+  background-color: var(--cinza-escuro) !important;
+  color: var(--azul) !important;
+  transition: all .1s linear;
+}
+
+.btn-avancar {
+  width: fit-content;
+  color: var(--cinza) !important;
+  background-color: var(--azul) !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-weight: bold !important;
+  margin-bottom: 1.5rem;
+  transition: all .1s linear;
+}
+
+.btn-avancar:hover {
+  background-color: var(--cinza) !important;
   color: var(--azul) !important;
   transition: all .1s linear;
 }
