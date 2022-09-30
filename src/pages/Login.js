@@ -32,6 +32,14 @@ function Index() {
     }
   }
 
+  // Quando o botão enter for pressionado, o login será executado
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      tryLogin()
+    }
+  }
+
   return (
     <div className='color'>
       <div className="form-container">
@@ -42,14 +50,20 @@ function Index() {
             </div>
             <div className="user">
               <input type="text" className="input-user" placeholder="Usuário"
-                onChange={e => setUser(e.target.value)} />
+                onChange={e => setUser(e.target.value)} 
+                onKeyDown={handleKeyDown}/>
             </div>
             <div className="password">
               <input type="password" className="input-password" placeholder="Senha"
-                onChange={e => setPassword(e.target.value)} />
+                onChange={e => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}/>
             </div>
             <div className="btn-container">
-              <button className="btn-entrar" onClick={tryLogin} disabled={isDisabled}>Entrar</button>
+              <button className="btn-entrar" 
+              onClick={tryLogin} 
+              disabled={isDisabled}>
+                Entrar
+              </button>
             </div>
             <p className="forgot-password">
               <Link to="/esqueci-senha" className="forgot-password">Esqueci minha senha</Link>
