@@ -13,6 +13,7 @@ function ModalEditarAluno({data}) {
   const id = data.id
   const [book_id, setBookId] = useState(data.book_id)
   const [librarian_id, setLibrarianId] = useState(JSON.parse(localStorage.getItem('user')).librarian_code)
+  const [userCpf, setUserCpf] = useState('')
 
   const [spinner, setSpinner] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
@@ -54,6 +55,7 @@ function ModalEditarAluno({data}) {
                 <input
                   type="text"
                   required
+                  onChange={e => setUserCpf(e.target.value)}
                 />
               </div>
             </div>
