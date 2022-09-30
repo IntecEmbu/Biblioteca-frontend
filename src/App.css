@@ -20,6 +20,11 @@ body {
   width: 100vw !important;
 }
 
+html, body{
+  width: 100% !important;
+}
+
+
 ::-webkit-scrollbar {
   width: .5rem;
 }
