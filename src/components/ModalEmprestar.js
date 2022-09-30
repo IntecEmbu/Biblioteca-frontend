@@ -11,23 +11,18 @@ function ModalEditarAluno({data}) {
   const handleShow = () => setShow(true)
 
   const id = data.id
-  const [name, setName] = useState(data.name)
-  const [email, setEmail] = useState(data.email)
-  const [phone, setPhone] = useState(data.phone)
-  const [course, setCourse] = useState(data.course)
-  const [type, setType] = useState(data.type)
+  const [book_id, setBookId] = useState(data.book_id)
+  const [librarian_id, setLibrarianId] = useState(JSON.parse(localStorage.getItem('user')).librarian_code)
 
   const [spinner, setSpinner] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
 
-  async function updateUser(){
+  async function lending(){
     setSpinner(<Spinner id="loading" animation='border' />)
     setIsDisabled(true)
 
     try{
-      await api.put('/user/update-user', {
-        id, name, email, phone, course, type
-        })
+      await api.put('/user/update-user')
       alert('Livro emprestado!')
     } catch(err){
       alert('Erro ao emprestar o livro!')
@@ -71,7 +66,7 @@ function ModalEditarAluno({data}) {
           <button className="btn-cancelar-modal" onClick={handleClose} disabled={isDisabled}>
             Cancelar
           </button>
-          <button className="btn-emprestar-modal" onClick={updateUser} disabled={isDisabled}>
+          <button className="btn-emprestar-modal" onClick={lending} disabled={isDisabled}>
             Emprestar
           </button>
         </Modal.Footer>

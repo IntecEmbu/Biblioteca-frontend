@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar.js'
-import CardHome from '../components/CardHome.js' 
 import '../styles/Home.css'
 
 function index() {
@@ -19,7 +17,6 @@ function index() {
           </span>
         </div>
       </div>
-      <CardHome />
     </div>
   )
 }

@@ -45,18 +45,24 @@ function Example() {
     }
   }
 
+  function handleKeyDown(event){
+    if(event.keyCode === 13){
+      sendUser()
+    }
+  }
+
   return (
     <>
       <button className="btn-cadastrar" onClick={handleShow}>
         Cadastrar Aluno
       </button>
 
+      <form>
       <Modal show={show} centered>
         <Modal.Header>
           <Modal.Title>Cadastrar Aluno</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
             <div className="input-group-modal">
               <div className="input-box-modal">
                 <label>Nome</label>
@@ -64,6 +70,7 @@ function Example() {
                 type="text"
                 required 
                 onChange={e => setName(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
               </div>
 
@@ -73,19 +80,19 @@ function Example() {
                 type="text"
                 required 
                 onChange={e => setCourse(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
               </div>
-          
-              {/*
+              
               <div className="input-box-modal">
                 <label>CPF</label>
                 <input
                 type="text"
                 required 
                 onChange={e => setCourse(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
               </div>
-              */}
 
               <div className="input-box-modal">
                 <label>E-mail</label>
@@ -93,6 +100,7 @@ function Example() {
                 type="text"
                 required 
                 onChange={e => setEmail(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
               </div>
 
@@ -102,6 +110,7 @@ function Example() {
                 type="text"
                 required 
                 onChange={e => setPhone(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
               </div>
 
@@ -113,17 +122,17 @@ function Example() {
                 </select>
               </div>
             </div>
-          </form>
         </Modal.Body>
         <Modal.Footer>
           <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
-          <button className="btn-cadastrar-modal" onClick={sendUser} disabled={isDisabled}>
+          <button className="btn-cadastrar-modal" onClick={sendUser} disabled={isDisabled} type="submit">
             Cadastrar
           </button>
         </Modal.Footer>
       </Modal>
+      </form> 
     </>
   );
 }
