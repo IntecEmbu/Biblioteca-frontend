@@ -88,6 +88,12 @@ export default function Voluntarios() {
     loadVolunteers()
   }, [])
 
+  function handleKeyDown(e){
+    if (e.key === 'Enter') {
+      search()
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -100,6 +106,7 @@ export default function Voluntarios() {
         </div>
         <div className="pesquisar-container">
           <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
             onChange={e => setNameSearch(e.target.value)} />
           <div className="btn-container">
             <button className="btn-pesquisar" onClick={search} disabled={isDisabled}><FaSearch /></button>

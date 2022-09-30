@@ -94,6 +94,12 @@ export default function Alunos() {
     loadUser()
   }, [])
 
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      search()
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -106,7 +112,8 @@ export default function Alunos() {
         </div>
         <div className="pesquisar-container">
           <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
-            onChange={e => setNameSearch(e.target.value.trim())} />
+            onKeyDown={handleKeyDown}
+            onChange={e => setNameSearch(e.target.value.trim())}/>
           <select className="tipo-pesquisa"
             value={selectValue} onChange={e => setSelectValue(e.target.value)} >
             <option value={'name'}>NOME</option>

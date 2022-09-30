@@ -32,8 +32,6 @@ function Index() {
     }
   }
 
-  // Quando o botão enter for pressionado, o login será executado
-
   function handleKeyDown(e) {
     if (e.key === 'Enter') {
       tryLogin()
