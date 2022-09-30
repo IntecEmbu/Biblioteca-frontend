@@ -17,20 +17,14 @@ function Index() {
     try {
       setSpinner(<Spinner id="loading" animation='border' />)
       setIsDisabled(true)
-
-      // Faz a requisição para o servidor
       const response = await login(user, password)
-
-      // Se a requisição for bem sucedida, redireciona para a página de Home
-      // Armazena o usuário logado no localStorage
       localStorage.setItem('isSigned', true)
+
       window.location.href = '/'
       localStorage.setItem('user', JSON.stringify(response.data[0]))
       setSpinner('')
 
     } catch (err) {
-      // Se a requisição falhar, exibe o erro
-      // Mostra para o usuário que o login falhou
       console.log(err)
       alert('Usuário ou senha inválidos!')
       setIsDisabled(false)
