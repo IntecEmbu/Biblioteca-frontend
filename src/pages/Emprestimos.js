@@ -20,6 +20,12 @@ export default function Emprestimos() {
     return false
   }
   
+  function handleKeyDown(e){
+    if (e.key === 'Enter') {
+      search()
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -29,6 +35,7 @@ export default function Emprestimos() {
         </div>
         <div className="pesquisar-container">
           <input className="input-pesquisa" type="text" placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
             onChange={e => setNameSearch(e.target.value.trim())} />
           <select className="tipo-pesquisa"
             value={selectValue} onChange={e => setSelectValue(e.target.value)} >
