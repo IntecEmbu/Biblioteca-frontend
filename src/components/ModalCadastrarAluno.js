@@ -25,6 +25,14 @@ function Example() {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
 
+  async function close() {
+    setInterval(() => {
+      setIsDisabled(false);
+      handleClose();
+      window.location.reload();
+    }, 1500);
+  }
+
   const [isDisabled, setIsDisabled] = useState(false);
 
   function validate() {
@@ -77,6 +85,7 @@ function Example() {
   async function sendUser() {
     if (validate()) {
       setIsDisabled(true);
+      setErrors({});
 
       const data = {
         name,
@@ -96,8 +105,9 @@ function Example() {
         alert("Erro ao cadastrar o aluno!");
         console.log(error);
         setIsDisabled(false);
+      } finally {
+        await close();
       }
-      window.location.reload();
     } else {
       window.scrollTo(0, 0);
     }
@@ -115,12 +125,12 @@ function Example() {
         Cadastrar Aluno
       </button>
 
-      <form>
-        <Modal show={show} centered>
-          <Modal.Header>
-            <Modal.Title>Cadastrar Aluno</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+      <Modal show={show} centered>
+        <Modal.Header>
+          <Modal.Title>Cadastrar Aluno</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
             <div className="input-group-modal">
               <div className="input-box-modal">
                 <label>Nome</label>
@@ -128,7 +138,7 @@ function Example() {
                   type="text"
                   onChange={(e) => {
                     setName(e.target.value);
-                    setErrors({ ...errors, name: "" });
+                    setErrors({ ...errors, name: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
                 />
@@ -166,7 +176,7 @@ function Example() {
                   type="text"
                   onChange={(e) => {
                     setCpf(e.target.value);
-                    setErrors({ ...errors, cpf: "" });
+                    setErrors({ ...errors, cpf: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
                 />
@@ -179,7 +189,7 @@ function Example() {
                   type="text"
                   onChange={(e) => {
                     setEmail(e.target.value);
-                    setErrors({ ...errors, email: "" });
+                    setErrors({ ...errors, email: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
                 />
@@ -194,7 +204,7 @@ function Example() {
                   type="text"
                   onChange={(e) => {
                     setPhone(e.target.value);
-                    setErrors({ ...errors, phone: "" });
+                    setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
                 />
@@ -226,22 +236,22 @@ function Example() {
             {success && (
               <p className="success-message">Aluno cadastrado com sucesso!</p>
             )}
-          </Modal.Body>
-          <Modal.Footer>
-            <button className="btn-cancelar-modal" onClick={handleClose}>
-              Cancelar
-            </button>
-            <button
-              className="btn-cadastrar-modal"
-              onClick={sendUser}
-              disabled={isDisabled}
-              type="submit"
-            >
-              Cadastrar
-            </button>
-          </Modal.Footer>
-        </Modal>
-      </form>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn-cancelar-modal" onClick={handleClose}>
+            Cancelar
+          </button>
+          <button
+            className="btn-cadastrar-modal"
+            onClick={sendUser}
+            disabled={isDisabled}
+            type="submit"
+          >
+            Cadastrar
+          </button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

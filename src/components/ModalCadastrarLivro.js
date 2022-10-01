@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Alert, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import api from "../service/api.js";
 
 function Example() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  function handleClose() {
+    setShow(false);
+    setErrors({});
+  }
   const handleShow = () => setShow(true);
 
   const [title, setTitle] = useState("");
@@ -21,61 +24,124 @@ function Example() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [isAlert, setIsAlert] = useState("");
 
-  const alertSucesso = (
-    <Alert variant={"success"}>Cadastrado com sucesso!</Alert>
-  );
-
-  const alertErro = <Alert variant={"danger"}>Erro ao cadastrar!</Alert>;
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
 
   async function close() {
     setInterval(() => {
       setIsDisabled(false);
       handleClose();
       window.location.reload();
-    }, 1000);
+    }, 1500);
+  }
+
+  function validate() {
+    let errors = {};
+    let count = 0;
+
+    // Validação do título
+    if (!title) {
+      errors.title = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação da edição
+    if (!edition) {
+      errors.edition = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação da categoria
+    if (!category) {
+      errors.category = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do idioma
+    if (!idiom) {
+      errors.idiom = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do ano
+    const currentYear = new Date().getFullYear();
+    if (!year) {
+      errors.year = "Campo obrigatório";
+      count++;
+    } else if (year.length > 4 || year.length < 4) {
+      errors.year = "Ano inválido";
+      count++;
+    } else if (year < 1000 || year > currentYear) {
+      errors.year = "Ano inválido";
+      count++;
+    }
+
+    // Validação do autor
+    if (!author) {
+      errors.author = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do isbn
+    if (!isbn) {
+      errors.isbn = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do cdd
+    if (!cdd) {
+      errors.cdd = "Campo obrigatório";
+      count++;
+    }
+
+    if (count > 0) {
+      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+    }
+
+    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
+    } else {
+      return true;
+    }
   }
 
   async function sendBook() {
-    const data = {
-      title,
-      edition,
-      isbn,
-      cdd,
-      year,
-      category,
-      idiom,
-      author,
-    };
+    if (validate()) {
+      setIsDisabled(true);
 
-    if (
-      title === "" ||
-      edition === "" ||
-      category === "" ||
-      idiom === "" ||
-      year === "" ||
-      author === "" ||
-      isbn === "" ||
-      cdd === ""
-    ) {
-      return alert("Preencha todos os campos!");
-    }
+      const data = {
+        title,
+        edition,
+        isbn,
+        cdd,
+        year,
+        category,
+        idiom,
+        author,
+      };
 
-    const confirm = window.confirm("Deseja cadastrar o livro?");
-    if (confirm) {
       try {
-        setIsDisabled(true);
-
-        const response = await api.post("/book/insert", data);
-        if (response.status === 200) {
-          setIsAlert(alertSucesso);
-          await close();
-        }
-      } catch (error) {
-        setIsAlert(alertErro);
-        console.log(error);
-        await close();
+        await api.post("/book/insert", data);
+        setSuccess(true);
         setIsDisabled(false);
+        await close();
+      } catch (error) {
+        alert("Erro ao cadastrar o aluno!");
+        console.log(error);
+        setIsDisabled(false);
+      } finally {
+        await close();
       }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      sendBook();
     }
   }
 
@@ -95,73 +161,121 @@ function Example() {
               <div className="input-box-modal">
                 <label>Título</label>
                 <input
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setErrors({ ...errors, title: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.title && (
+                  <p className="error-message">{errors.title}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>Edição</label>
                 <input
-                  onChange={(e) => setEdition(e.target.value)}
+                  onChange={(e) => {
+                    setEdition(e.target.value);
+                    setErrors({ ...errors, edition: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.edition && (
+                  <p className="error-message">{errors.edition}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>Categoria</label>
                 <input
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    setErrors({ ...errors, category: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.category && (
+                  <p className="error-message">{errors.category}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>Idioma</label>
                 <input
-                  onChange={(e) => setIdiom(e.target.value)}
+                  onChange={(e) => {
+                    setIdiom(e.target.value);
+                    setErrors({ ...errors, idiom: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.idiom && (
+                  <p className="error-message">{errors.idiom}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>Autor</label>
                 <input
-                  onChange={(e) => setAuthor(e.target.value)}
+                  onChange={(e) => {
+                    setAuthor(e.target.value);
+                    setErrors({ ...errors, author: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.author && (
+                  <p className="error-message">{errors.author}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
                 <input
-                  onChange={(e) => setYear(e.target.value)}
+                  onChange={(e) => {
+                    setYear(e.target.value);
+                    setErrors({ ...errors, year: "", count: "" });
+                  }}
                   type="number"
-                  maxLength="4"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.year && <p className="error-message">{errors.year}</p>}
               </div>
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
-                  onChange={(e) => setIsbn(e.target.value)}
+                  onChange={(e) => {
+                    setIsbn(e.target.value);
+                    setErrors({ ...errors, isbn: "", count: "" });
+                  }}
                   type="text"
-                  maxLength="17"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.isbn && <p className="error-message">{errors.isbn}</p>}
               </div>
               <div className="input-box-modal">
                 <label>CDD</label>
                 <input
-                  onChange={(e) => setCdd(e.target.value)}
+                  onChange={(e) => {
+                    setCdd(e.target.value);
+                    setErrors({ ...errors, cdd: "", count: "" });
+                  }}
                   type="text"
-                  required
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.cdd && <p className="error-message">{errors.cdd}</p>}
               </div>
             </div>
           </form>
+          {errors.count && <p className="error-message">{errors.count}</p>}
+          {success && (
+            <p className="success-message">Livro cadastrado com sucesso!</p>
+          )}
+          {isDisabled && (
+            <div className="loading-modal">
+              <Spinner animation="border" />
+            </div>
+          )}
         </Modal.Body>
-        {isAlert}
         <Modal.Footer>
           <button
             className="btn-cancelar-modal"
