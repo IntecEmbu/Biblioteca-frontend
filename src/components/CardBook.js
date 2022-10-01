@@ -4,6 +4,7 @@ import ModalEditarLivro from "../components/ModalEditarLivro.js";
 import ModalEmprestar from "../components/ModalEmprestar.js";
 import "../styles/Cards.css";
 import "../styles/Botoes.css";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");

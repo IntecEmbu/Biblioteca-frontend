@@ -86,3 +86,55 @@ button :disabled :hover{
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+
+.error-message{
+  color: var(--vermelho);
+  font-size: 1rem;
+  margin-bottom: .2rem;
+  animation: surgir-error .5s;
+
+  padding: .2rem;
+  border-radius: .2rem;
+  background-color: #c2000045;
+}
+
+.error-count-message{
+  color: var(--vermelho);
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  animation: surgir-error .5s;
+  text-align: center;
+
+  padding: .2rem;
+  border-radius: .2rem;
+  background-color: #c2000045;
+}
+
+.success-message{
+  color: var(--azul);
+  font-size: 1rem;
+  margin-bottom: .2rem;
+  animation: surgir-error .5s;
+
+  padding: .2rem;
+  border-radius: .2rem;
+  background-color: #19203945;
+  text-align: center;
+}
+
+.loading-modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+@keyframes surgir-error {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
