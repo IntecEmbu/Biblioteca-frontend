@@ -86,7 +86,6 @@ function Example() {
         type,
         cpf,
       };
-      console.log(data);
 
       try {
         setIsDisabled(true);
@@ -98,9 +97,9 @@ function Example() {
         console.log(error);
         setIsDisabled(false);
       }
-      // window.location.reload();
+      window.location.reload();
     } else {
-      window.scrollY(0, 0);
+      window.scrollTo(0, 0);
     }
   }
 
