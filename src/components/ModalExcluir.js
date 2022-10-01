@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { Spinner } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
 import api from "../service/api";
 import "../styles/Modal.css";
@@ -11,17 +12,27 @@ function ModalExcluir({ path, id }) {
   const handleShow = () => setShow(true);
 
   const [isDisabled, setIsDisabled] = useState(false);
+  const [sucess, setSucess] = useState(false);
+
+  async function close() {
+    setInterval(() => {
+      setIsDisabled(false);
+      handleClose();
+      window.location.reload();
+    }, 2000);
+  }
 
   async function deleteitem() {
     setIsDisabled(true);
 
     try {
       await api.delete(`${path}?id=${id}`);
-      alert("Excluido com sucesso!");
-      window.location.reload();
+      setSucess(true);
     } catch (err) {
       alert("Erro ao excluir!");
       console.log(err);
+    } finally {
+      await close();
     }
 
     setIsDisabled(false);
@@ -38,7 +49,15 @@ function ModalExcluir({ path, id }) {
         <Modal.Header>
           <Modal.Title>Excluir</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Tem certeza que deseja excluir?</Modal.Body>
+        <Modal.Body>
+          Tem certeza que deseja excluir?
+          {isDisabled && (
+            <div className="loading-modal">
+              <Spinner animation="border" />
+            </div>
+          )}
+          {sucess && <p className="success-message">Excluido com sucesso</p>}
+        </Modal.Body>
         <Modal.Footer>
           <button
             className="btn-cancelar-modal"

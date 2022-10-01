@@ -32,7 +32,7 @@ function Example() {
       setIsDisabled(false);
       handleClose();
       window.location.reload();
-    }, 1500);
+    }, 2000);
   }
 
   function validate() {
