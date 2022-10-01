@@ -6,10 +6,6 @@ import "../styles/Cards.css";
 import "../styles/Botoes.css";
 
 function CardBook(props) {
-  // function setItems(){
-  //   localStorage.setItem('book_selected', JSON.stringify(props))
-  // }
-
   const [buttons, setButtons] = React.useState("");
 
   const {
@@ -42,16 +38,8 @@ function CardBook(props) {
       JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
     ) {
       setButtons(
-        <div className="btn-card-container">
-          <div className="btn-editar-container">
-            <ModalEmprestar data={dataBook} />
-          </div>
-          <div className="btn-editar-container">
-            <ModalEditarLivro data={dataBook} />
-          </div>
-          <div className="btn-excluir-container">
-            <ModalExcluir path={"/book"} id={id} />
-          </div>
+        <div className="btn-excluir-container">
+          <ModalExcluir path={"/book"} id={id} />
         </div>
       );
     }
@@ -72,7 +60,15 @@ function CardBook(props) {
         <p className="info-card-main">Idioma: {props.language}</p>
         <p className="info-card-main">ISBN: {props.isbn}</p>
         <p className="info-card-main">CDD: {props.cdd}</p>
-        {buttons}
+        <div className="btn-card-container">
+          <div className="btn-editar-container">
+            <ModalEmprestar data={dataBook} />
+          </div>
+          <div className="btn-editar-container">
+            <ModalEditarLivro data={dataBook} />
+          </div>
+          {buttons}
+        </div>
       </div>
     </div>
   );

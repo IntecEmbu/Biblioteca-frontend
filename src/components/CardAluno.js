@@ -16,13 +16,8 @@ function CardBook(props) {
       JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
     ) {
       setButtons(
-        <div className="btn-card-container">
-          <div className="btn-editar-container">
-            <ModalEditarAluno data={dataUser} />
-          </div>
-          <div className="btn-excluir-container">
-            <ModalExcluir path={"/user"} id={id} />
-          </div>
+        <div className="btn-excluir-container">
+          <ModalExcluir path={"/user"} id={id} />
         </div>
       );
     }
@@ -40,7 +35,12 @@ function CardBook(props) {
         <p className="info-card-main">E-mail: {props.email}</p>
         <p className="info-card-main">Celular: {props.phone}</p>
         <p className="info-card-main">Tipo: {props.type}</p>
-        {buttons}
+        <div className="btn-card-container">
+          <div className="btn-editar-container">
+            <ModalEditarAluno data={dataUser} />
+          </div>
+          {buttons}
+        </div>
       </div>
     </div>
   );
