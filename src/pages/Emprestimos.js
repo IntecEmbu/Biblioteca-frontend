@@ -16,6 +16,7 @@ export default function Emprestimos() {
   const [isDisabled, setIsDisabled] = React.useState(true);
   const [nameSearch, setNameSearch] = React.useState("");
   const [selectValue, setSelectValue] = React.useState("name");
+  const [counter, setCounter] = React.useState("");
 
   function search() {
     return false;
@@ -61,6 +62,7 @@ export default function Emprestimos() {
             </button>
           </div>
         </div>
+        <div className="count-container">{counter}</div>
         <div className="cards-container">
           <CardLending />
         </div>

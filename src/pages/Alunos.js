@@ -19,13 +19,14 @@ export default function Alunos() {
   const [nameSearch, setNameSearch] = React.useState("");
   const [selectValue, setSelectValue] = React.useState("name");
   const [users, setUsers] = React.useState([]);
+  const [counter, setCounter] = React.useState("");
 
   async function search() {
     if (nameSearch == "") {
-      alert("Preencha o campo de pesquisa!");
       return;
     }
     setUserCard(spinnner);
+    setCounter("");
 
     setTimeout(() => {
       if (selectValue === "name") {
@@ -64,6 +65,8 @@ export default function Alunos() {
           />
         );
       });
+
+      setCounter(<p>{usersFind.length} pessoas encontradas.</p>);
       setUserCard(dataCard);
     }, 100);
   }
@@ -145,6 +148,7 @@ export default function Alunos() {
             </button>
           </div>
         </div>
+        <div className="count-container">{counter}</div>
         <div className="cards-container">{userCard}</div>
       </div>
     </>

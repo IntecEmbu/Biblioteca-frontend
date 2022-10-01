@@ -14,14 +14,15 @@ export default function Voluntarios() {
     </div>
   );
 
+  const [button, setButton] = React.useState(<></>);
   const [isDisabled, setIsDisabled] = React.useState(true);
   const [volunteers, setVolunteers] = React.useState([]);
   const [nameSearch, setNameSearch] = React.useState("");
   const [volunteersCard, setVolunteersCard] = React.useState(spinnner);
+  const [counter, setCounter] = React.useState("");
 
   async function search() {
     if (nameSearch == "") {
-      alert("Preencha o campo de pesquisa");
       return;
     }
 
@@ -57,6 +58,7 @@ export default function Voluntarios() {
         );
       });
       setVolunteersCard(dataCard);
+      setCounter(<p>{volunteersFind.length} voluntários encontrados.</p>);
     }, 100);
   }
 
@@ -72,6 +74,7 @@ export default function Voluntarios() {
           alt="Not Found"
         />
       );
+      setCounter("");
     }
 
     const dataCard = volunteers.map((volunteer) => {
@@ -90,8 +93,18 @@ export default function Voluntarios() {
     setIsDisabled(false);
   }
 
+  function verifyUser() {
+    if (
+      JSON.parse(localStorage.getItem("user")).librarian_type == "ADM" ||
+      JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
+    ) {
+      setButton(<ModalCadastrarVoluntario />);
+    }
+  }
+
   useEffect(() => {
     loadVolunteers();
+    verifyUser();
   }, []);
 
   function handleKeyDown(e) {
@@ -106,9 +119,7 @@ export default function Voluntarios() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Voluntários</h1>
-          <div className="btn-cadastrar-container">
-            <ModalCadastrarVoluntario />
-          </div>
+          <div className="btn-cadastrar-container">{button}</div>
         </div>
         <div className="pesquisar-container">
           <input
@@ -128,6 +139,7 @@ export default function Voluntarios() {
             </button>
           </div>
         </div>
+        <div className="counter-container">{counter}</div>
         <div className="cards-container">{volunteersCard}</div>
       </div>
     </>

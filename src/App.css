@@ -80,3 +80,9 @@ html, body{
 button :disabled :hover{
   cursor: wait !important;
 }
+
+.count-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}

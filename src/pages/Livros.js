@@ -9,28 +9,28 @@ import "../styles/Livros.css";
 
 function LivrosPage() {
   // Efeito de carregamento da página.
-  const spinnner = (
+  const spinner = (
     <div className="area-loading">
       <Spinner id="loading" animation="border" />
     </div>
   );
 
   const [isDisabled, setIsDisabled] = React.useState(true);
-  const [booksCard, setBooksCard] = React.useState(spinnner);
+  const [booksCard, setBooksCard] = React.useState(spinner);
   const [nameSearch, setNameSearch] = React.useState("");
   const [selectValue, setSelectValue] = React.useState("title");
   const [books, setBooks] = React.useState([]);
-  const [countBooks, setCountBooks] = React.useState(0);
+  const [counter, setCounter] = React.useState("");
 
   async function search() {
     // Verifica se o nome foi preenchido.
 
     if (nameSearch === "") {
-      alert("Preencha o campo de pesquisa");
       return;
     }
 
-    setBooksCard(spinnner);
+    setBooksCard(spinner);
+    setCounter("");
 
     // Colocando delay para experiencia do usuário.
     setTimeout(() => {
@@ -64,10 +64,10 @@ function LivrosPage() {
             alt="Not Found"
           />
         );
+        setCounter("");
         return;
       }
-      setCountBooks(booksFind.length);
-      console.log(booksFind);
+      setCounter(<p>{booksFind.length} livros encontrados.</p>);
 
       // Coloca os livros encontrados no Hook.
       const dataCard = booksFind.map((book) => {
@@ -136,7 +136,6 @@ function LivrosPage() {
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       search();
-      console.log("Enter");
     }
   }
 
@@ -177,6 +176,7 @@ function LivrosPage() {
             </button>
           </div>
         </div>
+        <div className="count-container">{counter}</div>
         <div className="cards-container">{booksCard}</div>
       </div>
     </>
