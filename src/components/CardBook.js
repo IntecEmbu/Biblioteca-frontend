@@ -1,48 +1,65 @@
-import React, { useEffect } from 'react'
-import ModalExcluir from '../components/ModalExcluir.js'
-import ModalEditarLivro from '../components/ModalEditarLivro.js'
-import ModalEmprestar from '../components/ModalEmprestar.js'
-import '../styles/Cards.css'
-import '../styles/Botoes.css'
+import React, { useEffect } from "react";
+import ModalExcluir from "../components/ModalExcluir.js";
+import ModalEditarLivro from "../components/ModalEditarLivro.js";
+import ModalEmprestar from "../components/ModalEmprestar.js";
+import "../styles/Cards.css";
+import "../styles/Botoes.css";
 
 function CardBook(props) {
-
   // function setItems(){
   //   localStorage.setItem('book_selected', JSON.stringify(props))
   // }
 
-  const [buttons, setButtons] = React.useState('')
+  const [buttons, setButtons] = React.useState("");
 
-  const { id, title, author, edition, release_year, category, language, isbn, cdd} = props
+  const {
+    id,
+    title,
+    author,
+    edition,
+    release_year,
+    category,
+    language,
+    isbn,
+    cdd,
+  } = props;
 
   const dataBook = {
-    id, title, author, 
-    edition, release_year, category, 
-    language, isbn, cdd
-  }
+    id,
+    title,
+    author,
+    edition,
+    release_year,
+    category,
+    language,
+    isbn,
+    cdd,
+  };
 
-  function showButtons(){
-    if(JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
-       JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario'){
-        setButtons(
-          <div className="btn-card-container">
-            <div className="btn-editar-container">
-              <ModalEmprestar data={dataBook}/>
-            </div>
-            <div className="btn-editar-container">
-              <ModalEditarLivro data={dataBook}/>
-            </div>
-            <div className="btn-excluir-container">
-              <ModalExcluir path={'/book'} id={id}/>
-            </div>
+  function showButtons() {
+    if (
+      JSON.parse(localStorage.getItem("user")).librarian_type == "ADM" ||
+      JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
+    ) {
+      setButtons(
+        <div className="btn-card-container">
+          <div className="btn-editar-container">
+            <ModalEmprestar data={dataBook} />
           </div>
-        )
+          <div className="btn-editar-container">
+            <ModalEditarLivro data={dataBook} />
+          </div>
+          <div className="btn-excluir-container">
+            <ModalExcluir path={"/book"} id={id} />
+          </div>
+        </div>
+      );
     }
   }
 
   useEffect(() => {
-    showButtons()
-  }, [])
+    showButtons();
+  }, []);
 
   return (
     <div id="card-main-container">
@@ -58,7 +75,7 @@ function CardBook(props) {
         {buttons}
       </div>
     </div>
-  )
+  );
 }
 
-export default CardBook
+export default CardBook;

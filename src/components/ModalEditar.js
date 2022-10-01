@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { FaTrashAlt, FaPen } from "react-icons/fa"
-import '../styles/Modal.css'
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { FaTrashAlt, FaPen } from "react-icons/fa";
+import "../styles/Modal.css";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -36,4 +36,4 @@ function Example() {
   );
 }
 
-export default Example
+export default Example;

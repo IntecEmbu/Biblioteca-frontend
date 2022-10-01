@@ -1,34 +1,36 @@
-import React, { useEffect } from 'react'
-import ModalExcluir from '../components/ModalExcluir.js'
-import ModalEditarVoluntario from '../components/ModalEditarVoluntario.js'
-import '../styles/Cards.css'
-import '../styles/Botoes.css'
+import React, { useEffect } from "react";
+import ModalExcluir from "../components/ModalExcluir.js";
+import ModalEditarVoluntario from "../components/ModalEditarVoluntario.js";
+import "../styles/Cards.css";
+import "../styles/Botoes.css";
 
 function CardBook(props) {
-  const [buttons, setButtons] = React.useState('')
+  const [buttons, setButtons] = React.useState("");
 
-  const { id, name, email, user } = props
-  const dataVolunter = { id, name, email, user }
+  const { id, name, email, user } = props;
+  const dataVolunter = { id, name, email, user };
 
   function showButtons() {
-    if (JSON.parse(localStorage.getItem('user')).librarian_type == 'ADM' ||
-      JSON.parse(localStorage.getItem('user')).librarian_type == 'Bibliotecario') {
+    if (
+      JSON.parse(localStorage.getItem("user")).librarian_type == "ADM" ||
+      JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
+    ) {
       setButtons(
         <div className="btn-card-container">
           <div className="btn-editar-container">
-            <ModalEditarVoluntario data={dataVolunter}/>
+            <ModalEditarVoluntario data={dataVolunter} />
           </div>
           <div className="btn-excluir-container">
-            <ModalExcluir path={'/librian'} id={id}/>
+            <ModalExcluir path={"/librian"} id={id} />
           </div>
         </div>
-      )
+      );
     }
   }
 
   useEffect(() => {
-    showButtons()
-  }, [])
+    showButtons();
+  }, []);
 
   return (
     <div id="card-main-container">
@@ -39,7 +41,7 @@ function CardBook(props) {
         {buttons}
       </div>
     </div>
-  )
+  );
 }
 
-export default CardBook
+export default CardBook;

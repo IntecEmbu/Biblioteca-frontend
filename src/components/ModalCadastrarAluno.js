@@ -1,53 +1,61 @@
-import React, { useState } from 'react'
-import Modal from 'react-bootstrap/Modal'
-import '../styles/Modal.css'
-import '../styles/Botoes.css'
-import api from '../service/api.js'
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import "../styles/Modal.css";
+import "../styles/Botoes.css";
+import api from "../service/api.js";
 
 function Example() {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const [name, setName] = useState(''),
-        [email, setEmail] = useState(''),
-        [phone, setPhone] = useState(''),
-        [course, setCourse] = useState(''),
-        [type, setType] = useState('Aluno')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [course, setCourse] = useState("");
+  const [type, setType] = useState("Aluno");
 
-  const [isDisabled, setIsDisabled] = useState(false)
-  
+  const [isDisabled, setIsDisabled] = useState(false);
+
   async function sendUser() {
     const data = {
-      name, email,
-      phone, course,
-      type
-    }
+      name,
+      email,
+      phone,
+      course,
+      type,
+    };
 
-    if (name === '' || email === '' || phone === '' || course === '' || type === '') {
-      alert('Preencha todos os campos')
+    if (
+      name === "" ||
+      email === "" ||
+      phone === "" ||
+      course === "" ||
+      type === ""
+    ) {
+      alert("Preencha todos os campos");
     } else {
-      const confirm = window.confirm('Deseja cadastrar o aluno?')
+      const confirm = window.confirm("Deseja cadastrar o aluno?");
       if (confirm) {
         try {
-          setIsDisabled(true)
-          await api.post('/user/insert', data)
-          alert('Aluno cadastrado com sucesso!')
-          setIsDisabled(false)
+          setIsDisabled(true);
+          await api.post("/user/insert", data);
+          alert("Aluno cadastrado com sucesso!");
+          setIsDisabled(false);
         } catch (error) {
-          alert('Erro ao cadastrar o aluno!')
-          console.log(error)
-          setIsDisabled(false)
+          alert("Erro ao cadastrar o aluno!");
+          console.log(error);
+          setIsDisabled(false);
         }
-        window.location.reload()
+        window.location.reload();
       }
     }
   }
 
-  function handleKeyDown(event){
-    if(event.keyCode === 13){
-      sendUser()
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      sendUser();
     }
   }
 
@@ -58,83 +66,92 @@ function Example() {
       </button>
 
       <form>
-      <Modal show={show} centered>
-        <Modal.Header>
-          <Modal.Title>Cadastrar Aluno</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        <Modal show={show} centered>
+          <Modal.Header>
+            <Modal.Title>Cadastrar Aluno</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <div className="input-group-modal">
               <div className="input-box-modal">
                 <label>Nome</label>
                 <input
-                type="text"
-                required 
-                onChange={e => setName(e.target.value)}
-                onKeyDown={handleKeyDown}
+                  type="text"
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
               <div className="input-box-modal">
                 <label>Curso</label>
                 <input
-                type="text"
-                required 
-                onChange={e => setCourse(e.target.value)}
-                onKeyDown={handleKeyDown}
+                  type="text"
+                  required
+                  onChange={(e) => setCourse(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
-              
+
               <div className="input-box-modal">
                 <label>CPF</label>
                 <input
-                type="text"
-                required 
-                onChange={e => setCourse(e.target.value)}
-                onKeyDown={handleKeyDown}
+                  type="text"
+                  required
+                  onChange={(e) => setCourse(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
               <div className="input-box-modal">
                 <label>E-mail</label>
                 <input
-                type="text"
-                required 
-                onChange={e => setEmail(e.target.value)}
-                onKeyDown={handleKeyDown}
+                  type="text"
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
               <div className="input-box-modal">
                 <label>Celular</label>
                 <input
-                type="text"
-                required 
-                onChange={e => setPhone(e.target.value)}
-                onKeyDown={handleKeyDown}
+                  type="text"
+                  required
+                  onChange={(e) => setPhone(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
               <div className="input-box-modal">
                 <label>Tipo</label>
-                <select className="tipo-pesquisa" value={type} onChange={e => setType(e.target.value)}>
-                  <option value={'Aluno'}>ALUNO</option>
-                  <option value={'Funcionario'}>FUNCIONÁRIO</option>
+                <select
+                  className="tipo-pesquisa"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <option value={"Aluno"}>ALUNO</option>
+                  <option value={"Funcionario"}>FUNCIONÁRIO</option>
                 </select>
               </div>
             </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="btn-cancelar-modal" onClick={handleClose}>
-            Cancelar
-          </button>
-          <button className="btn-cadastrar-modal" onClick={sendUser} disabled={isDisabled} type="submit">
-            Cadastrar
-          </button>
-        </Modal.Footer>
-      </Modal>
-      </form> 
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="btn-cancelar-modal" onClick={handleClose}>
+              Cancelar
+            </button>
+            <button
+              className="btn-cadastrar-modal"
+              onClick={sendUser}
+              disabled={isDisabled}
+              type="submit"
+            >
+              Cadastrar
+            </button>
+          </Modal.Footer>
+        </Modal>
+      </form>
     </>
   );
 }
 
-export default Example
+export default Example;

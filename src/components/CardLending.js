@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import ModalDevolver from '../components/ModalDevolver.js'
-import '../styles/Cards.css'
-import '../styles/Botoes.css'
+import React, { useEffect } from "react";
+import ModalDevolver from "../components/ModalDevolver.js";
+import "../styles/Cards.css";
+import "../styles/Botoes.css";
 
 function CardBook(props) {
-
   return (
     <div id="card-main-container">
       <div className="card-main">
@@ -21,7 +20,7 @@ function CardBook(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CardBook
+export default CardBook;

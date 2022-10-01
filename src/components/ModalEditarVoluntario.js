@@ -1,41 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import Modal from 'react-bootstrap/Modal'
-import { FaPen } from 'react-icons/fa'
-import api from '../service/api'
-import Spinner from 'react-bootstrap/Spinner'
+import React, { useState, useEffect } from "react";
+import Modal from "react-bootstrap/Modal";
+import { FaPen } from "react-icons/fa";
+import api from "../service/api";
+import Spinner from "react-bootstrap/Spinner";
 
-function ModalEditarVoluntario({data}) {
-  const [show, setShow] = useState(false)
+function ModalEditarVoluntario({ data }) {
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const id = data.id
-  const [name, setName] = useState(data.name)
-  const [email, setEmail] = useState(data.email)
-  const [user, setUser] = useState(data.user)
+  const id = data.id;
+  const [name, setName] = useState(data.name);
+  const [email, setEmail] = useState(data.email);
+  const [user, setUser] = useState(data.user);
 
-  const [spinner, setSpinner] = useState('')
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [spinner, setSpinner] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  async function updateVolunter(){
-    setSpinner(<Spinner id="loading" animation='border' />)
-    setIsDisabled(true)
+  async function updateVolunter() {
+    setSpinner(<Spinner id="loading" animation="border" />);
+    setIsDisabled(true);
 
-    try{
-      await api.put('/librian/update-collaborator', {
-        id, name, email, user
-      })
-      alert('Voluntário atualizado com sucesso!')
-    } catch(err){
-      alert('Erro ao atualizar voluntário!')
-      console.log(err)
+    try {
+      await api.put("/librian/update-collaborator", {
+        id,
+        name,
+        email,
+        user,
+      });
+      alert("Voluntário atualizado com sucesso!");
+    } catch (err) {
+      alert("Erro ao atualizar voluntário!");
+      console.log(err);
     }
 
-    setSpinner('')
-    setIsDisabled(false)
-    handleClose()
-    window.location.reload()
+    setSpinner("");
+    setIsDisabled(false);
+    handleClose();
+    window.location.reload();
   }
 
   return (
@@ -56,7 +59,7 @@ function ModalEditarVoluntario({data}) {
                 <label>Nome</label>
                 <input
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   type="text"
                   required
                 />
@@ -66,7 +69,7 @@ function ModalEditarVoluntario({data}) {
                 <label>E-mail</label>
                 <input
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   required
                 />
@@ -76,7 +79,7 @@ function ModalEditarVoluntario({data}) {
                 <label>Usuário</label>
                 <input
                   value={user}
-                  onChange={e => setUser(e.target.value)}
+                  onChange={(e) => setUser(e.target.value)}
                   type="text"
                   required
                 />
@@ -92,15 +95,13 @@ function ModalEditarVoluntario({data}) {
             </div>
           </form>
         </Modal.Body>
-        <div className="spinner-login">
-            {spinner}
-        </div>
+        <div className="spinner-login">{spinner}</div>
         <Modal.Footer>
           <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
           <button className="btn-editar-modal" onClick={updateVolunter}>
-            <FaPen className="fa-pen"/>
+            <FaPen className="fa-pen" />
             Editar
           </button>
         </Modal.Footer>
@@ -109,4 +110,4 @@ function ModalEditarVoluntario({data}) {
   );
 }
 
-export default ModalEditarVoluntario
+export default ModalEditarVoluntario;

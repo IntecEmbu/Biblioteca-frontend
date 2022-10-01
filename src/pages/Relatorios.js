@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from '../components/Navbar.js'
-import '../styles/Botoes.css'
+import React from "react";
+import Navbar from "../components/Navbar.js";
+import "../styles/Botoes.css";
 
 export default function Relatorios() {
   return (
@@ -15,5 +15,5 @@ export default function Relatorios() {
         </div>
       </div>
     </>
-  )
+  );
 }

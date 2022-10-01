@@ -1,5 +1,5 @@
-function validateCPF(cpf){
-    return 
+function validateCPF(cpf) {
+  return;
 }
 
-export default validateCPF
+export default validateCPF;
