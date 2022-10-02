@@ -98,13 +98,7 @@ function LivrosPage() {
     setBooks(data.books);
 
     if (data.length == 0) {
-      return setBooksCard(
-        <img
-          id="book-notFound"
-          src={require("../images/livro-nao-encontrado.png")}
-          alt="Not Found"
-        />
-      );
+      return setBooksCard("");
     }
 
     // Organiza os dados chamando os cards dos livros.
