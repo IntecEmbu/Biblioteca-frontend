@@ -11,7 +11,7 @@ function Home() {
 
   function getMessage() {
     const hour = new Date().getHours();
-    if (hour >= 0 && hour < 12) {
+    if (hour >= 5 && hour < 12) {
       setMessage("Bom dia");
     } else if (hour >= 12 && hour < 18) {
       setMessage("Boa tarde");
