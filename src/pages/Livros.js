@@ -124,6 +124,7 @@ function LivrosPage() {
         />
       );
     });
+
     setBooksCard(cards);
     setIsDisabled(false);
   }

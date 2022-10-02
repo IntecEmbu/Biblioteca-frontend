@@ -98,7 +98,6 @@ function Index() {
               )}
             </div>
             <div className="invalid-container">{invalid}</div>
-            {/* {invalid} */}
             <div className="btn-container">
               <button
                 className="btn-entrar"
