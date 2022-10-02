@@ -16,6 +16,7 @@ function ModalEditarAluno({ data }) {
   const [phone, setPhone] = useState(data.phone);
   const [course, setCourse] = useState(data.course);
   const [type, setType] = useState(data.type);
+  const [cpf, setCpf] = useState(data.cpf);
 
   const [spinner, setSpinner] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -32,6 +33,7 @@ function ModalEditarAluno({ data }) {
         phone,
         course,
         type,
+        cpf,
       });
       alert("Aluno atualizado com sucesso!");
     } catch (err) {
@@ -82,7 +84,12 @@ function ModalEditarAluno({ data }) {
 
               <div className="input-box-modal">
                 <label>CPF</label>
-                <input type="text" required />
+                <input
+                  type="text"
+                  required
+                  onchange={(e) => setCpf(e.target.value)}
+                  value={cpf}
+                />
               </div>
 
               <div className="input-box-modal">

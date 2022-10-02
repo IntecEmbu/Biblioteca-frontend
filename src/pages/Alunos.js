@@ -61,6 +61,7 @@ export default function Alunos() {
             email={user.user_email}
             phone={user.user_phone}
             course={user.user_course}
+            cpf={user.user_cpf}
             type={user.user_type}
           />
         );
@@ -94,6 +95,7 @@ export default function Alunos() {
           email={user.user_email}
           phone={user.user_phone}
           course={user.user_course}
+          cpf={user.user_cpf}
           type={user.user_type}
         />
       );

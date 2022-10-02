@@ -7,8 +7,8 @@ import "../styles/Botoes.css";
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");
 
-  const { id, name, email, phone, course, type } = props;
-  const dataUser = { id, name, email, phone, course, type };
+  const { id, name, email, phone, course, type, cpf } = props;
+  const dataUser = { id, name, email, phone, course, type, cpf };
 
   function showButtons() {
     if (
