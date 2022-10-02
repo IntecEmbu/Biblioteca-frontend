@@ -46,6 +46,16 @@ function Example() {
     if (!email) {
       errors.email = "Campo obrigatório";
       count++;
+    } else if (email.length > 100) {
+      errors.email = "Email muito longo";
+      count++;
+    } else if (
+      !email.includes("@") ||
+      !email.includes(".") ||
+      email.length < 6
+    ) {
+      errors.email = "Email inválido";
+      count++;
     }
 
     // Validação da senha
