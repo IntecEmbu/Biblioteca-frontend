@@ -7,7 +7,10 @@ import { Spinner } from "react-bootstrap";
 function ModalEditarLivro({ data }) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const id = data.id;
@@ -20,36 +23,137 @@ function ModalEditarLivro({ data }) {
   const [isbn, setIsbn] = useState(data.isbn);
   const [cdd, setCdd] = useState(data.cdd);
 
-  const [spinner, setSpinner] = useState("");
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
   const [isDisabled, setIsDisabled] = useState(false);
 
-  async function updateBook() {
-    try {
-      setSpinner(<Spinner id="loading" animation="border" />);
-      setIsDisabled(true);
+  async function close() {
+    setInterval(() => {
+      setIsDisabled(false);
+      handleClose();
+      window.location.reload();
+    }, 2000);
+  }
 
-      await api.put("/book/update-book", {
-        id,
-        title,
-        author,
-        edition,
-        release_year,
-        category,
-        language,
-        isbn,
-        cdd,
-      });
+  function validate() {
+    let errors = {};
+    let count = 0;
 
-      alert("Livro atualizado com sucesso!");
-    } catch (err) {
-      alert("Erro ao atualizar livro!");
-      console.log(err);
+    // Validação do título
+    if (!title) {
+      errors.title = "Campo obrigatório";
+      count++;
+    } else if (title.length > 100) {
+      errors.title = "Título muito longo";
+      count++;
     }
 
-    setSpinner("");
-    setIsDisabled(false);
-    handleClose();
-    window.location.reload();
+    // Validação do autor
+    if (!author) {
+      errors.author = "Campo obrigatório";
+      count++;
+    } else if (author.length > 100) {
+      errors.author = "Autor muito longo";
+      count++;
+    }
+
+    // Validação da edição
+    if (!edition) {
+      errors.edition = "Campo obrigatório";
+      count++;
+    } else if (edition.length > 100) {
+      errors.edition = "Edição muito longa";
+      count++;
+    }
+
+    // Validação do ano de lançamento
+    var year = new Date().getFullYear();
+    if (!release_year) {
+      errors.release_year = "Campo obrigatório";
+      count++;
+    } else if (release_year < 1000 || release_year > year) {
+      errors.release_year = "Ano inválido";
+      count++;
+    }
+
+    // Validação da categoria
+    if (!category) {
+      errors.category = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do idioma
+    if (!language) {
+      errors.language = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do isbn
+    if (!isbn) {
+      errors.isbn = "Campo obrigatório";
+      count++;
+    } else if (isbn.length > 13 || isbn.length < 13) {
+      errors.isbn = "ISBN inválido";
+      count++;
+    }
+
+    // Validação do cdd
+    if (!cdd) {
+      errors.cdd = "Campo obrigatório";
+      count++;
+    } else if (cdd.length > 100) {
+      errors.cdd = "CDD muito longo";
+      count++;
+    }
+
+    if (count > 0) {
+      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+    }
+
+    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  async function updateBook() {
+    console.log(errors);
+    if (validate()) {
+      try {
+        setIsDisabled(true);
+
+        await api.put("/book/update-book", {
+          id,
+          title,
+          author,
+          edition,
+          release_year,
+          category,
+          language,
+          isbn,
+          cdd,
+        });
+
+        setSuccess(true);
+        setIsDisabled(false);
+      } catch (err) {
+        alert("Erro ao atualizar livro!");
+        console.log(err);
+        setIsDisabled(false);
+      } finally {
+        await close();
+      }
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      updateBook();
+    }
   }
 
   return (
@@ -69,86 +173,140 @@ function ModalEditarLivro({ data }) {
               <div className="input-box-modal">
                 <label>Título</label>
                 <input
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setErrors({ ...errors, title: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={title}
                   type="text"
-                  required
                 />
+                {errors.title && (
+                  <p className="error-message">{errors.title}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Autor</label>
                 <input
-                  onChange={(e) => setAuthor(e.target.value)}
+                  onChange={(e) => {
+                    setAuthor(e.target.value);
+                    setErrors({ ...errors, author: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={author}
                   type="text"
-                  required
                 />
+                {errors.author && (
+                  <p className="error-message">{errors.author}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Edição</label>
                 <input
-                  onChange={(e) => setEdition(e.target.value)}
+                  onChange={(e) => {
+                    setEdition(e.target.value);
+                    setErrors({ ...errors, edition: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={edition}
                   type="text"
-                  required
                 />
+                {errors.edition && (
+                  <p className="error-message">{errors.edition}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
                 <input
-                  onChange={(e) => setRelease_year(e.target.value)}
+                  onChange={(e) => {
+                    setRelease_year(e.target.value);
+                    setErrors({ ...errors, release_year: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={release_year}
                   type="number"
-                  required
                 />
+                {errors.release_year && (
+                  <p className="error-message">{errors.release_year}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Categoria</label>
                 <input
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    setErrors({ ...errors, category: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={category}
                   type="text"
-                  required
                 />
+                {errors.category && (
+                  <p className="error-message">{errors.category}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Idioma</label>
                 <input
-                  onChange={(e) => setLanguage(e.target.value)}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                    setErrors({ ...errors, language: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={language}
                   type="text"
-                  required
                 />
+                {errors.language && (
+                  <p className="error-message">{errors.language}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
-                  onChange={(e) => setIsbn(e.target.value)}
+                  onChange={(e) => {
+                    setIsbn(e.target.value);
+                    setErrors({ ...errors, isbn: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={isbn}
                   type="text"
-                  required
                 />
+                {errors.isbn && <p className="error-message">{errors.isbn}</p>}
               </div>
 
               <div className="input-box-modal">
                 <label>CDD</label>
                 <input
-                  onChange={(e) => setCdd(e.target.value)}
+                  onChange={(e) => {
+                    setCdd(e.target.value);
+                    setErrors({ ...errors, cdd: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                   value={cdd}
                   type="text"
-                  required
                 />
+                {errors.cdd && <p className="error-message">{errors.cdd}</p>}
               </div>
             </div>
           </form>
+          {errors.count && (
+            <p className="error-count-message">{errors.count}</p>
+          )}
+          {isDisabled && (
+            <div className="loading-modal">
+              <Spinner animation="border" />
+            </div>
+          )}
+          {success && (
+            <p className="success-message">Livro atualizado com sucesso!</p>
+          )}
         </Modal.Body>
-        <div className="spinner-login">{spinner}</div>
         <Modal.Footer>
           <button
             className="btn-cancelar-modal"

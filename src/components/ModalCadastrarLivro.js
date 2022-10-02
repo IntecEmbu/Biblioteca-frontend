@@ -86,6 +86,9 @@ function Example() {
     if (!isbn) {
       errors.isbn = "Campo obrigatório";
       count++;
+    } else if (isbn.length > 13 || isbn.length < 13) {
+      errors.isbn = "ISBN inválido";
+      count++;
     }
 
     // Validação do cdd

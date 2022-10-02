@@ -193,6 +193,7 @@ function ModalEditarAluno({ data }) {
                     setErrors({ ...errors, email: "", count: "" });
                   }}
                   type="email"
+                  onKeyDown={handleKeyDown}
                 />
                 {errors.email && (
                   <p className="error-message">{errors.email}</p>
@@ -237,7 +238,7 @@ function ModalEditarAluno({ data }) {
             </div>
           )}
           {success && (
-            <p className="success-message">Aluno cadastrado com sucesso!</p>
+            <p className="success-message">Aluno atualizado com sucesso!</p>
           )}
         </Modal.Body>
         <Modal.Footer>
