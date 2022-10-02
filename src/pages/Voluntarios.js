@@ -66,15 +66,8 @@ export default function Voluntarios() {
     const volunteers = await downloadLibrarian();
     setVolunteers(volunteers);
 
-    if (volunteers.length === 0) {
-      setVolunteersCard(
-        <img
-          id="book-notFound"
-          src={require("../images/livro-nao-encontrado.png")}
-          alt="Not Found"
-        />
-      );
-      setCounter("");
+    if (!volunteers) {
+      return setVolunteersCard("");
     }
 
     const dataCard = volunteers.map((volunteer) => {

@@ -97,7 +97,7 @@ function LivrosPage() {
     const data = await downloadBook();
     setBooks(data.books);
 
-    if (data.length == 0) {
+    if (!data) {
       return setBooksCard("");
     }
 
