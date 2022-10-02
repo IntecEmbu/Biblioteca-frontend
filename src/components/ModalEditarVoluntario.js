@@ -15,7 +15,6 @@ function ModalEditarVoluntario({ data }) {
   const [email, setEmail] = useState(data.email);
   const [user, setUser] = useState(data.user);
 
-  const [spinner, setSpinner] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
   const [errors, setErrors] = useState({});
@@ -29,26 +28,73 @@ function ModalEditarVoluntario({ data }) {
     }, 2000);
   }
 
-  async function updateVolunter() {
-    setIsDisabled(true);
+  function validate() {
+    let errors = {};
+    let count = 0;
 
-    try {
-      await api.put("/librian/update-collaborator", {
-        id,
-        name,
-        email,
-        user,
-      });
-      alert("Voluntário atualizado com sucesso!");
-    } catch (err) {
-      alert("Erro ao atualizar voluntário!");
-      console.log(err);
+    // Validação do nome
+    if (!name) {
+      errors.name = "Campo obrigatório";
+      count++;
+    } else if (name.length > 100) {
+      errors.name = "Nome muito longo";
+      count++;
     }
 
-    setSpinner("");
-    setIsDisabled(false);
-    handleClose();
-    window.location.reload();
+    // Validação do email
+    if (!email) {
+      errors.email = "Campo obrigatório";
+      count++;
+    } else if (email.length > 100) {
+      errors.email = "Email muito longo";
+      count++;
+    } else if (!email.includes("@") || !email.includes(".") || email.length < 6  {
+      errors.email = "Email inválido";
+      count++;
+    }
+
+    // Validação do usuário
+    if (!user) {
+      errors.user = "Campo obrigatório";
+      count++;
+    } else if (user.length > 100) {
+      errors.user = "Usuário muito longo";
+      count++;
+    }
+
+    if (count > 0) {
+      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+    }
+
+    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  async function updateVolunter() {
+    if (validate()) {
+      try {
+        setIsDisabled(true);
+        await api.put("/librian/update-collaborator", {
+          id,
+          name,
+          email,
+          user,
+        });
+        setSuccess(true);
+        setIsDisabled(false);
+      } catch (err) {
+        alert("Erro ao atualizar voluntário!");
+        console.log(err);
+        setIsDisabled(false);
+      } finally {
+        await close();
+      }
+    }
   }
 
   function handleKeyDown(event) {
@@ -75,40 +121,59 @@ function ModalEditarVoluntario({ data }) {
                 <label>Nome</label>
                 <input
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrors({ ...errors, name: "", count: "" });
+                  }}
                   type="text"
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.name && <p className="error-message">{errors.name}</p>}
               </div>
 
               <div className="input-box-modal">
                 <label>E-mail</label>
                 <input
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrors({ ...errors, email: "", count: "" });
+                  }}
                   type="email"
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.email && (
+                  <p className="error-message">{errors.email}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
                 <label>Usuário</label>
                 <input
                   value={user}
-                  onChange={(e) => setUser(e.target.value)}
+                  onChange={(e) => {
+                    setUser(e.target.value);
+                    setErrors({ ...errors, user: "", count: "" });
+                  }}
                   type="text"
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.user && <p className="error-message">{errors.user}</p>}
               </div>
-
-              {/* <div className="input-box-modal">
-                <label>Senha</label>
-                <input
-                  type="password"
-                  required
-                />
-              </div> */}
             </div>
           </form>
+          {errors.count && (
+            <p className="error-count-message">{errors.count}</p>
+          )}
+          {isDisabled && (
+            <div className="loading-modal">
+              <Spinner animation="border" />
+            </div>
+          )}
+          {success && (
+            <p className="success-message">Volutário atualizado com sucesso!</p>
+          )}
         </Modal.Body>
-        <div className="spinner-login">{spinner}</div>
         <Modal.Footer>
           <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
