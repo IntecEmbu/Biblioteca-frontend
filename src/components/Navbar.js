@@ -5,15 +5,15 @@ import "../styles/Navbar.css";
 
 function index() {
   function logout() {
+    window.location.href = "/login";
     localStorage.removeItem("isSigned");
-    window.location.href = "/";
   }
 
   return (
     <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand id="logo-nav">
-          <Link to="/">
+          <Link to="/home">
             <img
               src={require("../images/logo2.png")}
               width="30"

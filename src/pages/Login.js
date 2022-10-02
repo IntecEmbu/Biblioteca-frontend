@@ -18,7 +18,7 @@ function Index() {
       const response = await login(user, password);
       localStorage.setItem("isSigned", true);
 
-      window.location.href = "/";
+      window.location.href = "/home";
       localStorage.setItem("user", JSON.stringify(response.data[0]));
       setSpinner("");
     } catch (err) {

@@ -11,7 +11,7 @@ function index() {
         <img className="img-error" src={require("../images/404-error.png")} />
       </div>
       <div className="btn-voltar-home-container">
-        <Link to="/" className="link-not-found">
+        <Link to="/home" className="link-not-found">
           <button className="btn-voltar-home">
             <FaArrowLeft />
           </button>

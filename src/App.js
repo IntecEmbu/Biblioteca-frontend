@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRouter isAuth={isSigned} />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/livros" element={<Livros />} />
           <Route path="/emprestimos" element={<Emprestimos />} />
           <Route path="/alunos" element={<Alunos />} />
