@@ -10,22 +10,46 @@ function Index() {
   const [password, setPassword] = React.useState("");
   const [spinner, setSpinner] = React.useState("");
   const [isDisabled, setIsDisabled] = React.useState(false);
+  const [errors, setErrors] = React.useState({});
+  const [invalid, setInvalid] = React.useState("");
+
+  function validate() {
+    let errors = {};
+
+    if (!user) {
+      errors.user = "Usuário é obrigatório";
+    }
+
+    if (!password) {
+      errors.password = "Senha é obrigatória";
+    }
+
+    if (errors.user || errors.password) {
+      setErrors(errors);
+      return false;
+    }
+    return true;
+  }
 
   async function tryLogin() {
-    try {
-      setSpinner(<Spinner id="loading" animation="border" />);
-      setIsDisabled(true);
-      const response = await login(user, password);
-      localStorage.setItem("isSigned", true);
+    if (validate()) {
+      try {
+        setSpinner(<Spinner id="loading" animation="border" />);
+        setIsDisabled(true);
 
-      window.location.href = "/home";
-      localStorage.setItem("user", JSON.stringify(response.data[0]));
-      setSpinner("");
-    } catch (err) {
-      console.log(err);
-      alert("Usuário ou senha inválidos!");
-      setIsDisabled(false);
-      setSpinner("");
+        const response = await login(user, password);
+
+        localStorage.setItem("isSigned", true);
+        localStorage.setItem("user", JSON.stringify(response.data[0]));
+
+        window.location.href = "/home";
+        setSpinner("");
+      } catch (err) {
+        console.log(err);
+        setInvalid(<p className="invalid">Usuário ou senha inválidos</p>);
+        setIsDisabled(false);
+        setSpinner("");
+      }
     }
   }
 
@@ -48,19 +72,33 @@ function Index() {
                 type="text"
                 className="input-user"
                 placeholder="Usuário"
-                onChange={(e) => setUser(e.target.value)}
+                onChange={(e) => {
+                  setUser(e.target.value);
+                  setErrors({ ...errors, user: "" });
+                  setInvalid("");
+                }}
                 onKeyDown={handleKeyDown}
               />
+              {errors.user && <p className="error-message">{errors.user}</p>}
             </div>
             <div className="password">
               <input
                 type="password"
                 className="input-password"
                 placeholder="Senha"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setErrors({ ...errors, password: "" });
+                  setInvalid("");
+                }}
                 onKeyDown={handleKeyDown}
               />
+              {errors.password && (
+                <p className="error-message">{errors.password}</p>
+              )}
             </div>
+            <div className="invalid-container">{invalid}</div>
+            {/* {invalid} */}
             <div className="btn-container">
               <button
                 className="btn-entrar"
