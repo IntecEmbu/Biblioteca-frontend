@@ -35,6 +35,41 @@ function Example() {
 
   const [isDisabled, setIsDisabled] = useState(false);
 
+  function completePhone(number) {
+    // Remove o ultimo digito
+    if (phone.length - number.length === 1) {
+      return setPhone(number.slice(0, number.length - 1));
+    }
+
+    // caso o usuário apague tudo
+    if (number.length === 0) {
+      return setPhone("");
+    }
+
+    if (number[number.length - 1] === " ") {
+      number = number.slice(0, number.length - 1);
+      return;
+    }
+
+    // Caso o numero tenha 11 digitos
+    if (number.length === 16) {
+      return;
+    }
+    // Caso o usuário digite um caracter que não seja um numero
+    if (isNaN(number[number.length - 1])) {
+      return setPhone(number.slice(0, number.length - 1));
+    }
+
+    if (number.length === 1) {
+      return setPhone(`(${number}`);
+    } else if (number.length === 3) {
+      return setPhone(`${number}) `);
+    } else if (number.length === 10) {
+      return setPhone(`${number}-`);
+    }
+    return setPhone(number);
+  }
+
   function validate() {
     let errors = {};
     let count = 0;
@@ -212,8 +247,9 @@ function Example() {
                 <label>Celular</label>
                 <input
                   type="text"
+                  value={phone}
                   onChange={(e) => {
-                    setPhone(e.target.value);
+                    completePhone(e.target.value);
                     setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}

@@ -22,7 +22,6 @@ function Example() {
   const [cdd, setCdd] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(false);
-  const [isAlert, setIsAlert] = useState("");
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
