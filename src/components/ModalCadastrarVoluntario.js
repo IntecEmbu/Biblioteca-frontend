@@ -3,45 +3,103 @@ import Modal from "react-bootstrap/Modal";
 import api from "../service/api.js";
 import "../styles/Modal.css";
 import "../styles/Botoes.css";
+import { Spinner } from "react-bootstrap";
 
 function Example() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  function handleClose() {
+    setShow(false);
+    setErrors({});
+  }
   const handleShow = () => setShow(true);
 
-  const [name, setName] = useState(""),
-    [email, setEmail] = useState(""),
-    [password, setPassword] = useState(""),
-    [user, setUser] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(false);
 
-  async function sendUser() {
-    const data = {
-      name,
-      email,
-      password,
-      user,
-    };
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
 
-    if (name === "" || email === "" || password === "" || user === "") {
-      alert("Preencha todos os campos");
+  async function close() {
+    setInterval(() => {
+      setIsDisabled(false);
+      handleClose();
+      window.location.reload();
+    }, 2000);
+  }
+
+  function validate() {
+    let errors = {};
+    let count = 0;
+
+    // Validação do nome
+    if (!name) {
+      errors.name = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do email
+    if (!email) {
+      errors.email = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação da senha
+    if (!password) {
+      errors.password = "Campo obrigatório";
+      count++;
+    }
+
+    // Validação do usuário
+    if (!user) {
+      errors.user = "Campo obrigatório";
+      count++;
+    }
+
+    if (count > 0) {
+      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+    }
+
+    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
     } else {
-      const confirm = window.confirm("Deseja cadastrar o voluntário?");
-      if (confirm) {
-        try {
-          setIsDisabled(true);
-          await api.post("/librian/insert-collaborator", data);
-          alert("Voluntário cadastrado com sucesso!");
-          setIsDisabled(false);
-        } catch (error) {
-          alert("Erro ao cadastrar o voluntário!");
-          console.log(error);
-          setIsDisabled(false);
-        }
-        window.location.reload();
+      return true;
+    }
+  }
+
+  async function sendUser() {
+    if (validate()) {
+      const data = {
+        name,
+        email,
+        password,
+        user,
+      };
+
+      try {
+        setIsDisabled(true);
+        await api.post("/librian/insert-collaborator", data);
+        setIsDisabled(false);
+        setSuccess(true);
+      } catch (error) {
+        alert("Verifique os dados e tente novamente");
+        console.log(error);
+        setIsDisabled(false);
+      } finally {
+        await close();
       }
+    }
+  }
+
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      sendUser();
     }
   }
 
@@ -63,8 +121,13 @@ function Example() {
                 <input
                   type="text"
                   required
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrors({ ...errors, name: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.name && <p className="error-message">{errors.name}</p>}
               </div>
 
               <div className="input-box-modal">
@@ -72,8 +135,15 @@ function Example() {
                 <input
                   type="text"
                   required
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrors({ ...errors, email: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.email && (
+                  <p className="error-message">{errors.email}</p>
+                )}
               </div>
 
               <div className="input-box-modal">
@@ -81,8 +151,13 @@ function Example() {
                 <input
                   type="text"
                   required
-                  onChange={(e) => setUser(e.target.value)}
+                  onChange={(e) => {
+                    setUser(e.target.value);
+                    setErrors({ ...errors, user: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.user && <p className="error-message">{errors.user}</p>}
               </div>
 
               <div className="input-box-modal">
@@ -90,11 +165,31 @@ function Example() {
                 <input
                   type="password"
                   required
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setErrors({ ...errors, password: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
                 />
+                {errors.password && (
+                  <p className="error-message">{errors.password}</p>
+                )}
               </div>
             </div>
           </form>
+          {errors.count && (
+            <p className="error-count-message">{errors.count}</p>
+          )}
+          {success && (
+            <p className="success-message">
+              Voluntário cadastrado com sucesso!
+            </p>
+          )}
+          {isDisabled && (
+            <div className="loading-modal">
+              <Spinner animation="border" />
+            </div>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <button className="btn-cancelar-modal" onClick={handleClose}>

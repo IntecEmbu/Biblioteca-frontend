@@ -18,8 +18,18 @@ function ModalEditarVoluntario({ data }) {
   const [spinner, setSpinner] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
+  async function close() {
+    setInterval(() => {
+      setIsDisabled(false);
+      handleClose();
+      window.location.reload();
+    }, 2000);
+  }
+
   async function updateVolunter() {
-    setSpinner(<Spinner id="loading" animation="border" />);
     setIsDisabled(true);
 
     try {
@@ -39,6 +49,12 @@ function ModalEditarVoluntario({ data }) {
     setIsDisabled(false);
     handleClose();
     window.location.reload();
+  }
+
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      updateVolunter();
+    }
   }
 
   return (
@@ -61,7 +77,6 @@ function ModalEditarVoluntario({ data }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
-                  required
                 />
               </div>
 
@@ -71,7 +86,6 @@ function ModalEditarVoluntario({ data }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
-                  required
                 />
               </div>
 
@@ -81,7 +95,6 @@ function ModalEditarVoluntario({ data }) {
                   value={user}
                   onChange={(e) => setUser(e.target.value)}
                   type="text"
-                  required
                 />
               </div>
 
