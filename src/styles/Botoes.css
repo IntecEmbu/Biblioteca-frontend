@@ -1,7 +1,6 @@
 .pesquisar-container {
   display: flex;
   background-color: #fff;
-  margin-bottom: 2rem;
   padding: 1rem;
   width: fit-content;
   border-radius: .2rem;
@@ -38,6 +37,11 @@ select:hover {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
   transition: all .1s linear;
+}
+
+.btn-cadastrar-container {
+  display: flex;
+  align-items: center;
 }
 
 .btn-container {

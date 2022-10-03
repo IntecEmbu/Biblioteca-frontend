@@ -200,6 +200,7 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>CPF</label>
                 <input
+                  maxLength="11"
                   type="text"
                   value={cpf}
                   onChange={(e) => {
@@ -230,6 +231,7 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>Celular</label>
                 <input
+                  maxLength="11"
                   type="text"
                   value={phone}
                   onChange={(e) => {
@@ -250,8 +252,8 @@ function ModalEditarAluno({ data }) {
                   defaultValue={type}
                   onChange={(e) => setType(e.target.value)}
                 >
-                  <option value={"Aluno"}>ALUNO</option>
-                  <option value={"Funcionario"}>FUNCIONÁRIO</option>
+                  <option value={"Aluno"}>Alunod</option>
+                  <option value={"Funcionario"}>Funcionário</option>
                 </select>
               </div>
             </div>
