@@ -21,6 +21,10 @@ export default function Alunos() {
   const [users, setUsers] = React.useState([]);
   const [counter, setCounter] = React.useState("");
 
+  function formatCpf(number) {
+    return number.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  }
+
   async function search() {
     if (nameSearch == "") {
       return;
@@ -41,7 +45,14 @@ export default function Alunos() {
             .toLocaleLowerCase()
             .includes(nameSearch.toLocaleLowerCase())
         );
+      } else if (selectValue === "cpf") {
+        var usersFind = users.filter((user) =>
+          user.user_cpf
+            .toLocaleLowerCase()
+            .includes(nameSearch.toLocaleLowerCase())
+        );
       }
+
       if (usersFind.length === 0) {
         return setUserCard(
           <img
@@ -128,9 +139,12 @@ export default function Alunos() {
           <input
             className="input-pesquisa"
             type="text"
+            value={nameSearch}
             placeholder="Pesquise aqui"
             onKeyDown={handleKeyDown}
-            onChange={(e) => setNameSearch(e.target.value.trim())}
+            onChange={(e) => {
+              setNameSearch(formatCpf(e.target.value));
+            }}
           />
           <select
             className="tipo-pesquisa"
@@ -138,6 +152,7 @@ export default function Alunos() {
             onChange={(e) => setSelectValue(e.target.value)}
           >
             <option value={"name"}>NOME</option>
+            <option value={"cpf"}>CPF</option>
             <option value={"course"}>CURSO</option>
           </select>
           <div className="btn-container">
