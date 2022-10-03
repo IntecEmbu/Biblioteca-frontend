@@ -78,7 +78,7 @@ export default function Alunos() {
         );
       });
 
-      setCounter(<p>{usersFind.length} pessoas encontradas.</p>);
+      setCounter(<p>{usersFind.length} pessoa(s) encontrada(s).</p>);
       setUserCard(dataCard);
     }, 100);
   }

@@ -97,7 +97,7 @@ function Example() {
     }
 
     if (count > 0) {
-      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+      errors.count = count;
     }
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
@@ -268,7 +268,6 @@ function Example() {
               </div>
             </div>
           </form>
-          {errors.count && <p className="error-message">{errors.count}</p>}
           {success && (
             <p className="success-message">Livro cadastrado com sucesso!</p>
           )}
