@@ -67,7 +67,7 @@ function LivrosPage() {
         setCounter("");
         return;
       }
-      setCounter(<p>{booksFind.length} livros encontrados.</p>);
+      setCounter(<p>{booksFind.length} livro(s) encontrado(s).</p>);
 
       // Coloca os livros encontrados no Hook.
       const dataCard = booksFind.map((book) => {

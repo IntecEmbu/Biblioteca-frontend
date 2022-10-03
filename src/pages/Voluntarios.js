@@ -58,7 +58,7 @@ export default function Voluntarios() {
         );
       });
       setVolunteersCard(dataCard);
-      setCounter(<p>{volunteersFind.length} voluntários encontrados.</p>);
+      setCounter(<p>{volunteersFind.length} voluntário(s) encontrado(s).</p>);
     }, 100);
   }
 
