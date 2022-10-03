@@ -9,6 +9,8 @@ function Example() {
   const [show, setShow] = useState(false);
 
   function handleClose() {
+    setCpf("");
+    setPhone("");
     setShow(false);
     setErrors({});
   }
@@ -35,8 +37,16 @@ function Example() {
 
   const [isDisabled, setIsDisabled] = useState(false);
 
-  function completePhone(number) {
+  function formatPhone(number) {
+    // Deixa o número no formato (xx) xxxxx-xxxx
     return setPhone(number.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3"));
+  }
+
+  function formatCpf(number) {
+    // Deixa o cpf no formato 000.000.000-00
+    return setCpf(
+      number.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+    );
   }
 
   function validate() {
@@ -56,7 +66,7 @@ function Example() {
     if (!cpf) {
       errors.cpf = "Campo obrigatório";
       count++;
-    } else if (cpf.length > 11 || cpf.length < 11) {
+    } else if (!cpf.match(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)) {
       errors.cpf = "CPF inválido";
       count++;
     }
@@ -193,8 +203,9 @@ function Example() {
                 <label>CPF</label>
                 <input
                   type="text"
+                  value={cpf}
                   onChange={(e) => {
-                    setCpf(e.target.value);
+                    formatCpf(e.target.value);
                     setErrors({ ...errors, cpf: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -223,7 +234,7 @@ function Example() {
                   type="text"
                   value={phone}
                   onChange={(e) => {
-                    completePhone(e.target.value);
+                    formatPhone(e.target.value);
                     setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
