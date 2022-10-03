@@ -36,38 +36,7 @@ function Example() {
   const [isDisabled, setIsDisabled] = useState(false);
 
   function completePhone(number) {
-    // Remove o ultimo digito
-    if (phone.length - number.length === 1) {
-      return setPhone(number.slice(0, number.length - 1));
-    }
-
-    // caso o usuário apague tudo
-    if (number.length === 0) {
-      return setPhone("");
-    }
-
-    if (number[number.length - 1] === " ") {
-      number = number.slice(0, number.length - 1);
-      return;
-    }
-
-    // Caso o numero tenha 11 digitos
-    if (number.length === 16) {
-      return;
-    }
-    // Caso o usuário digite um caracter que não seja um numero
-    if (isNaN(number[number.length - 1])) {
-      return setPhone(number.slice(0, number.length - 1));
-    }
-
-    if (number.length === 1) {
-      return setPhone(`(${number}`);
-    } else if (number.length === 3) {
-      return setPhone(`${number}) `);
-    } else if (number.length === 10) {
-      return setPhone(`${number}-`);
-    }
-    return setPhone(number);
+    return setPhone(number.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3"));
   }
 
   function validate() {
@@ -111,6 +80,11 @@ function Example() {
     // Validação do telefone
     if (!phone) {
       errors.phone = "Campo obrigatório";
+      count++;
+    } else if (
+      !phone.match(/^\(?([1-9]{2})\) ?([9]{1})?([0-9]{4})-?([0-9]{4})$/)
+    ) {
+      errors.phone = "Telefone inválido";
       count++;
     }
 
