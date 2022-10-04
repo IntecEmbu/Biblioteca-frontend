@@ -67,6 +67,16 @@ html, body{
 
 .btn-cadastrar {
   background-color: var(--azul);
+  margin-left: 1rem;
+  padding: .3rem 1.2rem;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: .2rem;
+}
+
+.btn-baixar {
+  background-color: var(--azul);
   padding: .3rem 1.2rem;
   font-size: 1rem;
   color: #fff;

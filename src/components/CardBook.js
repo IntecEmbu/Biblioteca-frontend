@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import ModalExcluir from "../components/ModalExcluir.js";
 import ModalEditarLivro from "../components/ModalEditarLivro.js";
 import ModalEmprestar from "../components/ModalEmprestar.js";
+import ModalDetalhes from "../components/ModalDetalhes.js";
 import "../styles/Cards.css";
 import "../styles/Botoes.css";
-import { FiMoreHorizontal } from "react-icons/fi";
 
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");
@@ -62,6 +62,13 @@ function CardBook(props) {
         <p className="info-card-main">ISBN: {props.isbn}</p>
         <p className="info-card-main">CDD: {props.cdd}</p>
         <div className="btn-card-container">
+          <div className="btn-editar-container">
+            <ModalDetalhes 
+            total={props.qtdTotal}
+            stopped={props.qtdStopped}
+            circulation={props.qtdCirculation}
+            />
+          </div>
           <div className="btn-editar-container">
             <ModalEmprestar data={dataBook} />
           </div>

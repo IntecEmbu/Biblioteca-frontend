@@ -3,7 +3,7 @@ import CardBook from "../components/CardBook.js";
 import Spinner from "react-bootstrap/Spinner";
 import Navbar from "../components/Navbar.js";
 import ModalCadastrarLivro from "../components/ModalCadastrarLivro.js";
-import downloadBook from "../service/seachBook.js";
+import downloadBook from "../service/searchBook.js";
 import { FaSearch } from "react-icons/fa";
 import "../styles/Livros.css";
 
@@ -83,6 +83,9 @@ function LivrosPage() {
             language={book.book_language}
             isbn={book.book_isbn}
             cdd={book.book_cdd}
+            qtdTotal={book.quantity_total}
+            qtdStopped={book.quantity_stopped}
+            qtdCirculation={book.quantity_circulation}
           />
         );
       });
@@ -115,6 +118,9 @@ function LivrosPage() {
           language={book.book_language}
           isbn={book.book_isbn}
           cdd={book.book_cdd}
+          qtdTotal={book.quantity_total}
+          qtdStopped={book.quantity_stopped}
+          qtdCirculation={book.quantity_circulation}
         />
       );
     });

@@ -17,6 +17,13 @@ export default function EsqueciSenha() {
                 placeholder="Informe seu e-mail"
               />
             </div>
+            <div className="user">
+              <input
+                type="text"
+                className="input-user"
+                placeholder="Confirme seu e-mail"
+              />
+            </div>
             <div className="btn-esqueci-container">
               <Link to="/login" className="link-not-found">
                 <button className="btn-voltar-login">
