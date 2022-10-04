@@ -26,10 +26,6 @@
   animation: surgir-baixo .5s;
 }
 
-#card-main-container:last-child {
-  margin-bottom: 0;
-}
-
 @keyframes surgir-baixo {
   from{
     opacity: 0;

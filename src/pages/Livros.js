@@ -172,7 +172,7 @@ function LivrosPage() {
           </div>
         </div>
         <div className="count-container">{counter}</div>
-        <div className="cards-container">{booksCard}</div>
+        <div className="cards-book-container">{booksCard}</div>
       </div>
     </>
   );

@@ -3,3 +3,21 @@
     margin: auto;
     display: block;
 }
+
+.cards-book-container{
+    display: flex;
+    margin: auto;
+    /* Caso passe o tamanho da tela manda para baixo */
+    flex-wrap: wrap;
+}
+
+#card-main-book-container{
+    margin: 1rem;
+    animation: surgir-baixo .5s;
+}
+
+@media screen and (max-width: 1150px){
+    .cards-book-container{
+        justify-content: center;
+    }
+}
