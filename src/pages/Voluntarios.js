@@ -58,7 +58,7 @@ export default function Voluntarios() {
         );
       });
       setVolunteersCard(dataCard);
-      setCounter(<p>{volunteersFind.length} voluntários encontrados.</p>);
+      setCounter(<p>{volunteersFind.length} voluntário(s) encontrado(s).</p>);
     }, 100);
   }
 
@@ -112,24 +112,24 @@ export default function Voluntarios() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Voluntários</h1>
-          <div className="btn-cadastrar-container">{button}</div>
-        </div>
-        <div className="pesquisar-container">
-          <input
-            className="input-pesquisa"
-            type="text"
-            placeholder="Pesquise aqui"
-            onKeyDown={handleKeyDown}
-            onChange={(e) => setNameSearch(e.target.value)}
-          />
-          <div className="btn-container">
-            <button
-              className="btn-pesquisar"
-              onClick={search}
-              disabled={isDisabled}
-            >
-              <FaSearch />
-            </button>
+          <div className="pesquisar-container">
+            <input
+              className="input-pesquisa"
+              type="text"
+              placeholder="Pesquise aqui"
+              onKeyDown={handleKeyDown}
+              onChange={(e) => setNameSearch(e.target.value)}
+            />
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
+            <div className="btn-cadastrar-container">{button}</div>
           </div>
         </div>
         <div className="counter-container">{counter}</div>

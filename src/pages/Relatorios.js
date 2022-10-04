@@ -10,7 +10,7 @@ export default function Relatorios() {
         <div className="titulo-container">
           <h1>Relatórios</h1>
           <div className="btn-cadastrar-container">
-            <button className="btn-cadastrar">Baixar Relatório</button>
+            <button className="btn-baixar">Baixar Relatório</button>
           </div>
         </div>
       </div>

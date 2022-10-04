@@ -110,6 +110,7 @@ function ModalEditarAluno({ data }) {
             <div className="input-box-modal">
               <label>CPF</label>
               <input
+                maxLength="11"
                 type="text"
                 value={userCpf}
                 onChange={(e) => {

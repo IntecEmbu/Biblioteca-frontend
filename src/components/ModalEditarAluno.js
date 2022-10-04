@@ -96,7 +96,7 @@ function ModalEditarAluno({ data }) {
     }
 
     if (count > 0) {
-      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+      errors.count = count;
     }
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
@@ -200,6 +200,7 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>CPF</label>
                 <input
+                  maxLength="11"
                   type="text"
                   value={cpf}
                   onChange={(e) => {
@@ -230,6 +231,7 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>Celular</label>
                 <input
+                  maxLength="11"
                   type="text"
                   value={phone}
                   onChange={(e) => {
@@ -250,15 +252,12 @@ function ModalEditarAluno({ data }) {
                   defaultValue={type}
                   onChange={(e) => setType(e.target.value)}
                 >
-                  <option value={"Aluno"}>ALUNO</option>
-                  <option value={"Funcionario"}>FUNCIONÁRIO</option>
+                  <option value={"Aluno"}>Alunod</option>
+                  <option value={"Funcionario"}>Funcionário</option>
                 </select>
               </div>
             </div>
           </form>
-          {errors.count && (
-            <p className="error-count-message">{errors.count}</p>
-          )}
           {isDisabled && (
             <div className="loading-modal">
               <Spinner animation="border" />

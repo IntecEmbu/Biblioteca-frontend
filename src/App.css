@@ -7,6 +7,8 @@
   --azul: #192039;
   --vermelho: #c20000;
   --vermelho-escuro: #ad0000;
+  --vermelho-error: #c2000045;
+  --verde: #d1e7dd;
 }
 
 * {
@@ -63,12 +65,17 @@ html, body{
   font-weight: bold;
 }
 
-.btn-cadastrar-container {
-  display: flex;
-  align-items: center;
+.btn-cadastrar {
+  background-color: var(--azul);
+  margin-left: 1rem;
+  padding: .3rem 1.2rem;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: .2rem;
 }
 
-.btn-cadastrar {
+.btn-baixar {
   background-color: var(--azul);
   padding: .3rem 1.2rem;
   font-size: 1rem;
@@ -92,10 +99,9 @@ button :disabled :hover{
   font-size: 1rem;
   margin-bottom: .2rem;
   animation: surgir-error .5s;
-
-  padding: .2rem;
+  padding: .3rem 1.2rem;
   border-radius: .2rem;
-  background-color: #c2000045;
+  background-color: var(--vermelho-error);
 }
 
 .error-count-message{
@@ -105,10 +111,9 @@ button :disabled :hover{
   margin-bottom: 0rem;
   animation: surgir-error .5s;
   text-align: center;
-
-  padding: .2rem;
+  padding: .3rem 1.2rem;
   border-radius: .2rem;
-  background-color: #c2000045;
+  background-color: var(--vermelho-error);
 }
 
 .success-message{
@@ -116,10 +121,9 @@ button :disabled :hover{
   font-size: 1rem;
   margin-bottom: .2rem;
   animation: surgir-error .5s;
-
-  padding: .2rem;
+  padding: .3rem 1.2rem;
   border-radius: .2rem;
-  background-color: #19203945;
+  background-color: var(--verde);
   text-align: center;
 }
 

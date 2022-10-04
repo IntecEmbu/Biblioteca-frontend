@@ -78,7 +78,7 @@ export default function Alunos() {
         );
       });
 
-      setCounter(<p>{usersFind.length} pessoas encontradas.</p>);
+      setCounter(<p>{usersFind.length} pessoa(s) encontrada(s).</p>);
       setUserCard(dataCard);
     }, 100);
   }
@@ -131,38 +131,38 @@ export default function Alunos() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Alunos</h1>
-          <div className="btn-cadastrar-container">
-            <ModalCadastrarAluno />
-          </div>
-        </div>
-        <div className="pesquisar-container">
-          <input
-            className="input-pesquisa"
-            type="text"
-            value={nameSearch}
-            placeholder="Pesquise aqui"
-            onKeyDown={handleKeyDown}
-            onChange={(e) => {
-              setNameSearch(formatCpf(e.target.value));
-            }}
-          />
-          <select
-            className="tipo-pesquisa"
-            value={selectValue}
-            onChange={(e) => setSelectValue(e.target.value)}
-          >
-            <option value={"name"}>NOME</option>
-            <option value={"cpf"}>CPF</option>
-            <option value={"course"}>CURSO</option>
-          </select>
-          <div className="btn-container">
-            <button
-              className="btn-pesquisar"
-              onClick={search}
-              disabled={isDisabled}
+          <div className="pesquisar-container">
+            <input
+              className="input-pesquisa"
+              type="text"
+              value={nameSearch}
+              placeholder="Pesquise aqui"
+              onKeyDown={handleKeyDown}
+              onChange={(e) => {
+                setNameSearch(formatCpf(e.target.value));
+              }}
+            />
+            <select
+              className="tipo-pesquisa"
+              value={selectValue}
+              onChange={(e) => setSelectValue(e.target.value)}
             >
-              <FaSearch />
-            </button>
+              <option value={"name"}>Nome</option>
+              <option value={"cpf"}>CPF</option>
+              <option value={"course"}>Curso</option>
+            </select>
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
+            <div className="btn-cadastrar-container">
+              <ModalCadastrarAluno />
+            </div>
           </div>
         </div>
         <div className="count-container">{counter}</div>

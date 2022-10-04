@@ -108,7 +108,7 @@ function ModalEditarLivro({ data }) {
     }
 
     if (count > 0) {
-      errors.count = `Existem ${count} campos preenchidos incorretamente`;
+      errors.count = count;
     }
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
