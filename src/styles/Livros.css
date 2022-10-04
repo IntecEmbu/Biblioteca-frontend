@@ -6,8 +6,7 @@
 
 .cards-book-container{
     display: flex;
-    margin: auto;
-    /* Caso passe o tamanho da tela manda para baixo */
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -16,7 +15,15 @@
     animation: surgir-baixo .5s;
 }
 
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 1061px) {
+    #card-main-book-container{
+        /* Deixa o elemento esticado */
+        flex: 1 1 100%;
+        
+    }
+}
+
+@media screen and (max-width: 935px) {
     .cards-book-container{
         justify-content: center;
     }

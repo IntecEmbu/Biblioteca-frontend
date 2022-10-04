@@ -63,10 +63,10 @@ function CardBook(props) {
         <p className="info-card-main">CDD: {props.cdd}</p>
         <div className="btn-card-container">
           <div className="btn-editar-container">
-            <ModalDetalhes 
-            total={props.qtdTotal}
-            stopped={props.qtdStopped}
-            circulation={props.qtdCirculation}
+            <ModalDetalhes
+              total={props.qtdTotal}
+              stopped={props.qtdStopped}
+              circulation={props.qtdCirculation}
             />
           </div>
           <div className="btn-editar-container">
