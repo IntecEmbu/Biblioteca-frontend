@@ -1,5 +1,5 @@
 #nav {
-  background-color: #fff;
+  background-color: var(--azul);
   box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
   padding: 0;
 }
@@ -48,7 +48,7 @@
 
 #link-navbar {
   text-decoration: none;
-  color: var(--azul);
+  color: var(--cinza);
 }
 
 .item-dropdown:hover #link-navbar{
@@ -56,6 +56,24 @@
 }
 
 .link-navbar-sair {
-  color: var(--azul) !important;
+  color: var(--cinza) !important;
   font-weight: bold;
+}
+
+.menu-bars{
+  display: none !important;
+}
+
+.Navbar{
+  display: block !important;
+}
+
+@media screen and (max-width: 768px) {
+  .Navbar{
+    display: none !important;
+  }
+
+  .menu-bars{
+    display: block !important;
+  }
 }
