@@ -1,18 +1,19 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar/sidebar.js"
+import Sidebar from "./Sidebar/sidebar.js";
 import "../styles/Navbar.css";
 
 function index() {
   function logout() {
     window.location.href = "/login";
     localStorage.removeItem("isSigned");
+    localStorage.removeItem("user");
   }
 
   return (
     <>
-    {/* <Navbar bg="light" variant="light">
+      {/* <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand id="logo-nav">
           <Link to="/home">
@@ -65,7 +66,7 @@ function index() {
       </Container>
     </Navbar> */}
 
-    <Sidebar/>
+      <Sidebar />
     </>
   );
 }
