@@ -4,6 +4,14 @@
   padding: 1rem;
   width: fit-content;
   border-radius: .2rem;
+  /* quebrar linha caso não caiba */
+  flex-wrap: wrap;
+}
+
+.btn-cadastrar-voluntario-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .pesquisar-container input,
@@ -196,4 +204,46 @@ select:hover {
 .fa-pen,
 .fa-trash {
     margin-right: .5rem;
+}
+
+/* Reponsividade do input */
+@media screen and (max-width: 760px) {
+
+  .pesquisar-container{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .titulo-container{
+    padding: 1rem 0 0 1rem;
+  }
+
+  .pesquisar-container input{
+    display: flex;
+    font-size: 1rem;
+    margin-right: 10px;
+    margin: auto;
+    width: 45%;
+  }
+
+  .pesquisar-container :last-child{
+    /* Deixa o elemento no final */
+    margin-left: auto;
+  }
+
+  .btn-pesquisar-container{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pagina-container{
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .btn-cadastrar-voluntario-container{
+    margin: 1rem 0 0;
+  }
 }

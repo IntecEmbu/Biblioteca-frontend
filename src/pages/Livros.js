@@ -146,35 +146,35 @@ function LivrosPage() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Livros</h1>
-          <div className="pesquisar-container">
-            <input
-              className="input-pesquisa"
-              type="text"
-              placeholder="Pesquise aqui"
-              onKeyDown={handleKeyDown}
-              onChange={(e) => setNameSearch(e.target.value.trim())}
-            />
-            <select
-              className="tipo-pesquisa"
-              value={selectValue}
-              onChange={(e) => setSelectValue(e.target.value)}
+        </div>
+        <div className="pesquisar-container">
+          <input
+            className="input-pesquisa"
+            type="text"
+            placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setNameSearch(e.target.value.trim())}
+          />
+          <select
+            className="tipo-pesquisa"
+            value={selectValue}
+            onChange={(e) => setSelectValue(e.target.value)}
+          >
+            <option value={"title"}>Título</option>
+            <option value={"category"}>Categoria</option>
+            <option value={"author"}>Autor</option>
+          </select>
+          <div className="btn-pesquisar-container">
+            <button
+              className="btn-pesquisar"
+              onClick={search}
+              disabled={isDisabled}
             >
-              <option value={"title"}>Título</option>
-              <option value={"category"}>Categoria</option>
-              <option value={"author"}>Autor</option>
-            </select>
-            <div className="btn-pesquisar-container">
-              <button
-                className="btn-pesquisar"
-                onClick={search}
-                disabled={isDisabled}
-              >
-                <FaSearch />
-              </button>
-            </div>
-            <div className="btn-cadastrar-container">
-              <ModalCadastrarLivro />
-            </div>
+              <FaSearch />
+            </button>
+          </div>
+          <div className="btn-cadastrar-container">
+            <ModalCadastrarLivro />
           </div>
         </div>
         <div className="count-container">{counter}</div>
