@@ -3,31 +3,3 @@
     margin: auto;
     display: block;
 }
-
-.cards-book-container{
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-
-#card-main-book-container{
-    margin-bottom: 1rem;
-    animation: surgir-baixo .5s;
-}
-
-@media screen and (max-width: 1061px) {
-    #card-main-book-container{
-        /* Deixa o elemento esticado */
-        flex: 1 1 100%;
-    }
-}
-
-@media screen and (max-width: 935px) {
-    .cards-book-container{
-        justify-content: center;
-    }
-
-    #book-notFound{
-        width: 50vw;
-    }
-}
