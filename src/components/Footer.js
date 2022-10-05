@@ -3,7 +3,7 @@ import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <div class="footer">
+    <div className="footer">
       <p>Copyright © 2022 BibliTec - Todos os direitos reservados</p>
     </div>
   );
