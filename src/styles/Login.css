@@ -28,6 +28,7 @@
   padding-top: 30px;
   border-radius: .2rem;
   background-color: #fff;
+  position: absolute;
 }
 
 .form-content {
