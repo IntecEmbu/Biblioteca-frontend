@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Sidebar from "./Sidebar/sidebar.js"
 import "../styles/Navbar.css";
 
 function index() {
@@ -10,7 +11,8 @@ function index() {
   }
 
   return (
-    <Navbar bg="light" variant="light">
+    <>
+    {/* <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand id="logo-nav">
           <Link to="/home">
@@ -61,7 +63,10 @@ function index() {
           </Link>
         </Nav.Link>
       </Container>
-    </Navbar>
+    </Navbar> */}
+
+    <Sidebar/>
+    </>
   );
 }
 
