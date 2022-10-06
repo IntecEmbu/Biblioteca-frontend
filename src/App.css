@@ -89,7 +89,6 @@ button :disabled :hover{
 
 .count-container{
   display: flex;
-  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
@@ -140,4 +139,13 @@ button :disabled :hover{
   100% {
     opacity: 1;
   }
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+}
+
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
 }

@@ -34,32 +34,32 @@ export default function Emprestimos() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Empréstimos</h1>
-        </div>
-        <div className="pesquisar-container">
-          <input
-            className="input-pesquisa"
-            type="text"
-            placeholder="Pesquise aqui"
-            onKeyDown={handleKeyDown}
-            onChange={(e) => setNameSearch(e.target.value.trim())}
-          />
-          <select
-            className="tipo-pesquisa"
-            value={selectValue}
-            onChange={(e) => setSelectValue(e.target.value)}
-          >
-            <option value={"name"}>Nome</option>
-            <option value={"book"}>Livro</option>
-            <option value={"code"}>Código</option>
-          </select>
-          <div className="btn-container">
-            <button
-              className="btn-pesquisar"
-              onClick={search}
-              disabled={isDisabled}
+          <div className="pesquisar-container">
+            <input
+              className="input-pesquisa"
+              type="text"
+              placeholder="Pesquise aqui"
+              onKeyDown={handleKeyDown}
+              onChange={(e) => setNameSearch(e.target.value.trim())}
+            />
+            <select
+              className="tipo-pesquisa"
+              value={selectValue}
+              onChange={(e) => setSelectValue(e.target.value)}
             >
-              <FaSearch />
-            </button>
+              <option value={"name"}>Nome</option>
+              <option value={"book"}>Livro</option>
+              <option value={"code"}>Código</option>
+            </select>
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
           </div>
         </div>
         <div className="count-container">{counter}</div>

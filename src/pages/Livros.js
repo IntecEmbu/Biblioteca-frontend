@@ -160,8 +160,8 @@ function LivrosPage() {
               onChange={(e) => setSelectValue(e.target.value)}
             >
               <option value={"title"}>Título</option>
-              <option value={"category"}>Categoria</option>
               <option value={"author"}>Autor</option>
+              <option value={"category"}>Categoria</option>
             </select>
             <div className="btn-pesquisar-container">
               <button

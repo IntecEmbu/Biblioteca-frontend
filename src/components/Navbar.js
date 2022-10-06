@@ -28,27 +28,27 @@ function index() {
             </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link className="item-dropdown">
+            <Nav.Link className="item-nav">
               <Link to="/livros" id="link-navbar">
                 Livros
               </Link>
             </Nav.Link>
-            <Nav.Link className="item-dropdown">
+            <Nav.Link className="item-nav">
               <Link to="/emprestimos" id="link-navbar">
                 Empréstimos
               </Link>
             </Nav.Link>
-            <Nav.Link className="item-dropdown">
+            <Nav.Link className="item-nav">
               <Link to="/alunos" id="link-navbar">
                 Alunos
               </Link>
             </Nav.Link>
-            <Nav.Link className="item-dropdown">
+            <Nav.Link className="item-nav">
               <Link to="/voluntarios" id="link-navbar">
                 Voluntários
               </Link>
             </Nav.Link>
-            <Nav.Link className="item-dropdown">
+            <Nav.Link className="item-nav">
               <Link to="/relatorios" id="link-navbar">
                 Relatórios
               </Link>

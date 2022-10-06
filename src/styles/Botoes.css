@@ -3,6 +3,7 @@
   background-color: #fff;
   padding: 1rem;
   width: fit-content;
+  border: 1px solid var(--cinza-escuro);
   border-radius: .2rem;
   /* quebrar linha caso não caiba */
   flex-wrap: wrap;

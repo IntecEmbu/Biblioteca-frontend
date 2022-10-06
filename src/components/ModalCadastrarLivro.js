@@ -245,6 +245,7 @@ function Example() {
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
+                  maxLength="13"
                   onChange={(e) => {
                     setIsbn(e.target.value);
                     setErrors({ ...errors, isbn: "", count: "" });

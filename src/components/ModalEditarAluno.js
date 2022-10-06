@@ -252,7 +252,7 @@ function ModalEditarAluno({ data }) {
                   defaultValue={type}
                   onChange={(e) => setType(e.target.value)}
                 >
-                  <option value={"Aluno"}>Alunod</option>
+                  <option value={"Aluno"}>Aluno</option>
                   <option value={"Funcionario"}>Funcionário</option>
                 </select>
               </div>
