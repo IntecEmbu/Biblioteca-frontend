@@ -88,8 +88,9 @@ export default function Voluntarios() {
 
   function verifyUser() {
     if (
-      JSON.parse(localStorage.getItem("user")).librarian_type == "ADM" ||
-      JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
+      JSON.parse(sessionStorage.getItem("user")).librarian_type == "ADM" ||
+      JSON.parse(sessionStorage.getItem("user")).librarian_type ==
+        "Bibliotecario"
     ) {
       setButton(<ModalCadastrarVoluntario />);
     }

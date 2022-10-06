@@ -7,8 +7,8 @@ import * as FaIcons from "react-icons/fa";
 
 function index() {
   function logout() {
-    localStorage.removeItem("user");
-    localStorage.removeItem("isSigned");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("isSigned");
     window.location.href = "/login";
   }
 

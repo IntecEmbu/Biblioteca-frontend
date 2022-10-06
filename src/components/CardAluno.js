@@ -12,8 +12,9 @@ function CardBook(props) {
 
   function showButtons() {
     if (
-      JSON.parse(localStorage.getItem("user")).librarian_type == "ADM" ||
-      JSON.parse(localStorage.getItem("user")).librarian_type == "Bibliotecario"
+      JSON.parse(sessionStorage.getItem("user")).librarian_type == "ADM" ||
+      JSON.parse(sessionStorage.getItem("user")).librarian_type ==
+        "Bibliotecario"
     ) {
       setButtons(
         <div className="btn-excluir-container">

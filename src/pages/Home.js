@@ -4,7 +4,7 @@ import "../styles/Home.css";
 
 function Home() {
   // Coleta o nome do usuário logado
-  const name = JSON.parse(localStorage.getItem("user")).librarian_name.split(
+  const name = JSON.parse(sessionStorage.getItem("user")).librarian_name.split(
     " "
   )[0];
   const [message, setMessage] = useState("");

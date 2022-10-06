@@ -17,7 +17,7 @@ function ModalEditarAluno({ data }) {
   const id = data.id;
   const [book_id, setBookId] = useState(data.book_id);
   const [librarian_id, setLibrarianId] = useState(
-    JSON.parse(localStorage.getItem("user")).librarian_code
+    JSON.parse(sessionStorage.getItem("user")).librarian_code
   );
   const [userCpf, setUserCpf] = useState("");
 

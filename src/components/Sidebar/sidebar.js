@@ -55,8 +55,8 @@ function Sidebar() {
             <div
               className="nav-text sidebar-item-logout"
               onClick={() => {
-                localStorage.removeItem("user");
-                localStorage.removeItem("isSigned");
+                sessionStorage.removeItem("user");
+                sessionStorage.removeItem("isSigned");
                 window.location.href = "/login";
               }}
             >

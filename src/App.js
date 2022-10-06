@@ -13,7 +13,7 @@ import ProtectedRouter from "./protectedRouter";
 import { useState } from "react";
 
 function App() {
-  const [isSigned, setIsSigned] = useState(localStorage.getItem("isSigned"));
+  const [isSigned, setIsSigned] = useState(sessionStorage.getItem("isSigned"));
 
   return (
     <BrowserRouter>
