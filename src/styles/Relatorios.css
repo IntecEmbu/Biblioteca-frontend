@@ -4,7 +4,6 @@
 }
 
 .grafico-container{
-  /* Deixa o elemento no centro da tela com flexbox */
   display: flex;
   justify-content: center;
   align-items: center;

@@ -7,7 +7,6 @@ function Chart() {
   const [dataChart, setDataChart] = useState([]);
   const [optionsChart, setOptionsChart] = useState({});
   const [chart, setChart] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   async function getDataChartPie() {
     try {
@@ -48,7 +47,6 @@ function Chart() {
             },
           },
         },
-        // Controla o tamanho do grafico
         aspectRatio: 1,
       });
 
