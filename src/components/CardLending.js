@@ -17,7 +17,7 @@ function CardBook(props) {
         <p className="info-card-main">Emprestado por: {props.librarian_name}</p>
         <div className="btn-card-container">
           <div className="btn-excluir-container">
-            <ModalDevolver />
+            <ModalDevolver lending_id={props.lending_id} />
           </div>
         </div>
       </div>

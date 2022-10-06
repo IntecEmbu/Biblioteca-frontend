@@ -78,14 +78,13 @@ export default function Emprestimos() {
   async function loadLendings() {
     const data = await downloadLending();
 
-    console.log(data);
-
-    if (data.length === 0) {
+    if (!data.length) {
       setCards(
         <div className="area-loading">
-          <h3>Nenhum empréstimo realizado!</h3>
+          <h3>Nenhum empréstimo pendente!</h3>
         </div>
       );
+      return;
     }
 
     setLendings(data);
