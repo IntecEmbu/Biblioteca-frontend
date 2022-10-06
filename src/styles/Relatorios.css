@@ -1,0 +1,13 @@
+.area-grafico{
+  display: flex;
+  justify-content: center;
+}
+
+.grafico-container{
+  /* Deixa o elemento no centro da tela com flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  border-radius: 10px;
+}
