@@ -71,7 +71,7 @@ function CardBook(props) {
             />
           </div>
           <div className="btn-editar-container">
-            <ModalEmprestar data={dataBook} />
+            <ModalEmprestar book_id={dataBook.id} />
           </div>
           <div className="btn-editar-container">
             <ModalEditarLivro data={dataBook} />

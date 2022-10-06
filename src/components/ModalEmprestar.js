@@ -4,7 +4,7 @@ import { FaPen } from "react-icons/fa";
 import api from "../service/api";
 import Spinner from "react-bootstrap/Spinner";
 
-function ModalEditarAluno({ data }) {
+function ModalEditarAluno({ book_id }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -14,12 +14,10 @@ function ModalEditarAluno({ data }) {
   };
   const handleShow = () => setShow(true);
 
-  const id = data.id;
-  const [book_id, setBookId] = useState(data.book_id);
   const [librarian_id, setLibrarianId] = useState(
     JSON.parse(sessionStorage.getItem("user")).librarian_code
   );
-  const [userCpf, setUserCpf] = useState("");
+  const [user_cpf, setUserCpf] = useState("");
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
@@ -40,22 +38,16 @@ function ModalEditarAluno({ data }) {
     );
   }
 
-  async function simulaReaquisição() {
-    setInterval(() => {
-      console.log("simulando reaquisição");
-    }, 5000);
-  }
-
   function validate() {
     let errors = {};
     let count = 0;
 
     // Validação do cpf
-    if (!userCpf) {
-      errors.userCpf = "Campo obrigatório";
+    if (!user_cpf) {
+      errors.user_cpf = "Campo obrigatório";
       count++;
-    } else if (!userCpf.match(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)) {
-      errors.userCpf = "CPF inválido";
+    } else if (!user_cpf.match(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)) {
+      errors.user_cpf = "CPF inválido";
       count++;
     }
 
@@ -69,22 +61,26 @@ function ModalEditarAluno({ data }) {
 
   async function lending() {
     if (validate()) {
+      setErrors({});
       setIsDisabled(true);
+
       try {
-        await api.post("/lending", {
+        await api.post("/lending/insert", {
           book_id,
           librarian_id,
-          userCpf,
+          user_cpf,
         });
+
+        setErrors({});
+        setSuccess(true);
         setIsDisabled(false);
-        setSuccess(true);
-      } catch (err) {
-        // alert("Erro ao emprestar o livro!");
-        // console.log(err);
-        setIsDisabled(false); // Lembrar de tirar dps
-        setSuccess(true);
-      } finally {
+
         await close();
+      } catch (err) {
+        // console.log(err.response.data);
+        setErrors({ api: err.response.data.error });
+
+        setIsDisabled(false);
       }
     }
   }
@@ -112,15 +108,15 @@ function ModalEditarAluno({ data }) {
               <input
                 maxLength="11"
                 type="text"
-                value={userCpf}
+                value={user_cpf}
                 onChange={(e) => {
                   formatCpf(e.target.value);
-                  setErrors({ ...errors, userCpf: "", count: "" });
+                  setErrors({});
                 }}
                 onKeyDown={handleKeyDown}
               />
-              {errors.userCpf && (
-                <span className="error-message">{errors.userCpf}</span>
+              {errors.user_cpf && (
+                <span className="error-message">{errors.user_cpf}</span>
               )}
               {success && (
                 <span className="success-message">
@@ -131,6 +127,9 @@ function ModalEditarAluno({ data }) {
                 <div className="loading-modal">
                   <Spinner animation="border" />
                 </div>
+              )}
+              {errors.api && (
+                <span className="error-message">{errors.api}</span>
               )}
             </div>
           </div>
