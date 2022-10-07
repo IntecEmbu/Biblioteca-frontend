@@ -2,6 +2,22 @@
   overflow: hidden;
 }
 
+.navbar-logo{
+  width: 50px;
+  margin: 10px;
+  margin-left: 100px;
+}
+
+.navbar-logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Navbar-link{
+  margin-right: 100px;
+}
+
 .podio-area{
   display: flex;
   justify-content: center;
