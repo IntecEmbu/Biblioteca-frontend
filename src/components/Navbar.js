@@ -9,7 +9,6 @@ function index() {
   function logout() {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("isSigned");
-    window.location.href = "/login";
   }
 
   return (

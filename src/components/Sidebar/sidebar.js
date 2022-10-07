@@ -58,10 +58,9 @@ function Sidebar() {
                 onClick={() => {
                   sessionStorage.removeItem("user");
                   sessionStorage.removeItem("isSigned");
-                  window.location.href = "/";
                 }}
               >
-                <Link to="#">
+                <Link to="/">
                   <div className="menu-item-icon">
                     <FaIcons.FaSignOutAlt />
                   </div>
