@@ -202,6 +202,11 @@ select:hover {
   transition: all .1s linear;
 }
 
+.inputs-container-mobile{
+  display: flex;
+  justify-content: space-between;
+}
+
 .fa-pen,
 .fa-trash {
     margin-right: .5rem;
@@ -214,9 +219,44 @@ select:hover {
 @media screen and (max-width: 950px) {
   .mobile{
     display: block;
+    /* Diminui a escala da letra */
   }
   
   .desktop{
     display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pesquisar-container{
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .mobile{
+    display: block;
+    /* Diminui a escala da letra */
+    font-size: 0.6rem;
+  }
+
+  .btn-pesquisar{
+    padding: .06rem .4rem;
+  }
+}
+
+@media screen and (max-width: 315px) {
+  .mobile{
+    display: block;
+    /* Diminui a escala da letra */
+    font-size: 0.5rem;
+  }
+
+  .btn-pesquisar{
+    padding: .001rem .4rem;
+  }
+
+  .inputs-container-mobile{
+    flex-wrap: wrap;
   }
 }

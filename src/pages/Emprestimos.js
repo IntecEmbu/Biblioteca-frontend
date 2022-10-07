@@ -115,7 +115,7 @@ export default function Emprestimos() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Empréstimos</h1>
-          <div className="pesquisar-container">
+          <div className="pesquisar-container desktop">
             <input
               className="input-pesquisa"
               type="text"
@@ -123,6 +123,36 @@ export default function Emprestimos() {
               onKeyDown={handleKeyDown}
               onChange={(e) => setNameSearch(e.target.value.trim())}
             />
+            <select
+              className="tipo-pesquisa"
+              value={selectValue}
+              onChange={(e) => setSelectValue(e.target.value)}
+            >
+              <option value={"name"}>Nome</option>
+              <option value={"book"}>Livro</option>
+              <option value={"code"}>Código</option>
+            </select>
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* mobile */}
+        <div className="pesquisar-container mobile">
+          <input
+            className="input-pesquisa"
+            type="text"
+            placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setNameSearch(e.target.value.trim())}
+          />
+          <div className="inputs-container-mobile">
             <select
               className="tipo-pesquisa"
               value={selectValue}

@@ -113,7 +113,7 @@ export default function Voluntarios() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Voluntários</h1>
-          <div className="pesquisar-container">
+          <div className="pesquisar-container desktop">
             <input
               className="input-pesquisa"
               type="text"
@@ -131,6 +131,28 @@ export default function Voluntarios() {
               </button>
             </div>
             <div className="btn-cadastrar-voluntario-container">{button}</div>
+          </div>
+        </div>
+        {/* Mobile */}
+        <div className="pesquisar-container mobile">
+          <input
+            className="input-pesquisa"
+            type="text"
+            placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setNameSearch(e.target.value)}
+          />
+          <div className="inputs-container-mobile">
+            <div className="btn-cadastrar-voluntario-container">{button}</div>
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
           </div>
         </div>
         <div className="counter-container">{counter}</div>

@@ -149,3 +149,9 @@ input[type=number] {
  -moz-appearance: textfield;
  appearance: textfield;
 }
+
+@media screen and (max-width: 950px) {
+  .input-pesquisa{
+      width: 100%;
+  }
+}

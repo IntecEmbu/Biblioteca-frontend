@@ -186,29 +186,31 @@ function LivrosPage() {
             onKeyDown={handleKeyDown}
             onChange={(e) => setNameSearch(e.target.value.trim())}
           />
-          <select
-            className="tipo-pesquisa"
-            value={selectValue}
-            onChange={(e) => setSelectValue(e.target.value)}
-          >
-            <option value={"title"}>Título</option>
-            <option value={"category"}>Categoria</option>
-            <option value={"author"}>Autor</option>
-          </select>
-          <div className="btn-pesquisar-container">
-            <button
-              className="btn-pesquisar"
-              onClick={search}
-              disabled={isDisabled}
+          <div className="inputs-container-mobile">
+            <select
+              className="tipo-pesquisa"
+              value={selectValue}
+              onChange={(e) => setSelectValue(e.target.value)}
             >
-              <FaSearch />
-            </button>
-          </div>
-          <div className="btn-cadastrar-container">
-            <ModalCadastrarLivro />
+              <option value={"title"}>Título</option>
+              <option value={"category"}>Categoria</option>
+              <option value={"author"}>Autor</option>
+            </select>
+            <div className="btn-container"></div>
+            <div className="btn-pesquisar-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
+            <div className="btn-cadastrar-container">
+              <ModalCadastrarLivro />
+            </div>
           </div>
         </div>
-        {/* Colocar mobile aqui */}
         <div className="count-container">{counter}</div>
         <div className="cards-container">{booksCard}</div>
       </div>

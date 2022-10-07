@@ -131,7 +131,7 @@ export default function Alunos() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Alunos</h1>
-          <div className="pesquisar-container">
+          <div className="pesquisar-container desktop">
             <input
               className="input-pesquisa"
               type="text"
@@ -142,6 +142,42 @@ export default function Alunos() {
                 setNameSearch(formatCpf(e.target.value));
               }}
             />
+            <select
+              className="tipo-pesquisa"
+              value={selectValue}
+              onChange={(e) => setSelectValue(e.target.value)}
+            >
+              <option value={"name"}>Nome</option>
+              <option value={"cpf"}>CPF</option>
+              <option value={"course"}>Curso</option>
+            </select>
+            <div className="btn-container">
+              <button
+                className="btn-pesquisar"
+                onClick={search}
+                disabled={isDisabled}
+              >
+                <FaSearch />
+              </button>
+            </div>
+            <div className="btn-cadastrar-container">
+              <ModalCadastrarAluno />
+            </div>
+          </div>
+        </div>
+        {/* Mobile */}
+        <div className="pesquisar-container mobile">
+          <input
+            className="input-pesquisa"
+            type="text"
+            value={nameSearch}
+            placeholder="Pesquise aqui"
+            onKeyDown={handleKeyDown}
+            onChange={(e) => {
+              setNameSearch(formatCpf(e.target.value));
+            }}
+          />
+          <div className="btn-container">
             <select
               className="tipo-pesquisa"
               value={selectValue}

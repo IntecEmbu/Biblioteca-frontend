@@ -149,8 +149,12 @@ function Example() {
 
   return (
     <>
-      <button className="btn-cadastrar" onClick={handleShow}>
+      <button className="btn-cadastrar desktop" onClick={handleShow}>
         Cadastrar Livro
+      </button>
+
+      <button className="btn-cadastrar mobile" onClick={handleShow}>
+        Cadastrar
       </button>
 
       <Modal show={show} centered>
