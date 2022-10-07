@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import PieChart from "./pieChart.js";
 import api from "../service/api.js";
 import { Spinner } from "react-bootstrap";
+import { Pie } from "react-chartjs-2";
+import Chart from "chart.js/auto";
 
-function Chart() {
+function ChartQtd() {
   const [dataChart, setDataChart] = useState([]);
   const [optionsChart, setOptionsChart] = useState({});
   const [chart, setChart] = useState(false);
@@ -64,7 +65,7 @@ function Chart() {
   return (
     <>
       {chart ? (
-        <PieChart data={dataChart} options={optionsChart} />
+        <Pie data={dataChart} options={optionsChart} />
       ) : (
         <div className="loading-chart">
           <Spinner id="loading" animation="border" />
@@ -74,4 +75,4 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default ChartQtd;
