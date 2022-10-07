@@ -76,6 +76,14 @@
   #podio-item-1, #podio-item-2, #podio-item-3{
     width: 100px;
   }
+
+  .navbar-logo{
+    margin-left: 50px;
+  }
+
+  .Navbar-link{
+    margin-right: 50px;
+  }
 }
 
 @media screen and (max-width: 327px){
@@ -86,6 +94,14 @@
 
   #podio-item-1, #podio-item-2, #podio-item-3{
     width: 65px;
+  }
+
+  .navbar-logo{
+    margin-left: 10px;
+  }
+
+  .Navbar-link{
+    margin-right: 10px;
   }
 }
 
