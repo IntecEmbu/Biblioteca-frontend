@@ -52,20 +52,22 @@ function Sidebar() {
               })}
             </div>
 
-            <div
-              className="nav-text sidebar-item-logout"
-              onClick={() => {
-                sessionStorage.removeItem("user");
-                sessionStorage.removeItem("isSigned");
-                window.location.href = "/login";
-              }}
-            >
-              <Link to="#">
-                <div className="menu-item-icon">
-                  <FaIcons.FaSignOutAlt />
-                </div>
-                <span className="sidebar-span">Sair</span>
-              </Link>
+            <div className="sidebar-logout">
+              <div
+                className="nav-text "
+                onClick={() => {
+                  sessionStorage.removeItem("user");
+                  sessionStorage.removeItem("isSigned");
+                  window.location.href = "/";
+                }}
+              >
+                <Link to="#">
+                  <div className="menu-item-icon">
+                    <FaIcons.FaSignOutAlt />
+                  </div>
+                  <span className="sidebar-span">Sair</span>
+                </Link>
+              </div>
             </div>
           </ul>
         </nav>

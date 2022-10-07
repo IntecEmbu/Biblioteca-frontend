@@ -56,7 +56,7 @@ function index() {
           </Nav>
           <Nav.Link>
             <Link
-              to="/login"
+              to="/"
               id="link-navbar"
               className="link-navbar-sair"
               onClick={logout}
