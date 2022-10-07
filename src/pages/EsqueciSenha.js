@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer.js";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "../styles/Login.css";
 
 export default function EsqueciSenha() {
+  useEffect(() => {
+    if (sessionStorage.getItem("isSigned")) {
+      window.location.href = "/home";
+    }
+  }, []);
+
   return (
     <div className="color">
       <div className="form-container">

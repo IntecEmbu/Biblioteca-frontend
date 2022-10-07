@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import login from "../service/login.js";
 import { Spinner } from "react-bootstrap";
@@ -58,6 +58,12 @@ function Index() {
       tryLogin();
     }
   }
+
+  useEffect(() => {
+    if (sessionStorage.getItem("isSigned")) {
+      window.location.href = "/home";
+    }
+  }, []);
 
   return (
     <div className="color">
