@@ -1,0 +1,85 @@
+#landing-page{
+  overflow: hidden;
+}
+
+.podio-area{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  animation: aparecerEsquerda .5s;
+}
+
+.podio-container{
+  display: flex;
+  align-items: flex-end;
+  color: var(--azul);
+  font: 700 1rem 'Roboto', sans-serif;
+}
+
+.podio{
+  text-align: center;
+}
+
+.podio-title{
+  font: 700 1.5rem 'Roboto', sans-serif;
+  margin-bottom: 1rem;
+}
+
+#podio-item-1{
+  height: 250px;
+  margin: 0 10px;
+}
+
+#podio-item-2{
+  height: 200px;
+}
+
+#podio-item-3{
+  height: 150px;
+}
+
+#podio-item-1, #podio-item-2, #podio-item-3{
+  color: var(--cinza);
+  width: 150px;
+  border-radius: 10px 10px 3px 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 800 2rem 'Roboto', sans-serif;
+  background-color: var(--azul);
+}
+
+@media screen and (max-width: 625px){
+
+  .podio-area{
+    padding: 1rem;
+  }
+
+  #podio-item-1, #podio-item-2, #podio-item-3{
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 327px){
+
+  .podio-area{
+    padding: 1rem;
+  }
+
+  #podio-item-1, #podio-item-2, #podio-item-3{
+    width: 65px;
+  }
+}
+
+@keyframes aparecerEsquerda{
+  from{
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

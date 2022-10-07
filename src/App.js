@@ -9,6 +9,7 @@ import Relatorios from "./pages/Relatorios";
 import Login from "./pages/Login.js";
 import EsqueciSenha from "./pages/EsqueciSenha.js";
 import NotFound from "./pages/NotFound.js";
+import LandingPage from "./pages/LandingPage";
 import ProtectedRouter from "./protectedRouter";
 import { useState } from "react";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/esqueci-senha" element={<EsqueciSenha />} />
       </Routes>
     </BrowserRouter>
