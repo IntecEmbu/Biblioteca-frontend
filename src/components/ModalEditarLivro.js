@@ -158,9 +158,13 @@ function ModalEditarLivro({ data }) {
 
   return (
     <>
-      <button className="btn-editar-card" onClick={handleShow}>
+      <button className="btn-editar-card desktop" onClick={handleShow}>
         <FaPen className="fa-pen" />
         Editar
+      </button>
+
+      <button className="btn-editar-card mobile" onClick={handleShow}>
+        <FaPen className="fa-pen" />
       </button>
 
       <Modal show={show} centered>

@@ -40,9 +40,13 @@ function ModalExcluir({ path, id }) {
 
   return (
     <>
-      <button className="btn-excluir-card" onClick={handleShow}>
+      <button className="btn-excluir-card desktop" onClick={handleShow}>
         <FaTrashAlt className="fa-trash" />
         Excluir
+      </button>
+
+      <button className="btn-excluir-card mobile" onClick={handleShow}>
+        <FaTrashAlt className="fa-trash" />
       </button>
 
       <Modal show={show} centered>
