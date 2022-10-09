@@ -14,7 +14,7 @@ function ChartQtd() {
       const response = await (await api.get("/report/quantity-book")).data[0];
 
       setDataChart({
-        labels: ["Livros na biblioteca", "Livros emprestados"],
+        labels: ["Biblioteca", "Emprestados"],
         datasets: [
           {
             id: 1,
@@ -32,13 +32,14 @@ function ChartQtd() {
         plugins: {
           title: {
             display: true,
-            text: `Total de livros na biblioteca: ${response.total}`,
+            text: `Total de livros registrados: ${response.total}`,
             font: {
               size: 15,
             },
             position: "bottom",
           },
           legend: {
+            onClick: (e) => e.stopPropagation(),
             display: true,
             position: "top",
             labels: {

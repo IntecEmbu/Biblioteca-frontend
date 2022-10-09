@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar.js";
 import "../styles/Botoes.css";
 import "../styles/Relatorios.css";
-import QtdLivrChart from "../components/QtdLivroChart.js";
+import QtdLivroChart from "../components/QtdLivroChart.js";
 import QtdEmprestimos from "../components/QtdEmprestimosChart.js";
 import QtdDevolucoes from "../components/QtdDevolucoesChart.js";
 
@@ -19,7 +19,7 @@ export default function Relatorios() {
         </div>
         <div className="area-grafico">
           <div className="grafico-container">
-            <QtdLivrChart />
+            <QtdLivroChart />
           </div>
           <div className="grafico-container">
             <QtdEmprestimos />
