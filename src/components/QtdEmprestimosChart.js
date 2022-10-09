@@ -9,7 +9,7 @@ function QtdEmprestimos() {
       {
         label: "Livros emprestados",
         data: [3, 5, 2, 3],
-        backgroundColor: ["#192039"],
+        backgroundColor: "#006494",
         borderWidth: 1,
       },
     ],

@@ -9,7 +9,7 @@ function QtdEmprestimos() {
       {
         label: "Livros devolvidos",
         data: [3, 5, 2, 3],
-        backgroundColor: ["#192039"],
+        backgroundColor: "#1b98e0",
         borderWidth: 1,
       },
     ],

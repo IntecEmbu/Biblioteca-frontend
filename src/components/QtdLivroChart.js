@@ -20,7 +20,7 @@ function ChartQtd() {
             id: 1,
             label: "",
             data: [response.stopped, response.circulation],
-            backgroundColor: ["#FF6384", "#36A2EB"],
+            backgroundColor: ["#006494", "#1b98e0"],
             borderWidth: 0,
           },
         ],
