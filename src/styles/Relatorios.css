@@ -1,12 +1,15 @@
 .area-grafico{
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .grafico-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 50vh;
   border-radius: 10px;
+  margin: 0 auto;
 }
