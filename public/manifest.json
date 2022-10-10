@@ -1,6 +1,6 @@
 {
   "short_name": "BibliTec",
-  "name": "Sistema BibliTec",
+  "name": "Sistema de gerenciamento de biblioteca",
   "icons": [
     {
       "src": "E_white.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#192039",
   "background_color": "#192039"
 }
