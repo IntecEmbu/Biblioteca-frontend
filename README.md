@@ -29,5 +29,5 @@
 
 ## Projetos relacionados 📁
 
-- ### [Backend](https://github.com/IntecEmbu/Biblioteca-backend) - API REST desenvolvida em NodeJS.
+- ### [Frontend](https://github.com/IntecEmbu/Biblioteca-frontend) - Aplicação web desenvolvida em ReactJS.
 - ### [Backend auxiliar](https://github.com/PedroFnseca/Subprocess-API) - Desenvolvida em Nodejs para auxiliar o sistema aplicando multas e avisos de email.
