@@ -1,25 +1,27 @@
 {
   "short_name": "BibliTec",
-  "name": "Sistema de gerenciamento de biblioteca",
+  "name": "Sistema de biblioteca escolar",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#192039",
+  "background_color": "#192039",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "E_white.png",
+      "src": "logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "E_white.png",
+      "src": "logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "E_white.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#192039",
-  "background_color": "#192039"
+  ]
 }
