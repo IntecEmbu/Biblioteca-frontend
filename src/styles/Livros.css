@@ -3,3 +3,49 @@
     margin: auto;
     display: block;
 }
+
+.card-book-main {
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid var(--cinza-escuro);
+    border-radius: .2rem;
+}
+
+.cards-book-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#card-main-container-book{
+    flex-wrap: wrap;
+    width: 39rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    #card-main-container-book{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .btn-card-container{
+        scale: .8;
+    }
+
+    .card-book-main{
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .btn-card-container{
+        scale: .7;
+    }
+
+    .card-book-main{
+        padding: 5px;
+    }
+}
