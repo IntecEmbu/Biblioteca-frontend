@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-bootstrap/Modal";
 import { FaPen } from "react-icons/fa";
 import api from "../service/api";
 import Spinner from "react-bootstrap/Spinner";
+import Modal from "react-bootstrap/Modal";
+import InputMask from "react-input-mask";
 
 function ModalEditarAluno({ book_id }) {
   const [show, setShow] = useState(false);
@@ -105,16 +106,16 @@ function ModalEditarAluno({ book_id }) {
           <div className="input-group-modal">
             <div className="input-box-modal">
               <label>CPF</label>
-              <input
-                maxLength="11"
-                type="text"
+              <InputMask
+                mask="999.999.999-99"
+                maskChar=" "
                 value={user_cpf}
                 onChange={(e) => {
                   formatCpf(e.target.value);
                   setErrors({});
                 }}
                 onKeyDown={handleKeyDown}
-              />
+              ></InputMask>
               {errors.user_cpf && (
                 <span className="error-message">{errors.user_cpf}</span>
               )}

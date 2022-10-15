@@ -4,6 +4,7 @@ import "../styles/Modal.css";
 import "../styles/Botoes.css";
 import api from "../service/api.js";
 import { Spinner } from "react-bootstrap";
+import InputMask from "react-input-mask";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -92,7 +93,7 @@ function Example() {
       errors.phone = "Campo obrigatório";
       count++;
     } else if (
-      !phone.match(/^\(?([1-9]{2})\) ?([9]{1})?([0-9]{4})-?([0-9]{4})$/)
+      !phone.match(/^\(\d{2}\)\s\d{5}\-\d{4}$/)
     ) {
       errors.phone = "Telefone inválido";
       count++;
@@ -205,16 +206,15 @@ function Example() {
 
               <div className="input-box-modal">
                 <label>CPF</label>
-                <input
-                  maxLength="11"
-                  type="text"
+                <InputMask
+                  mask="999.999.999-99"
                   value={cpf}
                   onChange={(e) => {
-                    formatCpf(e.target.value);
+                    setCpf(e.target.value); 
                     setErrors({ ...errors, cpf: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
-                />
+                ></InputMask>
                 {errors.cpf && <p className="error-message">{errors.cpf}</p>}
               </div>
 
@@ -235,16 +235,15 @@ function Example() {
 
               <div className="input-box-modal">
                 <label>Celular</label>
-                <input
-                  maxLength="11"
-                  type="text"
+                <InputMask
+                  mask="(99) 99999-9999"
                   value={phone}
                   onChange={(e) => {
-                    formatPhone(e.target.value);
+                    setPhone(e.target.value);
                     setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
-                />
+                ></InputMask>
                 {errors.phone && (
                   <p className="error-message">{errors.phone}</p>
                 )}
