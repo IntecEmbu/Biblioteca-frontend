@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Spinner } from "react-bootstrap";
 import api from "../service/api.js";
+import InputMask from "react-input-mask";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -85,7 +86,10 @@ function Example() {
     if (!isbn) {
       errors.isbn = "Campo obrigatório";
       count++;
-    } else if (isbn.length > 13 || isbn.length < 13) {
+    } else if (isbn.replace(/-/g, "").length !== 13) {
+      errors.isbn = "ISBN inválido";
+      count++;
+    } else if (isbn.replace(/-/g, "").match(/[a-z]/i)) {
       errors.isbn = "ISBN inválido";
       count++;
     }
@@ -236,20 +240,17 @@ function Example() {
               </div>
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
-                <input
-                  onChange={(e) => {
+                <InputMask mask="9999" onChange={(e) => {
                     setYear(e.target.value);
                     setErrors({ ...errors, year: "", count: "" });
                   }}
-                  type="number"
                   onKeyDown={handleKeyDown}
-                />
+                ></InputMask>
                 {errors.year && <p className="error-message">{errors.year}</p>}
               </div>
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
-                  maxLength="13"
                   onChange={(e) => {
                     setIsbn(e.target.value);
                     setErrors({ ...errors, isbn: "", count: "" });

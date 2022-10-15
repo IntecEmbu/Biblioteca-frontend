@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { FaPen } from "react-icons/fa";
 import api from "../service/api.js";
 import { Spinner } from "react-bootstrap";
+import InputMask from "react-input-mask";
 
 function ModalEditarLivro({ data }) {
   const [show, setShow] = useState(false);
@@ -93,7 +94,10 @@ function ModalEditarLivro({ data }) {
     if (!isbn) {
       errors.isbn = "Campo obrigatório";
       count++;
-    } else if (isbn.length > 13 || isbn.length < 13) {
+    } else if (isbn.replace(/-/g, "").length !== 13) {
+      errors.isbn = "ISBN inválido";
+      count++;
+    } else if (isbn.replace(/-/g, "").match(/[a-z]/i)) {
       errors.isbn = "ISBN inválido";
       count++;
     }
@@ -224,15 +228,16 @@ function ModalEditarLivro({ data }) {
 
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
-                <input
+                <InputMask
+                  mask="9999"
+                  maskChar=""
                   onChange={(e) => {
                     setRelease_year(e.target.value);
                     setErrors({ ...errors, release_year: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
                   value={release_year}
-                  type="number"
-                />
+                ></InputMask>
                 {errors.release_year && (
                   <p className="error-message">{errors.release_year}</p>
                 )}
