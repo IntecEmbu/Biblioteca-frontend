@@ -71,7 +71,7 @@ function Index() {
         <div className="form">
           <div className="form-content">
             <div className="logo">
-              <img src={require("../images/logo2.png")}></img>
+              <img src="logo2.png"></img>
             </div>
             <div className="user">
               <input

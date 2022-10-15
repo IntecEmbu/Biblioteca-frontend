@@ -23,7 +23,7 @@ function Sidebar() {
           <div className="navbar-toggle">
             <div className="logo-wrapper">
               <img
-                src={require("../../images/logo.png")}
+                src="logo.png"
                 alt="Logo"
                 className="logo-sidebar"
               />

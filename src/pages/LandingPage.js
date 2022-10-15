@@ -20,7 +20,7 @@ function LandingPage() {
     <>
       <div className="navbar">
         <div className="navbar-logo">
-          <img src={require("../images/logo.png")} alt="Logo" />
+          <img src="logo.png" alt="Logo" />
         </div>
         <div className="Navbar-link item-nav">
           <Link to="/login" id="link-navbar" className="link-navbar-sair">
