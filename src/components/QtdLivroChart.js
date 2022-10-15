@@ -5,34 +5,25 @@ import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
 function ChartQtd() {
-  const [dataChart, setDataChart] = useState([]);
-  const [optionsChart, setOptionsChart] = useState({});
-  const [chart, setChart] = useState(false);
-
-  async function getDataChartPie() {
-    try {
-      const response = await (await api.get("/report/quantity-book")).data[0];
-
-      setDataChart({
-        labels: ["Biblioteca", "Emprestados"],
-        datasets: [
-          {
-            id: 1,
-            label: "",
-            data: [response.stopped, response.circulation],
-            backgroundColor: ["#006494", "#1b98e0"],
-            borderWidth: 0,
-          },
-        ],
-      });
-
-      setOptionsChart({
-        responsive: true,
+  const [dataChart, setDataChart] = useState({
+    labels: ["Biblioteca", "Emprestados"],
+    datasets: [
+      {
+        id: 1,
+        label: "",
+        data: ["...", "..."],
+        backgroundColor: ["#006494", "#1b98e0"],
+        borderWidth: 0,
+      },
+    ],
+  });
+  const [optionsChart, setOptionsChart] = useState({
+    responsive: true,
         maintainAspectRatio: true,
         plugins: {
           title: {
             display: true,
-            text: `Total de livros registrados: ${response.total}`,
+            text: `Total de livros registrados: ...`,
             font: {
               size: 15,
             },
@@ -50,6 +41,33 @@ function ChartQtd() {
           },
         },
         aspectRatio: 1,
+    });
+  
+  const [chart, setChart] = useState(false);
+
+  async function getDataChartPie() {
+    try {
+      const response = await (await api.get("/report/quantity-book")).data[0];
+
+      setDataChart({
+        ...dataChart,
+        datasets: [
+          {
+            ...dataChart.datasets[0],
+            data: [response.stopped, response.circulation]
+          },
+        ],
+      });
+
+      setOptionsChart({
+        ...optionsChart,
+        plugins: {
+          ...optionsChart.plugins,
+          title: {
+            ...optionsChart.plugins.title,
+            text: `Total de livros registrados: ${response.total}`,
+          },
+        },
       });
 
       setChart(true);
@@ -65,13 +83,7 @@ function ChartQtd() {
 
   return (
     <>
-      {chart ? (
-        <Pie data={dataChart} options={optionsChart} />
-      ) : (
-        <div className="loading-chart">
-          <Spinner id="loading" animation="border" />
-        </div>
-      )}
+      <Pie data={dataChart} options={optionsChart} />
     </>
   );
 }
