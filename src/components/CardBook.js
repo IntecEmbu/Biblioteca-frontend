@@ -68,6 +68,7 @@ function CardBook(props) {
               total={props.qtdTotal}
               stopped={props.qtdStopped}
               circulation={props.qtdCirculation}
+              id={props.id}
             />
           </div>
           <div className="btn-editar-container">
