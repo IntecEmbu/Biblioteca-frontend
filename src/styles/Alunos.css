@@ -1,0 +1,13 @@
+#card-main-container-aluno{
+  flex-wrap: wrap;
+  width: 39rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  #card-main-container-aluno{
+    width: 100%;
+  }
+}

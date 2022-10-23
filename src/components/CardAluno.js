@@ -3,6 +3,7 @@ import ModalExcluir from "../components/ModalExcluir.js";
 import ModalEditarAluno from "../components/ModalEditarAluno.js";
 import "../styles/Cards.css";
 import "../styles/Botoes.css";
+import "../styles/Alunos.css";
 
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");
@@ -29,7 +30,7 @@ function CardBook(props) {
   }, []);
 
   return (
-    <div id="card-main-container">
+    <div id="card-main-container-aluno">
       <div className="card-main">
         <p className="titulo-card-main">{props.name}</p>
         <p className="info-card-main">CPF: {props.cpf}</p>

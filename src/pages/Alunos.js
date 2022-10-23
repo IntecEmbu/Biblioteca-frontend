@@ -202,7 +202,81 @@ export default function Alunos() {
           </div>
         </div>
         <div className="count-container">{counter}</div>
-        <div className="cards-container">{userCard}</div>
+        {/* <div className="cards-container">{userCard}</div> */}
+        <div className="cards-container">
+          <CardAluno 
+            id="1"
+            name="João Ferreira da Silva"
+            email="joao@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno
+            id="2"
+            name="Maria da Silva"
+            email="Margia@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno 
+            id="1"
+            name="João Ferreira da Silva"
+            email="joao@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno
+            id="2"
+            name="Maria da Silva"
+            email="Margia@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno 
+            id="1"
+            name="João Ferreira da Silva"
+            email="joao@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno
+            id="2"
+            name="Maria da Silva"
+            email="Margia@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno 
+            id="1"
+            name="João Ferreira da Silva"
+            email="joao@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+          <CardAluno
+            id="2"
+            name="Maria da Silva"
+            email="Margia@gmail.com"
+            phone="11999999999"
+            course="Engenharia de Software"
+            cpf="111.111.111-11"
+            type="Aluno"
+          />
+        </div>
       </div>
     </>
   );
