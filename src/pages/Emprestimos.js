@@ -13,7 +13,7 @@ export default function Emprestimos() {
     </div>
   );
 
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [nameSearch, setNameSearch] = useState("");
   const [selectValue, setSelectValue] = useState("name");
   const [cards, setCards] = useState(spinner);
@@ -135,8 +135,8 @@ export default function Emprestimos() {
             <div className="btn-container">
               <button
                 className="btn-pesquisar"
-                onClick={search}
                 disabled={isDisabled}
+                onClick={ search}
               >
                 <FaSearch />
               </button>
