@@ -4,6 +4,7 @@ import login from "../service/login.js";
 import { Spinner } from "react-bootstrap";
 import Footer from "../components/Footer.js";
 import "../styles/Login.css";
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 
 function Index() {
   const [user, setUser] = React.useState("");
@@ -12,6 +13,8 @@ function Index() {
   const [isDisabled, setIsDisabled] = React.useState(false);
   const [errors, setErrors] = React.useState({});
   const [invalid, setInvalid] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState("password");
+  const [icon, setIcon] = React.useState(<AiFillEyeInvisible/>);
 
   function validate() {
     let errors = {};
@@ -89,7 +92,7 @@ function Index() {
             </div>
             <div className="password">
               <input
-                type="password"
+                type={showPassword}
                 className="input-password"
                 placeholder="Senha"
                 onChange={(e) => {
@@ -99,6 +102,17 @@ function Index() {
                 }}
                 onKeyDown={handleKeyDown}
               />
+              <div className="show-password" onClick={() => {
+                if(showPassword === "password"){
+                  setShowPassword("text");
+                  setIcon(<AiFillEye/>);
+                }else{
+                  setShowPassword("password");
+                  setIcon(<AiFillEyeInvisible/>);
+                }
+                }}>
+                {icon}
+              </div>
               {errors.password && (
                 <p className="error-message">{errors.password}</p>
               )}

@@ -23,6 +23,8 @@
 
 .form {
   width: 420px;
+  position: relative;
+  box-sizing: border-box;
   box-shadow: rgb(0 0 0 / 8%) 1px 1px 10px;
   padding-top: 30px;
   border-radius: .2rem;
@@ -98,6 +100,15 @@
   text-align: center;
   animation: surgir .2s;
   transition: .2s linear;
+}
+
+.show-password{
+  color: var(--azul);
+  position: absolute;
+  bottom: 170px;
+  right: 60px;
+  cursor: pointer;
+  font-size: 1.4rem;
 }
 
 @keyframes surgir {
