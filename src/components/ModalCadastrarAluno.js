@@ -257,6 +257,7 @@ function Example() {
                 <label>CPF</label>
                 <InputMask
                   mask="999.999.999-99"
+                  maskChar=""
                   value={cpf}
                   onChange={(e) => {
                     setCpf(e.target.value); 
@@ -286,6 +287,7 @@ function Example() {
                 <label>Celular</label>
                 <InputMask
                   mask="(99) 99999-9999"
+                  maskChar=""
                   value={phone}
                   onChange={(e) => {
                     setPhone(e.target.value);

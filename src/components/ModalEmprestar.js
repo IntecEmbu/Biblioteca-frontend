@@ -108,7 +108,7 @@ function ModalEditarAluno({ book_id }) {
               <label>CPF</label>
               <InputMask
                 mask="999.999.999-99"
-                maskChar=" "
+                maskChar=""
                 value={user_cpf}
                 onChange={(e) => {
                   formatCpf(e.target.value);

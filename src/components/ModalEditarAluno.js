@@ -248,6 +248,7 @@ function ModalEditarAluno({ data }) {
                 <label>CPF</label>
                 <InputMask
                   mask="999.999.999-99"
+                  maskChar=""
                   value={cpf}
                   onChange={(e) => {
                     formatCpf(e.target.value);
@@ -277,7 +278,8 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>Celular</label>
                 <InputMask
-                  mask="(99) 99999-9999" 
+                  mask="(99) 99999-9999"
+                  maskChar=""
                   value={phone}
                   onChange={(e) => {
                     formatPhone(e.target.value);
