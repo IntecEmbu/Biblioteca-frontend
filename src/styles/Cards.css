@@ -26,6 +26,14 @@
   animation: surgir-baixo .5s;
 }
 
+.p-card-main-ativo{
+  color: green;
+}
+
+.p-card-main-inativo{
+  color: var(--vermelho);
+}
+
 @keyframes surgir-baixo {
   from{
     opacity: 0;

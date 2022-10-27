@@ -54,6 +54,7 @@ export default function Voluntarios() {
             email={volunteer.librarian_email}
             user={volunteer.librarian_user}
             type={volunteer.librarian_type}
+            status={volunteer.librarian_status}
           />
         );
       });
@@ -65,6 +66,8 @@ export default function Voluntarios() {
   async function loadVolunteers() {
     const volunteers = await downloadLibrarian();
     setVolunteers(volunteers);
+
+    console.log(volunteers);
 
     if (!volunteers) {
       return setVolunteersCard("");
@@ -78,6 +81,8 @@ export default function Voluntarios() {
           name={volunteer.librarian_name}
           email={volunteer.librarian_email}
           user={volunteer.librarian_user}
+          type={volunteer.librarian_type}
+          status={volunteer.librarian_status}
         />
       );
     });

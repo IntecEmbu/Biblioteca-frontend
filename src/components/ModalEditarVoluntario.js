@@ -14,6 +14,8 @@ function ModalEditarVoluntario({ data }) {
   const [name, setName] = useState(data.name);
   const [email, setEmail] = useState(data.email);
   const [user, setUser] = useState(data.user);
+  const [type, setType] = useState(data.type);
+  const [status, setStatus] = useState(data.status);
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -88,6 +90,8 @@ function ModalEditarVoluntario({ data }) {
           name,
           email,
           user,
+          type,
+          status,
         });
         setSuccess(true);
         setIsDisabled(false);
@@ -163,6 +167,34 @@ function ModalEditarVoluntario({ data }) {
                   onKeyDown={handleKeyDown}
                 />
                 {errors.user && <p className="error-message">{errors.user}</p>}
+              </div>
+
+              <div className="input-box-modal">
+                <label>Tipo</label>
+                <select
+                  value={type}
+                  onChange={(e) => {
+                    setType(e.target.value);
+                  }}
+                  onKeyDown={handleKeyDown}
+                >
+                  <option value="Colaborador">Colaborator</option>
+                  <option value="Bibliotecario">Bibliotecário</option>
+                </select>
+              </div>
+
+              <div className="input-box-modal">
+                <label>Status</label>
+                <select
+                  value={status}
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  onKeyDown={handleKeyDown}
+                >
+                  <option value="Ativo">Ativo</option>
+                  <option value="Inativo">Inativo</option>
+                </select>
               </div>
             </div>
           </form>
