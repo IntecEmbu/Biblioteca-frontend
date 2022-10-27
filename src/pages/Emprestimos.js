@@ -102,6 +102,7 @@ export default function Emprestimos() {
           user_course={lending.user_course}
           user_name={lending.user_name}
           withdraw_date={lending.withdraw_date}
+          overdue={lending.overdue}
         />
       ))
     );
