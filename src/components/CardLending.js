@@ -31,7 +31,7 @@ function CardBook(props) {
         <p className="info-card-main">Previsão: {props.return_prediction}</p>
         <p className="info-card-main">Dias de atraso: {overdueDays}</p>
         <p className="info-card-main">Emprestado por: {props.librarian_name}</p>
-        <p className="info-card-main">Multa: {penalty}</p>
+        <p className="info-card-main">Multa: R$ {penalty}</p>
         <div className="btn-card-container">
           <div className="btn-excluir-container">
             <ModalDevolver lending_id={props.lending_id} />
