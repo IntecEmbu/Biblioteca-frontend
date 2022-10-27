@@ -1,57 +1,68 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import login from "../service/login.js";
-import { Spinner } from "react-bootstrap";
 import Footer from "../components/Footer.js";
 import "../styles/Login.css";
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Index() {
   const [user, setUser] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [spinner, setSpinner] = React.useState("");
   const [isDisabled, setIsDisabled] = React.useState(false);
-  const [errors, setErrors] = React.useState({});
-  const [invalid, setInvalid] = React.useState("");
   const [showPassword, setShowPassword] = React.useState("password");
   const [icon, setIcon] = React.useState(<AiFillEyeInvisible/>);
+  const ToastConfig = {
+    position: "top-center",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "light",
+    hideProgressBar: true,
+    closeButton: false,
+  }
 
   function validate() {
-    let errors = {};
+    toast.dismiss();
+
+    if(!user && !password) {
+      toast.warn("Preencha o usuário e senha", ToastConfig);
+      return false;
+    }
 
     if (!user) {
-      errors.user = "Usuário é obrigatório";
+      toast.warning("Por favor, insira o usuário", ToastConfig);
+      return false;
     }
 
     if (!password) {
-      errors.password = "Senha é obrigatória";
-    }
-
-    if (errors.user || errors.password) {
-      setErrors(errors);
+      toast.warning("Por favor, insira a senha", ToastConfig);
       return false;
     }
+
     return true;
   }
 
   async function tryLogin() {
     if (validate()) {
       try {
-        setSpinner(<Spinner id="loading" animation="border" />);
         setIsDisabled(true);
 
-        const response = await login(user, password);
+        const response = await toast.promise(login(user, password), {
+          pending: "Aguarde, estamos verificando suas credenciais",
+          success: "Login realizado com sucesso",
+          error: "Usuário ou senha inválidos",
+        }, ToastConfig);
 
         sessionStorage.setItem("isSigned", true);
         sessionStorage.setItem("user", JSON.stringify(response.data[0]));
 
         window.location.href = "/home";
-        setSpinner("");
       } catch (err) {
         console.log(err);
-        setInvalid(<p className="invalid">Usuário ou senha inválidos</p>);
         setIsDisabled(false);
-        setSpinner("");
       }
     }
   }
@@ -70,6 +81,7 @@ function Index() {
 
   return (
     <div className="color">
+      <ToastContainer/>
       <div className="form-container">
         <div className="form">
           <div className="form-content">
@@ -83,12 +95,10 @@ function Index() {
                 placeholder="Usuário"
                 onChange={(e) => {
                   setUser(e.target.value);
-                  setErrors({ ...errors, user: "" });
-                  setInvalid("");
+                  toast.dismiss();
                 }}
                 onKeyDown={handleKeyDown}
               />
-              {errors.user && <p className="error-message">{errors.user}</p>}
             </div>
             <div className="password">
               <input
@@ -97,8 +107,7 @@ function Index() {
                 placeholder="Senha"
                 onChange={(e) => {
                   setPassword(e.target.value);
-                  setErrors({ ...errors, password: "" });
-                  setInvalid("");
+                  toast.dismiss();
                 }}
                 onKeyDown={handleKeyDown}
               />
@@ -113,11 +122,7 @@ function Index() {
                 }}>
                 {icon}
               </div>
-              {errors.password && (
-                <p className="error-message">{errors.password}</p>
-              )}
             </div>
-            <div className="invalid-container">{invalid}</div>
             <div className="btn-container">
               <button
                 className="btn-entrar"
@@ -132,7 +137,6 @@ function Index() {
                 Esqueci minha senha
               </Link>
             </p>
-            <div className="spinner-login">{spinner}</div>
           </div>
         </div>
       </div>
