@@ -48,20 +48,24 @@ function Index() {
   async function tryLogin() {
     if (validate()) {
       try {
-        setIsDisabled(true);
+        // setIsDisabled(true);
 
         const response = await toast.promise(login(user, password), {
           pending: "Aguarde, estamos verificando suas credenciais",
           success: "Login realizado com sucesso",
-          error: "Usuário ou senha inválidos",
+          error: {
+            render: (error) => {
+              return error.data.response.data.message;
+            }
+          }
         }, ToastConfig);
 
         sessionStorage.setItem("isSigned", true);
-        sessionStorage.setItem("user", JSON.stringify(response.data[0]));
+        sessionStorage.setItem("user", JSON.stringify(response.data.data[0]));
 
         window.location.href = "/home";
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         setIsDisabled(false);
       }
     }
@@ -94,7 +98,7 @@ function Index() {
                 className="input-user"
                 placeholder="Usuário"
                 onChange={(e) => {
-                  setUser(e.target.value);
+                  setUser(e.target.value.trim());
                   toast.dismiss();
                 }}
                 onKeyDown={handleKeyDown}
@@ -106,7 +110,7 @@ function Index() {
                 className="input-password"
                 placeholder="Senha"
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setPassword(e.target.value.trim());
                   toast.dismiss();
                 }}
                 onKeyDown={handleKeyDown}

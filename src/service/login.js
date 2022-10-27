@@ -7,7 +7,7 @@ async function checkUser(user, password) {
     password,
   });
 
-  return reponse.data;
+  return reponse;
 }
 
 export default checkUser;

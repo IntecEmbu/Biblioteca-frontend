@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://biblitec.azurewebsites.net",
+  baseURL: "https://biblitec-api.herokuapp.com",
 });
 
 export default api;
