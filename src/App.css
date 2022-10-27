@@ -17,12 +17,8 @@
   font-family: 'Inter', sans-serif;
 }
 
-body {
+body, html {
   background-color: var(--cinza) !important;
-}
-
-html, body{
-  width: 100% !important;
 }
 
 
