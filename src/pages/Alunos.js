@@ -84,6 +84,8 @@ export default function Alunos() {
   }
 
   async function loadUser() {
+    setIsDisabled(true);
+    setUserCard(spinnner);
     const data = await downloadUser();
     setUsers(data);
 
@@ -158,6 +160,13 @@ export default function Alunos() {
                 disabled={isDisabled}
               >
                 <FaSearch />
+              </button>
+              <button
+                className="btn-listar"
+                disabled={isDisabled}
+                onClick={loadUser}
+              >
+                Listar Todos
               </button>
             </div>
             <div className="btn-cadastrar-container">

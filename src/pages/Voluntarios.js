@@ -64,6 +64,9 @@ export default function Voluntarios() {
   }
 
   async function loadVolunteers() {
+    setIsDisabled(true);
+    setVolunteersCard(spinnner);
+
     const volunteers = await downloadLibrarian();
     setVolunteers(volunteers);
 
@@ -133,6 +136,13 @@ export default function Voluntarios() {
                 disabled={isDisabled}
               >
                 <FaSearch />
+              </button>
+              <button
+                className="btn-listar"
+                onClick={loadVolunteers}
+                disabled={isDisabled}
+              >
+                Listar todos
               </button>
             </div>
             <div className="btn-cadastrar-voluntario-container">{button}</div>

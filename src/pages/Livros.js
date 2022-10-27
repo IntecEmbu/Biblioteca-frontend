@@ -97,6 +97,8 @@ function LivrosPage() {
 
   // Função padrão de carregamento da página.
   async function loadBooks() {
+    setBooksCard(spinner);
+
     const data = await downloadBook();
     setBooks(data.books);
 
@@ -146,6 +148,7 @@ function LivrosPage() {
       <div className="pagina-container">
         <div className="titulo-container">
           <h1>Livros</h1>
+          {/* Desktop */}
           <div className="pesquisar-container desktop">
             <input
               className="input-pesquisa"
@@ -171,7 +174,15 @@ function LivrosPage() {
               >
                 <FaSearch />
               </button>
+              <button
+                className="btn-listar"
+                onClick={loadBooks}
+                disabled={isDisabled}
+              >
+                Listar todos
+              </button>
             </div>
+            
             <div className="btn-cadastrar-container">
               <ModalCadastrarLivro />
             </div>

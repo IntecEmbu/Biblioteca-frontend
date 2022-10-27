@@ -76,6 +76,8 @@ export default function Emprestimos() {
   }
 
   async function loadLendings() {
+    setIsDisabled(true);
+    setCards(spinner);
     const data = await downloadLending();
 
     if (!data.length) {
@@ -103,6 +105,7 @@ export default function Emprestimos() {
         />
       ))
     );
+    setIsDisabled(false);
   }
 
   useEffect(() => {
@@ -139,6 +142,13 @@ export default function Emprestimos() {
                 onClick={ search}
               >
                 <FaSearch />
+              </button>
+              <button
+                className="btn-listar"
+                disabled={isDisabled}
+                onClick={loadLendings}
+              >
+                Listar todos
               </button>
             </div>
           </div>

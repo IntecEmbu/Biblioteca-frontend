@@ -76,12 +76,24 @@ select:hover {
   padding: .3rem 1.2rem;
   font-size: 1rem;
   transition: all .1s linear;
+  margin: 0 .5rem; 
 }
 
-.btn-pesquisar:hover {
+.btn-pesquisar:hover, .btn-listar:hover {
   background-color: var(--cinza) !important;
   color: var(--azul) !important;
   transition: all .1s linear;
+}
+
+.btn-listar{
+  background-color: var(--azul) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: .2rem;
+  padding: .3rem 1.2rem;
+  font-size: 1rem;
+  transition: all .1s linear;
+  margin: 0 .5rem;
 }
 
 .btn-card-container {
