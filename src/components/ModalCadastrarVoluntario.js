@@ -4,6 +4,8 @@ import api from "../service/api.js";
 import "../styles/Modal.css";
 import "../styles/Botoes.css";
 import { Spinner } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -23,6 +25,16 @@ function Example() {
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const toastConfig = {
+    position: "top-center",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+    hideProgressBar: true,
+    closeButton: false
+  };
 
   async function close() {
     setInterval(() => {
@@ -33,6 +45,7 @@ function Example() {
   }
 
   function validate() {
+    toast.dismiss();
     let errors = {};
     let count = 0;
 
@@ -76,6 +89,7 @@ function Example() {
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
     if (Object.keys(errors).length > 0) {
+      toast.warning(`Existem ${count} campos inválidos!`)
       setErrors(errors);
       return false;
     } else {
@@ -115,6 +129,7 @@ function Example() {
 
   return (
     <>
+      <ToastContainer {...toastConfig} />
       <button className="btn-cadastrar desktop" onClick={handleShow}>
         Cadastrar Voluntário
       </button>
@@ -191,9 +206,6 @@ function Example() {
               </div>
             </div>
           </form>
-          {errors.count && (
-            <p className="error-count-message">{errors.count}</p>
-          )}
           {success && (
             <p className="success-message">
               Voluntário cadastrado com sucesso!

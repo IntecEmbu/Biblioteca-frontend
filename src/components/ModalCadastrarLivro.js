@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import { Spinner } from "react-bootstrap";
 import api from "../service/api.js";
 import InputMask from "react-input-mask";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -26,6 +28,16 @@ function Example() {
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const toastConfig = {
+    position: "top-center",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+    hideProgressBar: true,
+    closeButton: false,
+  }
 
   async function close() {
     setInterval(() => {
@@ -36,6 +48,7 @@ function Example() {
   }
 
   function validate() {
+    toast.dismiss();
     let errors = {};
     let count = 0;
 
@@ -106,6 +119,7 @@ function Example() {
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
     if (Object.keys(errors).length > 0) {
+      toast.warning(`Existem ${count} campos inválidos!`)
       setErrors(errors);
       return false;
     } else {
@@ -153,6 +167,7 @@ function Example() {
 
   return (
     <>
+      <ToastContainer {...toastConfig} />
       <button className="btn-cadastrar desktop" onClick={handleShow}>
         Cadastrar Livro
       </button>

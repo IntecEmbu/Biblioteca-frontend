@@ -4,6 +4,8 @@ import { FaPen } from "react-icons/fa";
 import api from "../service/api";
 import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ModalEditarAluno({ data }) {
   const [show, setShow] = useState(false);
@@ -28,6 +30,17 @@ function ModalEditarAluno({ data }) {
 
   const [isDisabled, setIsDisabled] = useState(false);
 
+  const toastConfig = {
+    position: "top-center",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+    hideProgressBar: true,
+    closeButton: false,
+  };
+
   async function close() {
     setInterval(() => {
       setIsDisabled(false);
@@ -49,6 +62,7 @@ function ModalEditarAluno({ data }) {
   }
 
   function validate() {
+    toast.dismiss();
     let errors = {};
     let count = 0;
 
@@ -113,6 +127,7 @@ function ModalEditarAluno({ data }) {
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
     if (Object.keys(errors).length > 0) {
+      toast.warning(`Existem ${count} campos inválidos!`)
       setErrors(errors);
       return false;
     } else {
@@ -160,6 +175,7 @@ function ModalEditarAluno({ data }) {
 
   return (
     <>
+      <ToastContainer {...toastConfig} />
       <button className="btn-editar-card" onClick={handleShow}>
         <FaPen className="fa-pen" />
         Editar
