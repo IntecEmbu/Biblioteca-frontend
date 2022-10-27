@@ -52,8 +52,8 @@ function CardBook(props) {
   }, []);
 
   return (
-    <div id="card-main-container-book">
-      <div className="card-book-main">
+    <div id="card-main-container">
+      <div className="card-main">
         <p className="titulo-card-main">{props.title}</p>
         <p className="info-card-main">Autor: {props.author}</p>
         <p className="info-card-main">Edição: {props.edition}</p>

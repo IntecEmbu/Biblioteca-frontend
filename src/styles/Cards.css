@@ -22,8 +22,13 @@
 }
 
 #card-main-container {
-  margin-bottom: 1rem;
   animation: surgir-baixo .5s;
+  flex-wrap: wrap;
+  width: 39rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 0;
 }
 
 .p-card-main-ativo{
@@ -32,6 +37,12 @@
 
 .p-card-main-inativo{
   color: var(--vermelho);
+}
+
+@media screen and (max-width: 1200px) {
+  #card-main-container{
+    width: 100%;
+  }
 }
 
 @keyframes surgir-baixo {

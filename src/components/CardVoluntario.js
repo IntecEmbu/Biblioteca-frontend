@@ -3,7 +3,6 @@ import ModalExcluir from "../components/ModalExcluir.js";
 import ModalEditarVoluntario from "../components/ModalEditarVoluntario.js";
 import "../styles/Cards.css";
 import "../styles/Botoes.css";
-import "../styles/Voluntarios.css";
 
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");
@@ -31,7 +30,7 @@ function CardBook(props) {
   }, []);
 
   return (
-    <div id="card-main-container-voluntario">
+    <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.name}</p>
         <p className="p-card-main">E-mail: {props.email}</p>

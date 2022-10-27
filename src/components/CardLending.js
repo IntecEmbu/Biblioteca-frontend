@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import ModalDevolver from "../components/ModalDevolver.js";
 import "../styles/Cards.css";
 import "../styles/Botoes.css";
-import "../styles/Emprestimos.css";
 
 function CardBook(props) {
   return (
-    <div id="card-main-container-lending">
+    <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.user_name}</p>
         <p className="info-card-main">Livro: {props.book_name}</p>
