@@ -19,6 +19,7 @@ function ModalEditarAluno({ data }) {
   const [email, setEmail] = useState(data.email);
   const [phone, setPhone] = useState(data.phone);
   const [course, setCourse] = useState(data.course);
+  const [otherCourse, setOtherCourse] = useState("");
   const [type, setType] = useState(data.type);
   const [cpf, setCpf] = useState(data.cpf);
 
@@ -96,6 +97,16 @@ function ModalEditarAluno({ data }) {
       count++;
     }
 
+    if(course === "Outro"){
+      if(!otherCourse){
+        errors.otherCourse = "Campo obrigatório";
+        count++;
+      } else if(otherCourse.length > 100){
+        errors.otherCourse = "Curso muito longo";
+        count++;
+      }
+    }
+
     if (count > 0) {
       errors.count = count;
     }
@@ -112,6 +123,11 @@ function ModalEditarAluno({ data }) {
   async function updateUser() {
     if (validate()) {
       setIsDisabled(true);
+
+      if(course === "Outro"){
+        setCourse(otherCourse);
+      }
+
       try {
         await api.put("/user/update-user", {
           id,
@@ -195,8 +211,38 @@ function ModalEditarAluno({ data }) {
                   </option>
                   <option value="Eletroeletrônica">Eletroeletrônica</option>
                   <option value="Logística">Logística</option>
+                  <option value="Outro">Outro</option>
                 </select>
               </div>
+
+              {course === "Outro" && errors.otherCourse && (
+                <div className="input-box-modal">
+                  <input
+                    placeholder="Digite o nome do curso"
+                    type="text"
+                    onChange={(e) => {
+                      setOtherCourse(e.target.value);
+                      setErrors({ ...errors, otherCourse: "", count: "" });
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                  <p className="error-message">{errors.otherCourse}</p>
+                </div>
+              )}
+
+              {course === "Outro" && !errors.otherCourse && (
+                <div className="input-box-modal">
+                  <input
+                    placeholder="Digite o nome do curso"
+                    type="text"
+                    onChange={(e) => {
+                      setOtherCourse(e.target.value);
+                      setErrors({ ...errors, otherCourse: "", count: "" });
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+              )}
 
               <div className="input-box-modal">
                 <label>CPF</label>

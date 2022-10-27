@@ -22,6 +22,7 @@ function Example() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [course, setCourse] = useState("Administração");
+  const [otherCourse, setOtherCourse] = useState("");
   const [type, setType] = useState("Aluno");
   const [cpf, setCpf] = useState("");
 
@@ -99,6 +100,16 @@ function Example() {
       count++;
     }
 
+    if(course === "Outro"){
+      if(!otherCourse){
+        errors.otherCourse = "Campo obrigatório";
+        count++;
+      } else if(otherCourse.length > 100){
+        errors.otherCourse = "Curso muito longo";
+        count++;
+      }
+    }
+
     if (count > 0) {
       errors.count = count;
     }
@@ -116,6 +127,10 @@ function Example() {
     if (validate()) {
       setIsDisabled(true);
       setErrors({});
+
+      if(course === "Outro"){
+        setCourse(otherCourse);
+      }
 
       const data = {
         name,
@@ -183,7 +198,10 @@ function Example() {
                 <label>Curso</label>
                 <select
                   value={course}
-                  onChange={(e) => setCourse(e.target.value)}
+                  onChange={(e) => {
+                    setCourse(e.target.value);
+                    setErrors({ ...errors, otherCourse: "", count: "" });
+                  }}
                 >
                   <option value="Novotec Administração">
                     Novotec Administração
@@ -201,8 +219,39 @@ function Example() {
                   </option>
                   <option value="Eletroeletrônica">Eletroeletrônica</option>
                   <option value="Logística">Logística</option>
+                  <option value="Outro">Outro</option>
                 </select>
               </div>
+
+              
+              {course === "Outro" && errors.otherCourse && (
+                <div className="input-box-modal">
+                  <input
+                    placeholder="Digite o nome do curso"
+                    type="text"
+                    onChange={(e) => {
+                      setOtherCourse(e.target.value);
+                      setErrors({ ...errors, otherCourse: "", count: "" });
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                  <p className="error-message">{errors.otherCourse}</p>
+                </div>
+              )}
+
+              {course === "Outro" && !errors.otherCourse && (
+                <div className="input-box-modal">
+                  <input
+                    placeholder="Digite o nome do curso"
+                    type="text"
+                    onChange={(e) => {
+                      setOtherCourse(e.target.value);
+                      setErrors({ ...errors, otherCourse: "", count: "" });
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+              )}
 
               <div className="input-box-modal">
                 <label>CPF</label>
