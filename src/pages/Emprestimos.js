@@ -76,6 +76,7 @@ export default function Emprestimos() {
   }
 
   async function loadLendings() {
+    setCounter("");
     setIsDisabled(true);
     setCards(spinner);
     const data = await downloadLending();

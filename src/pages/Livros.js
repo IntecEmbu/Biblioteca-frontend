@@ -97,6 +97,7 @@ function LivrosPage() {
 
   // Função padrão de carregamento da página.
   async function loadBooks() {
+    setCounter("");
     setBooksCard(spinner);
 
     const data = await downloadBook();

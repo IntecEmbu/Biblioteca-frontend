@@ -64,6 +64,7 @@ export default function Voluntarios() {
   }
 
   async function loadVolunteers() {
+    setCounter("");
     setIsDisabled(true);
     setVolunteersCard(spinnner);
 

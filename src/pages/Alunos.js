@@ -84,6 +84,7 @@ export default function Alunos() {
   }
 
   async function loadUser() {
+    setCounter("");
     setIsDisabled(true);
     setUserCard(spinnner);
     const data = await downloadUser();
