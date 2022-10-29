@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { FaEllipsisH } from "react-icons/fa"
 import Spinner from 'react-bootstrap/Spinner';
-import api from "../service/api.js";
+import api from "../../service/api.js";
 
 function Example(props) {
   const [show, setShow] = useState(false);

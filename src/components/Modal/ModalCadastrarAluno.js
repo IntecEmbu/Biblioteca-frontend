@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import { FaPen } from "react-icons/fa";
-import api from "../service/api";
+import "../../styles/Modal.css";
+import "../../styles/Botoes.css";
+import api from "../../service/api.js";
 import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ModalEditarAluno({ data }) {
+function Example() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => {
-    setErrors({});
+  function handleClose() {
+    setCpf("");
+    setPhone("");
     setShow(false);
-  };
+    setErrors({});
+  }
+
   const handleShow = () => setShow(true);
 
-  const id = data.id;
-  const [name, setName] = useState(data.name);
-  const [email, setEmail] = useState(data.email);
-  const [phone, setPhone] = useState(data.phone);
-  const [course, setCourse] = useState(data.course);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [course, setCourse] = useState("Administração");
   const [otherCourse, setOtherCourse] = useState("");
-  const [type, setType] = useState(data.type);
-  const [cpf, setCpf] = useState(data.cpf);
+  const [type, setType] = useState("Aluno");
+  const [cpf, setCpf] = useState("");
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
-
-  const [isDisabled, setIsDisabled] = useState(false);
-
   const toastConfig = {
     position: "top-center",
     autoClose: 2000,
@@ -39,7 +39,8 @@ function ModalEditarAluno({ data }) {
     theme: "colored",
     hideProgressBar: true,
     closeButton: false,
-  };
+  }
+
 
   async function close() {
     setInterval(() => {
@@ -49,17 +50,7 @@ function ModalEditarAluno({ data }) {
     }, 2000);
   }
 
-  function formatPhone(number) {
-    // Deixa o número no formato (xx) xxxxx-xxxx
-    return setPhone(number.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3"));
-  }
-
-  function formatCpf(number) {
-    // Deixa o cpf no formato 000.000.000-00
-    return setCpf(
-      number.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-    );
-  }
+  const [isDisabled, setIsDisabled] = useState(false);
 
   function validate() {
     toast.dismiss();
@@ -127,7 +118,7 @@ function ModalEditarAluno({ data }) {
 
     // Casso não haja erros, o objeto errors estará vazio e irá retornar true
     if (Object.keys(errors).length > 0) {
-      toast.warning(`Existem ${count} campos inválidos!`)
+      toast.warning(`Existem ${count} campos inválidos!`);
       setErrors(errors);
       return false;
     } else {
@@ -135,29 +126,32 @@ function ModalEditarAluno({ data }) {
     }
   }
 
-  async function updateUser() {
+  async function sendUser() {
     if (validate()) {
       setIsDisabled(true);
+      setErrors({});
 
       if(course === "Outro"){
         setCourse(otherCourse);
       }
 
+      const data = {
+        name,
+        email,
+        phone,
+        course,
+        type,
+        cpf,
+      };
+
       try {
-        await api.put("/user/update-user", {
-          id,
-          name,
-          email,
-          phone,
-          course,
-          type,
-          cpf,
-        });
+        setIsDisabled(true);
+        await api.post("/user/insert", data);
         setSuccess(true);
         setIsDisabled(false);
-      } catch (err) {
+      } catch (error) {
         alert("Erro ao cadastrar o aluno!");
-        console.log(err);
+        console.log(error);
         setIsDisabled(false);
       } finally {
         await close();
@@ -169,21 +163,24 @@ function ModalEditarAluno({ data }) {
 
   function handleKeyDown(event) {
     if (event.keyCode === 13) {
-      updateUser();
+      sendUser();
     }
   }
 
   return (
     <>
       <ToastContainer {...toastConfig} />
-      <button className="btn-editar-card" onClick={handleShow}>
-        <FaPen className="fa-pen" />
-        Editar
+      <button className="btn-cadastrar desktop" onClick={handleShow}>
+        Cadastrar Aluno
+      </button>
+
+      <button className="btn-cadastrar mobile" onClick={handleShow}>
+        Cadastrar
       </button>
 
       <Modal show={show} centered>
         <Modal.Header>
-          <Modal.Title>Editar Aluno</Modal.Title>
+          <Modal.Title>Cadastrar Aluno</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -192,7 +189,6 @@ function ModalEditarAluno({ data }) {
                 <label>Nome</label>
                 <input
                   type="text"
-                  value={name}
                   onChange={(e) => {
                     setName(e.target.value);
                     setErrors({ ...errors, name: "", count: "" });
@@ -205,10 +201,10 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>Curso</label>
                 <select
-                  defaultValue={course}
+                  value={course}
                   onChange={(e) => {
                     setCourse(e.target.value);
-                    console.log(e.target.value);
+                    setErrors({ ...errors, otherCourse: "", count: "" });
                   }}
                 >
                   <option value="Novotec Administração">
@@ -231,6 +227,7 @@ function ModalEditarAluno({ data }) {
                 </select>
               </div>
 
+              
               {course === "Outro" && errors.otherCourse && (
                 <div className="input-box-modal">
                   <input
@@ -267,7 +264,7 @@ function ModalEditarAluno({ data }) {
                   maskChar=""
                   value={cpf}
                   onChange={(e) => {
-                    formatCpf(e.target.value);
+                    setCpf(e.target.value); 
                     setErrors({ ...errors, cpf: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -278,12 +275,11 @@ function ModalEditarAluno({ data }) {
               <div className="input-box-modal">
                 <label>E-mail</label>
                 <input
-                  value={email}
+                  type="text"
                   onChange={(e) => {
                     setEmail(e.target.value);
                     setErrors({ ...errors, email: "", count: "" });
                   }}
-                  type="email"
                   onKeyDown={handleKeyDown}
                 />
                 {errors.email && (
@@ -298,7 +294,7 @@ function ModalEditarAluno({ data }) {
                   maskChar=""
                   value={phone}
                   onChange={(e) => {
-                    formatPhone(e.target.value);
+                    setPhone(e.target.value);
                     setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -312,7 +308,7 @@ function ModalEditarAluno({ data }) {
                 <label>Tipo</label>
                 <select
                   className="tipo-pesquisa"
-                  defaultValue={type}
+                  value={type}
                   onChange={(e) => setType(e.target.value)}
                 >
                   <option value={"Aluno"}>Aluno</option>
@@ -320,31 +316,27 @@ function ModalEditarAluno({ data }) {
                 </select>
               </div>
             </div>
+            {isDisabled && (
+              <div className="loading-modal">
+                <Spinner animation="border" />
+              </div>
+            )}
+            {success && (
+              <p className="success-message">Aluno cadastrado com sucesso!</p>
+            )}
           </form>
-          {isDisabled && (
-            <div className="loading-modal">
-              <Spinner animation="border" />
-            </div>
-          )}
-          {success && (
-            <p className="success-message">Aluno atualizado com sucesso!</p>
-          )}
         </Modal.Body>
         <Modal.Footer>
-          <button
-            className="btn-cancelar-modal"
-            onClick={handleClose}
-            disabled={isDisabled}
-          >
+          <button className="btn-cancelar-modal" onClick={handleClose}>
             Cancelar
           </button>
           <button
-            className="btn-editar-modal"
-            onClick={updateUser}
+            className="btn-cadastrar-modal"
+            onClick={sendUser}
             disabled={isDisabled}
+            type="submit"
           >
-            <FaPen className="fa-pen" />
-            Editar
+            Cadastrar
           </button>
         </Modal.Footer>
       </Modal>
@@ -352,4 +344,4 @@ function ModalEditarAluno({ data }) {
   );
 }
 
-export default ModalEditarAluno;
+export default Example;

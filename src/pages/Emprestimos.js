@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar.js";
 import { FaSearch } from "react-icons/fa";
 import { Spinner } from "react-bootstrap";
-import CardLending from "../components/CardLending.js";
+import CardLending from "../components/Cards/CardLending.js";
 import downloadLending from "../service/searchLendings.js";
 import "../styles/Botoes.css";
 

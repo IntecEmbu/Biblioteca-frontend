@@ -2,9 +2,9 @@ import React from "react";
 import Navbar from "../components/Navbar.js";
 import "../styles/Botoes.css";
 import "../styles/Relatorios.css";
-import QtdLivroChart from "../components/QtdLivroChart.js";
-import QtdEmprestimos from "../components/QtdEmprestimosChart.js";
-import QtdDevolucoes from "../components/QtdDevolucoesChart.js";
+import QtdLivroChart from "../components/Charts/QtdLivroChart.js";
+import QtdEmprestimos from "../components/Charts/QtdEmprestimosChart.js";
+import QtdDevolucoes from "../components/Charts/QtdDevolucoesChart.js";
 
 export default function Relatorios() {
   return (

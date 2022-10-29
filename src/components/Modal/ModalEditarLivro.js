@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FaPen } from "react-icons/fa";
-import api from "../service/api.js";
+import api from "../../service/api.js";
 import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";

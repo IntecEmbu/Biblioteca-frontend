@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../service/api.js";
+import api from "../../service/api.js";
 import { Spinner } from "react-bootstrap";
 import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";

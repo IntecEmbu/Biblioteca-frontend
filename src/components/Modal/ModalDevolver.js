@@ -1,38 +1,41 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Spinner } from "react-bootstrap";
-import { FaTrashAlt } from "react-icons/fa";
-import api from "../service/api";
-import "../styles/Modal.css";
+import api from "../../service/api";
+import "../../styles/Modal.css";
 
-function ModalExcluir({ path, id }) {
+function ModalDevolver({ lending_id }) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors(false);
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const [isDisabled, setIsDisabled] = useState(false);
   const [sucess, setSucess] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   async function close() {
     setInterval(() => {
       setIsDisabled(false);
       handleClose();
       window.location.reload();
-    }, 2000);
+    }, 1000);
   }
 
-  async function deleteitem() {
+  async function devolver() {
     setIsDisabled(true);
+    setErrors(false);
 
     try {
-      await api.delete(`${path}?id=${id}`);
+      await api.post("/lending/return-book", { lending_id });
       setSucess(true);
-    } catch (err) {
-      alert("Erro ao excluir!");
-      console.log(err);
-    } finally {
       await close();
+    } catch (err) {
+      setErrors(true);
+      console.log(err);
     }
 
     setIsDisabled(false);
@@ -40,27 +43,23 @@ function ModalExcluir({ path, id }) {
 
   return (
     <>
-      <button className="btn-excluir-card desktop" onClick={handleShow}>
-        <FaTrashAlt className="fa-trash" />
-        Excluir
-      </button>
-
-      <button className="btn-excluir-card mobile" onClick={handleShow}>
-        <FaTrashAlt className="fa-trash" />
+      <button className="btn-devolver-card" onClick={handleShow}>
+        Devolver
       </button>
 
       <Modal show={show} centered>
         <Modal.Header>
-          <Modal.Title>Excluir</Modal.Title>
+          <Modal.Title>Devolver</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Tem certeza que deseja excluir?
+          Tem certeza que deseja devolver?
           {isDisabled && (
             <div className="loading-modal">
               <Spinner animation="border" />
             </div>
           )}
-          {sucess && <p className="success-message">Excluido com sucesso</p>}
+          {sucess && <p className="success-message">Devolvido com sucesso</p>}
+          {errors && <p className="error-message">Erro ao devolver</p>}
         </Modal.Body>
         <Modal.Footer>
           <button
@@ -71,12 +70,11 @@ function ModalExcluir({ path, id }) {
             Cancelar
           </button>
           <button
-            className="btn-excluir-modal"
-            onClick={deleteitem}
+            className="btn-devolver-modal"
+            onClick={devolver}
             disabled={isDisabled}
           >
-            <FaTrashAlt className="fa-trash" />
-            Excluir
+            Devolver
           </button>
         </Modal.Footer>
       </Modal>
@@ -84,4 +82,4 @@ function ModalExcluir({ path, id }) {
   );
 }
 
-export default ModalExcluir;
+export default ModalDevolver;

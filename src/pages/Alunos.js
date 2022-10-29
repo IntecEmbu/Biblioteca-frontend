@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import CardAluno from "../components/CardAluno.js";
+import CardAluno from "../components/Cards/CardAluno.js";
 import Navbar from "../components/Navbar.js";
-import ModalCadastrarAluno from "../components/ModalCadastrarAluno.js";
+import ModalCadastrarAluno from "../components/Modal/ModalCadastrarAluno.js";
 import { FaSearch } from "react-icons/fa";
 import Spinner from "react-bootstrap/Spinner";
 import downloadUser from "../service/searchUser.js";

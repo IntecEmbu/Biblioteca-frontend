@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import CardBook from "../components/CardBook.js";
+import CardBook from "../components/Cards/CardBook.js";
 import Spinner from "react-bootstrap/Spinner";
 import Navbar from "../components/Navbar.js";
-import ModalCadastrarLivro from "../components/ModalCadastrarLivro.js";
+import ModalCadastrarLivro from "../components/Modal/ModalCadastrarLivro.js";
 import downloadBook from "../service/searchBook.js";
 import { FaSearch } from "react-icons/fa";
 import "../styles/Livros.css";

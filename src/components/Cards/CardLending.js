@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import ModalDevolver from "../components/ModalDevolver.js";
-import "../styles/Cards.css";
-import "../styles/Botoes.css";
+import ModalDevolver from "../Modal/ModalDevolver.js";
+import "../../styles/Cards.css";
+import "../../styles/Botoes.css";
 
 function CardBook(props) {
 

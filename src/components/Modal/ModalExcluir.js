@@ -1,41 +1,38 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Spinner } from "react-bootstrap";
-import api from "../service/api";
-import "../styles/Modal.css";
+import { FaTrashAlt } from "react-icons/fa";
+import api from "../../service/api";
+import "../../styles/Modal.css";
 
-function ModalDevolver({ lending_id }) {
+function ModalExcluir({ path, id }) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => {
-    setErrors(false);
-    setShow(false);
-  };
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [isDisabled, setIsDisabled] = useState(false);
   const [sucess, setSucess] = useState(false);
-  const [errors, setErrors] = useState(false);
 
   async function close() {
     setInterval(() => {
       setIsDisabled(false);
       handleClose();
       window.location.reload();
-    }, 1000);
+    }, 2000);
   }
 
-  async function devolver() {
+  async function deleteitem() {
     setIsDisabled(true);
-    setErrors(false);
 
     try {
-      await api.post("/lending/return-book", { lending_id });
+      await api.delete(`${path}?id=${id}`);
       setSucess(true);
-      await close();
     } catch (err) {
-      setErrors(true);
+      alert("Erro ao excluir!");
       console.log(err);
+    } finally {
+      await close();
     }
 
     setIsDisabled(false);
@@ -43,23 +40,27 @@ function ModalDevolver({ lending_id }) {
 
   return (
     <>
-      <button className="btn-devolver-card" onClick={handleShow}>
-        Devolver
+      <button className="btn-excluir-card desktop" onClick={handleShow}>
+        <FaTrashAlt className="fa-trash" />
+        Excluir
+      </button>
+
+      <button className="btn-excluir-card mobile" onClick={handleShow}>
+        <FaTrashAlt className="fa-trash" />
       </button>
 
       <Modal show={show} centered>
         <Modal.Header>
-          <Modal.Title>Devolver</Modal.Title>
+          <Modal.Title>Excluir</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Tem certeza que deseja devolver?
+          Tem certeza que deseja excluir?
           {isDisabled && (
             <div className="loading-modal">
               <Spinner animation="border" />
             </div>
           )}
-          {sucess && <p className="success-message">Devolvido com sucesso</p>}
-          {errors && <p className="error-message">Erro ao devolver</p>}
+          {sucess && <p className="success-message">Excluido com sucesso</p>}
         </Modal.Body>
         <Modal.Footer>
           <button
@@ -70,11 +71,12 @@ function ModalDevolver({ lending_id }) {
             Cancelar
           </button>
           <button
-            className="btn-devolver-modal"
-            onClick={devolver}
+            className="btn-excluir-modal"
+            onClick={deleteitem}
             disabled={isDisabled}
           >
-            Devolver
+            <FaTrashAlt className="fa-trash" />
+            Excluir
           </button>
         </Modal.Footer>
       </Modal>
@@ -82,4 +84,4 @@ function ModalDevolver({ lending_id }) {
   );
 }
 
-export default ModalDevolver;
+export default ModalExcluir;

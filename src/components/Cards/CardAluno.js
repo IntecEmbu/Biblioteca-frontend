@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import ModalExcluir from "../components/ModalExcluir.js";
-import ModalEditarAluno from "../components/ModalEditarAluno.js";
-import "../styles/Cards.css";
-import "../styles/Botoes.css";
+import ModalExcluir from "../Modal/ModalExcluir.js";
+import ModalEditarAluno from "../Modal/ModalEditarAluno.js";
+import "../../styles/Cards.css";
+import "../../styles/Botoes.css";
 
 function CardBook(props) {
   const [buttons, setButtons] = React.useState("");

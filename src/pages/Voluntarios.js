@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import CardVoluntario from "../components/CardVoluntario.js";
+import CardVoluntario from "../components/Cards/CardVoluntario.js";
 import Navbar from "../components/Navbar.js";
-import ModalCadastrarVoluntario from "../components/ModalCadastrarVoluntario.js";
+import ModalCadastrarVoluntario from "../components/Modal/ModalCadastrarVoluntario.js";
 import { FaSearch } from "react-icons/fa";
 import downloadLibrarian from "../service/searchLibrarian.js";
 import Spinner from "react-bootstrap/Spinner";
