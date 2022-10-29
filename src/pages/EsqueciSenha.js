@@ -10,7 +10,7 @@ import InputMask from "react-input-mask";
 
 export default function EsqueciSenha() {
 
-  const [step, setStep] = useState(1); // 1 = email, 2 = confirmação, 3 = nova senha
+  const [step, setStep] = useState(1); // 1 = email, 2 = confirmação, 3 = nova senha, 4 = sucesso
 
   useEffect(() => {
     if (sessionStorage.getItem("isSigned") && sessionStorage.getItem("user")) {
@@ -124,10 +124,7 @@ export default function EsqueciSenha() {
         ToastConfig
       );
 
-      // depois de 5 segundos, redireciona para a página de login
-      setTimeout(() => {
-        window.location.href = "/login";
-      }, 5000);
+      setStep(4);
     }
     catch (err) {
       // console.log(err);
@@ -240,6 +237,20 @@ export default function EsqueciSenha() {
                     </button>
                   </Link>
                   <button className="btn-avancar" onClick={changePassword}>Avançar</button>
+                </div>
+              </>
+            )}
+            { step === 4 && (
+              <>
+                <div className="sucesso-senha-container">
+                  <p>Senha alterada com sucesso!</p>
+                  <div className="btn-esqueci-container">
+                    <Link to="/login" className="link-not-found">
+                      <button className="btn-voltar-login" >
+                        <FaArrowLeft /> 
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </>
             )}

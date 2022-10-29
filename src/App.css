@@ -151,6 +151,19 @@ input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
+.sucesso-senha-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.sucesso-senha-container p{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 950px) {
   .input-pesquisa{
       width: 100%;
