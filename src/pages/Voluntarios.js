@@ -3,8 +3,8 @@ import CardVoluntario from "../components/Cards/CardVoluntario.js";
 import Navbar from "../components/Navbar.js";
 import ModalCadastrarVoluntario from "../components/Modal/ModalCadastrarVoluntario.js";
 import { FaSearch } from "react-icons/fa";
-import downloadLibrarian from "../service/searchLibrarian.js";
 import Spinner from "react-bootstrap/Spinner";
+import api from "../service/api.js";
 import "../styles/Botoes.css";
 
 export default function Voluntarios() {
@@ -68,16 +68,14 @@ export default function Voluntarios() {
     setIsDisabled(true);
     setVolunteersCard(spinnner);
 
-    const volunteers = await downloadLibrarian();
-    setVolunteers(volunteers);
+    const response = await api.get("/librian/all-collaborators");
+    setVolunteers(response.data);
 
-    console.log(volunteers);
-
-    if (!volunteers) {
+    if (!response.data) {
       return setVolunteersCard("");
     }
 
-    const dataCard = volunteers.map((volunteer) => {
+    const dataCard = response.data.map((volunteer) => {
       return (
         <CardVoluntario
           key={volunteer.librarian_code}

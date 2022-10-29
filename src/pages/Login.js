@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import login from "../service/login.js";
+import api from "../service/api.js";
 import Footer from "../components/Footer.js";
 import "../styles/Login.css";
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
@@ -48,15 +48,17 @@ function Index() {
   async function tryLogin() {
     if (validate()) {
       try {
-        // setIsDisabled(true);
+        setIsDisabled(true);
 
-        const response = await toast.promise(login(user, password), {
-          pending: "Aguarde, estamos verificando suas credenciais",
-          success: "Login realizado com sucesso",
-          error: {
-            render: (error) => {
-              return error.data.response.data.message;
-            }
+        const response = await toast.promise(
+          api.post("/librian/login-collaborator", {user, password}), 
+          {
+            pending: "Aguarde, estamos verificando suas credenciais",
+            success: "Login realizado com sucesso",
+            error: {
+              render: (error) => {
+                return error.data.response.data.message;
+              }
           }
         }, ToastConfig);
 
@@ -73,7 +75,9 @@ function Index() {
 
   function handleKeyDown(e) {
     if (e.key === "Enter") {
-      tryLogin();
+      if(!isDisabled) {
+        tryLogin();
+      }
     }
   }
 

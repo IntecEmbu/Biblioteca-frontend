@@ -3,8 +3,8 @@ import Navbar from "../components/Navbar.js";
 import { FaSearch } from "react-icons/fa";
 import { Spinner } from "react-bootstrap";
 import CardLending from "../components/Cards/CardLending.js";
-import downloadLending from "../service/searchLendings.js";
 import "../styles/Botoes.css";
+import api from "../service/api.js";
 
 export default function Emprestimos() {
   const spinner = (
@@ -79,9 +79,10 @@ export default function Emprestimos() {
     setCounter("");
     setIsDisabled(true);
     setCards(spinner);
-    const data = await downloadLending();
 
-    if (!data.length) {
+    const response = await api.get("/lending/not-returned")
+
+    if (!response.data.length) {
       setCards(
         <div className="area-loading">
           <h3>Nenhum empréstimo pendente!</h3>
@@ -90,10 +91,10 @@ export default function Emprestimos() {
       return;
     }
 
-    setLendings(data);
+    setLendings(response.data);
 
     setCards(
-      data.map((lending) => (
+      response.data.map((lending) => (
         <CardLending
           key={lending.lending_id}
           lending_id={lending.lending_code}

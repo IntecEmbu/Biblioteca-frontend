@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.js";
 import ModalCadastrarAluno from "../components/Modal/ModalCadastrarAluno.js";
 import { FaSearch } from "react-icons/fa";
 import Spinner from "react-bootstrap/Spinner";
-import downloadUser from "../service/searchUser.js";
+import api from "../service/api.js";
 import "../styles/Botoes.css";
 
 export default function Alunos() {
@@ -87,10 +87,11 @@ export default function Alunos() {
     setCounter("");
     setIsDisabled(true);
     setUserCard(spinnner);
-    const data = await downloadUser();
-    setUsers(data);
 
-    if (data.length == 0) {
+    const response = await api.get("/user/all");
+    setUsers(response.data);
+
+    if (response.data.length == 0) {
       setUserCard(
         <img
           id="book-notFound"
@@ -100,7 +101,7 @@ export default function Alunos() {
       );
     }
 
-    const cards = data.map((user) => {
+    const cards = response.data.map((user) => {
       return (
         <CardAluno
           key={user.user_code}

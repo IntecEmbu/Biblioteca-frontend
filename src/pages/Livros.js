@@ -3,8 +3,8 @@ import CardBook from "../components/Cards/CardBook.js";
 import Spinner from "react-bootstrap/Spinner";
 import Navbar from "../components/Navbar.js";
 import ModalCadastrarLivro from "../components/Modal/ModalCadastrarLivro.js";
-import downloadBook from "../service/searchBook.js";
 import { FaSearch } from "react-icons/fa";
+import api from "../service/api";
 import "../styles/Livros.css";
 
 function LivrosPage() {
@@ -100,15 +100,15 @@ function LivrosPage() {
     setCounter("");
     setBooksCard(spinner);
 
-    const data = await downloadBook();
-    setBooks(data.books);
-
-    if (!data) {
+    const response = await api.get("/book/all");
+    setBooks(response.data);
+    
+    if (!response.data) {
       return setBooksCard("");
     }
 
     // Organiza os dados chamando os cards dos livros.
-    const cards = data.books.map((book) => {
+    const cards = response.data.map((book) => {
       return (
         <CardBook
           key={book.book_code}
