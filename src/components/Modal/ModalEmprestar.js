@@ -4,6 +4,8 @@ import api from "../../service/api";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
 import InputMask from "react-input-mask";
+import * as yup from "yup";
+import cpfValidate from "../../utils/validateCPF.js"
 
 function ModalEditarAluno({ book_id }) {
   const [show, setShow] = useState(false);
@@ -40,23 +42,23 @@ function ModalEditarAluno({ book_id }) {
   }
 
   function validate() {
-    let errors = {};
-    let count = 0;
 
-    // Validação do cpf
-    if (!user_cpf) {
-      errors.user_cpf = "Campo obrigatório";
-      count++;
-    } else if (!user_cpf.match(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)) {
-      errors.user_cpf = "CPF inválido";
-      count++;
-    }
+    const schema = yup.object().shape({
+      user_cpf: yup.string().required("CPF é obrigatório")
+        .test(user_cpf, "CPF inválido", cpfValidate)
+    });
 
-    if (Object.keys(errors).length > 0) {
-      setErrors({ ...errors, count: count });
-      return false;
-    } else {
+    try {
+      schema.validateSync({ user_cpf }, { abortEarly: false });
+      setErrors({});
       return true;
+    } catch (err) {
+      const validationErrors = {};
+      err.inner.forEach(error => {
+        validationErrors[error.path] = error.message;
+      });
+      setErrors(validationErrors);
+      return false;
     }
   }
 

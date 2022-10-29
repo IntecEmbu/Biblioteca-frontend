@@ -6,6 +6,7 @@ import "../../styles/Botoes.css";
 import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as yup from "yup";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -45,55 +46,27 @@ function Example() {
   }
 
   function validate() {
-    toast.dismiss();
-    let errors = {};
-    let count = 0;
+    toast.dismiss()
 
-    // Validação do nome
-    if (!name) {
-      errors.name = "Campo obrigatório";
-      count++;
-    }
+    const schema = yup.object().shape({
+      name: yup.string().required("Nome é obrigatório"),
+      email: yup.string().email("Email inválido").required("Email é obrigatório"),
+      password: yup.string().required("Senha é obrigatória"),
+      user: yup.string().required("Usuário é obrigatório")
+    });
 
-    // Validação do email
-    if (!email) {
-      errors.email = "Campo obrigatório";
-      count++;
-    } else if (email.length > 100) {
-      errors.email = "Email muito longo";
-      count++;
-    } else if (
-      !email.includes("@") ||
-      !email.includes(".") ||
-      email.length < 6
-    ) {
-      errors.email = "Email inválido";
-      count++;
-    }
-
-    // Validação da senha
-    if (!password) {
-      errors.password = "Campo obrigatório";
-      count++;
-    }
-
-    // Validação do usuário
-    if (!user) {
-      errors.user = "Campo obrigatório";
-      count++;
-    }
-
-    if (count > 0) {
-      errors.count = count;
-    }
-
-    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
-    if (Object.keys(errors).length > 0) {
-      toast.warning(`Existem ${count} campos inválidos!`)
-      setErrors(errors);
-      return false;
-    } else {
+    try{
+      schema.validateSync({ name, email, password, user }, { abortEarly: false });
+      setErrors({});
       return true;
+    } catch(err) {
+      const validationErrors = {};
+      err.inner.forEach(error => {
+        validationErrors[error.path] = error.message;
+      });
+      toast.warning("Preencha os campos corretamente", toastConfig);
+      setErrors(validationErrors);
+      return false;
     }
   }
 
@@ -192,7 +165,7 @@ function Example() {
               <div className="input-box-modal">
                 <label>Senha</label>
                 <input
-                  type="password"
+                  type="text"
                   required
                   onChange={(e) => {
                     setPassword(e.target.value);

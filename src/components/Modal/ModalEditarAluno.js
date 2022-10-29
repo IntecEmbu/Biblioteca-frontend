@@ -6,6 +6,9 @@ import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as yup from "yup";
+import cpfValidate from "../../utils/validateCPF";
+import phoneValidate from "../../utils/validatePhone";
 
 function ModalEditarAluno({ data }) {
   const [show, setShow] = useState(false);
@@ -49,89 +52,32 @@ function ModalEditarAluno({ data }) {
     }, 2000);
   }
 
-  function formatPhone(number) {
-    // Deixa o número no formato (xx) xxxxx-xxxx
-    return setPhone(number.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3"));
-  }
-
-  function formatCpf(number) {
-    // Deixa o cpf no formato 000.000.000-00
-    return setCpf(
-      number.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-    );
-  }
-
   function validate() {
-    toast.dismiss();
-    let errors = {};
-    let count = 0;
+    // TODO: Verificar o bug que não notifica o usuário quando
+    // o campo de outro curso está vazio e consertar o quanto antes pfv
+    toast.dismiss()
 
-    // Validação do nome
-    if (!name) {
-      errors.name = "Campo obrigatório";
-      count++;
-    } else if (name.length > 100) {
-      errors.name = "Nome muito longo";
-      count++;
-    }
+    const schema = yup.object().shape({
+      name: yup.string().required("Nome é obrigatório"),
+      email: yup.string().email("Email inválido").required("Email é obrigatório"),
+      phone: yup.string().required("Telefone é obrigatório")
+        .test("phone", "Telefone inválido", phoneValidate),
+      cpf: yup.string().required("CPF é obrigatório")
+        .test("cpf", "CPF inválido", cpfValidate)
+    });
 
-    // Validação do cpf
-    if (!cpf) {
-      errors.cpf = "Campo obrigatório";
-      count++;
-    } else if (!cpf.match(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)) {
-      errors.cpf = "CPF inválido";
-      count++;
-    }
-
-    // Validação do email
-    if (!email) {
-      errors.email = "Campo obrigatório";
-      count++;
-    } else if (email.length > 100) {
-      errors.email = "Email muito longo";
-      count++;
-    } else if (
-      !email.includes("@") ||
-      !email.includes(".") ||
-      email.length < 6
-    ) {
-      errors.email = "Email inválido";
-      count++;
-    }
-
-    // Validação do telefone
-    if (!phone) {
-      errors.phone = "Campo obrigatório";
-      count++;
-    } else if (
-      !phone.match(/^\(\d{2}\)\s\d{5}\-\d{4}$/)
-    ) {
-      errors.phone = "Telefone inválido";
-      count++;
-    }
-
-    if(course === "Outro"){
-      if(!otherCourse){
-        errors.otherCourse = "Campo obrigatório";
-        count++;
-      } else if(otherCourse.length > 100){
-        errors.otherCourse = "Curso muito longo";
-        count++;
-      }
-    }
-
-    if (count > 0) {
-      errors.count = count;
-    }
-
-    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
-    if (Object.keys(errors).length > 0) {
-      toast.warning(`Existem ${count} campos inválidos!`)
-      setErrors(errors);
-      return false;
-    } else {
+    try {
+      schema.validateSync({ name, email, phone, cpf}, { abortEarly: false });
+      setErrors({});
       return true;
+    } catch (err) {
+      const validationErrors = {};
+      err.inner.forEach((error) => {
+        validationErrors[error.path] = error.message;
+      });
+      toast.warning("Preencha os campos corretamente", toastConfig);
+      setErrors(validationErrors);
+      return false;
     }
   }
 
@@ -267,7 +213,7 @@ function ModalEditarAluno({ data }) {
                   maskChar=""
                   value={cpf}
                   onChange={(e) => {
-                    formatCpf(e.target.value);
+                    setCpf(e.target.value);
                     setErrors({ ...errors, cpf: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -298,7 +244,7 @@ function ModalEditarAluno({ data }) {
                   maskChar=""
                   value={phone}
                   onChange={(e) => {
-                    formatPhone(e.target.value);
+                    setPhone(e.target.value);
                     setErrors({ ...errors, phone: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}

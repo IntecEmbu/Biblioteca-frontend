@@ -5,6 +5,9 @@ import api from "../../service/api.js";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as yup from "yup";
+import isbnValidate from "../../utils/validateISBN.js";
+import validateYear from "../../utils/validateYear.js";
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -48,82 +51,35 @@ function Example() {
   }
 
   function validate() {
-    toast.dismiss();
-    let errors = {};
-    let count = 0;
+    toast.dismiss()
 
-    // Validação do título
-    if (!title) {
-      errors.title = "Campo obrigatório";
-      count++;
-    }
+    const schema = yup.object().shape({
+      title: yup.string().required("Título é obrigatório"),
+      edition: yup.string().required("Edição é obrigatória"),
+      category: yup.string().required("Categoria é obrigatória"),
+      idiom: yup.string().required("Idioma é obrigatório"),
+      year: yup.string().required("Ano é obrigatório")
+        .test("year", "Ano inválido", validateYear),
+      author: yup.string().required("Autor é obrigatório"),
+      isbn: yup.string().required("ISBN é obrigatório")
+        .test(isbn, "ISBN inválido", isbnValidate),
+      cdd: yup.string().required("CDD é obrigatório"),
+    });
 
-    // Validação da edição
-    if (!edition) {
-      errors.edition = "Campo obrigatório";
-      count++;
-    }
-
-    // Validação da categoria
-    if (!category) {
-      errors.category = "Campo obrigatório";
-      count++;
-    }
-
-    // Validação do idioma
-    if (!idiom) {
-      errors.idiom = "Campo obrigatório";
-      count++;
-    }
-
-    // Validação do ano
-    const currentYear = new Date().getFullYear();
-    if (!year) {
-      errors.year = "Campo obrigatório";
-      count++;
-    } else if (year.length > 4 || year.length < 4) {
-      errors.year = "Ano inválido";
-      count++;
-    } else if (year < 1000 || year > currentYear) {
-      errors.year = "Ano inválido";
-      count++;
-    }
-
-    // Validação do autor
-    if (!author) {
-      errors.author = "Campo obrigatório";
-      count++;
-    }
-
-    // Validação do isbn
-    if (!isbn) {
-      errors.isbn = "Campo obrigatório";
-      count++;
-    } else if (isbn.replace(/-/g, "").length !== 13) {
-      errors.isbn = "ISBN inválido";
-      count++;
-    } else if (isbn.replace(/-/g, "").match(/[a-z]/i)) {
-      errors.isbn = "ISBN inválido";
-      count++;
-    }
-
-    // Validação do cdd
-    if (!cdd) {
-      errors.cdd = "Campo obrigatório";
-      count++;
-    }
-
-    if (count > 0) {
-      errors.count = count;
-    }
-
-    // Casso não haja erros, o objeto errors estará vazio e irá retornar true
-    if (Object.keys(errors).length > 0) {
-      toast.warning(`Existem ${count} campos inválidos!`)
-      setErrors(errors);
-      return false;
-    } else {
+    try {
+      schema.validateSync(
+        { title, edition, category, idiom, year, author, isbn, cdd }, 
+        { abortEarly: false });
+      setErrors({});
       return true;
+    } catch (err) {
+      const validationErrors = {};
+      err.inner.forEach((error) => {
+        validationErrors[error.path] = error.message;
+      });
+      toast.warning("Preencha os campos corretamente");
+      setErrors(validationErrors);
+      return false;
     }
   }
 
@@ -255,7 +211,10 @@ function Example() {
               </div>
               <div className="input-box-modal">
                 <label>Ano de Lançamento</label>
-                <InputMask mask="9999" onChange={(e) => {
+                <InputMask 
+                  mask="9999"
+                  maskChar="" 
+                  onChange={(e) => {
                     setYear(e.target.value);
                     setErrors({ ...errors, year: "", count: "" });
                   }}
