@@ -85,7 +85,7 @@ function Index() {
 
   useEffect(() => {
     if (sessionStorage.getItem("isSigned") && sessionStorage.getItem("user")) {
-      navigate("/home");
+      window.location.href = "/home";
     }
   }, []);
 
