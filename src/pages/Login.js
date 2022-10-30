@@ -6,6 +6,7 @@ import "../styles/Login.css";
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 function Index() {
   const [user, setUser] = React.useState("");
@@ -23,6 +24,7 @@ function Index() {
     hideProgressBar: true,
     closeButton: false,
   }
+  const navigate = useNavigate()
 
   function validate() {
     toast.dismiss();
@@ -57,7 +59,7 @@ function Index() {
             success: "Login realizado com sucesso",
             error: {
               render: (error) => {
-                return error.data.response.data.message;
+                return error.data.response.data.message || "Servidor indisponível"; 
               }
           }
         }, ToastConfig);
@@ -65,7 +67,7 @@ function Index() {
         sessionStorage.setItem("isSigned", true);
         sessionStorage.setItem("user", JSON.stringify(response.data.data[0]));
 
-        window.location.href = "/home";
+        navigate("/home");
       } catch (err) {
         // console.log(err);
         setIsDisabled(false);
@@ -83,7 +85,7 @@ function Index() {
 
   useEffect(() => {
     if (sessionStorage.getItem("isSigned") && sessionStorage.getItem("user")) {
-      window.location.href = "/home";
+      navigate("/home");
     }
   }, []);
 

@@ -7,14 +7,16 @@ import { tost, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../service/api.js";
 import InputMask from "react-input-mask";
+import { useNavigate } from "react-router-dom";
 
 export default function EsqueciSenha() {
 
   const [step, setStep] = useState(1); // 1 = email, 2 = confirmação, 3 = nova senha, 4 = sucesso
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (sessionStorage.getItem("isSigned") && sessionStorage.getItem("user")) {
-      window.location.href = "/home";
+      navigate("/home");
     }
   }, []);
 
@@ -34,37 +36,42 @@ export default function EsqueciSenha() {
   const [password, setPassword] = useState(""); 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
+  const [timerValue , setTimerValue] = useState(60); // tempo de espera para reenviar o email
 
   async function verifyEmail(){
     toast.dismiss()
     const re = /\S+@\S+\.\S+/;
 
-    if(!email || !confirmEmail){
-      toast.warn("Preencha os campos", ToastConfig);
-      return false;
-    } else if (!re.test(email) || !re.test(confirmEmail)) {
-      toast.warn("Email inválido", ToastConfig);
-      return false;
-    } else if (email !== confirmEmail) {
-      toast.warn("Os emails não são iguais", ToastConfig);
-      return false;
+    if(step === 1){
+      if(!email || !confirmEmail){
+        toast.warn("Preencha os campos", ToastConfig);
+        return false;
+      } else if (!re.test(email) || !re.test(confirmEmail)) {
+        toast.warn("Email inválido", ToastConfig);
+        return false;
+      } else if (email !== confirmEmail) {
+        toast.warn("Os emails não são iguais", ToastConfig);
+        return false;
+      }
     }
 
     try{
       await toast.promise(
         api.post("/librian/new-password", {email}), 
         {
-          pending: "Verificando...", 
+          pending: "Aguarde...", 
           success: "Email enviado com sucesso!", 
           error: {
             render: (error) => {
-              return error.data.response.data.message;
+              console.log(error.data.response.data)
+              return error.data.response.data.message || "Servidor indisponível";
             }
           }
         },
         ToastConfig
       );
-      setStep(2); 
+      setStep(2);
+      timer() 
     } catch (err) {
       // console.log(err);
     }
@@ -86,7 +93,7 @@ export default function EsqueciSenha() {
           success: "Token válido!", 
           error: {
             render: (error) => {
-              return error.data.response.data.message;
+              return error.data.response.data.message || "Servidor indisponível";
             }
           }
         },
@@ -117,7 +124,7 @@ export default function EsqueciSenha() {
           success: "Senha alterada com sucesso!", 
           error: {
             render: (error) => {
-              return error.data.response.data.message;
+              return error.data.response.data.message || "Servidor indisponível";
             }
           }
         },
@@ -144,6 +151,15 @@ export default function EsqueciSenha() {
       if(e.key === "Enter"){
         changePassword();
       }
+    }
+  }
+
+  async function timer(){
+    let timer = 60
+    for(let i = 0; i < 60; i++){
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      timer--;
+      setTimerValue(timer);
     }
   }
 
@@ -204,6 +220,11 @@ export default function EsqueciSenha() {
                       <FaArrowLeft />
                     </button>
                   </Link>
+                    {timerValue > 0 && (
+                      <button className="btn-avancar">{timerValue}</button>
+                    ) || (
+                      <button className="btn-avancar" onClick={verifyEmail}>Reenviar</button>
+                    )}
                   <button className="btn-avancar" onClick={verifyToken}>Avançar</button>
                 </div>
               </>
