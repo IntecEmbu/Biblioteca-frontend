@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
 import cpfValidate from "../../utils/validateCPF";
 import phoneValidate from "../../utils/validatePhone";
+import cursosValues from "../../utils/cursos";
 
 function ModalEditarAluno({ data }) {
   const [show, setShow] = useState(false);
@@ -27,6 +28,8 @@ function ModalEditarAluno({ data }) {
   const [otherCourse, setOtherCourse] = useState("");
   const [type, setType] = useState(data.type);
   const [cpf, setCpf] = useState(data.cpf);
+
+  const cursos = cursosValues();
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
@@ -157,23 +160,8 @@ function ModalEditarAluno({ data }) {
                     console.log(e.target.value);
                   }}
                 >
-                  <option value="Novotec Administração">
-                    Novotec Administração
-                  </option>
-                  <option value="Novotec Automação Industrial">
-                    Novotec Automação Industrial
-                  </option>
-                  <option value="Administração">Administração</option>
-                  <option value="Contabilidade">Contabilidade</option>
-                  <option value="Desenvolvimento de Sistemas">
-                    Desenvolvimento de Sistemas
-                  </option>
-                  <option value="Redes de Computadores">
-                    Redes de Computadores
-                  </option>
-                  <option value="Eletroeletrônica">Eletroeletrônica</option>
-                  <option value="Logística">Logística</option>
-                  <option value="Outro">Outro</option>
+                  {cursos.map((curso) => (
+                    <option key={curso} value={curso}>{curso}</option>))}
                 </select>
               </div>
 
