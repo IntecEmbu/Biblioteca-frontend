@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import Spinner from "react-bootstrap/Spinner";
 import api from "../service/api.js";
 import "../styles/Botoes.css";
+import InputMask from "react-input-mask";
 
 export default function Alunos() {
   const spinnner = (
@@ -20,10 +21,6 @@ export default function Alunos() {
   const [selectValue, setSelectValue] = React.useState("name");
   const [users, setUsers] = React.useState([]);
   const [counter, setCounter] = React.useState("");
-
-  function formatCpf(number) {
-    return number.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-  }
 
   async function search() {
     if (nameSearch == "") {
@@ -136,16 +133,24 @@ export default function Alunos() {
         <div className="titulo-container">
           <h1>Alunos</h1>
           <div className="pesquisar-container desktop">
-            <input
-              className="input-pesquisa"
-              type="text"
-              value={nameSearch}
-              placeholder="Pesquise aqui"
-              onKeyDown={handleKeyDown}
-              onChange={(e) => {
-                setNameSearch(formatCpf(e.target.value));
-              }}
-            />
+            {selectValue === "cpf" ? (
+              <InputMask
+                mask="999.999.999-99"
+                placeholder="Pesquise por CPF"
+                maskChar=""
+                value={nameSearch} 
+                onChange={(e) => setNameSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+              ></InputMask>
+            ) : (
+              <input
+                type="text"
+                placeholder="Pesquise aqui"
+                value={nameSearch}
+                onChange={(e) => setNameSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+            )}
             <select
               className="tipo-pesquisa"
               value={selectValue}
@@ -178,16 +183,24 @@ export default function Alunos() {
         </div>
         {/* Mobile */}
         <div className="pesquisar-container mobile">
-          <input
-            className="input-pesquisa"
-            type="text"
-            value={nameSearch}
-            placeholder="Pesquise aqui"
-            onKeyDown={handleKeyDown}
-            onChange={(e) => {
-              setNameSearch(formatCpf(e.target.value));
-            }}
-          />
+          {selectValue === "cpf" ? (
+              <InputMask
+                mask="999.999.999-99"
+                placeholder="Pesquise por CPF"
+                maskChar=""
+                value={nameSearch} 
+                onChange={(e) => setNameSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+              ></InputMask>
+            ) : (
+              <input
+                type="text"
+                placeholder="Pesquise aqui"
+                value={nameSearch}
+                onChange={(e) => setNameSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+            )}
           <div className="btn-container">
             <select
               className="tipo-pesquisa"
