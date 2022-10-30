@@ -89,13 +89,17 @@ button :disabled :hover{
 }
 
 .error-message{
+  position: absolute;
   color: var(--vermelho);
   font-size: 1rem;
-  margin-bottom: .2rem;
   animation: surgir-error .5s;
-  padding: .3rem 1.2rem;
+  transition: all .5s;
+  padding: .3rem;
   border-radius: .2rem;
   background-color: var(--vermelho-error);
+  margin-top: 4.5rem;
+  width: 20.2rem;
+  text-align: center;
 }
 
 .error-count-message{

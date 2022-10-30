@@ -3,6 +3,11 @@
   border-radius: .2rem !important;
 }
 
+.modal-body{
+  height: 68vh;
+  overflow-y: auto;
+}
+
 .input-group-modal {
   display: flex;
   flex-wrap: wrap;
