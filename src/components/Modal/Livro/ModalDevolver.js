@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Spinner } from "react-bootstrap";
 import api from "../../../service/api";
-import "../../styles/Modal.css";
+import "../../../styles/Modal.css";
 
 function ModalDevolver({ lending_id }) {
   const [show, setShow] = useState(false);
