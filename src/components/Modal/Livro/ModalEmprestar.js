@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FaPen } from "react-icons/fa";
-import api from "../../service/api";
+import api from "../../../service/api";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
 import InputMask from "react-input-mask";
 import * as yup from "yup";
-import cpfValidate from "../../utils/validateCPF.js"
+import cpfValidate from "../../../utils/validateCPF.js"
 
 function ModalEditarAluno({ book_id }) {
   const [show, setShow] = useState(false);

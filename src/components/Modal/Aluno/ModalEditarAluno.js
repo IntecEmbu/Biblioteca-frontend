@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FaPen } from "react-icons/fa";
-import api from "../../service/api";
+import api from "../../../service/api";
 import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import cpfValidate from "../../utils/validateCPF";
-import phoneValidate from "../../utils/validatePhone";
-import cursosValues from "../../utils/cursos";
+import cpfValidate from "../../../utils/validateCPF";
+import phoneValidate from "../../../utils/validatePhone";
+import cursosValues from "../../../utils/cursos";
 
 function ModalEditarAluno({ data }) {
   const [show, setShow] = useState(false);

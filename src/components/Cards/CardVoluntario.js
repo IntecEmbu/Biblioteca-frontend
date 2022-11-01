@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ModalEditarVoluntario from "../Modal/ModalEditarVoluntario.js";
+import ModalEditarVoluntario from "../Modal/Voluntario/ModalEditarVoluntario.js";
 import "../../styles/Cards.css";
 import "../../styles/Botoes.css";
 

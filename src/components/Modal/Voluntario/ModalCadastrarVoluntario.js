@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import api from "../../service/api.js";
-import "../../styles/Modal.css";
-import "../../styles/Botoes.css";
+import api from "../../../service/api.js";
+import "../../../styles/Modal.css";
+import "../../../styles/Botoes.css";
 import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

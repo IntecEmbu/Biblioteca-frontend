@@ -1,36 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
+import { FaPen } from "react-icons/fa";
+import api from "../../../service/api.js";
 import { Spinner } from "react-bootstrap";
-import api from "../../service/api.js";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import isbnValidate from "../../utils/validateISBN.js";
-import validateYear from "../../utils/validateYear.js";
+import isbnValidate from "../../../utils/validateISBN.js";
+import validateYear from "../../../utils/validateYear.js";
 
-function Example() {
+function ModalEditarLivro({ data }) {
   const [show, setShow] = useState(false);
 
-  function handleClose() {
-    setShow(false);
+  const handleClose = () => {
     setErrors({});
-  }
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
-  const [title, setTitle] = useState("");
-  const [edition, setEdition] = useState("");
-  const [category, setCategory] = useState("");
-  const [idiom, setIdiom] = useState("");
-  const [year, setYear] = useState("");
-  const [author, setAuthor] = useState("");
-  const [isbn, setIsbn] = useState("");
-  const [cdd, setCdd] = useState("");
-
-  const [isDisabled, setIsDisabled] = useState(false);
+  const id = data.id;
+  const [title, setTitle] = useState(data.title);
+  const [author, setAuthor] = useState(data.author);
+  const [edition, setEdition] = useState(data.edition);
+  const [release_year, setRelease_year] = useState(data.release_year);
+  const [category, setCategory] = useState(data.category);
+  const [language, setLanguage] = useState(data.language);
+  const [isbn, setIsbn] = useState(data.isbn);
+  const [cdd, setCdd] = useState(data.cdd);
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const toastConfig = {
     position: "top-center",
     autoClose: 2000,
@@ -40,7 +43,7 @@ function Example() {
     theme: "colored",
     hideProgressBar: true,
     closeButton: false,
-  }
+  };
 
   async function close() {
     setInterval(() => {
@@ -57,9 +60,9 @@ function Example() {
       title: yup.string().required("Título é obrigatório"),
       edition: yup.string().required("Edição é obrigatória"),
       category: yup.string().required("Categoria é obrigatória"),
-      idiom: yup.string().required("Idioma é obrigatório"),
-      year: yup.string().required("Ano é obrigatório")
-        .test("year", "Ano inválido", validateYear),
+      language: yup.string().required("Idioma é obrigatório"),
+      release_year: yup.string().required("Ano é obrigatório")
+        .test(validateYear, "Ano inválido", validateYear),
       author: yup.string().required("Autor é obrigatório"),
       isbn: yup.string().required("ISBN é obrigatório")
         .test(isbn, "ISBN inválido", isbnValidate),
@@ -68,7 +71,7 @@ function Example() {
 
     try {
       schema.validateSync(
-        { title, edition, category, idiom, year, author, isbn, cdd }, 
+        { title, edition, category, language, release_year, author, isbn, cdd }, 
         { abortEarly: false });
       setErrors({});
       return true;
@@ -83,58 +86,58 @@ function Example() {
     }
   }
 
-  async function sendBook() {
+
+  async function updateBook() {
+    console.log(errors);
     if (validate()) {
-      setIsDisabled(true);
-
-      const data = {
-        title,
-        edition,
-        isbn,
-        cdd,
-        year,
-        category,
-        idiom,
-        author,
-      };
-
       try {
-        await api.post("/book/insert", data);
+        setIsDisabled(true);
+
+        await api.put("/book/update-book", {
+          id,
+          title,
+          author,
+          edition,
+          release_year,
+          category,
+          language,
+          isbn,
+          cdd,
+        });
+
         setSuccess(true);
         setIsDisabled(false);
-        await close();
-      } catch (error) {
-        alert("Erro ao cadastrar o aluno!");
-        console.log(error);
+      } catch (err) {
+        alert("Erro ao atualizar livro!");
+        console.log(err);
         setIsDisabled(false);
       } finally {
         await close();
       }
-    } else {
-      window.scrollTo(0, 0);
     }
   }
 
-  function handleKeyDown(event) {
-    if (event.keyCode === 13) {
-      sendBook();
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      updateBook();
     }
   }
 
   return (
     <>
       <ToastContainer {...toastConfig} />
-      <button className="btn-cadastrar desktop" onClick={handleShow}>
-        Cadastrar Livro
+      <button className="btn-editar-card desktop" onClick={handleShow}>
+        <FaPen className="fa-pen" />
+        Editar
       </button>
 
-      <button className="btn-cadastrar mobile" onClick={handleShow}>
-        Cadastrar
+      <button className="btn-editar-card mobile" onClick={handleShow}>
+        <FaPen className="fa-pen" />
       </button>
 
       <Modal show={show} centered>
         <Modal.Header>
-          <Modal.Title>Cadastrar Livro</Modal.Title>
+          <Modal.Title>Editar Livro</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -146,55 +149,15 @@ function Example() {
                     setTitle(e.target.value);
                     setErrors({ ...errors, title: "", count: "" });
                   }}
-                  type="text"
                   onKeyDown={handleKeyDown}
+                  value={title}
+                  type="text"
                 />
                 {errors.title && (
                   <p className="error-message">{errors.title}</p>
                 )}
               </div>
-              <div className="input-box-modal">
-                <label>Edição</label>
-                <input
-                  onChange={(e) => {
-                    setEdition(e.target.value);
-                    setErrors({ ...errors, edition: "", count: "" });
-                  }}
-                  type="text"
-                  onKeyDown={handleKeyDown}
-                />
-                {errors.edition && (
-                  <p className="error-message">{errors.edition}</p>
-                )}
-              </div>
-              <div className="input-box-modal">
-                <label>Categoria</label>
-                <input
-                  onChange={(e) => {
-                    setCategory(e.target.value);
-                    setErrors({ ...errors, category: "", count: "" });
-                  }}
-                  type="text"
-                  onKeyDown={handleKeyDown}
-                />
-                {errors.category && (
-                  <p className="error-message">{errors.category}</p>
-                )}
-              </div>
-              <div className="input-box-modal">
-                <label>Idioma</label>
-                <input
-                  onChange={(e) => {
-                    setIdiom(e.target.value);
-                    setErrors({ ...errors, idiom: "", count: "" });
-                  }}
-                  type="text"
-                  onKeyDown={handleKeyDown}
-                />
-                {errors.idiom && (
-                  <p className="error-message">{errors.idiom}</p>
-                )}
-              </div>
+
               <div className="input-box-modal">
                 <label>Autor</label>
                 <input
@@ -202,26 +165,80 @@ function Example() {
                     setAuthor(e.target.value);
                     setErrors({ ...errors, author: "", count: "" });
                   }}
-                  type="text"
                   onKeyDown={handleKeyDown}
+                  value={author}
+                  type="text"
                 />
                 {errors.author && (
                   <p className="error-message">{errors.author}</p>
                 )}
               </div>
+
               <div className="input-box-modal">
-                <label>Ano de Lançamento</label>
-                <InputMask 
-                  mask="9999"
-                  maskChar="" 
+                <label>Edição</label>
+                <input
                   onChange={(e) => {
-                    setYear(e.target.value);
-                    setErrors({ ...errors, year: "", count: "" });
+                    setEdition(e.target.value);
+                    setErrors({ ...errors, edition: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
-                ></InputMask>
-                {errors.year && <p className="error-message">{errors.year}</p>}
+                  value={edition}
+                  type="text"
+                />
+                {errors.edition && (
+                  <p className="error-message">{errors.edition}</p>
+                )}
               </div>
+
+              <div className="input-box-modal">
+                <label>Ano de Lançamento</label>
+                <InputMask
+                  mask="9999"
+                  maskChar=""
+                  onChange={(e) => {
+                    setRelease_year(e.target.value);
+                    setErrors({ ...errors, release_year: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
+                  value={release_year}
+                ></InputMask>
+                {errors.release_year && (
+                  <p className="error-message">{errors.release_year}</p>
+                )}
+              </div>
+
+              <div className="input-box-modal">
+                <label>Categoria</label>
+                <input
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    setErrors({ ...errors, category: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
+                  value={category}
+                  type="text"
+                />
+                {errors.category && (
+                  <p className="error-message">{errors.category}</p>
+                )}
+              </div>
+
+              <div className="input-box-modal">
+                <label>Idioma</label>
+                <input
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                    setErrors({ ...errors, language: "", count: "" });
+                  }}
+                  onKeyDown={handleKeyDown}
+                  value={language}
+                  type="text"
+                />
+                {errors.language && (
+                  <p className="error-message">{errors.language}</p>
+                )}
+              </div>
+
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
@@ -229,11 +246,13 @@ function Example() {
                     setIsbn(e.target.value);
                     setErrors({ ...errors, isbn: "", count: "" });
                   }}
-                  type="text"
                   onKeyDown={handleKeyDown}
+                  value={isbn}
+                  type="text"
                 />
                 {errors.isbn && <p className="error-message">{errors.isbn}</p>}
               </div>
+
               <div className="input-box-modal">
                 <label>CDD</label>
                 <input
@@ -241,20 +260,21 @@ function Example() {
                     setCdd(e.target.value);
                     setErrors({ ...errors, cdd: "", count: "" });
                   }}
-                  type="text"
                   onKeyDown={handleKeyDown}
+                  value={cdd}
+                  type="text"
                 />
                 {errors.cdd && <p className="error-message">{errors.cdd}</p>}
               </div>
             </div>
           </form>
-          {success && (
-            <p className="success-message">Livro cadastrado com sucesso!</p>
-          )}
           {isDisabled && (
             <div className="loading-modal">
               <Spinner animation="border" />
             </div>
+          )}
+          {success && (
+            <p className="success-message">Livro atualizado com sucesso!</p>
           )}
         </Modal.Body>
         <Modal.Footer>
@@ -266,11 +286,12 @@ function Example() {
             Cancelar
           </button>
           <button
-            className="btn-cadastrar-modal"
-            onClick={sendBook}
+            className="btn-editar-modal"
+            onClick={updateBook}
             disabled={isDisabled}
           >
-            Cadastrar
+            <FaPen className="fa-pen" />
+            Editar
           </button>
         </Modal.Footer>
       </Modal>
@@ -278,4 +299,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default ModalEditarLivro;

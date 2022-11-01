@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ModalDevolver from "../Modal/ModalDevolver.js";
+import ModalDevolver from "../Modal/Livro/ModalDevolver.js";
 import "../../styles/Cards.css";
 import "../../styles/Botoes.css";
 

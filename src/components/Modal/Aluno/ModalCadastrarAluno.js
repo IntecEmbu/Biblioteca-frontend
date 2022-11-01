@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import "../../styles/Modal.css";
-import "../../styles/Botoes.css";
-import api from "../../service/api.js";
+import "../../../styles/Modal.css";
+import "../../../styles/Botoes.css";
+import api from "../../../service/api.js";
 import { Spinner } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import cpfValidate from "../../utils/validateCPF.js";
-import phoneValidate from "../../utils/validatePhone.js";
-import cursosValues from "../../utils/cursos.js";
+import cpfValidate from "../../../utils/validateCPF.js";
+import phoneValidate from "../../../utils/validatePhone.js";
+import cursosValues from "../../../utils/cursos.js";
 
 function Example() {
   const [show, setShow] = useState(false);

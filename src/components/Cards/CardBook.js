@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import ModalExcluir from "../Modal/ModalExcluir.js";
-import ModalEditarLivro from "../Modal/ModalEditarLivro.js";
-import ModalEmprestar from "../Modal/ModalEmprestar.js";
-import ModalDetalhes from "../Modal/ModalDetalhes.js";
+import ModalEditarLivro from "../Modal/Livro/ModalEditarLivro.js";
+import ModalEmprestar from "../Modal/Livro/ModalEmprestar.js";
+import ModalDetalhes from "../Modal/Livro/ModalDetalhes.js";
 import "../../styles/Cards.css";
 import "../../styles/Botoes.css";
 
