@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import api from "../service/api.js";
 import "../styles/Botoes.css";
 import InputMask from "react-input-mask";
+import cursosValues from "../utils/cursos.js";
 
 export default function Alunos() {
   const spinnner = (
@@ -21,6 +22,8 @@ export default function Alunos() {
   const [selectValue, setSelectValue] = React.useState("name");
   const [users, setUsers] = React.useState([]);
   const [counter, setCounter] = React.useState("");
+
+  const cursos = cursosValues();
 
   async function search() {
     if (nameSearch == "") {
@@ -133,7 +136,7 @@ export default function Alunos() {
         <div className="titulo-container">
           <h1>Alunos</h1>
           <div className="pesquisar-container desktop">
-            {selectValue === "cpf" ? (
+            {selectValue === "cpf" && (
               <InputMask
                 mask="999.999.999-99"
                 placeholder="Pesquise por CPF"
@@ -142,14 +145,33 @@ export default function Alunos() {
                 onChange={(e) => setNameSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
               ></InputMask>
-            ) : (
+            )}
+            {selectValue === "course" && (
+              <>
               <input
                 type="text"
-                placeholder="Pesquise aqui"
+                placeholder="Pesquise por curso"
                 value={nameSearch}
                 onChange={(e) => setNameSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
-              />
+                list="cursos"
+              ></input>
+              <datalist id="cursos"
+              >
+                {cursos.map((curso) => (
+                  <option key={curso} value={curso} />
+                ))}
+                </datalist>
+              </>
+            )}
+            {selectValue === "name" && (
+              <input
+                type="text"
+                placeholder="Pesquise por nome"
+                value={nameSearch}
+                onChange={(e) => setNameSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+              ></input>
             )}
             <select
               className="tipo-pesquisa"
