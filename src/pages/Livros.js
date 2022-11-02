@@ -21,6 +21,7 @@ function LivrosPage() {
   const [selectValue, setSelectValue] = React.useState("title");
   const [books, setBooks] = React.useState([]);
   const [counter, setCounter] = React.useState("");
+  const [dataInput, setDataInput] = React.useState("");
 
   async function search() {
     // Verifica se o nome foi preenchido.
@@ -128,6 +129,15 @@ function LivrosPage() {
       );
     });
 
+    // Coloca as categorias no dataInput sem repetição.
+    const categories = response.data.map((book) => {
+      return book.category_name;
+    });
+    const categoriesFilter = categories.filter(
+      (category, index) => categories.indexOf(category) === index
+    );
+    
+    setDataInput(categoriesFilter);
     setBooksCard(cards);
     setIsDisabled(false);
   }
@@ -151,13 +161,31 @@ function LivrosPage() {
           <h1>Livros</h1>
           {/* Desktop */}
           <div className="pesquisar-container desktop">
-            <input
+            {selectValue === "category" ? (
+              <>
+                <input
+                className="input-pesquisa"
+                type="text"
+                placeholder="Pesquise aqui"
+                onKeyDown={handleKeyDown}
+                onChange={(e) => setNameSearch(e.target.value.trim())}
+                list="categories"
+                />
+                <datalist id="categories">
+                  {dataInput.map((data) => (
+                  <option key={data} value={data} />
+                  ))}
+                </datalist>
+              </>
+            ) : (
+              <input
               className="input-pesquisa"
               type="text"
               placeholder="Pesquise aqui"
               onKeyDown={handleKeyDown}
               onChange={(e) => setNameSearch(e.target.value.trim())}
-            />
+              />
+            )}
             <select
               className="tipo-pesquisa"
               value={selectValue}

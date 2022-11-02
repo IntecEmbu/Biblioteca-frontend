@@ -156,8 +156,7 @@ export default function Alunos() {
                 onKeyDown={handleKeyDown}
                 list="cursos"
               ></input>
-              <datalist id="cursos"
-              >
+              <datalist id="cursos">
                 {cursos.map((curso) => (
                   <option key={curso} value={curso} />
                 ))}
