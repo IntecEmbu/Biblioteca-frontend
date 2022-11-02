@@ -73,7 +73,7 @@
 
 .forgot-password:hover {
   text-decoration: underline;
-  color: var(--cinza-escuro);
+  color: rgba(0, 0, 0, 0.7);
   transition: all .1s linear;
 }
 
