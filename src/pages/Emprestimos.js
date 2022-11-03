@@ -54,12 +54,14 @@ export default function Emprestimos() {
           lendingsFind.map((lending) => (
             <CardLending
               key={lending.lending_id}
-              user_name={lending.user_name}
+              lending_id={lending.lending_code}
               book_name={lending.book_name}
-              lending_id={lending.lending_id}
-              withdraw_date={lending.withdraw_date}
-              return_prediction={lending.return_prediction}
               librarian_name={lending.librarian_name}
+              return_prediction={lending.return_prediction}
+              user_course={lending.user_course}
+              user_name={lending.user_name}
+              withdraw_date={lending.withdraw_date}
+              overdue={lending.overdue}
             />
           ))
         );
