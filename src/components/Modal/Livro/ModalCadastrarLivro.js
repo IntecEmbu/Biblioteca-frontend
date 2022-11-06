@@ -29,6 +29,7 @@ function Example() {
 
   const [isDisabled, setIsDisabled] = useState(false);
 
+  const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
   const toastConfig = {
@@ -84,6 +85,7 @@ function Example() {
   }
 
   async function sendBook() {
+    setApiError("");
     if (validate()) {
       setIsDisabled(true);
 
@@ -104,11 +106,12 @@ function Example() {
         setIsDisabled(false);
         await close();
       } catch (error) {
-        alert("Erro ao cadastrar o aluno!");
-        console.log(error);
+        if(error.response.status === 401){
+          setApiError("Livro já cadastrado")
+        }
+        
+        // console.log(error);
         setIsDisabled(false);
-      } finally {
-        await close();
       }
     } else {
       window.scrollTo(0, 0);
@@ -144,7 +147,8 @@ function Example() {
                 <input
                   onChange={(e) => {
                     setTitle(e.target.value);
-                    setErrors({ ...errors, title: "", count: "" });
+                    setErrors({ ...errors, title: "", count: ""});
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -159,6 +163,7 @@ function Example() {
                   onChange={(e) => {
                     setEdition(e.target.value);
                     setErrors({ ...errors, edition: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -173,6 +178,7 @@ function Example() {
                   onChange={(e) => {
                     setCategory(e.target.value);
                     setErrors({ ...errors, category: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -187,6 +193,7 @@ function Example() {
                   onChange={(e) => {
                     setIdiom(e.target.value);
                     setErrors({ ...errors, idiom: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -201,6 +208,7 @@ function Example() {
                   onChange={(e) => {
                     setAuthor(e.target.value);
                     setErrors({ ...errors, author: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -217,6 +225,7 @@ function Example() {
                   onChange={(e) => {
                     setYear(e.target.value);
                     setErrors({ ...errors, year: "", count: "" });
+                    setApiError("");
                   }}
                   onKeyDown={handleKeyDown}
                 ></InputMask>
@@ -228,6 +237,7 @@ function Example() {
                   onChange={(e) => {
                     setIsbn(e.target.value);
                     setErrors({ ...errors, isbn: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -240,6 +250,7 @@ function Example() {
                   onChange={(e) => {
                     setCdd(e.target.value);
                     setErrors({ ...errors, cdd: "", count: "" });
+                    setApiError("");
                   }}
                   type="text"
                   onKeyDown={handleKeyDown}
@@ -255,6 +266,9 @@ function Example() {
             <div className="loading-modal">
               <Spinner animation="border" />
             </div>
+          )}
+          {apiError && (
+            <p className="error-message">{apiError}</p>
           )}
         </Modal.Body>
         <Modal.Footer>
