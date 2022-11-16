@@ -24,11 +24,9 @@
 #card-main-container {
   animation: surgir-baixo .5s;
   flex-wrap: wrap;
-  width: 39rem;
-  margin: auto;
+  width: 49%;
   margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: 0;
+  margin-bottom: 1rem;
 }
 
 .p-card-main-ativo{

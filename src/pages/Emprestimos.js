@@ -87,7 +87,7 @@ export default function Emprestimos() {
     if (!response.data.length) {
       setCards(
         <div className="area-loading">
-          <h3>Nenhum empréstimo pendente!</h3>
+          <p>Nenhum empréstimo pendente</p>
         </div>
       );
       return;

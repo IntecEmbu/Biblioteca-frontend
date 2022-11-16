@@ -278,7 +278,7 @@ export default function EsqueciSenha() {
           </div>
         </div>
       </div>
-      <div className="footer-container">
+      <div className="footer-container desktop">
         <Footer />
       </div>
     </div>

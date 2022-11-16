@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { FaEllipsisH } from "react-icons/fa"
+import { FaPlus } from "react-icons/fa"
 import Spinner from 'react-bootstrap/Spinner';
 import api from "../../../service/api.js";
 
@@ -70,7 +70,7 @@ function Example(props) {
   return (
     <>
       <button className="btn-editar-card" onClick={handleShow}>
-        <FaEllipsisH />
+        <FaPlus />
       </button>
 
       <Modal show={show} centered>
@@ -123,7 +123,7 @@ function Example(props) {
           >
             Voltar
           </button>
-          <button className="btn-cancelar-modal"
+          <button className="btn-editar-modal"
             onClick={updateQuantity}
             disabled={disabled}
           >
