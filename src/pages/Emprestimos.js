@@ -60,6 +60,8 @@ export default function Emprestimos() {
               return_prediction={lending.return_prediction}
               user_course={lending.user_course}
               user_name={lending.user_name}
+              user_email={lending.user_email}
+              user_phone={lending.user_phone}
               withdraw_date={lending.withdraw_date}
               overdue={lending.overdue}
             />
@@ -105,6 +107,8 @@ export default function Emprestimos() {
           return_prediction={lending.return_prediction}
           user_course={lending.user_course}
           user_name={lending.user_name}
+          user_email={lending.user_email}
+          user_phone={lending.user_phone}
           withdraw_date={lending.withdraw_date}
           overdue={lending.overdue}
         />
