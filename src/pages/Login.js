@@ -102,7 +102,7 @@ function Index() {
               <input
                 type="text"
                 className="input-user"
-                placeholder="Usuário"
+                placeholder="E-mail ou usuário"
                 onChange={(e) => {
                   setUser(e.target.value.trim());
                   toast.dismiss();
