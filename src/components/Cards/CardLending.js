@@ -23,7 +23,7 @@ function CardBook(props) {
     <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.user_name}</p>
-        <p className="info-card-main">E-email: {props.user_email}</p>
+        <p className="info-card-main">E-mail: {props.user_email}</p>
         <p className="info-card-main">Telefone: {props.user_phone}</p>
         <p className="info-card-main">Livro: {props.book_name}</p>
         <p className="info-card-main">Código do empréstimo: {props.lending_id}</p>
