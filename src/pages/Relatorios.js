@@ -5,6 +5,7 @@ import "../styles/Relatorios.css";
 import QtdLivroChart from "../components/Charts/QtdLivroChart.js";
 import QtdEmprestimos from "../components/Charts/QtdEmprestimosChart.js";
 import QtdDevolucoes from "../components/Charts/QtdDevolucoesChart.js";
+import ModalRelatorios from "../components/Modal/Relatorios/ModalRelatorios.js";
 
 export default function Relatorios() {
   return (
@@ -14,7 +15,7 @@ export default function Relatorios() {
         <div className="titulo-container">
           <h1>Relatórios</h1>
           <div className="btn-cadastrar-container">
-            <button className="btn-baixar">Baixar Relatório</button>
+            <ModalRelatorios />
           </div>
         </div>
         <div className="area-grafico">
