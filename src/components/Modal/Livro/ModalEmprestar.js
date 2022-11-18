@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaPen } from "react-icons/fa";
+import { FaShareSquare } from "react-icons/fa";
 import api from "../../../service/api";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
@@ -96,8 +96,12 @@ function ModalEditarAluno({ book_id }) {
 
   return (
     <>
-      <button className="btn-emprestar-card" onClick={handleShow}>
+      <button className="btn-emprestar-card desktop" onClick={handleShow}>
         Emprestar
+      </button>
+
+      <button className="btn-emprestar-card mobile" onClick={handleShow}>
+        <FaShareSquare />
       </button>
 
       <Modal show={show} centered>
