@@ -66,8 +66,8 @@ function ModalEditarLivro({ data }) {
       release_year: yup.string().required("Ano é obrigatório")
         .test(validateYear, "Ano inválido", validateYear),
       author: yup.string().required("Autor é obrigatório"),
-      isbn: yup.string().required("ISBN é obrigatório")
-        .test(isbn, "ISBN inválido", isbnValidate),
+      isbn: yup.string().required("ISBN é obrigatório"),
+
       cdd: yup.string().required("CDD é obrigatório"),
       position: yup.string().required("Posição é obrigatória"),
       tombo: yup.string().required("Tombo é obrigatório")
