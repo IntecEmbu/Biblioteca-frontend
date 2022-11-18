@@ -230,7 +230,6 @@ select:hover {
 @media screen and (max-width: 950px) {
   .mobile{
     display: block;
-    /* Diminui a escala da letra */
   }
   
   .desktop{
@@ -244,10 +243,9 @@ select:hover {
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 440px) {
   .mobile{
     display: block;
-    /* Diminui a escala da letra */
     font-size: 0.6rem;
   }
 
@@ -256,10 +254,9 @@ select:hover {
   }
 }
 
-@media screen and (max-width: 315px) {
+@media screen and (max-width: 350px) {
   .mobile{
     display: block;
-    /* Diminui a escala da letra */
     font-size: 0.5rem;
   }
 
