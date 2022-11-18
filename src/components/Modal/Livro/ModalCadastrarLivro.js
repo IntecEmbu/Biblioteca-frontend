@@ -26,6 +26,7 @@ function Example() {
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
   const [cdd, setCdd] = useState("");
+  const [position, setPosition] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -65,11 +66,12 @@ function Example() {
       isbn: yup.string().required("ISBN é obrigatório")
         .test(isbn, "ISBN inválido", isbnValidate),
       cdd: yup.string().required("CDD é obrigatório"),
+      position: yup.string().required("Posição é obrigatória")
     });
 
     try {
       schema.validateSync(
-        { title, edition, category, idiom, year, author, isbn, cdd }, 
+        { title, edition, category, idiom, year, author, isbn, cdd, position }, 
         { abortEarly: false });
       setErrors({});
       return true;
@@ -98,6 +100,7 @@ function Example() {
         category,
         idiom,
         author,
+        position
       };
 
       try {
@@ -110,7 +113,7 @@ function Example() {
           setApiError("Livro já cadastrado")
         }
         
-        // console.log(error);
+        console.log(error);
         setIsDisabled(false);
       }
     } else {
@@ -230,6 +233,21 @@ function Example() {
                   onKeyDown={handleKeyDown}
                 ></InputMask>
                 {errors.year && <p className="error-message">{errors.year}</p>}
+              </div>
+              <div className="input-box-modal">
+                <label>Posição</label>
+                <input
+                  onChange={(e) => {
+                    setPosition(e.target.value);
+                    setErrors({ ...errors, position: "", count: "" });
+                    setApiError("");
+                  }}
+                  type="text"
+                  onKeyDown={handleKeyDown}
+                />
+                {errors.position && (
+                  <p className="error-message">{errors.position}</p>
+                )}
               </div>
               <div className="input-box-modal">
                 <label>ISBN</label>

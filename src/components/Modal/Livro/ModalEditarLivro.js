@@ -28,6 +28,7 @@ function ModalEditarLivro({ data }) {
   const [language, setLanguage] = useState(data.language);
   const [isbn, setIsbn] = useState(data.isbn);
   const [cdd, setCdd] = useState(data.cdd);
+  const [position, setPosition] = useState(data.position)
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
@@ -67,11 +68,12 @@ function ModalEditarLivro({ data }) {
       isbn: yup.string().required("ISBN é obrigatório")
         .test(isbn, "ISBN inválido", isbnValidate),
       cdd: yup.string().required("CDD é obrigatório"),
+      position: yup.string().required("Posição é obrigatória")
     });
 
     try {
       schema.validateSync(
-        { title, edition, category, language, release_year, author, isbn, cdd }, 
+        { title, edition, category, language, release_year, author, isbn, cdd, position }, 
         { abortEarly: false });
       setErrors({});
       return true;
@@ -103,6 +105,7 @@ function ModalEditarLivro({ data }) {
           language,
           isbn,
           cdd,
+          position
         });
 
         setSuccess(true);
@@ -238,7 +241,21 @@ function ModalEditarLivro({ data }) {
                   <p className="error-message">{errors.language}</p>
                 )}
               </div>
-
+              <div className="input-box-modal">
+                <label>Posição</label>
+                <input
+                  onChange={(e) => {
+                    setPosition(e.target.value);
+                    setErrors({ ...errors, position: "", count: "" });
+                  }}
+                  value={position}
+                  type="text"
+                  onKeyDown={handleKeyDown}
+                />
+                {errors.position && (
+                  <p className="error-message">{errors.position}</p>
+                )}
+              </div>
               <div className="input-box-modal">
                 <label>ISBN</label>
                 <input
