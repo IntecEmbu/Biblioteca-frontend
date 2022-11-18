@@ -9,6 +9,7 @@
   padding: 1rem;
   border: 1px solid var(--cinza-escuro);
   border-radius: .2rem;
+  word-wrap: break-word;
 }
 
 .titulo-card-main {
