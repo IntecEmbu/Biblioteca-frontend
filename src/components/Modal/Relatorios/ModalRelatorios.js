@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import "../../../styles/Modal.css";
+import "../../../styles/Botoes.css";
 
 function Index() {
   const [show, setShow] = useState(false);
@@ -11,40 +12,48 @@ function Index() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
+      <button className="btn-cadastrar desktop" onClick={handleShow}>
+        Baixar Relatório
+      </button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+      <Modal show={show}>
+        <Modal.Header>
+          <Modal.Title>Baixar Relatório</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
+          <form>
+            <div className="input-group-modal">
+              <div className="input-box-modal">
+                <label>Tipo</label>
+                <select
+                  className="tipo-pesquisa"
+                >
+                  <option>Inventário</option>
+                  <option>Empréstimos</option>
+                </select>
+              </div>
+              <div className="input-box-modal">
+                <label>Formato</label>
+                <select
+                  className="tipo-pesquisa"
+                >
+                  <option>PDF</option>
+                  <option>Excel</option>
+                </select>
+              </div>
+            </div>
+          </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <button className="btn-cancelar-modal" onClick={handleClose}>
+            Cancelar
+          </button>
+          <button
+            className="btn-cadastrar-modal"
+            type="submit"
+          >
+            Baixar
+          </button>
         </Modal.Footer>
       </Modal>
     </>
