@@ -65,7 +65,6 @@ function Example() {
         .test("year", "Ano inválido", validateYear),
       author: yup.string().required("Autor é obrigatório"),
       isbn: yup.string().required("ISBN é obrigatório"),
-
       cdd: yup.string().required("CDD é obrigatório"),
       position: yup.string().required("Posição é obrigatória"),
       tombo: yup.string().required("Tombo é obrigatório")
