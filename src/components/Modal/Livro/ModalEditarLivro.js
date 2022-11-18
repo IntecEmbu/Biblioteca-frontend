@@ -29,6 +29,7 @@ function ModalEditarLivro({ data }) {
   const [isbn, setIsbn] = useState(data.isbn);
   const [cdd, setCdd] = useState(data.cdd);
   const [position, setPosition] = useState(data.position)
+  const [tombo, setTombo] = useState(data.tombo)
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
@@ -68,12 +69,13 @@ function ModalEditarLivro({ data }) {
       isbn: yup.string().required("ISBN é obrigatório")
         .test(isbn, "ISBN inválido", isbnValidate),
       cdd: yup.string().required("CDD é obrigatório"),
-      position: yup.string().required("Posição é obrigatória")
+      position: yup.string().required("Posição é obrigatória"),
+      tombo: yup.string().required("Tombo é obrigatório")
     });
 
     try {
       schema.validateSync(
-        { title, edition, category, language, release_year, author, isbn, cdd, position }, 
+        { title, edition, category, language, release_year, author, isbn, cdd, position, tombo }, 
         { abortEarly: false });
       setErrors({});
       return true;
@@ -105,7 +107,8 @@ function ModalEditarLivro({ data }) {
           language,
           isbn,
           cdd,
-          position
+          position,
+          tombo
         });
 
         setSuccess(true);
@@ -254,6 +257,21 @@ function ModalEditarLivro({ data }) {
                 />
                 {errors.position && (
                   <p className="error-message">{errors.position}</p>
+                )}
+              </div>
+              <div className="input-box-modal">
+                <label>Tombo</label>
+                <input
+                  onChange={(e) => {
+                    setTombo(e.target.value);
+                    setErrors({ ...errors, tombo: "", count: "" });
+                  }}
+                  type="text"
+                  onKeyDown={handleKeyDown}
+                  value={tombo}
+                />
+                {errors.tombo && (
+                  <p className="error-message">{errors.tombo}</p>
                 )}
               </div>
               <div className="input-box-modal">

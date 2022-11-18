@@ -88,6 +88,7 @@ function LivrosPage() {
             qtdStopped={book.quantity_stopped}
             qtdCirculation={book.quantity_circulation}
             position={book.book_position}
+            tombo={book.book_tombo}
           />
         );
       });
@@ -127,6 +128,7 @@ function LivrosPage() {
           qtdStopped={book.quantity_stopped}
           qtdCirculation={book.quantity_circulation}
           position={book.book_position}
+          tombo={book.book_tombo}
         />
       );
     });

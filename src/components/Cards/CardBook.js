@@ -19,7 +19,8 @@ function CardBook(props) {
     language,
     isbn,
     cdd,
-    position
+    position,
+    tombo
   } = props;
 
   const dataBook = {
@@ -32,7 +33,8 @@ function CardBook(props) {
     language,
     isbn,
     cdd,
-    position
+    position,
+    tombo
   };
 
   function showButtons() {
@@ -62,6 +64,7 @@ function CardBook(props) {
         <p className="info-card-main">Ano: {props.release_year}</p>
         <p className="info-card-main">Categoria: {props.category}</p>
         <p className="info-card-main">Idioma: {props.language}</p>
+        <p className="info-card-main">Tombo: {props.tombo}</p>
         <p className="info-card-main">Posição: {props.position}</p>
         <p className="info-card-main">ISBN: {props.isbn}</p>
         <p className="info-card-main">CDD: {props.cdd}</p>

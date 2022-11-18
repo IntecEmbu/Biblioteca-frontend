@@ -27,6 +27,7 @@ function Example() {
   const [isbn, setIsbn] = useState("");
   const [cdd, setCdd] = useState("");
   const [position, setPosition] = useState("");
+  const [tombo, setTombo] = useState("")
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -66,12 +67,13 @@ function Example() {
       isbn: yup.string().required("ISBN é obrigatório")
         .test(isbn, "ISBN inválido", isbnValidate),
       cdd: yup.string().required("CDD é obrigatório"),
-      position: yup.string().required("Posição é obrigatória")
+      position: yup.string().required("Posição é obrigatória"),
+      tombo: yup.string().required("Tombo é obrigatório")
     });
 
     try {
       schema.validateSync(
-        { title, edition, category, idiom, year, author, isbn, cdd, position }, 
+        { title, edition, category, idiom, year, author, isbn, cdd, position, tombo }, 
         { abortEarly: false });
       setErrors({});
       return true;
@@ -100,7 +102,8 @@ function Example() {
         category,
         idiom,
         author,
-        position
+        position,
+        tombo
       };
 
       try {
@@ -247,6 +250,21 @@ function Example() {
                 />
                 {errors.position && (
                   <p className="error-message">{errors.position}</p>
+                )}
+              </div>
+              <div className="input-box-modal">
+                <label>Tombo</label>
+                <input
+                  onChange={(e) => {
+                    setTombo(e.target.value);
+                    setErrors({ ...errors, tombo: "", count: "" });
+                    setApiError("");
+                  }}
+                  type="text"
+                  onKeyDown={handleKeyDown}
+                />
+                {errors.tombo && (
+                  <p className="error-message">{errors.tombo}</p>
                 )}
               </div>
               <div className="input-box-modal">
