@@ -50,7 +50,7 @@ function Index() {
         Baixar Relatório
       </button>
 
-      <Modal show={show}>
+      <Modal centered show={show}>
         <Modal.Header>
           <Modal.Title>Baixar Relatório</Modal.Title>
         </Modal.Header>
