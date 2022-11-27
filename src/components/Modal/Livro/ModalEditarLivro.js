@@ -151,7 +151,7 @@ function ModalEditarLivro({ data }) {
                 <label>Título</label>
                 <input
                   onChange={(e) => {
-                    setTitle(e.target.value);
+                    setTitle(e.target.value.trim());
                     setErrors({ ...errors, title: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -167,7 +167,7 @@ function ModalEditarLivro({ data }) {
                 <label>Autor</label>
                 <input
                   onChange={(e) => {
-                    setAuthor(e.target.value);
+                    setAuthor(e.target.value.trim());
                     setErrors({ ...errors, author: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -183,7 +183,7 @@ function ModalEditarLivro({ data }) {
                 <label>Edição</label>
                 <input
                   onChange={(e) => {
-                    setEdition(e.target.value);
+                    setEdition(e.target.value.trim());
                     setErrors({ ...errors, edition: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -201,7 +201,7 @@ function ModalEditarLivro({ data }) {
                   mask="9999"
                   maskChar=""
                   onChange={(e) => {
-                    setRelease_year(e.target.value);
+                    setRelease_year(e.target.value.trim());
                     setErrors({ ...errors, release_year: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -216,7 +216,7 @@ function ModalEditarLivro({ data }) {
                 <label>Categoria</label>
                 <input
                   onChange={(e) => {
-                    setCategory(e.target.value);
+                    setCategory(e.target.value.trim());
                     setErrors({ ...errors, category: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -232,7 +232,7 @@ function ModalEditarLivro({ data }) {
                 <label>Idioma</label>
                 <input
                   onChange={(e) => {
-                    setLanguage(e.target.value);
+                    setLanguage(e.target.value.trim());
                     setErrors({ ...errors, language: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -247,7 +247,7 @@ function ModalEditarLivro({ data }) {
                 <label>Posição</label>
                 <input
                   onChange={(e) => {
-                    setPosition(e.target.value);
+                    setPosition(e.target.value.trim());
                     setErrors({ ...errors, position: "", count: "" });
                   }}
                   value={position}
@@ -262,7 +262,7 @@ function ModalEditarLivro({ data }) {
                 <label>Tombo</label>
                 <input
                   onChange={(e) => {
-                    setTombo(e.target.value);
+                    setTombo(e.target.value.trim());
                     setErrors({ ...errors, tombo: "", count: "" });
                   }}
                   type="text"
@@ -277,7 +277,7 @@ function ModalEditarLivro({ data }) {
                 <label>ISBN</label>
                 <input
                   onChange={(e) => {
-                    setIsbn(e.target.value);
+                    setIsbn(e.target.value.trim());
                     setErrors({ ...errors, isbn: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -291,7 +291,7 @@ function ModalEditarLivro({ data }) {
                 <label>CDD</label>
                 <input
                   onChange={(e) => {
-                    setCdd(e.target.value);
+                    setCdd(e.target.value.trim());
                     setErrors({ ...errors, cdd: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}

@@ -124,7 +124,7 @@ function Example() {
                   type="text"
                   required
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setName(e.target.value.trim());
                     setErrors({ ...errors, name: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -138,7 +138,7 @@ function Example() {
                   type="text"
                   required
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setEmail(e.target.value.trim());
                     setErrors({ ...errors, email: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -154,7 +154,7 @@ function Example() {
                   type="text"
                   required
                   onChange={(e) => {
-                    setUser(e.target.value);
+                    setUser(e.target.value.trim());
                     setErrors({ ...errors, user: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}
@@ -168,7 +168,7 @@ function Example() {
                   type="text"
                   required
                   onChange={(e) => {
-                    setPassword(e.target.value);
+                    setPassword(e.target.value.trim());
                     setErrors({ ...errors, password: "", count: "" });
                   }}
                   onKeyDown={handleKeyDown}

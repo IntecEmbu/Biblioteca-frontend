@@ -151,7 +151,7 @@ function Example() {
                 <label>Título</label>
                 <input
                   onChange={(e) => {
-                    setTitle(e.target.value);
+                    setTitle(e.target.value.trim());
                     setErrors({ ...errors, title: "", count: ""});
                     setApiError("");
                   }}
@@ -166,7 +166,7 @@ function Example() {
                 <label>Edição</label>
                 <input
                   onChange={(e) => {
-                    setEdition(e.target.value);
+                    setEdition(e.target.value.trim());
                     setErrors({ ...errors, edition: "", count: "" });
                     setApiError("");
                   }}
@@ -181,7 +181,7 @@ function Example() {
                 <label>Categoria</label>
                 <input
                   onChange={(e) => {
-                    setCategory(e.target.value);
+                    setCategory(e.target.value.trim());
                     setErrors({ ...errors, category: "", count: "" });
                     setApiError("");
                   }}
@@ -196,7 +196,7 @@ function Example() {
                 <label>Idioma</label>
                 <input
                   onChange={(e) => {
-                    setIdiom(e.target.value);
+                    setIdiom(e.target.value.trim());
                     setErrors({ ...errors, idiom: "", count: "" });
                     setApiError("");
                   }}
@@ -211,7 +211,7 @@ function Example() {
                 <label>Autor</label>
                 <input
                   onChange={(e) => {
-                    setAuthor(e.target.value);
+                    setAuthor(e.target.value.trim());
                     setErrors({ ...errors, author: "", count: "" });
                     setApiError("");
                   }}
@@ -228,7 +228,7 @@ function Example() {
                   mask="9999"
                   maskChar="" 
                   onChange={(e) => {
-                    setYear(e.target.value);
+                    setYear(e.target.value.trim());
                     setErrors({ ...errors, year: "", count: "" });
                     setApiError("");
                   }}
@@ -240,7 +240,7 @@ function Example() {
                 <label>Posição</label>
                 <input
                   onChange={(e) => {
-                    setPosition(e.target.value);
+                    setPosition(e.target.value.trim());
                     setErrors({ ...errors, position: "", count: "" });
                     setApiError("");
                   }}
@@ -255,7 +255,7 @@ function Example() {
                 <label>Tombo</label>
                 <input
                   onChange={(e) => {
-                    setTombo(e.target.value);
+                    setTombo(e.target.value.trim());
                     setErrors({ ...errors, tombo: "", count: "" });
                     setApiError("");
                   }}
@@ -270,7 +270,7 @@ function Example() {
                 <label>ISBN</label>
                 <input
                   onChange={(e) => {
-                    setIsbn(e.target.value);
+                    setIsbn(e.target.value.trim());
                     setErrors({ ...errors, isbn: "", count: "" });
                     setApiError("");
                   }}
@@ -283,7 +283,7 @@ function Example() {
                 <label>CDD</label>
                 <input
                   onChange={(e) => {
-                    setCdd(e.target.value);
+                    setCdd(e.target.value.trim());
                     setErrors({ ...errors, cdd: "", count: "" });
                     setApiError("");
                   }}

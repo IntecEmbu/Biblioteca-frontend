@@ -84,7 +84,7 @@ function Example(props) {
                 <label>Qtd. Total</label>
                 <input
                   value={total}
-                  onChange={e => calculateQuantity(e.target.value)}
+                  onChange={e => calculateQuantity(e.target.value.trim())}
                   onKeyDown={keyDown}
                   type="number"
                   min={1}

@@ -116,7 +116,7 @@ function ModalEditarVoluntario({ data }) {
                 <input
                   value={name}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setName(e.target.value.trim());
                     setErrors({ ...errors, name: "", count: "" });
                   }}
                   type="text"
@@ -130,7 +130,7 @@ function ModalEditarVoluntario({ data }) {
                 <input
                   value={email}
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setEmail(e.target.value.trim());
                     setErrors({ ...errors, email: "", count: "" });
                   }}
                   type="email"
@@ -146,7 +146,7 @@ function ModalEditarVoluntario({ data }) {
                 <input
                   value={user}
                   onChange={(e) => {
-                    setUser(e.target.value);
+                    setUser(e.target.value.trim());
                     setErrors({ ...errors, user: "", count: "" });
                   }}
                   type="text"
@@ -160,7 +160,7 @@ function ModalEditarVoluntario({ data }) {
                 <select
                   value={type}
                   onChange={(e) => {
-                    setType(e.target.value);
+                    setType(e.target.value.trim());
                   }}
                   onKeyDown={handleKeyDown}
                 >
@@ -174,7 +174,7 @@ function ModalEditarVoluntario({ data }) {
                 <select
                   value={status}
                   onChange={(e) => {
-                    setStatus(e.target.value);
+                    setStatus(e.target.value.trim());
                   }}
                   onKeyDown={handleKeyDown}
                 >

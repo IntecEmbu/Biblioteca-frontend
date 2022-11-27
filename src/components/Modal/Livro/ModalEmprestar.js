@@ -117,7 +117,7 @@ function ModalEditarAluno({ book_id }) {
                 maskChar=""
                 value={user_cpf}
                 onChange={(e) => {
-                  formatCpf(e.target.value);
+                  formatCpf(e.target.value.trim());
                   setErrors({});
                 }}
                 onKeyDown={handleKeyDown}
