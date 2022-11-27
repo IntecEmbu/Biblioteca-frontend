@@ -59,6 +59,13 @@ function CardBook(props) {
     <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.title}</p>
+        {props.qtdStopped > 0 ? (
+          <p className="p-card-main-ativo">Disponivel {props.qtdStopped} {
+            props.qtdStopped > 1 ? "exemplares" : "exemplar"
+          }</p>
+        ) : (
+          <p className="p-card-main-inativo">Indisponivel</p>
+        )}
         <p className="info-card-main">Autor: {props.author}</p>
         <p className="info-card-main">Edição: {props.edition}</p>
         <p className="info-card-main">Ano: {props.release_year}</p>

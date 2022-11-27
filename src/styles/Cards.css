@@ -31,10 +31,12 @@
 }
 
 .p-card-main-ativo{
+  font-size: .9rem;
   color: green;
 }
 
 .p-card-main-inativo{
+  font-size: .9rem;
   color: var(--vermelho);
 }
 
