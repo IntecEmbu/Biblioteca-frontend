@@ -32,10 +32,11 @@ function CardBook(props) {
     <div id="card-main-container">
       <div className="card-main">
         <p className="titulo-card-main">{props.name}</p>
-        <p className="info-card-main">CPF: {props.cpf}</p>
-        <p className="info-card-main">Curso: {props.course}</p>
         <p className="info-card-main">E-mail: {props.email}</p>
         <p className="info-card-main">Celular: {props.phone}</p>
+        <p className="info-card-main">CPF: {props.cpf}</p>
+        <p className="info-card-main">Livros com o usuário: {props.count}</p>
+        <p className="info-card-main">Curso: {props.course}</p>
         <p className="info-card-main">Tipo: {props.type}</p>
         <div className="btn-card-container">
           <div className="btn-editar-container">

@@ -74,6 +74,7 @@ export default function Alunos() {
             course={user.user_course}
             cpf={user.user_cpf}
             type={user.user_type}
+            count={user.count}
           />
         );
       });
@@ -112,6 +113,7 @@ export default function Alunos() {
           course={user.user_course}
           cpf={user.user_cpf}
           type={user.user_type}
+          count={user.count}
         />
       );
     });
