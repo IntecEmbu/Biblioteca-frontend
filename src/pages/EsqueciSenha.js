@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../components/Footer.js";
 import "../styles/Login.css";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
@@ -277,9 +276,6 @@ export default function EsqueciSenha() {
             )}
           </div>
         </div>
-      </div>
-      <div className="footer-container desktop">
-        <Footer />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../service/api.js";
-import Footer from "../components/Footer.js";
 import "../styles/Login.css";
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import {ToastContainer, toast} from 'react-toastify';
@@ -149,9 +148,6 @@ function Index() {
             </p>
           </div>
         </div>
-      </div>
-      <div className="footer-container desktop">
-        <Footer />
       </div>
     </div>
   );
