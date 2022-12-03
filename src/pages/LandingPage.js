@@ -39,14 +39,14 @@ function LandingPage() {
 
       <div className="pagina-container">
         <div className="pesquisa-landing">
-          <div className="pesquisar-container-landing">
+          {/* <div className="pesquisar-container-landing">
             <input type="text" placeholder="Pesquise o livro que deseja"></input>
             <div className="btn-container">
               <button className="btn-listar">
                 <FaSearch />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* <Table bordered hover variant="light">
