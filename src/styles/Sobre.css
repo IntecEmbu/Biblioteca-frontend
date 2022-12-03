@@ -34,6 +34,49 @@
   justify-content: center;
 }
 
+#titulo-carta{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.texto-carta{
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: justify;
+  color: var(--azul);
+}
+
+.assinatura-carta{
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--azul);
+  text-align: right;
+}
+
+.assinatura-carta a, 
+.assinatura-carta a:visited, 
+.assinatura-carta a:active, 
+.assinatura-carta a:hover{
+  color: var(--azul);
+}
+
+.carta{
+  padding: 1rem;
+  margin: 0 auto;
+  align-items: center;
+  width: 75%;
+  border: 4px solid var(--azul);
+  border-radius: 30px;
+  background-color: var(--cinza-escuro);
+}
+
+@media screen and (max-width: 768px){
+  .carta{
+    width: 100%;
+  }
+}
+
 /* ------------------------------------------------------- */
 
 .footer {
