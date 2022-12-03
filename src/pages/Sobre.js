@@ -166,7 +166,7 @@ function Sobre() {
               placement="top"
               overlay={<Tooltip>Visite nosso Front-end!</Tooltip>}
               >
-                <a href="https://github.com/IntecEmbu/Biblioteca-backend" target="_blank">
+                <a href="https://github.com/IntecEmbu/Biblioteca-frontend" target="_blank">
                   <FaIcons.FaGithub />
                 </a>
               </OverlayTrigger>
