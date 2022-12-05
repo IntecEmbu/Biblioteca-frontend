@@ -64,7 +64,7 @@ export default function Emprestimos() {
               user_phone={lending.user_phone}
               withdraw_date={lending.withdraw_date}
               penalty={lending.penalty}
-              days_delay={lending.days_delay}
+              days_delay={lending.overdue}
             />
           ))
         );
@@ -85,7 +85,7 @@ export default function Emprestimos() {
     setIsDisabled(true);
     setCards(spinner);
 
-    const response = await api.get("/lending/not-returned")
+    const response = await api.get("/lending/not-returned");
 
     if (!response.data.length) {
       setCards(
@@ -112,7 +112,7 @@ export default function Emprestimos() {
           user_phone={lending.user_phone}
           withdraw_date={lending.withdraw_date}
           penalty={lending.penalty}
-          days_delay={lending.days_delay}
+          days_delay={lending.overdue}
         />
       ))
     );
@@ -150,7 +150,7 @@ export default function Emprestimos() {
               <button
                 className="btn-pesquisar"
                 disabled={isDisabled}
-                onClick={ search}
+                onClick={search}
               >
                 <FaSearch />
               </button>
