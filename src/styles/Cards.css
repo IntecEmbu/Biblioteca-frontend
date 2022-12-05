@@ -40,6 +40,15 @@
   color: var(--vermelho);
 }
 
+.sem-atraso{
+  color: var(--azul);
+}
+
+.com-atraso{
+  color: var(--vermelho);
+}
+
+
 @media screen and (max-width: 1200px) {
   #card-main-container{
     width: 100%;

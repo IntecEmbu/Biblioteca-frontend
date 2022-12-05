@@ -110,7 +110,8 @@ export default function Emprestimos() {
           user_email={lending.user_email}
           user_phone={lending.user_phone}
           withdraw_date={lending.withdraw_date}
-          overdue={lending.overdue}
+          penalty={lending.penalty}
+          days_delay={lending.days_delay}
         />
       ))
     );
