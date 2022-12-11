@@ -29,7 +29,7 @@ function Sobre() {
 
     <div className="pagina-container">
 
-      <div className="desktop">
+      {/* <div className="desktop">
         <div className="container-sobre">
           <Card 
           position={false}
@@ -43,7 +43,7 @@ function Sobre() {
           position={false}
           img={(<img src={require("../images/library.png")} />)}/>
         </div>
-      </div>
+      </div> */}
 
       <div className="carta-container">
         <p id="titulo-carta">CARTA ABERTA</p>
