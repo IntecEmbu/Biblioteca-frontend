@@ -65,7 +65,7 @@ function ChartQtd() {
           ...optionsChart.plugins,
           title: {
             ...optionsChart.plugins.title,
-            text: `Total de livros registrados: ${response.total}`,
+            text: `Livros registrados: ${response.total}`,
           },
         },
       });
