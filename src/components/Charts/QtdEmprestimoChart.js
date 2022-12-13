@@ -12,7 +12,7 @@ function ChartQtd() {
         id: 1,
         label: "",
         data: ["...", "..."],
-        backgroundColor: ["#0000FF", "#FF0000"],
+        backgroundColor: ["#4682B4", "#CD5C5C"],
         borderWidth: 0,
       },
     ],
