@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import "../../../styles/Modal.css";
 import "../../../styles/Botoes.css";
@@ -14,7 +14,7 @@ function Index() {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const [type, setType] = useState("inventory");
-  const [returned, setReturned] = useState(false);
+  const [returned, setReturned] = useState(true);
 
   async function download(){
     setIsDisabled(true);
@@ -69,7 +69,9 @@ function Index() {
               {type === "lending" && (
                 <div className="input-box-modal">
                   <label>Retornados</label>
-                  <select className="tipo-pesquisa" onChange={(e) => setReturned(e.target.value)}>
+                  <select className="tipo-pesquisa"
+                    value={returned}
+                    onChange={(e) => setReturned(e.target.value)}>
                     <option value={true}>Sim</option>
                     <option value={false}>Não</option>
                   </select>
